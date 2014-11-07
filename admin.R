@@ -333,7 +333,7 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
     points(history[[i]]$date[ind], history[[i]][[metric_column]][ind], 
            col=col[i], pch=pch[i], lty=lty[i], lwd=5)
   }
-  axis.POSIXct(1, xlim, format="%d-%m-%Y")
+  axis.POSIXct(1, xlim, format="%d %b")
   
   leg = names(history)
   if (length(leg)>0)
