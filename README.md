@@ -18,7 +18,7 @@ Contents
     where they can submit their contributions. The subdirectories are shared with
     Dropbox.
 - `history`: directory where the contributions history is stored.
-- `figures`: directory of images used in the wabpage.
+- `figures`: directory of images used in the webpage.
 
 Author
 =======
