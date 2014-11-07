@@ -12,13 +12,18 @@ Contents
 - `challenge.Rmd`: Rmarkdown script for the webpage (currently in french).
 - `admin.R`: R script with utility functions used in the webpage.
 - `baseline.R`: R script generating the baseline predictions.
-- `refresh.R`: R script used to refresh the webpage.
+- `refresh.R`: executable R script used to refresh the webpage.
 - `data`: directory of the data.
 - `contrib`: directory of the contributions. Must contain one subdirectory per team
     where they can submit their contributions. The subdirectories are shared with
     Dropbox.
 - `history`: directory where the contributions history is stored.
 - `figures`: directory of images used in the webpage.
+
+I automatically refresh the webpage every hour using cron with the following crontab:
+```
+00 * * * * cd $HOME/Dropbox/path/to/challenge && ./refresh.R
+```
 
 Author
 =======
