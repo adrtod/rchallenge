@@ -9,7 +9,7 @@ University of Bordeaux (see [this page](http://goo.gl/KRuYn0)).
 
 Contents
 ========
-- `challenge.Rmd`: Rmarkdown script for the webpage.
+- `challenge.Rmd`: Rmarkdown script for the webpage (currently in french).
 - `admin.R`: R script with utility functions used in the webpage.
 - `baseline.R`: R script generating the baseline predictions.
 - `refresh.R`: R script used to refresh the webpage.
@@ -29,5 +29,6 @@ for datascience challenges.
 
 Roadmap
 ========
+- [ ] English translation
 - [ ] Interactive webpage using [Shiny](http://shiny.rstudio.com/)
 - [ ] CRAN package
