@@ -9,7 +9,7 @@ output:
     toc: yes
 ---
 
-Bienvenue sur la page du challenge d'[Apprentissage automatique](https://sites.google.com/site/adrientodeschini/teaching/ml2014) du Master 2 MIMSE !
+Bienvenue sur la page du challenge d'[Apprentissage automatique](https://sites.google.com/site/adrientodeschini/teaching/ml2014) du Master 2 [MIMSE](http://www.math.u-bordeaux.fr/DIM/master/mimse/pageweb/pmwiki.php) !
 
 
 ```{r echo=FALSE}
@@ -272,5 +272,5 @@ for (i in seq(along=read_err)) {
 
 ------------
 
-Les icônes proviennent du site [GLYPHICONS.com]() et sont distribuées sous la licence
+Les icônes proviennent du site [GLYPHICONS.com](http://glyphicons.com/) et sont distribuées sous la licence
 [CC-BY](http://creativecommons.org/licenses/by/3.0/).
