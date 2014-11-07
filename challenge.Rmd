@@ -14,7 +14,16 @@ Bienvenue sur la page du challenge d'[Apprentissage automatique](https://sites.g
 
 ```{r echo=FALSE}
 deadline = as.POSIXct("2015-01-07 23:59:59")
-time_left = deadline-Sys.time()
+time_left = difftime(deadline, Sys.time(), units="days")
+countdown = function(time_left) {
+  if (time_left>0) {
+    if (time_left>1)
+      return(paste("J -", floor(time_left)))
+    else
+      return(paste("H -", floor(time_left*24)))
+  } else
+      return(intToUtf8(10004))
+}
 last_update <- function() format(Sys.time(), "%d/%m/%y %H:%M")
 
 # global statistics of the challenge
@@ -25,9 +34,9 @@ if (file.exists("history/stats.RData"))
   load("history/stats.RData")
 ```
 
-| ![](figures/glyphicons_135_inbox_out.png) \ **`r stats$n_contrib`** | ![](figures/glyphicons_043_group.png) \ **`r stats$n_team`** | ![](figures/glyphicons_045_calendar.png) \ **`r paste("J -", floor(time_left))`** |
+| ![](figures/glyphicons_135_inbox_out.png) \ **`r stats$n_contrib`** | ![](figures/glyphicons_043_group.png) \ **`r stats$n_team`** | ![](figures/glyphicons_045_calendar.png) \ **`r countdown(time_left)`** |
 |:-------------:|:-------------:|:-------------:|
-| contributions | participants | en cours |
+| contributions | participants | `r ifelse(time_left>0, "en cours", "terminé")` |
 
 Dernière mise à jour : ```r last_update()```
 
