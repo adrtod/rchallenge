@@ -71,8 +71,8 @@ Le nombre de contributions n'est pas limité. Cependant le calcul des scores n'e
 
 Les données sont disponibles dans les deux fichiers suivant :
 
-- Apprentissage : `data_train.RData` [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/5txejhqamm6bjzp/data_train.RData?dl=0)
-- Test : `data_test.RData` [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/t6pt2d9kog173yv/data_test.RData?dl=0)
+- Apprentissage : `data_train.RData` [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/5txejhqamm6bjzp/data_train.RData?dl=1)
+- Test : `data_test.RData` [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/t6pt2d9kog173yv/data_test.RData?dl=1)
 
 Ces fichiers sont à importer dans R avec :
 
