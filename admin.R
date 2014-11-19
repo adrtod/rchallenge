@@ -241,11 +241,15 @@ update_rank_diff <- function(best_new, best_old) {
   return(best_new)
 }
 
-# symbols_dec <- c(8658, 8663, 8664)
-# symbols_dec <- c(10137, 10138, 10136)
-symbols_dec <- c(10145, 11016, 11018)
-names(symbols_dec) <- c("const", "up", "down")
-symbols <- sapply(symbols_dec, intToUtf8)
+# # symbols_dec <- c(8594, 8599, 8600) # simple arrows
+# symbols_dec <- c(8658, 8663, 8664) # double arrows
+# # symbols_dec <- c(10137, 10138, 10136) # black arrows
+# names(symbols_dec) <- c("const", "up", "down")
+# symbols <- sapply(symbols_dec, intToUtf8)
+symbols <- list()
+symbols$const <- '<img src="figures/glyphicons_211_right_arrow.png" style="width: 10px;"/>'
+symbols$up <- '<img src="figures/glyphicons_213_up_arrow.png" style="width: 10px;"/>'
+symbols$down <- '<img src="figures/glyphicons_212_down_arrow.png" style="width: 10px;"/>'
 
 #' String displayed for the rank.
 #' 
