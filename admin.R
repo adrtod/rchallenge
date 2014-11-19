@@ -1,6 +1,6 @@
 #' Store new contribution files.
 #' 
-#' \code{store_new_contrib} copies new files in the subdirectories of \code{contrib_dir} 
+#' \code{store_new_contrib} copies new files from the subdirectories of \code{contrib_dir} 
 #' to the respective subdirectories of \code{hist_dir}.
 #' Each team has a subdirectory.
 #' The copied files in \code{hist_dir} are prefixed with the last modification date for uniqueness.
@@ -87,7 +87,7 @@ store_new_contrib <- function(contrib_dir = "contrib", hist_dir = "history",
 #'   a performance criterion and is defined as: \code{function(Y_pred, Y_test)}
 #' @param Y_test    character or numeric vector. the test set.
 #' @param quizIndex logical vector with the same length as Y_test. \code{quizIndex[i]=TRUE}
-#'   if \code{Y_test[i]} in in the quiz subset.
+#'   if \code{Y_test[i]} in the quiz subset.
 #'   
 #' @return \code{compute_metrics} returns a named list with one named member per team.
 #'   Each member is a \code{data.frame} where the rows are the contribution files sorted by date
