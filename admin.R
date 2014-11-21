@@ -303,13 +303,15 @@ print_best_table <- function(best, metric, test_name = "quiz") {
 #' @param col       colors of the teams
 #' @param pch       symbols of the teams
 #' @param lty       line types of the teams
+#' @param by        real. interval width of grid lines
 #' 
 #' @return \code{NULL}
 #' 
 #' @seealso \code{\link[knitr]{kable}}
 plot_history <- function(history, metric, test_name="quiz", baseline="baseline", 
-                         col=rep(1:6, 100), pch=rep(0:18, 100), lty=rep(1:6, each=6, len=100)) {
+                         col=rep(1:6, 100), pch=rep(0:18, 100), by = .05) {
   metric_column = paste(metric, test_name, sep=".")
+  # get baseline score
   ind_base = which(names(history)==baseline)
   if (length(ind_base)>0) {
     base_score = min(history[[ind_base]][[metric_column]])
@@ -317,32 +319,47 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
   }
   else
     base_score = NULL
+  
+  # compute axis limits
   if (length(history)==0)
     xlim = c(Sys.time()-1, Sys.time())
   else 
     xlim = range(history[[1]]$date)
-  ylim = c(0, min(base_score, 1))
+  ylim = c(base_score-by, base_score+by)
   for (i in seq(along=history)) {
     xlim = range(xlim, history[[i]]$date)
     ylim = range(ylim, history[[i]][[metric_column]])
   }
-  plot(xlim, rep(base_score,2), type='l', lty=2,
-       xlab="Date", ylab = "Score", bty='l',
-       xlim=xlim, ylim=ylim, xaxt = 'n')
   
-  for (i in seq(along=history)) {
-    lines(history[[i]]$date, history[[i]][[metric_column]], type='o', 
-          col=col[i], pch=pch[i], lty=lty[i], lwd=2)
-    ind = which.min(history[[i]][[metric_column]])
-    points(history[[i]]$date[ind], history[[i]][[metric_column]][ind], 
-           col=col[i], pch=pch[i], lty=lty[i], lwd=5)
-  }
+  # empty figure
+  plot(NA, type='n', xlab="Date", ylab = "Score", bty='l',
+       xlim=xlim, ylim=ylim, xaxt = 'n')
   axis.POSIXct(1, xlim, format="%d %b")
   
-  leg = names(history)
+  # grid
+  aty = range(axTicks(2))
+  abline(h=seq(aty[1]-by, aty[2]+by, by=by), col="lightgray", lty="dotted")
+  
+  # baseline
+  abline(h=base_score, lty=2, lwd=2)
+  
+  # history for each team
+  for (i in seq(along=history)) {
+    lines(history[[i]]$date, history[[i]][[metric_column]], 
+          col=col[i], lty="dotted")
+    points(history[[i]]$date, history[[i]][[metric_column]], 
+           col=col[i], pch=pch[i], lwd=2)
+    # best contribution in bold
+    ind = which.min(history[[i]][[metric_column]])
+    points(history[[i]]$date[ind], history[[i]][[metric_column]][ind], 
+           col=col[i], pch=pch[i], lwd=5)
+  }
+  
+  # legend
+  leg = c(baseline, names(history))
   if (length(leg)>0)
-    legend('topright', leg = leg, col=col, pch=pch, lwd=2, lty=lty, 
-           bty='n', xpd = NA, inset = c(-0.22, 0))
+    legend('topright', leg = leg, col=c(1,col), pch=c(NA,pch), lwd=c(2,rep(2,length(history))), 
+           lty=c(2,rep(NA,length(history))), bty='n', xpd = NA, inset = c(-0.22, 0))
   
   invisible(NULL)
 }
