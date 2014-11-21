@@ -193,36 +193,13 @@ get_best <- function(history, metrics=names(metrics), test_name = "quiz") {
     # sort teams by increasing order
     ind = order(best[[metric]][,metric_column])
     best[[metric]] = best[[metric]][ind,]
-    best[[metric]]$rank = 1:nrow(best[[metric]])
+    best[[metric]]$rank = rank(best[[metric]][,metric_column], ties.method = "min")
     best[[metric]]$rank_diff = rep(0, nrow(best[[metric]]))
   }
   
   return(best)
 }
 
-
-#' Computes rank differences between two team rankings.
-#' 
-#' @param teams_new character vector. team names ordered by new rank.
-#' @param teams_old character vector. team names ordered by old rank.
-#' @param rank_diff_old integer vector. old rank differences. Used if the
-#'   rank differences are all zero.
-#' 
-#' @return \code{rank_diff} returns a vector of the rank differences.
-rank_diff <- function(teams_new, teams_old, rank_diff_old) {
-  rank_new = 1:length(teams_new)
-  rank_old = match(teams_new, teams_old)
-  is_na = is.na(rank_old)
-  # new teams are NA. we set them an old rank at the end of the order.
-  if (any(is_na))
-    rank_old[is_na] = (length(teams_old)+1):(length(teams_old)+sum(is_na))
-  rd = rank_new-rank_old
-
-  if (all(rd==0)) # keep old values if no change
-    rd[1:length(rank_diff_old)] = rank_diff_old
-  
-  return(rd)
-}
 
 #' Update the rank differences of the teams.
 #' 
@@ -235,11 +212,29 @@ rank_diff <- function(teams_new, teams_old, rank_diff_old) {
 update_rank_diff <- function(best_new, best_old) {
   for (i in seq(along=best_new)) {
     metric = names(best_new)[i]
-    if (metric %in% names(best_old))
-      best_new[[i]]$rank_diff = rank_diff(best_new[[i]]$team, best_old[[metric]]$team, best_old[[metric]]$rank_diff)
+    if (metric %in% names(best_old)) {
+      # new ranks
+      rank_new = best_new[[i]]$rank
+      
+      # get old ranks with teams in the same order as new
+      default_rank_old = length(rank_new)+1 # for teams not present in old
+      rank_old = rep(default_rank_old, length(rank_new)) # same length as new
+      ind_old = match(best_old[[metric]]$team, best_new[[i]]$team)
+      rank_old[ind_old] = best_old[[metric]]$rank
+      
+      best_new[[i]]$rank_diff = rank_new-rank_old
+      
+      # keep old values if no change
+      if all(best_new[[i]]$rank_diff==0) {
+        rank_diff_old = rep(0, length(rank_new))
+        rank_diff_old[ind_old] = best_old[[metric]]$rank_diff
+        best_new[[i]]$rank_diff = rank_diff_old
+      }
+    }
   }
   return(best_new)
 }
+
 
 # # symbols_dec <- c(8594, 8599, 8600) # simple arrows
 # symbols_dec <- c(8658, 8663, 8664) # double arrows
@@ -283,7 +278,7 @@ str_rank <- function(r, r_d, symb = symbols) {
 #' @seealso \code{\link[knitr]{kable}}
 print_best_table <- function(best, metric, test_name = "quiz") {
   metric_column = paste(metric, test_name, sep=".")
-  best_print = data.frame(Rang = mapply(FUN = str_rank, 1:nrow(best[[metric]]), best[[metric]]$rank_diff),
+  best_print = data.frame(Rang = mapply(FUN = str_rank, best[[metric]]$rank, best[[metric]]$rank_diff),
                           Equipe = best[[metric]]$team,
                           Contributions = paste(best[[metric]]$n_contrib),
                           Date = format(best[[metric]]$date, format="%d/%m/%y %H:%M"),
