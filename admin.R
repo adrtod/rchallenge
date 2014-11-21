@@ -190,7 +190,10 @@ get_best <- function(history, metrics=names(metrics), test_name = "quiz") {
         best[[metric]] = data.frame(team=team, n_contrib=n_contrib, history[[team]][ind_best,], stringsAsFactors = FALSE)
       }
     }
-    # sort teams by increasing order
+    # sort teams by date so that in case of ties in the metric score, the earliest contribution is first
+    ind = order(best[[metric]]$date)
+    best[[metric]] = best[[metric]][ind,]
+    # sort teams by increasing metric score
     ind = order(best[[metric]][,metric_column])
     best[[metric]] = best[[metric]][ind,]
     best[[metric]]$rank = rank(best[[metric]][,metric_column], ties.method = "min")
