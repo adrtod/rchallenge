@@ -11,8 +11,8 @@
 #' 
 #' @param contrib_dir string. directory of the contributions. contains one subdirectory per team
 #' @param hist_dir    string. directory where to store the history of the contributions. contains one subdirectory per team
-#' @param pattern     string. regular expression that new contribution files must match (with ignore.case=TRUE)
-#' @param valid_fun   function that reads a contribution file and throws errors or warnings
+#' @param pattern     string. regular expression that new contribution files must match (with \code{ignore.case=TRUE})
+#' @param valid_fun   function that reads a contribution file and throws errors or warnings if
 #'   it is not valid.
 #'   
 #' @return \code{store_new_contrib} returns a named list of errors or warnings catched during the process.
@@ -86,12 +86,12 @@ store_new_contrib <- function(contrib_dir = "contrib", hist_dir = "history",
 #' @param metrics  named list of functions. Each function in the list computes
 #'   a performance criterion and is defined as: \code{function(Y_pred, Y_test)}
 #' @param Y_test    character or numeric vector. the test set.
-#' @param quizIndex logical vector with the same length as Y_test. \code{quizIndex[i]=TRUE}
+#' @param quizIndex logical vector with the same length as \code{Y_test}. \code{quizIndex[i]=TRUE}
 #'   if \code{Y_test[i]} in the quiz subset.
 #'   
 #' @return \code{compute_metrics} returns a named list with one named member per team.
 #'   Each member is a \code{data.frame} where the rows are the contribution files sorted by date
-#'   and the columns are 
+#'   and the columns are:
 #'   \item{date}{the date of the contribution}
 #'   \item{file}{the file name of the contribution}
 #'   \item{<metric name>.quiz}{the score obtained on the quiz subset}
@@ -272,7 +272,7 @@ str_rank <- function(r, r_d, symb = symbols) {
 #'   by \code{\link{get_best}}.
 #' @param metric  string. name of the metric considered
 #' @param test_name string. name of the test set used: \code{"quiz"} or \code{"test"}
-#' @param ... further parameters to pass to \code{\link[knitr]{kable}}
+#' @param ... further parameters to pass to \code{\link[knitr]{kable}}er
 #' 
 #' @return \code{print_best_table} returns a character vector of the table source code
 #'   to be used in a Markdown document.
@@ -343,9 +343,9 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
   # history for each team
   for (i in seq(along=history)) {
     lines(history[[i]]$date, history[[i]][[metric_column]], 
-           col=col[i], lty="dotted")
+          col=col[i], lty="dotted")
     points(history[[i]]$date, history[[i]][[metric_column]], 
-          col=col[i], pch=pch[i], lwd=2)
+           col=col[i], pch=pch[i], lwd=2)
     # best contribution in bold
     ind = which.min(history[[i]][[metric_column]])
     points(history[[i]]$date[ind], history[[i]][[metric_column]][ind], 
