@@ -1,0 +1,296 @@
+---
+title: "Challenge MIMSE 2014"
+author: "Adrien Todeschini"
+date: ''
+output:
+  html_document:
+    highlight: tango
+    theme: spacelab
+    toc: yes
+---
+
+Bienvenue sur la page du challenge d'[Apprentissage automatique](https://sites.google.com/site/adrientodeschini/teaching/ml2014) du Master 2 [MIMSE](http://www.math.u-bordeaux.fr/DIM/master/mimse/pageweb/pmwiki.php) !
+
+
+```{r echo=FALSE}
+deadline_old = as.POSIXct("2014-12-05 23:59:59")
+deadline = as.POSIXct("2015-01-07 23:59:59")
+time_left = difftime(deadline, Sys.time(), units="days")
+countdown = function(time_left) {
+  if (time_left>0) {
+    if (time_left>1)
+      return(paste("J -", floor(time_left)))
+    else
+      return(paste("H -", floor(time_left*24)))
+  } else
+      return(intToUtf8(10004))
+}
+last_update <- function() format(Sys.time(), "%d %b %Y %H:%M")
+
+# global statistics of the challenge
+stats = list()
+stats$n_contrib = 0
+stats$n_team = 0
+if (file.exists("history/stats.RData"))
+  load("history/stats.RData")
+```
+
+| ![](figures/glyphicons_135_inbox_out.png) \ **`r stats$n_contrib`** | ![](figures/glyphicons_043_group.png) \ **`r stats$n_team`** | ![](figures/glyphicons_045_calendar.png) \ **`r countdown(time_left)`** |
+|:-------------:|:-------------:|:-------------:|
+| contributions | participants | `r ifelse(time_left>0, "en cours", "terminé")` |
+
+Dernière mise à jour : ```r last_update()```
+
+# News
+
+Le 3 nov. 2014 :
+  ~ ![](figures/glyphicons_196_circle_exclamation_mark.png) Les scores sont maintenant calculés sur l'ensemble du jeu test et non plus sur un sous ensemble. Le [classement][Classement] et l'[historique][Historique des contributions] ont été mis à jour en conséquence. La date limite des contributions a été repoussée au `r format(deadline, "%A %d %b %Y")`.
+
+# Objectif
+
+**Classification binaire** : prédire la solvabilité ou le risque de non-remboursement d'un ensemble de clients dans le but de l'octroi de crédit bancaire.
+
+On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble de clients dont la réponse est connue. Le but est d'obtenir le meilleur score de prédiction sur un jeu de données test dont la réponse est cachée.
+
+# Déroulement du challenge
+
+Les étudiants souhaitant participer au challenge doivent constituer une équipe de 2 à 3 personnes et envoyer un email à <adrien.todeschini@inria.fr> contenant les informations suivantes :
+
+- noms des participants
+- adresse email associée à un compte Dropbox [![](figures/glyphicons_social_01_dropbox.png)](https://www.dropbox.com/)
+
+Ils recevront une invitation à partager un dossier Dropbox dans lequel ils pourront soumettre leurs prédictions.
+
+Les équipes inscrites téléchargent les données et soumettent leurs prédictions sur le jeu test sous format csv dans le dossier Dropbox qui leur est attribué.
+
+Le nombre de contributions n'est pas limité. Cependant le calcul des scores n'est mis à jour que toutes les heures.
+
+- **Date limite des contributions** : ~~`r format(deadline_old, "%A %d %b %Y %H:%M", usetz=TRUE)`~~  `r format(deadline, "%A %d %b %Y %H:%M", usetz=TRUE)`
+
+# Description des données
+
+Les données sont disponibles dans les deux fichiers suivant :
+
+- Apprentissage : `data_train.RData` [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/5txejhqamm6bjzp/data_train.RData?dl=1)
+- Test : `data_test.RData` [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/t6pt2d9kog173yv/data_test.RData?dl=1)
+
+Ces fichiers sont à importer dans R avec :
+
+```{r}
+load("data/data_train.RData")
+load("data/data_test.RData")
+```
+
+Ils contiennent chacun un `data.frame` avec :
+
+- Apprentissage : ```r nrow(data_train)``` lignes/individus et ```r ncol(data_train)``` colonnes/variables
+- Test : ```r nrow(data_test)``` lignes/individus et ```r ncol(data_test)``` colonnes/variables
+
+La variable à prédire est la variable `Class` dont la valeur est `Bad` ou `Good`. Les valeurs d'apprentissage de cette variable sont fournies dans la dernière colonne de `data_train`. `data_test` ne contient pas cette colonne puisqu'elle doit être prédite.
+
+Le jeu de données complet contient 30% de `Bad` et 70% de `Good`. Ces proportions sont respectées à la fois dans le jeu d'apprentissage et le jeu test.
+
+```{r}
+table(data_train$Class)/nrow(data_train)
+```
+
+Pour la prédiction, on dispose de ```r ncol(data_test)``` variables explicatives dont :
+
+- ```r sum(sapply(data_test[1,], is.numeric))``` variables quantitatives de classe `numeric`
+- ```r sum(sapply(data_test[1,], is.factor))``` variables qualitatives  de classe `factor`
+
+```{r}
+str(data_test)
+```
+
+Les statistiques univariées de ces variables peuvent facilement être obtenues :
+
+```{r, eval=FALSE}
+summary(rbind(data_train[,-ncol(data_train)], data_test))
+```
+
+# Prédiction
+
+Un classifieur est une fonction qui affecte une classe `Bad` ou `Good` à l'ensemble des données test. Un telle fonction peut être :
+
+```{r}
+predict_all_good <- function(data_test, ...) {
+  Y_pred = rep("Good", nrow(data_test))
+  return(Y_pred)
+}
+```
+
+qui affecte `Good` à toutes les individus. Un tel classifieur n'utilise pas les données d'apprentissage. Il correspond à accepter toutes les demandes de crédit.
+On obtient le résultat suivant
+
+```{r}
+Y_pred = predict_all_good(data_test)
+```
+
+Vous devez programmer un ou plusieurs classifieurs qui utilisent les données d'apprentissage pour améliorer les performances d'une telle décision.
+
+# Critères de performance
+
+Les performances de votre prédiction sont calculées en fonction des vraies réponses de l'ensemble test. On utilisera deux critères différents.
+
+### Taux d'erreur
+Le taux d'erreur mesure le taux de mauvaise classification de vos prédictions soit le nombre de faux positifs `FP` plus le nombre de faux négatifs `FN` divisé par le nombre total. Il est mesuré par la fonction `average_error`.
+
+```{r}
+average_error <- function(Y_pred, Y_test) {
+  FP = (Y_pred == "Good") & (Y_test == "Bad")
+  FN = (Y_pred == "Bad") & (Y_test == "Good")
+  return(sum(FP+FN)/length(Y_test))
+}
+```
+
+Cette métrique de performance correspond au côut 0-1 moyenné sur l'ensemble des prédictions. Le but est de minimiser le taux d'erreur. Puisque 70% des individus sont `Good`, le taux d'erreur associé au prédicteur `predict_all_good` est de 0.3, tandis que son homologue `predict_all_bad` fournit 0.7. `predict_all_good` est ici préférable.
+
+### Coût moyen
+
+On considère cependant qu'il est 5 fois plus risqué/coûteux d'accorder un crédit à une personne non solvable (faux positif) que de ne pas accorder de crédit à une personne solvable (faux négatif). Le coût moyen est mesuré par la fonction `average_cost`.
+
+```{r}
+average_cost <- function(Y_pred, Y_test) {
+  FP = (Y_pred == "Good") & (Y_test == "Bad")
+  FN = (Y_pred == "Bad") & (Y_test == "Good")
+  return(sum(5*FP+1*FN)/length(Y_test))
+}
+```
+
+Le but étant de minimiser le coût moyen, `predict_all_bad` est ici préférable avec 0.7 à `predict_all_good` avec 1.5. Du point de vue du coût moyen, il est donc moins risqué de n'accorder aucun crédit.
+
+# Contributions
+
+Les contributions se font sous forme de fichier texte portant l'extension `.csv`, que vous pouvez exporter avec la commande suivante :
+
+```{r, eval=FALSE}
+write(Y_pred, file = "my_pred.csv")
+```
+
+Le fichier doit contenir ```r nrow(data_test)``` lignes contenant uniquement le mot `Bad` ou `Good`.
+
+Tous les fichiers `.csv` placés dans votre répertoire Dropbox partagé seront automatiquement importés grâce à la fonction `read_pred`.
+
+```{r}
+read_pred <- function(file, n = nrow(data_test)) {
+  Y_pred <- scan(file, what = "character")
+  Y_pred <- factor(Y_pred, levels = c("Bad", "Good"))
+  if (length(Y_pred) != n)
+    stop("incorrect number of predictions")
+  if (any(is.na(Y_pred)))
+    stop("predictions contain missing values (NA)")
+  return(Y_pred)
+}
+```
+
+Utilisez cette fonction pour vérifier que votre fichier sera correctement importé.
+
+Les erreurs de lecture lors de l'import sont affichées à la section [Erreurs de lecture].
+
+Une fois un fichier importé, son score est calculé et stocké. Vous pouvez effacer ou remplacer des contributions, l'historique est conservé.
+
+# Classement
+
+~~Le classement ainsi que les scores affichés ne sont calculés que sur un sous-ensemble des données test et peuvent différer des scores finaux obtenus sur la totatilité de l'ensemble test. Les scores finaux ne seront révélés qu'à la fin du challenge.~~
+
+**EDIT** : Le classement ainsi que les scores affichés sont calculés sur l'ensemble des données test.
+
+Seul le meilleur score par équipe parmi toutes les contributions est retenu.
+
+L'équipe `baseline` correspond au score du meilleur classifieur parmi `predict_all_bad` ou `predict_all_good` qui tient lieu de référence à améliorer.
+
+```{r, echo = FALSE, warning = FALSE }
+# get test output
+source("admin.R")
+
+read_err = store_new_contrib("contrib", "history")
+
+metrics = list(error = average_error, cost = average_cost)
+
+load("data/Y_test.RData")
+
+history = compute_metrics("history", metrics, Y_test, quizIndex)
+
+if (file.exists("history/best.RData"))
+  load("history/best.RData")
+
+if (length(history)>0) {
+  best_new = get_best(history, metrics=names(metrics), test_name="test")
+ 
+  if (exists("best", mode = "list"))
+    best_new = update_rank_diff(best_new, best)
+  
+  best = best_new
+  
+  # save best
+  save(best, file = "history/best.RData")
+  
+  # update stats
+  stats = list()
+  stats$n_team = sum(best[[1]]$team != "baseline")
+  stats$n_contrib = sum(best[[1]]$n_contrib[best[[1]]$team != "baseline"])
+  save(stats, file = "history/stats.RData")
+}
+```
+
+### Taux d'erreur
+Dernière mise à jour : ```r last_update()```
+
+```{r, echo = FALSE , results='asis'}
+if (exists("best", mode = "list"))
+  print_best_table(best, "error", test_name="test")
+```
+
+### Coût moyen
+Dernière mise à jour : ```r last_update()```
+```{r, echo = FALSE , results='asis'}
+if (exists("best", mode = "list"))
+  print_best_table(best, "cost", test_name="test")
+```
+
+# Historique des contributions
+
+### Taux d'erreur
+Dernière mise à jour : ```r last_update()```
+```{r, echo=FALSE, fig.cap="Historique des contributions - Taux d'erreur", fig.height=5, fig.width=9}
+# color palette
+library(RColorBrewer)
+palette(brewer.pal(n = length(history)-1, name = "Dark2"))
+
+par(mar = c(5,4,4,7) + 0.1)
+plot_history(history, "error", test_name="test")
+```
+
+### Coût moyen
+Dernière mise à jour : ```r last_update()```
+```{r, echo=FALSE, fig.cap="Historique des contributions - Coût moyen", fig.height=5, fig.width=9}
+par(mar = c(5,4,4,7) + 0.1)
+plot_history(history, "cost", test_name="test")
+```
+
+### Nombre de contributions
+Dernière mise à jour : ```r last_update()```
+```{r, echo=FALSE, fig.cap="Historique des contributions - Nombre de contributions", fig.height=5, fig.width=9}
+par(mar = c(5,4,4,7) + 0.1)
+plot_contributions(history)
+```
+
+# Erreurs de lecture
+Dernière mise à jour : ```r last_update()```
+```{r, echo=FALSE}
+if (length(read_err)==0)
+  cat("Pas d'erreur de lecture.\n")
+for (i in seq(along=read_err)) {
+  cat("Equipe", names(read_err)[i], ":\n")
+  for (j in seq(along=read_err[[i]])) {
+    cat("   ", paste(basename(names(read_err[[i]])[j]), ": "))
+    cat(read_err[[i]][[j]]$message, "\n")
+    }
+  }
+```
+
+------------
+
+Les icônes proviennent du site [GLYPHICONS.com](http://glyphicons.com/) et sont distribuées sous la licence
+[CC-BY](http://creativecommons.org/licenses/by/3.0/).
