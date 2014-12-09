@@ -20,7 +20,7 @@ Contents
 - `history`: directory where the contributions history is stored.
 - `figures`: directory of images used in the webpage.
 
-I automatically refresh the webpage every hour using cron with the following crontab:
+You can automatically refresh the webpage every hour using cron with the following crontab:
 ```
 00 * * * * cd $HOME/Dropbox/path/to/challenge && ./refresh.R
 ```
