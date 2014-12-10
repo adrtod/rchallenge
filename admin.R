@@ -303,10 +303,15 @@ print_best_table <- function(best, metric, test_name = "quiz", ...) {
 #' @param pch       symbols of the teams
 #' @param lty       line types of the teams
 #' @param by        real. interval width of grid lines
+#' @param xlab,ylab axis labels. see \code{\link[graphics]{title}}.
+#' @param ...       further parameters passed to \code{\link[graphics]{plot}} function.
+#' @param bty,fg,col.axis,col.lab graphical parameters. see \code{\link[graphics]{par}}.
 #' 
 #' @return \code{NULL}
 plot_history <- function(history, metric, test_name="quiz", baseline="baseline", 
-                         col=1:length(history), pch=rep(0:18, 100), by = .05) {
+                         col=1:length(history), pch=rep(21:25, 100), by = .05,
+                         xlab="Date", ylab = "Score", bty='l',
+                         fg="darkslategray", col.axis="darkslategray", col.lab="darkslategray", ...) {
   metric_column = paste(metric, test_name, sep=".")
   # get baseline score
   ind_base = which(names(history)==baseline)
@@ -329,32 +334,32 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
   }
   
   # empty figure
-  plot(NA, type='n', xlab="Date", ylab = "Score", bty='l',
-       xlim=xlim, ylim=ylim, xaxt = 'n')
-  axis.POSIXct(1, xlim, format="%d %b")
+  plot(NA, type='n', xlab=xlab, ylab = ylab, bty=bty,
+       xlim=xlim, ylim=ylim, xaxt = 'n', fg=fg, col.axis=col.axis, col.lab=col.lab, ...)
+  axis.POSIXct(1, at = seq(xlim[1], xlim[2], by=3600*24*7), format="%d %b", fg=fg, col.axis=col.axis)
   
   # grid
   aty = range(axTicks(2))
-  abline(h=seq(aty[1]-by, aty[2]+by, by=by), col="lightgray", lty="dotted")
+  abline(h=seq(aty[1]-by, aty[2]+by, by=by), col="lightgray", lty=3)
   
   # baseline
-  abline(h=base_score, lty=2, lwd=2)
+  abline(h=base_score, col=fg, lty=2, lwd=2)
   
   # history for each team
   for (i in seq(along=history)) {
     lines(history[[i]]$date, history[[i]][[metric_column]], 
-          col=col[i], lty="dotted")
+          col=col[i], lty=3)
     points(history[[i]]$date, history[[i]][[metric_column]], 
            col=col[i], pch=pch[i], lwd=2)
     # best contribution in bold
     ind = which.min(history[[i]][[metric_column]])
     points(history[[i]]$date[ind], history[[i]][[metric_column]][ind], 
-           col=col[i], pch=pch[i], lwd=5)
+           col=col[i], pch=pch[i], bg=col[i], lwd=2)
   }
   
   # legend
   leg = c(baseline, names(history))
-  legend('topright', leg = leg, col=c("black",col), pch=c(NA,pch), lwd=c(2,rep(2,length(history))), 
+  legend('topright', leg = leg, col=c(fg,col), pch=c(NA,pch), lwd=c(2,rep(2,length(history))), 
          lty=c(2,rep(NA,length(history))), bty='n', xpd = NA, inset = c(-0.22, 0))
   
   invisible(NULL)
@@ -369,12 +374,17 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
 #' @param alpha.f   factor modifying the opacity alpha of colors; typically in [0,1].
 #' @param bw        real. the smoothing bandwidth to be used by \code{\link[stats]{density}} in seconds.
 #' @param by        real. height of the interval between two teams in nb of contributions.
+#' @param xlab,ylab axis labels. see \code{\link[graphics]{title}}.
+#' @param ...       further parameters passed to \code{\link[graphics]{plot}} function.
+#' @param bty,fg,col.axis,col.lab graphical parameters. see \code{\link[graphics]{par}}.
 #' 
 #' @return \code{NULL}
 #' 
 #' @seealso \code{\link[stats]{density}}
 plot_contributions <- function(history, baseline="baseline", col=1:length(history), 
-                               alpha.f = .7, bw = 3600*24, by = 4) {
+                               alpha.f = .7, bw = 3600*24, by = 4,
+                               xlab="Date", ylab = "Contributions density", bty='l',
+                               fg="darkslategray", col.axis="darkslategray", col.lab="darkslategray", ...) {
   # baseline index
   ind_base = which(names(history)==baseline)
   history <- history[-ind_base]
@@ -391,9 +401,9 @@ plot_contributions <- function(history, baseline="baseline", col=1:length(histor
   }
   
   # empty figure
-  plot(NA, type='n', xlab="Date", ylab = "Nb contributions", bty='l',
-       xlim=xlim, ylim=ylim, xaxt = 'n', yaxt='n')
-  axis.POSIXct(1, xlim, format="%d %b")
+  plot(NA, type='n', xlab=xlab, ylab = ylab, bty=bty,
+       xlim=xlim, ylim=ylim, xaxt = 'n', yaxt='n', fg=fg, col.axis=col.axis, col.lab=col.lab, ...)
+  axis.POSIXct(1, at = seq(xlim[1], xlim[2], by=3600*24*7), format="%d %b", fg=fg, col.axis=col.axis)
   
   # palette with transparency
   mycols <- palette()
