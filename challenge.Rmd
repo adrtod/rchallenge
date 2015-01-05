@@ -43,8 +43,11 @@ Dernière mise à jour : ```r last_update()```
 
 # News
 
+Le 4 janv. 2015 :
+  ~ Note sur la prise en compte des coûts : [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/j12058t77w2qi4x/challenge.pdf?dl=1)
+  
 Le 3 nov. 2014 :
-  ~ ![](figures/glyphicons_196_circle_exclamation_mark.png) Les scores sont maintenant calculés sur l'ensemble du jeu test et non plus sur un sous ensemble. Le [classement][Classement] et l'[historique][Historique des contributions] ont été mis à jour en conséquence. La date limite des contributions a été repoussée au `r format(deadline, "%A %d %b %Y")`.
+  ~ Les scores sont maintenant calculés sur l'ensemble du jeu test et non plus sur un sous ensemble. Le [classement][Classement] et l'[historique][Historique des contributions] ont été mis à jour en conséquence. La date limite des contributions a été repoussée au `r format(deadline, "%A %d %b %Y")`.
 
 # Objectif
 
@@ -160,6 +163,8 @@ average_cost <- function(Y_pred, Y_test) {
 
 Le but étant de minimiser le coût moyen, `predict_all_bad` est ici préférable avec 0.7 à `predict_all_good` avec 1.5. Du point de vue du coût moyen, il est donc moins risqué de n'accorder aucun crédit.
 
+- Note sur la prise en compte des coûts : [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/j12058t77w2qi4x/challenge.pdf?dl=1)
+
 # Contributions
 
 Les contributions se font sous forme de fichier texte portant l'extension `.csv`, que vous pouvez exporter avec la commande suivante :
@@ -192,9 +197,7 @@ Une fois un fichier importé, son score est calculé et stocké. Vous pouvez eff
 
 # Classement
 
-~~Le classement ainsi que les scores affichés ne sont calculés que sur un sous-ensemble des données test et peuvent différer des scores finaux obtenus sur la totatilité de l'ensemble test. Les scores finaux ne seront révélés qu'à la fin du challenge.~~
-
-**EDIT** : Le classement ainsi que les scores affichés sont calculés sur l'ensemble des données test.
+Le classement ainsi que les scores affichés sont calculés sur l'ensemble des données test.
 
 Seul le meilleur score par équipe parmi toutes les contributions est retenu.
 
