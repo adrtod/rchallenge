@@ -13,7 +13,6 @@ Bienvenue sur la page du challenge d'[Apprentissage automatique](https://sites.g
 
 
 ```{r echo=FALSE}
-deadline_old = as.POSIXct("2014-12-05 23:59:59")
 deadline = as.POSIXct("2015-01-07 23:59:59")
 time_left = difftime(deadline, Sys.time(), units="days")
 countdown = function(time_left) {
@@ -68,7 +67,7 @@ Les équipes inscrites téléchargent les données et soumettent leurs prédicti
 
 Le nombre de contributions n'est pas limité. Cependant le calcul des scores n'est mis à jour que toutes les heures.
 
-- **Date limite des contributions** : ~~`r format(deadline_old, "%A %d %b %Y %H:%M", usetz=TRUE)`~~  `r format(deadline, "%A %d %b %Y %H:%M", usetz=TRUE)`
+- **Date limite des contributions** : `r format(deadline, "%A %d %b %Y %H:%M", usetz=TRUE)`
 
 # Description des données
 
