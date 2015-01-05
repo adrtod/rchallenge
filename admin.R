@@ -306,12 +306,14 @@ print_best_table <- function(best, metric, test_name = "quiz", ...) {
 #' @param xlab,ylab axis labels. see \code{\link[graphics]{title}}.
 #' @param ...       further parameters passed to \code{\link[graphics]{plot}} function.
 #' @param bty,fg,col.axis,col.lab graphical parameters. see \code{\link[graphics]{par}}.
+#' @param text.col the color used for the legend text. see \code{\link[graphics]{legend}}.
 #' 
 #' @return \code{NULL}
 plot_history <- function(history, metric, test_name="quiz", baseline="baseline", 
                          col=1:length(history), pch=rep(21:25, 100), by = .05,
                          xlab="Date", ylab = "Score", bty='l',
-                         fg="darkslategray", col.axis="darkslategray", col.lab="darkslategray", ...) {
+                         fg="darkslategray", col.axis=fg, col.lab=fg, 
+                         text.col = fg, ...) {
   metric_column = paste(metric, test_name, sep=".")
   # get baseline score
   ind_base = which(names(history)==baseline)
@@ -360,7 +362,8 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
   # legend
   leg = c(baseline, names(history))
   legend('topright', leg = leg, col=c(fg,col), pch=c(NA,pch), lwd=c(2,rep(2,length(history))), 
-         lty=c(2,rep(NA,length(history))), bty='n', xpd = NA, inset = c(-0.22, 0))
+         lty=c(2,rep(NA,length(history))), bty='n', xpd = NA, inset = c(-0.22, 0),
+         text.col = text.col)
   
   invisible(NULL)
 }
@@ -377,6 +380,7 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
 #' @param xlab,ylab axis labels. see \code{\link[graphics]{title}}.
 #' @param ...       further parameters passed to \code{\link[graphics]{plot}} function.
 #' @param bty,fg,col.axis,col.lab graphical parameters. see \code{\link[graphics]{par}}.
+#' @param text.col the color used for the legend text. see \code{\link[graphics]{legend}}.
 #' 
 #' @return \code{NULL}
 #' 
@@ -384,7 +388,8 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
 plot_contributions <- function(history, baseline="baseline", col=1:length(history), 
                                alpha.f = .7, bw = 3600*24, by = 4,
                                xlab="Date", ylab = "Contributions density", bty='l',
-                               fg="darkslategray", col.axis="darkslategray", col.lab="darkslategray", ...) {
+                               fg="darkslategray", col.axis=fg, col.lab=fg, 
+                               text.col = fg, ...) {
   # baseline index
   ind_base = which(names(history)==baseline)
   history <- history[-ind_base]
@@ -423,7 +428,7 @@ plot_contributions <- function(history, baseline="baseline", col=1:length(histor
   
   # legend
   legend('topright', leg = names(history), col = col, pch = 19, lwd = NA, pt.cex = 1.5,
-         bty='n', xpd = NA, inset = c(-0.22, 0))
+         bty='n', xpd = NA, inset = c(-0.22, 0), text.col = text.col)
   
   # restore palette
   palette(mycols)
