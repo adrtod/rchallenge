@@ -27,10 +27,12 @@ You can automatically refresh the webpage every hour using cron with the followi
 
 Author
 =======
-[Adrien Todeschini](https://sites.google.com/site/adrientodeschini)
+Copyright 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini)
 
 Design inspired by [Datascience.net](https://datascience.net/), a french platform
 for datascience challenges.
+
+License: GPL-2
 
 Roadmap
 ========
