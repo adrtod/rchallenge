@@ -24,7 +24,13 @@ countdown = function(time_left) {
   } else
       return(intToUtf8(10004))
 }
-last_update <- function() format(Sys.time(), "%d %b %Y %H:%M")
+game_over <- function(dl = deadline+1) Sys.time()>dl+10
+last_update <- function(dl = deadline+1) {
+  last <- Sys.time()
+  if (last>dl)
+    last <- dl
+  format(last, "%d %b %Y %H:%M")
+}
 
 # global statistics of the challenge
 stats = list()
@@ -206,7 +212,9 @@ L'équipe `baseline` correspond au score du meilleur classifieur parmi `predict_
 # get test output
 source("admin.R")
 
-read_err = store_new_contrib("contrib", "history")
+read_err = list()
+if (!game_over())
+  read_err = store_new_contrib("contrib", "history")
 
 metrics = list(error = average_error, cost = average_cost)
 
