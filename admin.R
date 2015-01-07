@@ -11,6 +11,8 @@
 #' 
 #' @param contrib_dir string. directory of the contributions. contains one subdirectory per team
 #' @param hist_dir    string. directory where to store the history of the contributions. contains one subdirectory per team
+#' @param deadline    POSIXct. deadline time for submissions. The files with last modification date after
+#'   the deadline are skipped.
 #' @param pattern     string. regular expression that new contribution files must match (with \code{ignore.case=TRUE})
 #' @param valid_fun   function that reads a contribution file and throws errors or warnings if
 #'   it is not valid.
@@ -19,7 +21,7 @@
 #'   Members named after the team names are lists with members named after the file
 #'   that throws an error which contain the error object.
 store_new_contrib <- function(contrib_dir = "contrib", hist_dir = "history", 
-                              pattern = ".*\\.csv$", 
+                              deadline, pattern = ".*\\.csv$",
                               valid_fun = function(file) read_pred(file, nrow(data_test))) {
   # get new contributions
   team_dirs = list.files(contrib_dir)
@@ -50,6 +52,10 @@ store_new_contrib <- function(contrib_dir = "contrib", hist_dir = "history",
       
       date = info_contrib$mtime[j] # last modification time
       file = paste0(format(date, format="%Y-%m-%d_%H-%M-%S_"), basename(files_contrib[j])) # prefix date for uniqueness
+      
+      # skip if is after deadline
+      if (date>deadline)
+        read_err[[team]][[files_contrib[j]]] <- "submitted after the deadline"
       
       # skip if existing in history
       if (any(basename(files_hist) == file))

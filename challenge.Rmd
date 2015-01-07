@@ -14,23 +14,17 @@ Bienvenue sur la page du challenge d'[Apprentissage automatique](https://sites.g
 
 ```{r echo=FALSE}
 deadline = as.POSIXct("2015-01-07 23:59:59")
-time_left = difftime(deadline, Sys.time(), units="days")
-countdown = function(time_left) {
-  if (time_left>0) {
-    if (time_left>1)
-      return(paste("J -", floor(time_left)))
+days_left = difftime(deadline, Sys.time(), units="days")
+countdown = function(days_left) {
+  if (days_left>0) {
+    if (days_left>1)
+      return(paste("J -", floor(days_left)))
     else
-      return(paste("H -", floor(time_left*24)))
+      return(paste("H -", floor(days_left*24)))
   } else
       return(intToUtf8(10004))
 }
-game_over <- function(dl = deadline+1) Sys.time()>dl+10
-last_update <- function(dl = deadline+1) {
-  last <- Sys.time()
-  if (last>dl)
-    last <- dl
-  format(last, "%d %b %Y %H:%M")
-}
+last_update <- function() format(Sys.time(), "%d %b %Y %H:%M")
 
 # global statistics of the challenge
 stats = list()
@@ -40,9 +34,9 @@ if (file.exists("history/stats.RData"))
   load("history/stats.RData")
 ```
 
-| ![](figures/glyphicons_135_inbox_out.png) \ **`r stats$n_contrib`** | ![](figures/glyphicons_043_group.png) \ **`r stats$n_team`** | ![](figures/glyphicons_045_calendar.png) \ **`r countdown(time_left)`** |
+| ![](figures/glyphicons_135_inbox_out.png) \ **`r stats$n_contrib`** | ![](figures/glyphicons_043_group.png) \ **`r stats$n_team`** | ![](figures/glyphicons_045_calendar.png) \ **`r countdown(days_left)`** |
 |:-------------:|:-------------:|:-------------:|
-| contributions | participants | `r ifelse(time_left>0, "en cours", "terminé")` |
+| contributions | participants | `r ifelse(days_left>0, "en cours", "terminé")` |
 
 Dernière mise à jour : ```r last_update()```
 
@@ -212,9 +206,7 @@ L'équipe `baseline` correspond au score du meilleur classifieur parmi `predict_
 # get test output
 source("admin.R")
 
-read_err = list()
-if (!game_over())
-  read_err = store_new_contrib("contrib", "history")
+read_err = store_new_contrib("contrib", "history", deadline = deadline)
 
 metrics = list(error = average_error, cost = average_cost)
 
