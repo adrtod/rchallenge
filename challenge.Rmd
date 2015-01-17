@@ -24,7 +24,12 @@ countdown = function(days_left) {
   } else
       return(intToUtf8(10004))
 }
-last_update <- function() format(Sys.time(), "%d %b %Y %H:%M")
+last_update <- function(dl = deadline+1) {
+  last = Sys.time()
+  if (last>dl)
+    last = dl
+  format(last, "%d %b %Y %H:%M")
+}
 
 # global statistics of the challenge
 stats = list()
@@ -42,6 +47,9 @@ Dernière mise à jour : ```r last_update()```
 
 # News
 
+Le 8 janv. 2015 :
+  ~ Le challenge est terminé et voici le [classement][Classement] final. Bravo à tous !
+  
 Le 4 janv. 2015 :
   ~ Note sur la prise en compte des coûts : [![](figures/glyphicons_181_download_alt.png)](https://www.dropbox.com/s/j12058t77w2qi4x/challenge.pdf?dl=1)
   
