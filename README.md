@@ -18,19 +18,19 @@ devtools::install_github("adrtod/challenge")
 
 Getting started
 ===============
-Install a new challenge in `path/to/newchallenge` (should be somewhere in your Dropbox)
+Install a new challenge in `~/Dropbox/mychallenge`
 
 ```
 library(challenge)
 
 ?new_challenge
-new_challenge(path="path/to/newchallenge")
+new_challenge(path="~/Dropbox/mychallenge")
 ```
 
 For a french version
 
 ```
-new_challenge(path="path/to/newchallenge", template="challenge_fr.rmd")
+new_challenge(path="~/Dropbox/mychallenge", template="challenge_fr.rmd")
 ```
 
 You will obtain a folder with the following content:
@@ -49,20 +49,20 @@ Next steps to complete the installation:
 3. Create and share subdirectories in `submissions` for each team:
 
     ```
-    setwd("path/to/newchallenge")
+    setwd("~/Dropbox/mychallenge")
     
     ?new_team
-    new_team("TEAM_A")
+    new_team("team_A")
     
     ```
     
 4. Setup a crontab for automatic updates:
 
 ```
-0 * * * * Rscript -e challenge::publish("path/to/challenge.rmd")
+0 * * * * Rscript -e challenge::publish("~/Dropbox/mychallenge/challenge.rmd")
 ```
 
-This will publish a html webpage in your Dropbox/Public folder every hour.
+This will publish a html webpage in your `Dropbox/Public` folder every hour.
 
 Author
 =======
