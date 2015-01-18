@@ -82,3 +82,6 @@ Release notes
 Version 0.1 - 18-01-2015
 ------------------------
 - initial package release
+- easy installation
+- roxygen documentation
+- english and french templates
