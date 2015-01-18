@@ -48,13 +48,13 @@ Next steps to complete the installation:
 2. Edit the template `challenge.rmd` as needed
 3. Create and share subdirectories in `submissions` for each team:
 
-```
-setwd("path/to/newchallenge")
-
-?new_team
-new_team("TEAM_A")
-
-```
+    ```
+    setwd("path/to/newchallenge")
+    
+    ?new_team
+    new_team("TEAM_A")
+    
+    ```
     
 4. Setup a crontab for automatic updates:
 
@@ -83,6 +83,6 @@ Roadmap
 Release notes
 =============
 
-Version 0.1 18/01/2015
-----------------------
+Version 0.1 - 18-01-2015
+------------------------
 - initial package release
