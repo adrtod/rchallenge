@@ -42,15 +42,17 @@ You will obtain a folder with the following content:
     Dropbox.
 - `history`: directory where the contributions history is stored.
 
-Complete the installation with the following steps:
+Next steps to complete the installation:
 
 1. Replace the data files in the data subdirectory
-2. Edit the template challenge.rmd as needed
-3. Create and share directories in submissions for each team:
+2. Edit the template `challenge.rmd` as needed
+3. Create and share subdirectories in `submissions` for each team:
 
 ```
+setwd("path/to/newchallenge")
+
 ?new_team
-new_team("TEAM_A", path="path/to/newchallenge")
+new_team("TEAM_A")
 
 ```
     
