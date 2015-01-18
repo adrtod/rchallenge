@@ -1,0 +1,252 @@
+---
+title: "@TITLE@"
+author: "@AUTHOR@"
+date: "@DATE@"
+output:
+  html_document:
+    highlight: tango
+    theme: spacelab
+    toc: yes
+---
+
+Welcome to the challenge webpage!
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(challenge)
+
+data_dir = "@DATA_DIR@"
+submissions_dir = "@SUBMISSIONS_DIR@"
+hist_dir = "@HIST_DIR@"
+email = "@EMAIL@"
+date_start = "@DATE_START@"
+deadline = as.POSIXct("@DEADLINE@")
+baseline = "@BASELINE@"
+
+error_rate <- function(Y_pred, Y_test) {
+  FP = (Y_pred == "Good") & (Y_test == "Bad")
+  FN = (Y_pred == "Bad") & (Y_test == "Good")
+  return(sum(FP+FN)/length(Y_test))
+}
+
+average_cost <- function(Y_pred, Y_test) {
+  FP = (Y_pred == "Good") & (Y_test == "Bad")
+  FN = (Y_pred == "Bad") & (Y_test == "Good")
+  return(sum(5*FP+1*FN)/length(Y_test))
+}
+
+metrics = list(error = error_rate, cost = average_cost)
+
+read_pred <- function(file, n = nrow(data_test)) {
+  Y_pred <- scan(file, what = "character")
+  Y_pred <- factor(Y_pred, levels = c("Bad", "Good"))
+  if (length(Y_pred) != n)
+    stop("incorrect number of predictions")
+  if (any(is.na(Y_pred)))
+    stop("predictions contain missing values (NA)")
+  return(Y_pred)
+}
+
+read_err = store_new_submissions(submissions_dir, hist_dir, dl = deadline)
+
+load(file.path(data_dir, "Y_test.rda"))
+
+history = compute_metrics(hist_dir, metrics, Y_test, quizIndex)
+
+if (file.exists(file.path(hist_dir, "best.rda")))
+  load(file.path(hist_dir, "best.rda"))
+
+if (length(history)>0) {
+  best_new = get_best(history, metrics=names(metrics), test_name="test")
+ 
+  if (exists("best", mode = "list"))
+    best_new = update_rank_diff(best_new, best)
+  
+  best = best_new
+  
+  # save best
+  save(best, file = file.path(hist_dir, "best.rda"))
+  
+  # get stats
+  n_team = sum(best[[1]]$team != baseline)
+  n_contrib = sum(best[[1]]$n_contrib[best[[1]]$team != baseline])
+}
+```
+
+| ![](`r glyphicon("inbox_out")`) \ **`r n_contrib`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
+|:-------------:|:-------------:|:-------------:|
+| submissions | teams | `r ifelse(Sys.time()<deadline, "active", "completed")` |
+
+Last update: ```r last_update()```
+
+# News
+`r date_start`:
+  ~ The challenge is open!
+
+# Objective
+**Binary classification**: predict the creditworthiness or default risk of a set of customers for the purpose of credit allowance.
+
+To this aim, we dispose of a supervised training set: a set of customers whose answer is known. The goal is to get the highest prediction score on a test set whose answer is hidden.
+
+# Application
+1. Send an email to <`r email`> with the following information:
+
+    - the name of the team and of the participants
+    - at least one email address of a Dropbox account [![](`r glyphicon("dropbox")`)](https://www.dropbox.com/)
+
+2. You will receive an invitation to a shared Dropbox folder named after your team.
+
+3. Download the data.
+
+4. Submit test prediction files in csv format in the shared Dropbox folder.
+
+- **Note**: The number of submissions is not limited. However the scores are updated every hour.
+
+- **submissions deadline**: `r format(deadline, "%A %d %b %Y %H:%M", usetz=TRUE)`
+
+# Data
+| Name | File | Description | Links |
+| ---- | ---- | ----------- | ----- |
+| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_train.rda?dl=1) |
+| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_test.rda?dl=1) |
+
+Load the files in R with:
+
+```{r}
+load(file.path(data_dir, "data_train.rda"))
+load(file.path(data_dir, "data_test.rda"))
+```
+
+The variable to predict is variable `Class` which takes values `Bad` or `Good`. Training values of this variable are provided in the last column of `data_train`. `data_test` does not contain this variable as it must be predicted.
+
+The full dataset contains 30% of `Bad` and 70% of `Good`. This proportion is kept in the training set as well as the test set.
+
+```{r}
+table(data_train$Class)/nrow(data_train)
+```
+
+For the prediction task, we have ```r ncol(data_test)``` input variables with:
+
+- ```r sum(sapply(data_test[1,], is.numeric))``` quantitative variables of class `numeric`
+- ```r sum(sapply(data_test[1,], is.factor))``` qualitative variables of class `factor`
+
+```{r}
+str(data_test)
+```
+
+Univariate statistics of these variables can easily be obtained with:
+```{r, eval=FALSE}
+summary(rbind(data_train[,-ncol(data_train)], data_test))
+```
+
+# Prediction
+A classifier is a function that assigns `Bad` or `Good` to each sample in the test set. Such a function can be:
+```{r}
+predict_all_good <- function(data_test, ...) {
+  Y_pred = rep("Good", nrow(data_test))
+  return(Y_pred)
+}
+```
+that assigns `Good` to every sample. Such a classifier does not use the training set. It corresponds to accepting every credit application.
+We obtain the following result
+```{r}
+Y_pred = predict_all_good(data_test)
+```
+
+Your goal is to program one or several classifiers using the training data to improve the perfomance of such a default decision.
+
+# Evaluation criteria
+Your prediction performance is calculated based on real answers to the test set. We use two different criteria.
+
+### Error rate
+The error rate measures the misclassification rate of your predictions, _i.e._ the number of false positives `FP` plus the number of false negatives` FN` divided by the total number. It is measured by the `error_rate` function.
+```{r, echo=FALSE, collapse=TRUE, comment=NA}
+dump("error_rate", "")
+```
+
+This performance metric is the 0-1 cost averaged over all predictions. The goal is to minimize the error rate. Since 70% of individuals are `Good`, the error rate associated with` predict_all_good` predictor is 0.3, while its counterpart `predict_all_bad` provides 0.7. Here `predict_all_good` is preferable.
+
+### Average cost
+However, it is considered 5 times more risky/expensive to give credit to insolvent person (false positive) than not to grant credit to a creditworthy person (false negative). The average cost is measured by the `average_cost` function.
+```{r, echo=FALSE, collapse=TRUE, comment=NA}
+dump("average_cost", "")
+```
+
+The goal is to minimize the average cost `predict_all_bad` here better with 0.7 to` predict_all_good` with 1.5. From the average cost point of view, it is safer not to grant credit.
+
+# Submissions
+The submissions consist in text files with the extension `.csv`, that you can export with the following command:
+```{r, eval=FALSE}
+write(Y_pred, file = "my_pred.csv")
+```
+
+The file must contain ```r nrow(data_test)``` lines containing with one of the words `Bad` or `Good`.
+
+All `.csv` files in your shared Dropbox folder will be automatically imported by the` read_pred` function.
+```{r, echo=FALSE, collapse=TRUE, comment=NA}
+dump("read_pred", "")
+```
+
+Use this function to check that your file is correctly imported.
+
+Read errors during the import are displayed at the [Read Errors] section.
+
+Once a file is imported, the score is calculated and stored. You can delete or replace submission files, the history is kept.
+
+# Learderboard
+The ranking and scores displayed are calculated on all test data.
+
+Only the highest score by team among all submissions is retained.
+
+The team ```r baseline``` corresponds to the score of the best classifier among `predict_all_good` or `predict_all_bad`, in lieu of reference to improve.
+
+### Error rate
+Last update: ```r last_update()```
+```{r, echo = FALSE , results='asis'}
+if (exists("best", mode = "list"))
+  print_leaderboard(best, "error", test_name="test")
+```
+
+### Average cost
+Last update: ```r last_update()```
+```{r, echo = FALSE , results='asis'}
+if (exists("best", mode = "list"))
+  print_leaderboard(best, "cost", test_name="test")
+```
+
+# Submissions history
+
+### Error rate
+Last update: ```r last_update()```
+```{r, echo=FALSE, fig.cap="Submissions history - Error rate", fig.height=5, fig.width=9}
+# color palette
+library(RColorBrewer)
+palette(brewer.pal(n = max(length(history)-1, 3), name = "Dark2"))
+
+par(mar = c(5,4,4,7) + 0.1)
+plot_history(history, "error", test_name="test", baseline=baseline)
+```
+
+### Average cost
+Last update: ```r last_update()```
+```{r, echo=FALSE, fig.cap="Submissions history - Average cost", fig.height=5, fig.width=9}
+par(mar = c(5,4,4,7) + 0.1)
+plot_history(history, "cost", test_name="test", baseline=baseline)
+```
+
+### Activity
+Last update: ```r last_update()```
+```{r, echo=FALSE, fig.cap="Submissions history - Activity", fig.height=5, fig.width=9}
+par(mar = c(5,4,4,7) + 0.1)
+plot_activity(history, baseline=baseline)
+```
+
+# Read errors
+Last update: ```r last_update()```
+```{r, echo=FALSE}
+print_readerr(read_err)
+```
+
+------------
+
+The icons of this webpage come from [GLYPHICONS.com](http://glyphicons.com/) and are distributed under the
+[CC-BY](http://creativecommons.org/licenses/by/3.0/) licence.
