@@ -19,7 +19,6 @@ devtools::install_github("adrtod/challenge")
 Getting started
 ===============
 Install a new challenge in `~/Dropbox/mychallenge`
-
 ```
 library(challenge)
 
@@ -27,8 +26,7 @@ library(challenge)
 new_challenge(path="~/Dropbox/mychallenge")
 ```
 
-For a french version
-
+or for a french version
 ```
 new_challenge(path="~/Dropbox/mychallenge", template="challenge_fr.rmd")
 ```
@@ -47,7 +45,6 @@ Next steps to complete the installation:
 1. Replace the data files in the data subdirectory
 2. Edit the template `challenge.rmd` as needed
 3. Create and share subdirectories in `submissions` for each team:
-
     ```
     setwd("~/Dropbox/mychallenge")
     
@@ -57,10 +54,9 @@ Next steps to complete the installation:
     ```
     
 4. Setup a crontab for automatic updates:
-
-```
-0 * * * * Rscript -e challenge::publish("~/Dropbox/mychallenge/challenge.rmd")
-```
+    ```
+    0 * * * * Rscript -e challenge::publish("~/Dropbox/mychallenge/challenge.rmd")
+    ```
 
 This will publish a html webpage in your `Dropbox/Public` folder every hour.
 
