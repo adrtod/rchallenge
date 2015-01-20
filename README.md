@@ -12,7 +12,6 @@ Install
 Install the latest version of the R package from github
 
 ```
-require(devtools)
 devtools::install_github("adrtod/challenge")
 ```
 
