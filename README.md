@@ -1,13 +1,12 @@
 challenge
 =========
+[![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)
 
 A simple datascience challenge system using [Rmarkdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/).
 
 I am currently using it for teaching Machine learning to Master students at the 
 University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
-
-[![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)
 
 Install
 =======
@@ -78,7 +77,6 @@ Roadmap
 
 Release notes
 =============
-
 Version 0.1 (18-01-2015)
 ------------------------
 - initial package release
