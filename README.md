@@ -7,6 +7,8 @@ and [Dropbox](https://www.dropbox.com/).
 I am currently using it for teaching Machine learning to Master students at the 
 University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
 
+[![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)
+
 Install
 =======
 Install the latest version of the R package from github
