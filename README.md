@@ -12,7 +12,6 @@ University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
 Install
 =======
 Install the latest version of the R package from github
-
 ```r
 devtools::install_github("adrtod/challenge")
 ```
