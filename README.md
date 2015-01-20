@@ -13,15 +13,14 @@ Install
 =======
 Install the latest version of the R package from github
 
-```
-require(devtools)
+```r
 devtools::install_github("adrtod/challenge")
 ```
 
 Getting started
 ===============
 Install a new challenge in `~/Dropbox/mychallenge`
-```
+```r
 library(challenge)
 
 ?new_challenge
@@ -47,7 +46,7 @@ Next steps to complete the installation:
 1. Replace the data files in the data subdirectory
 2. Edit the template `challenge.rmd` as needed
 3. Create and share subdirectories in `submissions` for each team:
-    ```
+    ```r
     setwd("~/Dropbox/mychallenge")
     
     ?new_team
