@@ -26,7 +26,7 @@ new_challenge(path="~/Dropbox/mychallenge")
 ```
 
 or for a french version
-```
+```r
 new_challenge(path="~/Dropbox/mychallenge", template="challenge_fr.rmd")
 ```
 
@@ -49,7 +49,6 @@ Next steps to complete the installation:
     
     ?new_team
     new_team("team_A")
-    
     ```
     
 4. Setup a crontab for automatic updates:
