@@ -79,7 +79,7 @@ Roadmap
 Release notes
 =============
 
-Version 0.1 - 18-01-2015
+Version 0.1 (18-01-2015)
 ------------------------
 - initial package release
 - easy installation
