@@ -85,5 +85,5 @@ Version 0.1 (21-01-2015)
 
 Todo
 ==========
-- [ ] supress dependency to caret
+- [ ] suppress dependency to caret
 - [ ] do not take baseline into account in ranking
