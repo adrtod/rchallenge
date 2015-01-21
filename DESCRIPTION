@@ -9,5 +9,5 @@ Imports:
     rmarkdown,
     knitr,
     caret
-License: GPL
+License: GPL-2
 LazyData: true
