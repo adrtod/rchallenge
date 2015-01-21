@@ -22,41 +22,51 @@ date_start = "@DATE_START@"
 deadline = as.POSIXct("@DEADLINE@")
 baseline = "@BASELINE@"
 
-error_rate <- function(Y_pred, Y_test) {
-  FP = (Y_pred == "Good") & (Y_test == "Bad")
-  FN = (Y_pred == "Bad") & (Y_test == "Good")
-  return(sum(FP+FN)/length(Y_test))
+load(file.path(data_dir, "data_train.rda"))
+load(file.path(data_dir, "data_test.rda"))
+load(file.path(data_dir, "y_test.rda"))
+load(file.path(data_dir, "ind_quiz.rda"))
+
+test_or_quiz <- ifelse(Sys.time()<deadline, "quiz", "test")
+
+error_rate <- function(y_pred, y_test) {
+  FP = (y_pred == "Good") & (y_test == "Bad")
+  FN = (y_pred == "Bad") & (y_test == "Good")
+  return(sum(FP+FN)/length(y_test))
 }
 
-average_cost <- function(Y_pred, Y_test) {
-  FP = (Y_pred == "Good") & (Y_test == "Bad")
-  FN = (Y_pred == "Bad") & (Y_test == "Good")
-  return(sum(5*FP+1*FN)/length(Y_test))
+average_cost <- function(y_pred, y_test) {
+  FP = (y_pred == "Good") & (y_test == "Bad")
+  FN = (y_pred == "Bad") & (y_test == "Good")
+  return(sum(5*FP+1*FN)/length(y_test))
 }
 
 metrics = list(error = error_rate, cost = average_cost)
 
-read_pred <- function(file, n = nrow(data_test)) {
-  Y_pred <- scan(file, what = "character")
-  Y_pred <- factor(Y_pred, levels = c("Bad", "Good"))
-  if (length(Y_pred) != n)
+read_pred <- function(file, n = length(y_test)) {
+  y_pred <- scan(file, what = "character")
+  y_pred <- factor(y_pred, levels = c("Bad", "Good"))
+  if (length(y_pred) != n)
     stop("incorrect number of predictions")
-  if (any(is.na(Y_pred)))
+  if (any(is.na(y_pred)))
     stop("predictions contain missing values (NA)")
-  return(Y_pred)
+  return(y_pred)
 }
 
-read_err = store_new_submissions(submissions_dir, hist_dir, dl = deadline)
+read_err = store_new_submissions(submissions_dir, hist_dir, deadline = deadline, 
+                                 valid_fun = read_pred)
 
-load(file.path(data_dir, "Y_test.rda"))
-
-history = compute_metrics(hist_dir, metrics, Y_test, quizIndex)
+history = compute_metrics(hist_dir, metrics, y_test, ind_quiz, 
+                          read_fun = read_pred)
 
 if (file.exists(file.path(hist_dir, "best.rda")))
   load(file.path(hist_dir, "best.rda"))
 
+n_team = 0
+n_submissions = 0
+
 if (length(history)>0) {
-  best_new = get_best(history, metrics=names(metrics), test_name="test")
+  best_new = get_best(history, metrics=names(metrics), test_name=test_or_quiz)
  
   if (exists("best", mode = "list"))
     best_new = update_rank_diff(best_new, best)
@@ -68,15 +78,15 @@ if (length(history)>0) {
   
   # get stats
   n_team = sum(best[[1]]$team != baseline)
-  n_contrib = sum(best[[1]]$n_contrib[best[[1]]$team != baseline])
+  n_submissions = sum(best[[1]]$n_submissions[best[[1]]$team != baseline])
 }
 ```
 
-| ![](`r glyphicon("inbox_out")`) \ **`r n_contrib`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
+| ![](`r glyphicon("inbox_out")`) \ **`r n_submissions`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
 |:-------------:|:-------------:|:-------------:|
 | submissions | teams | `r ifelse(Sys.time()<deadline, "active", "completed")` |
 
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 
 # News
 `r date_start`:
@@ -111,9 +121,9 @@ To this aim, we dispose of a supervised training set: a set of customers whose a
 
 Load the files in R with:
 
-```{r}
-load(file.path(data_dir, "data_train.rda"))
-load(file.path(data_dir, "data_test.rda"))
+```{r, eval=FALSE}
+load("data_train.rda")
+load("data_test.rda")
 ```
 
 The variable to predict is variable `Class` which takes values `Bad` or `Good`. Training values of this variable are provided in the last column of `data_train`. `data_test` does not contain this variable as it must be predicted.
@@ -142,14 +152,14 @@ summary(rbind(data_train[,-ncol(data_train)], data_test))
 A classifier is a function that assigns `Bad` or `Good` to each sample in the test set. Such a function can be:
 ```{r}
 predict_all_good <- function(data_test, ...) {
-  Y_pred = rep("Good", nrow(data_test))
-  return(Y_pred)
+  y_pred = rep("Good", nrow(data_test))
+  return(y_pred)
 }
 ```
 that assigns `Good` to every sample. Such a classifier does not use the training set. It corresponds to accepting every credit application.
 We obtain the following result
 ```{r}
-Y_pred = predict_all_good(data_test)
+y_pred = predict_all_good(data_test)
 ```
 
 Your goal is to program one or several classifiers using the training data to improve the perfomance of such a default decision.
@@ -176,7 +186,7 @@ The goal is to minimize the average cost `predict_all_bad` here better with 0.7 
 # Submissions
 The submissions consist in text files with the extension `.csv`, that you can export with the following command:
 ```{r, eval=FALSE}
-write(Y_pred, file = "my_pred.csv")
+write(y_pred, file = "my_pred.csv")
 ```
 
 The file must contain ```r nrow(data_test)``` lines containing with one of the words `Bad` or `Good`.
@@ -188,60 +198,60 @@ dump("read_pred", "")
 
 Use this function to check that your file is correctly imported.
 
-Read errors during the import are displayed at the [Read Errors] section.
+Read errors during the import are displayed at the [Read errors] section.
 
 Once a file is imported, the score is calculated and stored. You can delete or replace submission files, the history is kept.
 
 # Learderboard
-The ranking and scores displayed are calculated on all test data.
+The ranking and scores displayed are calculated on only half of the test data. The final scores computed on the whole test set will be revealed at the end of the challenge.
 
 Only the highest score by team among all submissions is retained.
 
 The team ```r baseline``` corresponds to the score of the best classifier among `predict_all_good` or `predict_all_bad`, in lieu of reference to improve.
 
 ### Error rate
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 ```{r, echo = FALSE , results='asis'}
 if (exists("best", mode = "list"))
-  print_leaderboard(best, "error", test_name="test")
+  print_leaderboard(best, "error", test_name=test_or_quiz)
 ```
 
 ### Average cost
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 ```{r, echo = FALSE , results='asis'}
 if (exists("best", mode = "list"))
-  print_leaderboard(best, "cost", test_name="test")
+  print_leaderboard(best, "cost", test_name=test_or_quiz)
 ```
 
 # Submissions history
 
 ### Error rate
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 ```{r, echo=FALSE, fig.cap="Submissions history - Error rate", fig.height=5, fig.width=9}
 # color palette
 library(RColorBrewer)
 palette(brewer.pal(n = max(length(history)-1, 3), name = "Dark2"))
 
 par(mar = c(5,4,4,7) + 0.1)
-plot_history(history, "error", test_name="test", baseline=baseline)
+plot_history(history, "error", test_name=test_or_quiz, baseline=baseline)
 ```
 
 ### Average cost
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 ```{r, echo=FALSE, fig.cap="Submissions history - Average cost", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
-plot_history(history, "cost", test_name="test", baseline=baseline)
+plot_history(history, "cost", test_name=test_or_quiz, baseline=baseline)
 ```
 
 ### Activity
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 ```{r, echo=FALSE, fig.cap="Submissions history - Activity", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_activity(history, baseline=baseline)
 ```
 
 # Read errors
-Last update: ```r last_update()```
+Last update: ```r last_update(deadline)```
 ```{r, echo=FALSE}
 print_readerr(read_err)
 ```

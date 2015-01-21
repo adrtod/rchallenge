@@ -20,6 +20,8 @@
 #' @param email        string. email of the challenge administrator.
 #' @param date_start   string. start date of the challenge.
 #' @param deadline     string. deadline of the challenge.
+#' @param data_list    list with members \code{train}, \code{test}, \code{y_test} and
+#'   \code{ind_quiz} such as returned by the \code{\link{data_split}} function.
 #' @export
 new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive, 
                           quiet = FALSE, showWarnings = FALSE,
@@ -29,14 +31,15 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
                           hist_dir = "history", 
                           install_data = TRUE, 
                           baseline = "baseline",
-                          add_baseline = TRUE,
+                          add_baseline = install_data,
                           clear_history = overwrite,
                           title = "Challenge",
                           author = "",
                           date = "",
                           email = "EDIT_EMAIL@DOMAIN.com",
                           date_start = format(Sys.Date(), "%d %b %Y"),
-                          deadline = paste(Sys.Date()+90, "23:59:59")) {
+                          deadline = paste(Sys.Date()+90, "23:59:59"),
+                          data_list = data_split(german)) {
   
   dir.create(path, recursive = recursive, showWarnings = showWarnings)
   if (!file.exists(path))
@@ -45,7 +48,11 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
   dir.create(file.path(path, "data"), recursive = recursive, showWarnings = showWarnings)
   
   if (install_data) {
-    data(data_train, data_test, Y_test, package = 'challenge')
+    data_train <- data_list$train
+    data_test <- data_list$test
+    y_test <- data_list$y_test
+    ind_quiz <- data_list$ind_quiz
+    
     tmpdir = tempdir()
     
     save('data_train', file = file.path(tmpdir, 'data_train.rda'))
@@ -56,8 +63,12 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
     file.copy(file.path(tmpdir, 'data_test.rda'), file.path(path, data_dir),
               overwrite=overwrite, recursive=recursive)
     
-    save('Y_test', file = file.path(tmpdir, 'Y_test.rda'))
-    file.copy(file.path(tmpdir, 'Y_test.rda'), file.path(path, data_dir),
+    save('y_test', file = file.path(tmpdir, 'y_test.rda'))
+    file.copy(file.path(tmpdir, 'y_test.rda'), file.path(path, data_dir),
+              overwrite=overwrite, recursive=recursive)
+    
+    save('ind_quiz', file = file.path(tmpdir, 'ind_quiz.rda'))
+    file.copy(file.path(tmpdir, 'ind_quiz.rda'), file.path(path, data_dir),
               overwrite=overwrite, recursive=recursive)
     
     unlink(tmpdir)
@@ -65,21 +76,19 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
   
   dir.create(file.path(path, submissions_dir), recursive = recursive, showWarnings = showWarnings)
   
-  if (add_baseline) {
+  if (install_data && add_baseline) {
     team_dir = new_team(baseline, path=path, submissions_dir = submissions_dir,
                         quiet = TRUE, showWarnings = showWarnings)
     
-    data(data_test, package = 'challenge')
-    
     # Predict all Good
-    Y_pred <- rep("Good", nrow(data_test))
+    y_pred <- rep("Good", nrow(data_test))
     tmpfile = tempfile()
-    write(Y_pred, file = tmpfile)
+    write(y_pred, file = tmpfile)
     file.copy(tmpfile, file.path(team_dir, 'all_good.csv'), overwrite=overwrite)
     
     # Predict all Bad
-    Y_pred <- rep("Bad", nrow(data_test))
-    write(Y_pred, file = tmpfile)
+    y_pred <- rep("Bad", nrow(data_test))
+    write(y_pred, file = tmpfile)
     file.copy(tmpfile, file.path(team_dir, 'all_bad.csv'), overwrite=overwrite)
     
     unlink(tmpfile)
@@ -153,6 +162,7 @@ new_team <- function(name, path = ".", submissions_dir = "submissions",
 #'   so that the rendered page can easily be shared on the web with Dropbox.
 #' @export
 #' @seealso \code{\link[rmarkdown]{render}}
+#' @importFrom rmarkdown render
 publish <- function(input="challenge.rmd", output_file = NULL, output_dir = file.path("~/Dropbox/Public")) {
   setwd(dirname(input))
   rmarkdown::render(basename(input), output_file = output_file, output_dir = output_dir)

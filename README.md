@@ -76,9 +76,14 @@ Roadmap
 
 Release notes
 =============
-Version 0.1 (18-01-2015)
+Version 0.1 (21-01-2015)
 ------------------------
 - initial package release
 - easy installation
 - roxygen documentation
 - english and french templates
+
+Todo
+==========
+- [ ] supress dependency to caret
+- [ ] do not take baseline into account in ranking

@@ -10,7 +10,6 @@
 #'   will be plotted as a constant and will not appear in the legend.
 #' @param col       colors of the teams
 #' @param pch       symbols of the teams
-#' @param lty       line types of the teams
 #' @param by        real. interval width of grid lines
 #' @param xlab,ylab axis labels. see \code{\link[graphics]{title}}.
 #' @param ...       further parameters passed to \code{\link[graphics]{plot}} function.
@@ -71,7 +70,7 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
   
   # legend
   leg = c(baseline, names(history))
-  legend('topright', leg = leg, col=c(fg,col), pch=c(NA,pch), lwd=c(2,rep(2,length(history))), 
+  legend('topright', legend = leg, col=c(fg,col), pch=c(NA,pch), lwd=c(2,rep(2,length(history))), 
          lty=c(2,rep(NA,length(history))), bty='n', xpd = NA, inset = c(-0.22, 0),
          text.col = text.col)
   
@@ -139,7 +138,7 @@ plot_activity <- function(history, baseline="baseline", col=1:length(history),
   
   # legend
   if (length(history)>0)
-    legend('topright', leg = names(history), col = col, pch = 19, lwd = NA, pt.cex = 1.5,
+    legend('topright', legend = names(history), col = col, pch = 19, lwd = NA, pt.cex = 1.5,
            bty='n', xpd = NA, inset = c(-0.22, 0), text.col = text.col)
   
   # restore palette

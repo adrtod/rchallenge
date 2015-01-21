@@ -12,7 +12,7 @@
 #' 
 #' @param submissions_dir string. directory of the submissions. contains one subdirectory per team
 #' @param hist_dir    string. directory where to store the history of the submissions. contains one subdirectory per team
-#' @param dl          POSIXct. deadline time for submissions. The files with last modification date after
+#' @param deadline    POSIXct. deadline time for submissions. The files with last modification date after
 #'   the deadline are skipped.
 #' @param pattern     string. regular expression that new submission files must match (with \code{ignore.case=TRUE})
 #' @param valid_fun   function that reads a submission file and throws errors or warnings if
@@ -23,8 +23,7 @@
 #'   Members named after the team names are lists with members named after the file
 #'   that throws an error which contain the error object.
 store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "history", 
-                                  dl = deadline, pattern = ".*\\.csv$",
-                                  valid_fun = function(file) read_pred(file, nrow(data_test))) {
+                                  deadline, pattern = ".*\\.csv$", valid_fun) {
   # get new submissions
   team_dirs = list.files(submissions_dir)
   
@@ -44,7 +43,6 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
     # get team history files info 
     dir_hist = file.path(hist_dir, team)
     files_hist = list.files(dir_hist, pattern = pattern, ignore.case = TRUE, full.names = TRUE)
-    info_hist = file.info(files_hist)
     
     for (j in seq(along=files_submissions)) {
       
@@ -56,7 +54,7 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
       file = paste0(format(date, format="%Y-%m-%d_%H-%M-%S_"), basename(files_submissions[j])) # prefix date for uniqueness
       
       # skip if is after deadline
-      if (date>dl)
+      if (date>deadline)
         read_err[[team]][[files_submissions[j]]] <- "submitted after the deadline"
       
       # skip if existing in history
@@ -64,9 +62,9 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
         next
       
       # check submissions csv file
-      Y_pred = tryCatch( valid_fun(files_submissions[j]),
-                         warning = function(w) { read_err[[team]][[files_submissions[j]]] <<- w },
-                         error = function(e) { read_err[[team]][[files_submissions[j]]] <<- e }
+      tryCatch( valid_fun(files_submissions[j]),
+                warning = function(w) { read_err[[team]][[files_submissions[j]]] <<- w },
+                error = function(e) { read_err[[team]][[files_submissions[j]]] <<- e }
       )
       
       # skip if error in reading
@@ -92,10 +90,11 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
 #' @param hist_dir string. directory where the history of the submissions are stored. 
 #'   contains one subdirectory per team.
 #' @param metrics  named list of functions. Each function in the list computes
-#'   a performance criterion and is defined as: \code{function(Y_pred, Y_test)}
-#' @param Y_test    character or numeric vector. the test set.
-#' @param quizIndex logical vector with the same length as \code{Y_test}. \code{quizIndex[i]=TRUE}
-#'   if \code{Y_test[i]} in the quiz subset.
+#'   a performance criterion and is defined as: \code{function(y_pred, y_test)}
+#' @param y_test    character or numeric vector. the test set output.
+#' @param ind_quiz logical vector with the same length as \code{y_test}. \code{ind_quiz[i]=TRUE}
+#'   if \code{y_test[i]} in the quiz subset.
+#' @param read_fun  function that reads a submission file and returns a vector of predictions.
 #'   
 #' @export
 #' @return \code{compute_metrics} returns a named list with one named member per team.
@@ -105,7 +104,7 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
 #'   \item{file}{the file name of the submission}
 #'   \item{<metric name>.quiz}{the score obtained on the quiz subset}
 #'   \item{<metric name>.test}{the score obtained on the test set}
-compute_metrics <- function(hist_dir = "history", metrics, Y_test, quizIndex) {
+compute_metrics <- function(hist_dir = "history", metrics, y_test, ind_quiz, read_fun) {
   team_dirs = list.files(hist_dir)
   
   history = list()
@@ -134,20 +133,16 @@ compute_metrics <- function(hist_dir = "history", metrics, Y_test, quizIndex) {
       date = info_hist$mtime[j]
       file = basename(files_hist[j])
       
-      # check submissions csv file
-      Y_pred <- read_pred(files_hist[j], length(Y_test))
-      
-      # skip if error in reading
-      if (!is.null(read_err[[team]][[files_hist[j]]]))
-        next
+      # read submissions csv file (should not throw error or warning)
+      y_pred <- read_fun(files_hist[j])
       
       # compute scores
       score_quiz = list()
       score_test = list()
       for (k in seq(along=metrics)) {
         metric = names(metrics)[k]
-        score_quiz[[paste0(metric, ".quiz")]] = metrics[[k]](Y_pred[quizIndex], Y_test[quizIndex])
-        score_test[[paste0(metric, ".test")]] = metrics[[k]](Y_pred, Y_test)
+        score_quiz[[paste0(metric, ".quiz")]] = metrics[[k]](y_pred[ind_quiz], y_test[ind_quiz])
+        score_test[[paste0(metric, ".test")]] = metrics[[k]](y_pred, y_test)
       }
       
       if (team %in% names(history)) {

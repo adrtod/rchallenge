@@ -22,41 +22,54 @@ date_start = "@DATE_START@"
 deadline = as.POSIXct("@DEADLINE@")
 baseline = "@BASELINE@"
 
-error_rate <- function(Y_pred, Y_test) {
-  FP = (Y_pred == "Good") & (Y_test == "Bad")
-  FN = (Y_pred == "Bad") & (Y_test == "Good")
-  return(sum(FP+FN)/length(Y_test))
+load(file.path(data_dir, "data_train.rda"))
+load(file.path(data_dir, "data_test.rda"))
+load(file.path(data_dir, "y_test.rda"))
+load(file.path(data_dir, "ind_quiz.rda"))
+
+test_or_quiz <- ifelse(Sys.time()<deadline, "quiz", "test")
+
+error_rate <- function(y_pred, y_test) {
+  FP = (y_pred == "Good") & (y_test == "Bad")
+  FN = (y_pred == "Bad") & (y_test == "Good")
+  return(sum(FP+FN)/length(y_test))
 }
 
-average_cost <- function(Y_pred, Y_test) {
-  FP = (Y_pred == "Good") & (Y_test == "Bad")
-  FN = (Y_pred == "Bad") & (Y_test == "Good")
-  return(sum(5*FP+1*FN)/length(Y_test))
+average_cost <- function(y_pred, y_test) {
+  FP = (y_pred == "Good") & (y_test == "Bad")
+  FN = (y_pred == "Bad") & (y_test == "Good")
+  return(sum(5*FP+1*FN)/length(y_test))
 }
 
 metrics = list(error = error_rate, cost = average_cost)
 
-read_pred <- function(file, n = nrow(data_test)) {
-  Y_pred <- scan(file, what = "character")
-  Y_pred <- factor(Y_pred, levels = c("Bad", "Good"))
-  if (length(Y_pred) != n)
+read_pred <- function(file, n = length(y_test)) {
+  y_pred <- scan(file, what = "character")
+  y_pred <- factor(y_pred, levels = c("Bad", "Good"))
+  if (length(y_pred) != n)
     stop("incorrect number of predictions")
-  if (any(is.na(Y_pred)))
+  if (any(is.na(y_pred)))
     stop("predictions contain missing values (NA)")
-  return(Y_pred)
+  return(y_pred)
 }
 
-read_err = store_new_submissions(submissions_dir, hist_dir, dl = deadline)
+read_err = store_new_submissions(submissions_dir, hist_dir, deadline = deadline,
+                                 valid_fun = read_pred)
 
-load(file.path(data_dir, "Y_test.rda"))
+load(file.path(data_dir, "y_test.rda"))
+load(file.path(data_dir, "ind_quiz.rda"))
 
-history = compute_metrics(hist_dir, metrics, Y_test, quizIndex)
+history = compute_metrics(hist_dir, metrics, y_test, ind_quiz,
+                          read_fun = read_pred)
 
 if (file.exists(file.path(hist_dir, "best.rda")))
   load(file.path(hist_dir, "best.rda"))
 
+n_team = 0
+n_submissions = 0
+
 if (length(history)>0) {
-  best_new = get_best(history, metrics=names(metrics), test_name="test")
+  best_new = get_best(history, metrics=names(metrics), test_name=test_or_quiz)
  
   if (exists("best", mode = "list"))
     best_new = update_rank_diff(best_new, best)
@@ -68,15 +81,15 @@ if (length(history)>0) {
   
   # get stats
   n_team = sum(best[[1]]$team != baseline)
-  n_contrib = sum(best[[1]]$n_contrib[best[[1]]$team != baseline])
+  n_submissions = sum(best[[1]]$n_submissions[best[[1]]$team != baseline])
 }
 ```
 
-| ![](`r glyphicon("inbox_out")`) \ **`r n_contrib`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
+| ![](`r glyphicon("inbox_out")`) \ **`r n_submissions`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
 |:-------------:|:-------------:|:-------------:|
 | soumissions | équipes | `r ifelse(Sys.time()<deadline, "en cours", "terminé")` |
 
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 
 # News
 
@@ -113,9 +126,9 @@ On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble 
 | Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_test.rda?dl=1) |
 
 Ces fichiers sont à importer dans R avec :
-```{r}
-load(file.path(data_dir, "data_train.rda"))
-load(file.path(data_dir, "data_test.rda"))
+```{r, eval=FALSE}
+load("data_train.rda")
+load("data_test.rda")
 ```
 
 La variable à prédire est la variable `Class` dont la valeur est `Bad` ou `Good`. Les valeurs d'apprentissage de cette variable sont fournies dans la dernière colonne de `data_train`. `data_test` ne contient pas cette colonne puisqu'elle doit être prédite.
@@ -143,14 +156,14 @@ summary(rbind(data_train[,-ncol(data_train)], data_test))
 Un classifieur est une fonction qui affecte une classe `Bad` ou `Good` à l'ensemble des données test. Un telle fonction peut être :
 ```{r}
 predict_all_good <- function(data_test, ...) {
-  Y_pred = rep("Good", nrow(data_test))
-  return(Y_pred)
+  y_pred = rep("Good", nrow(data_test))
+  return(y_pred)
 }
 ```
 qui affecte `Good` à toutes les individus. Un tel classifieur n'utilise pas les données d'apprentissage. Il correspond à accepter toutes les demandes de crédit.
 On obtient le résultat suivant
 ```{r}
-Y_pred = predict_all_good(data_test)
+y_pred = predict_all_good(data_test)
 ```
 
 Vous devez programmer un ou plusieurs classifieurs qui utilisent les données d'apprentissage pour améliorer les performances d'une telle décision.
@@ -177,75 +190,80 @@ Le but étant de minimiser le coût moyen, `predict_all_bad` est ici préférabl
 # Soumissions
 Les soumissions se font sous forme de fichier texte portant l'extension `.csv`, que vous pouvez exporter avec la commande suivante :
 ```{r, eval=FALSE}
-write(Y_pred, file = "my_pred.csv")
+write(y_pred, file = "my_pred.csv")
 ```
 
 Le fichier doit contenir ```r nrow(data_test)``` lignes contenant uniquement le mot `Bad` ou `Good`.
+
 Tous les fichiers `.csv` placés dans votre répertoire Dropbox partagé seront automatiquement importés grâce à la fonction `read_pred`.
 ```{r}
 read_pred <- function(file, n = nrow(data_test)) {
-  Y_pred <- scan(file, what = "character")
-  Y_pred <- factor(Y_pred, levels = c("Bad", "Good"))
-  if (length(Y_pred) != n)
+  y_pred <- scan(file, what = "character")
+  y_pred <- factor(y_pred, levels = c("Bad", "Good"))
+  if (length(y_pred) != n)
     stop("incorrect number of predictions")
-  if (any(is.na(Y_pred)))
+  if (any(is.na(y_pred)))
     stop("predictions contain missing values (NA)")
-  return(Y_pred)
+  return(y_pred)
 }
 ```
 
 Utilisez cette fonction pour vérifier que votre fichier sera correctement importé.
+
 Les erreurs de lecture lors de l'import sont affichées à la section [Erreurs de lecture].
+
 Une fois un fichier importé, son score est calculé et stocké. Vous pouvez effacer ou remplacer des soumissions, l'historique est conservé.
 
 # Classement
-Le classement ainsi que les scores affichés sont calculés sur l'ensemble des données test.
+Le classement ainsi que les scores affichés sont calculés sur seulement la moitié des données test. Le score final calculé sur toutes les données test sera révélé à la fin du challenge.
+
 Seul le meilleur score par équipe parmi toutes les soumissions est retenu.
+
 L'équipe ```r baseline``` correspond au score du meilleur classifieur parmi `predict_all_bad` ou `predict_all_good` qui tient lieu de référence à améliorer.
 
 ### Taux d'erreur
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo = FALSE , results='asis'}
 if (exists("best", mode = "list"))
-  print_leaderboard(best, "error", test_name="test")
+  print_leaderboard(best, "error", test_name=test_or_quiz)
 ```
 
 ### Coût moyen
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo = FALSE , results='asis'}
 if (exists("best", mode = "list"))
-  print_leaderboard(best, "cost", test_name="test")
+  print_leaderboard(best, "cost", test_name=test_or_quiz)
 ```
 
 # Historique des soumissions
 
 ### Taux d'erreur
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo=FALSE, fig.cap="Historique des soumissions - Taux d'erreur", fig.height=5, fig.width=9}
 # color palette
 library(RColorBrewer)
 palette(brewer.pal(n = max(length(history)-1, 3), name = "Dark2"))
 
 par(mar = c(5,4,4,7) + 0.1)
-plot_history(history, "error", test_name="test")
+plot_history(history, "error", test_name=test_or_quiz)
 ```
 
 ### Coût moyen
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo=FALSE, fig.cap="Historique des soumissions - Coût moyen", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
-plot_history(history, "cost", test_name="test")
+plot_history(history, "cost", test_name=test_or_quiz)
 ```
 
 ### Activité
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo=FALSE, fig.cap="Historique des soumissions - Activité", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_activity(history)
 ```
 
 # Erreurs de lecture
-Dernière mise à jour : ```r last_update()```
+Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo=FALSE}
 print_readerr(read_err)
 ```

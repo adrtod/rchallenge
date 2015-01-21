@@ -32,6 +32,7 @@ str_rank <- function(r, r_d, symb = list(const = html_img(glyphicon("right_arrow
 #' 
 #' @export
 #' @seealso \code{\link[knitr]{kable}}
+#' @importFrom knitr kable
 print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
   metric_column = paste(metric, test_name, sep=".")
   leaderboard = data.frame(Rank = mapply(FUN = str_rank, best[[metric]]$rank, best[[metric]]$rank_diff),

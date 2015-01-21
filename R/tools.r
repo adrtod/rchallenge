@@ -1,10 +1,10 @@
 
 #' Countdown before deadline
-#' @param dl POSIXct. deadline
+#' @param deadline     POSIXct. deadline
 #' @param complete_str string. displayed when deadline is passed
 #' @export
-countdown = function(dl = deadline, complete_str = intToUtf8(10004)) {
-  days_left = difftime(dl, Sys.time(), units="days")
+countdown = function(deadline, complete_str = intToUtf8(10004)) {
+  days_left = difftime(deadline, Sys.time(), units="days")
   if (days_left>1)
     return(paste("J -", floor(days_left)))
   else if (days_left>0)
@@ -14,13 +14,13 @@ countdown = function(dl = deadline, complete_str = intToUtf8(10004)) {
 }
 
 #' Formatted last date before deadline
-#' @param dl POSIXct. deadline
-#' @param format string. see \code{\link{format.POSIXct}}
+#' @param deadline POSIXct. deadline
+#' @param format   string. see \code{\link{format.POSIXct}}
 #' @export
-last_update <- function(dl = deadline+1, format = "%d %b %Y %H:%M") {
+last_update <- function(deadline, format = "%d %b %Y %H:%M") {
   last = Sys.time()
-  if (last>dl)
-    last = dl
+  if (last>deadline+1)
+    last = deadline+1
   return(format(last, format))
 }
 
@@ -47,7 +47,7 @@ html_img <- function(file, width = "10px") {
 }
 
 #' Print read errors
-#' @param read_err list of read errors returned by \code{\link{store_new_contrib}}
+#' @param read_err list of read errors returned by \code{\link{store_new_submissions}}
 #' @export
 #' @return \code{NULL}
 print_readerr <- function(read_err = list()) {
