@@ -141,6 +141,7 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
 #' @param submissions_dir string. subdirectory of the submissions. see \code{\link{new_challenge}}
 #' @param quiet        logical. deactivate text output.
 #' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}
+#' @export
 new_team <- function(name, path = ".", submissions_dir = "submissions", 
                      quiet = FALSE, showWarnings = FALSE) {
   if (!file.exists(file.path(path, submissions_dir)))
