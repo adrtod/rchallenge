@@ -4,6 +4,8 @@ Version: 0.1.1
 Authors@R: as.person(c("Adrien Todeschini <adrien.todeschini@gmail.com> [aut, cre]",
     "Robin Genuer <robin.genuer@isped.u-bordeaux2.fr> [ctb]"))
 Description: A simple datascience challenge system using R Markdown and Dropbox.
+    It requires no network configuration, does not depend on external platforms 
+    like e.g. Kaggle and can be easily installed on a personal computer.
 Depends:
     R (>= 3.1.2)
 Imports:

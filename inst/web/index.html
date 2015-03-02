@@ -90,16 +90,16 @@ Dropbox.</li>
 <ol>
 <li>Replace the data files in the data subdirectory</li>
 <li>Customize the template <code>challenge.rmd</code> as needed</li>
-<li>Create and share subdirectories in <code>submissions</code> for each team:
-<code>r
-?new_team
+<li><p>Create and share subdirectories in <code>submissions</code> for each team:</p>
+
+<pre><code class="r">?new_team
 new_team(&quot;team_A&quot;)
-</code></li>
-<li>Publish the html page in your folder <code>~/Dropbox/Public</code> and share the public link:
-<code>r
-?publish
+</code></pre></li>
+<li><p>Publish the html page in your folder <code>~/Dropbox/Public</code> and share the public link:</p>
+
+<pre><code class="r">?publish
 publish(&quot;challenge.rmd&quot;)
-</code></li>
+</code></pre></li>
 <li><p>Automate the updates of the webpage. On UNIX systems, you can setup the following 
 line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:</p>
 
