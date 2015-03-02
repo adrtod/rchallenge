@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>data_partition. challenge 0.1.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+adapted from &lt;code&gt;&lt;a href='http://www.inside-r.org/packages/cran/caret/docs/createDataPartition'&gt;createDataPartition&lt;/a&gt;&lt;/code&gt; function by Max Kuhn
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">challenge 0.1.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Data partitionning function adapted from the caret package.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>data_partition(y, p&nbsp;=&nbsp;0.5, groups&nbsp;=&nbsp;min(5, length(y)))</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>y</dt>
+      <dd>a vector of outcomes.</dd>
+      <dt>p</dt>
+      <dd>the percentage of data that goes to training</dd>
+      <dt>groups</dt>
+      <dd>for numeric <code>y</code>, the number of breaks in the quantiles
+(see below)</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A vector of row position integers corresponding to the training data
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p><code>data_partition</code> creates a test/training partition.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>The random sampling is done within the levels of <code>y</code> when <code>y</code> is a
+factor in an attempt to balance the class distributions within the splits.</p>
+  
+      <p>For numeric <code>y</code>, the sample is split into groups sections based on
+percentiles and sampling is done within these subgroups. The number of
+percentiles is set via the <code>groups</code> argument.</p>
+  
+      <p>Also, very small class sizes (<= 3) the
+classes may not show up in both the training and test data</p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+
+      <p><a href = 'http://caret.r-forge.r-project.org/splitting.html'>http://caret.r-forge.r-project.org/splitting.html</a></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>data(oil)
+</div>
+<strong class='warning'>Warning message:
+data set ‘oil’ not found</strong>
+<div class='input'>data_partition(oilType, 2)
+</div>
+<strong class='error'>Error in data_partition(oilType, 2): objet &#39;oilType&#39; introuvable</strong>
+<div class='input'>
+x &lt;- rgamma(50, 3, .5)
+inA &lt;- data_partition(x)
+</div>
+<strong class='error'>Error in append(out[[j]], trainData): objet &#39;j&#39; introuvable</strong>
+<div class='input'>
+plot(density(x[inA]))
+</div>
+<strong class='error'>Error in density(x[inA]): objet &#39;inA&#39; introuvable</strong>
+<div class='input'>rug(x[inA])
+</div>
+<strong class='error'>Error in as.vector(x): objet &#39;inA&#39; introuvable</strong>
+<div class='input'>
+points(density(x[-inA]), type = &quot;l&quot;, col = 4)
+</div>
+<strong class='error'>Error in density(x[-inA]): objet &#39;inA&#39; introuvable</strong>
+<div class='input'>rug(x[-inA], col = 4)
+</div>
+<strong class='error'>Error in as.vector(x): objet &#39;inA&#39; introuvable</strong></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>data_partition</li>
+    </ul>
+    <ul>
+      <li>internal</li><li>utilities,</li>
+    </ul> -->
+      
+    
+    <h2>Author</h2>
+    
+adapted from <code><a href='http://www.inside-r.org/packages/cran/caret/docs/createDataPartition'>createDataPartition</a></code> function by Max Kuhn
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

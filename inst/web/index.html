@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Index. challenge 0.1.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">challenge 0.1.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <div class="row">
+  <div class="span8">
+    <h1>challenge</h1>
+
+<p><a href="https://travis-ci.org/adrtod/challenge"><img src="https://travis-ci.org/adrtod/challenge.png?branch=master" alt="Travis-CI Build Status"/></a></p>
+
+<p>A simple datascience challenge system using <a href="http://rmarkdown.rstudio.com/">Rmarkdown</a> 
+and <a href="https://www.dropbox.com/">Dropbox</a>. It requires no network configuration, 
+does not depend on external platforms like e.g. Kaggle and can be easily installed 
+on a personal computer.</p>
+
+<p>I am currently using it for teaching Machine learning to Master students at the 
+University of Bordeaux (see <a href="http://goo.gl/KRuYn0">this page</a> in french).</p>
+
+<h1>Install</h1>
+
+<p>Install the latest version of the R package from github</p>
+
+<pre><code class="r"># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;adrtod/challenge&quot;)
+</code></pre>
+
+<h1>Getting started</h1>
+
+<p>Install a new challenge in <code>~/Dropbox/mychallenge</code></p>
+
+<pre><code class="r">setwd(&quot;~/Dropbox/mychallenge&quot;)
+library(challenge)
+?new_challenge
+new_challenge()
+</code></pre>
+
+<p>or for a french version</p>
+
+<pre><code class="r">new_challenge(template=&quot;challenge_fr.rmd&quot;)
+</code></pre>
+
+<p>You will obtain a ready-to-use challenge in the folder <code>~/Dropbox/mychallenge</code> containing:</p>
+
+<ul>
+<li><code>challenge.rmd</code>: template Rmarkdown script for the webpage.</li>
+<li><code>data</code>: directory of the data containing <code>data_train</code> and data_test datasets.</li>
+<li><code>submissions</code>: directory of the submissions. It will contain one subdirectory per team
+where they can submit their submissions. The subdirectories are shared with
+Dropbox.</li>
+<li><code>history</code>: directory where the contributions history is stored.</li>
+</ul>
+
+<p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Cretdit Card</a>) dataset </p>
+
+<p>Next steps to complete the installation:</p>
+
+<ol>
+<li>Replace the data files in the data subdirectory</li>
+<li>Customize the template <code>challenge.rmd</code> as needed</li>
+<li>Create and share subdirectories in <code>submissions</code> for each team:
+<code>r
+?new_team
+new_team(&quot;team_A&quot;)
+</code></li>
+<li>Publish the html page in your folder <code>~/Dropbox/Public</code> and share the public link:
+<code>r
+?publish
+publish(&quot;challenge.rmd&quot;)
+</code></li>
+<li>Automate the updates of the webpage. On UNIX systems, you can setup the following 
+line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:
+<code>
+0 * * * * Rscript -e challenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)
+</code>
+This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</li>
+</ol>
+
+<p>From now on, a fully autonomous challenge system is set up requiring no further 
+administration. With each update, the program automatically performs the following
+tasks using the functions available in our package:</p>
+
+<ul>
+<li><code>store_new_submissions()</code>: read submitted files and save new files in the history.</li>
+<li><code>print_readerr()</code>: display any read errors.</li>
+<li><code>compute_metrics()</code>: calculation of scores for each submission in the history.</li>
+<li><code>get_best()</code>: save the highest score per team.</li>
+<li><code>print_leaderboard()</code>: ranking table display.</li>
+<li><code>plot_history()</code>: chart of score evolution per team.</li>
+<li><code>plot_activity()</code>: chart of activity per team.</li>
+</ul>
+
+<h1>Author</h1>
+
+<p>Copyright &copy; 2014-2015 <a href="https://sites.google.com/site/adrientodeschini">Adrien Todeschini</a></p>
+
+<p>Contributions from <a href="http://robin.genuer.fr/">Robin Genuer</a></p>
+
+<p>Design inspired by <a href="https://datascience.net/">Datascience.net</a>, a french platform
+for datascience challenges.</p>
+
+<p>License: GPL-2</p>
+
+<h1>Roadmap</h1>
+
+<ul>
+<li>[x] English translation</li>
+<li>[x] R package</li>
+<li>[ ] CRAN</li>
+<li>[ ] Interactive webpage using <a href="http://shiny.rstudio.com/">Shiny</a></li>
+</ul>
+
+<h1>Release notes</h1>
+
+<h2>Development version (ongoing)</h2>
+
+<ul>
+<li>export <code>new_team</code> function</li>
+<li>suppress dependency to caret package</li>
+</ul>
+
+<h2>Version 0.1 (21-01-2015)</h2>
+
+<ul>
+<li>initial package release</li>
+<li>easy installation</li>
+<li>roxygen documentation</li>
+<li>english and french templates</li>
+</ul>
+
+<h1>Todo</h1>
+
+<ul>
+<li>[ ] do not take baseline into account in ranking</li>
+</ul>
+
+
+    <h2>Help topics</h2>
+
+    <h3>Setup</h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="new_challenge.html">new_challenge</a></code><br />Install a new challenge</li>
+            
+      <li>
+        <code><a href="new_team.html">new_team</a></code><br />Create a new team submissions folder in your challenge</li>
+            
+      <li>
+        <code><a href="german.html">german</a></code><br />German Credit Data</li>
+            
+      <li>
+        <code><a href="data_split.html">data_split</a></code><br />Split a data.frame into training and test sets</li>
+            
+      <li>
+        <code><a href="publish.html">publish</a></code><br />Publish your challenge Rmarkdown script to a html page</li>
+    
+    </ul>
+    <h3>Update</h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="store_new_submissions.html">store_new_submissions</a></code><br />Store new submission files.</li>
+            
+      <li>
+        <code><a href="compute_metrics.html">compute_metrics</a></code><br />Compute metrics of the submissions in the history.</li>
+            
+      <li>
+        <code><a href="get_best.html">get_best</a></code><br />Get the best submissions per team and per metric.</li>
+            
+      <li>
+        <code><a href="update_rank_diff.html">update_rank_diff</a></code><br />Update the rank differences of the teams.</li>
+    
+    </ul>
+    <h3>Display</h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="countdown.html">countdown</a></code><br />Countdown before deadline</li>
+            
+      <li>
+        <code><a href="last_update.html">last_update</a></code><br />Formatted last update date before deadline</li>
+            
+      <li>
+        <code><a href="print_readerr.html">print_readerr</a></code><br />Print read errors</li>
+            
+      <li>
+        <code><a href="print_leaderboard.html">print_leaderboard</a></code><br />Format the leaderboard in Markdown.</li>
+            
+      <li>
+        <code><a href="glyphicon.html">glyphicon</a></code><br />Path to glyphicon image file</li>
+            
+      <li>
+        <code><a href="html_img.html">html_img</a></code><br />html code for an image</li>
+    
+    </ul>
+    <h3>Plots</h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="plot_history.html">plot_history</a></code><br />Plot the history of the scores of each team over time.</li>
+            
+      <li>
+        <code><a href="plot_activity.html">plot_activity</a></code><br />Plot the density of submissions over time.</li>
+    
+    </ul>
+  </div>
+  
+  <div class="span3 offset1">
+        
+    <h2>Dependencies</h2>
+    <ul>
+      <li><strong>Depends</strong>: </li>
+      <li><strong>Imports</strong>: rmarkdown, knitr</li>
+      <li><strong>Suggests</strong>: </li>
+      <li><strong>Extends</strong>: </li>
+    </ul>
+    <h2>Authors</h2>
+    <ul>
+      <li><a href="mailto:adrien.todeschini@gmail.com">Adrien Todeschini</a> [aut, cre]</li>
+      <li><a href="mailto:robin.genuer@isped.u-bordeaux2.fr">Robin Genuer</a> [ctb]</li>
+    </ul>
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

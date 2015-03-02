@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>plot_history. challenge 0.1.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">challenge 0.1.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Plot the history of the scores of each team over time.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>plot_history(history, metric, test_name&nbsp;=&nbsp;"quiz", baseline&nbsp;=&nbsp;"baseline", col&nbsp;=&nbsp;1:length(history), pch&nbsp;=&nbsp;rep(21:25, 100), by&nbsp;=&nbsp;0.05, xlab&nbsp;=&nbsp;"Date", ylab&nbsp;=&nbsp;"Score", bty&nbsp;=&nbsp;"l", fg&nbsp;=&nbsp;"darkslategray", col.axis&nbsp;=&nbsp;fg, col.lab&nbsp;=&nbsp;fg, text.col&nbsp;=&nbsp;fg, ...)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>history</dt>
+      <dd>list of the submissions history per team as returned by <code><a href='compute_metrics.html'>compute_metrics</a></code></dd>
+      <dt>metric</dt>
+      <dd>string. name of the metric considered</dd>
+      <dt>test_name</dt>
+      <dd>string. name of the test set used: <code>"quiz"</code> or <code>"test"</code></dd>
+      <dt>baseline</dt>
+      <dd>string. name of the team considered as the baseline. Its best score
+will be plotted as a constant and will not appear in the legend.</dd>
+      <dt>col</dt>
+      <dd>colors of the teams</dd>
+      <dt>pch</dt>
+      <dd>symbols of the teams</dd>
+      <dt>by</dt>
+      <dd>real. interval width of grid lines</dd>
+      <dt>xlab,ylab</dt>
+      <dd>axis labels. see <code><a href='http://www.inside-r.org/r-doc/graphics/title'>title</a></code>.</dd>
+      <dt>bty,fg,col.axis,col.lab</dt>
+      <dd>graphical parameters. see <code><a href='http://www.inside-r.org/r-doc/graphics/par'>par</a></code>.</dd>
+      <dt>text.col</dt>
+      <dd>the color used for the legend text. see <code><a href='http://www.inside-r.org/r-doc/graphics/legend'>legend</a></code>.</dd>
+      <dt>...</dt>
+      <dd>further parameters passed to <code><a href='http://www.inside-r.org/r-doc/graphics/plot'>plot</a></code> function.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+<code>NULL</code>
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>The best score of each team has a bold symbol.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>plot_history</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

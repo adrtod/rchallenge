@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>compute_metrics. challenge 0.1.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">challenge 0.1.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Compute metrics of the submissions in the history.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>compute_metrics(hist_dir&nbsp;=&nbsp;"history", metrics, y_test, ind_quiz, read_fun)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>hist_dir</dt>
+      <dd>string. directory where the history of the submissions are stored.
+contains one subdirectory per team.</dd>
+      <dt>metrics</dt>
+      <dd>named list of functions. Each function in the list computes
+a performance criterion and is defined as: <code>function(y_pred, y_test)</code></dd>
+      <dt>y_test</dt>
+      <dd>character or numeric vector. the test set output.</dd>
+      <dt>ind_quiz</dt>
+      <dd>logical vector with the same length as <code>y_test</code>. <code>ind_quiz[i]=TRUE</code>
+if <code>y_test[i]</code> in the quiz subset.</dd>
+      <dt>read_fun</dt>
+      <dd>function that reads a submission file and returns a vector of predictions.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+<code>compute_metrics</code> returns a named list with one named member per team.
+  Each member is a <code>data.frame</code> where the rows are the submission files sorted by date
+  and the columns are:
+  <dt>date</dt><dd>the date of the submission</dd></p>
+  
+      <p><dt>file</dt><dd>the file name of the submission</dd></p>
+  
+      <p><dt><metric name>.quiz</dt><dd>the score obtained on the quiz subset</dd></p>
+  
+      <p><dt><metric name>.test</dt><dd>the score obtained on the test set</dd></p>
+  
+      <p></dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Compute metrics of the submissions in the history.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>compute_metrics</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

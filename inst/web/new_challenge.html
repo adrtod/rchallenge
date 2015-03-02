@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>new_challenge. challenge 0.1.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">challenge 0.1.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Install a new challenge</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>new_challenge(path&nbsp;=&nbsp;".", recursive&nbsp;=&nbsp;FALSE, overwrite&nbsp;=&nbsp;recursive, quiet&nbsp;=&nbsp;FALSE, showWarnings&nbsp;=&nbsp;FALSE, template&nbsp;=&nbsp;"challenge.rmd", data_dir&nbsp;=&nbsp;"data", submissions_dir&nbsp;=&nbsp;"submissions", hist_dir&nbsp;=&nbsp;"history", install_data&nbsp;=&nbsp;TRUE, baseline&nbsp;=&nbsp;"baseline", add_baseline&nbsp;=&nbsp;install_data, clear_history&nbsp;=&nbsp;overwrite, title&nbsp;=&nbsp;"Challenge", author&nbsp;=&nbsp;"", date&nbsp;=&nbsp;"", email&nbsp;=&nbsp;"EDIT_EMAIL@DOMAIN.com", date_start&nbsp;=&nbsp;format(Sys.Date(), "%d %b %Y"), deadline&nbsp;=&nbsp;paste(Sys.Date() + 90, "23:59:59"), data_list&nbsp;=&nbsp;data_split(german))</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>path</dt>
+      <dd>string. install path of the challenge (should be somewhere in your Dropbox)</dd>
+      <dt>recursive</dt>
+      <dd>logical. should elements of the path other than the last be created? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code></dd>
+      <dt>overwrite</dt>
+      <dd>logical. should existing destination files be overwritten? see <code><a href='http://www.inside-r.org/r-doc/base/files'>file.copy</a></code></dd>
+      <dt>quiet</dt>
+      <dd>logical. deactivate text output.</dd>
+      <dt>showWarnings</dt>
+      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code></dd>
+      <dt>template</dt>
+      <dd>string. name of the template Rmarkdown script to be installed.
+two scripts are available: <code>"challenge.rmd"</code> (english) and<code>"challenge_fr.rmd"</code> (french)</dd>
+      <dt>data_dir</dt>
+      <dd>string. subdirectory of the data</dd>
+      <dt>submissions_dir</dt>
+      <dd>string. subdirectory of the submissions. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code></dd>
+      <dt>hist_dir</dt>
+      <dd>string. subdirectory of the history. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code></dd>
+      <dt>install_data</dt>
+      <dd>logical. activate installation of the data files of the template challenge.</dd>
+      <dt>baseline</dt>
+      <dd>string. name of the team considered as the baseline.</dd>
+      <dt>add_baseline</dt>
+      <dd>logical. activate installation of baseline submission files of the template challenge.</dd>
+      <dt>clear_history</dt>
+      <dd>logical. activate deletion of the existing history folder.</dd>
+      <dt>title</dt>
+      <dd>string. title displayed on the webpage.</dd>
+      <dt>author</dt>
+      <dd>string. author displayed on the webpage.</dd>
+      <dt>date</dt>
+      <dd>string. date displayed on the webpage.</dd>
+      <dt>email</dt>
+      <dd>string. email of the challenge administrator.</dd>
+      <dt>date_start</dt>
+      <dd>string. start date of the challenge.</dd>
+      <dt>deadline</dt>
+      <dd>string. deadline of the challenge.</dd>
+      <dt>data_list</dt>
+      <dd>list with members <code>train</code>, <code>test</code>, <code>y_test</code> and
+<code>ind_quiz</code> such as returned by the <code><a href='data_split.html'>data_split</a></code> function.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Install a new challenge</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>new_challenge</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
