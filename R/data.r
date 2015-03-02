@@ -31,11 +31,9 @@
 #'   \item{y_test}{test set output variable}
 #'   \item{ind_quiz}{indices of quiz samples in the test set}
 #' @export
-#' @seealso \code{\link[caret]{createDataPartition}}
-#' @importFrom caret createDataPartition
 data_split <- function(data=german, varname="Class",
                        p_test = .2, p_quiz = .5) {
-  ind_test <- caret::createDataPartition(data[[varname]], p = p_test, list = FALSE)
+  ind_test <- data_partition(data[[varname]], p = p_test, list = FALSE)
   
   train <- data[-ind_test, -which(names(data)==varname)]
   train[[varname]] <- data[-ind_test, varname]
@@ -46,7 +44,76 @@ data_split <- function(data=german, varname="Class",
   test <- test[,-which(names(test)==varname)]
   rownames(test) = NULL
   
-  ind_quiz <- caret::createDataPartition(y_test, p = p_quiz, list = FALSE)
+  ind_quiz <- data_partition(y_test, p = p_quiz, list = FALSE)
   
   return(list(train=train, test=test, y_test=y_test, ind_quiz=ind_quiz))
+}
+
+
+#' Data partitionning function adapted from the caret package.
+#' 
+#' \code{data_partition} creates a test/training partition.
+#' 
+#' The random sampling is done within the levels of \code{y} when \code{y} is a 
+#' factor in an attempt to balance the class distributions within the splits.
+#' 
+#' For numeric \code{y}, the sample is split into groups sections based on
+#' percentiles and sampling is done within these subgroups. The number of 
+#' percentiles is set via the \code{groups} argument.
+#' 
+#' Also, very small class sizes (<= 3) the
+#' classes may not show up in both the training and test data
+#' 
+#' @param y a vector of outcomes.
+#' @param p the percentage of data that goes to training
+#' @param groups for numeric \code{y}, the number of breaks in the quantiles
+#' (see below)
+#' @return A vector of row position integers corresponding to the training data
+#' @author adapted from \code{\link[caret]{createDataPartition}} function by Max Kuhn
+#' @references \url{http://caret.r-forge.r-project.org/splitting.html}
+#' @keywords utilities, internal
+#' @examples
+#' 
+#' data(oil)
+#' data_partition(oilType, 2)
+#' 
+#' x <- rgamma(50, 3, .5)
+#' inA <- data_partition(x)
+#' 
+#' plot(density(x[inA]))
+#' rug(x[inA])
+#' 
+#' points(density(x[-inA]), type = "l", col = 4)
+#' rug(x[-inA], col = 4)
+#' 
+data_partition <- function (y, p = 0.5, groups = min(5, length(y)))
+{
+  if(length(y) < 2) stop("y must have at least 2 data points")
+  
+  if(groups < 2) groups <- 2
+  
+  if(is.numeric(y))
+  {
+    y <- cut(y, 
+             unique(quantile(y, probs = seq(0, 1, length = groups))), 
+             include.lowest = TRUE)
+  }
+  
+  y <- factor(y)
+  dataInd <- seq(along = y)
+  numInClass <- table(y)
+  sampleNums <- ceiling(numInClass * p)
+  sampleNums <- ifelse(sampleNums == numInClass, sampleNums - 
+                         1, sampleNums)
+  groupNames <- names(sampleNums)
+  out <- NULL
+  for (i in seq(along = sampleNums)) {
+    if (sampleNums[i] > 0) {
+      trainData <- sort(sample(dataInd[y = which(y == 
+                                                 groupNames[i])], sampleNums[i]))
+      out <- append(out[[j]], trainData)
+    }
+  }
+  
+  out
 }
