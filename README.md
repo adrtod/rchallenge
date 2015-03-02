@@ -40,7 +40,7 @@ You will obtain a ready-to-use challenge in the folder `~/Dropbox/mychallenge` c
 - `submissions`: directory of the submissions. It will contain one subdirectory per team
     where they can submit their submissions. The subdirectories are shared with
     Dropbox.
-- `history`: directory where the contributions history is stored.
+- `history`: directory where the submissions history is stored.
 
 The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset.
 
@@ -70,13 +70,13 @@ From now on, a fully autonomous challenge system is set up requiring no further
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:
 
-- `store_new_submissions()`: read submitted files and save new files in the history.
-- `print_readerr()`: display any read errors.
-- `compute_metrics()`: calculation of scores for each submission in the history.
-- `get_best()`: save the highest score per team.
-- `print_leaderboard()`: ranking table display.
-- `plot_history()`: chart of score evolution per team.
-- `plot_activity()`: chart of activity per team.
+- `store_new_submissions()` reads submitted files and save new files in the history.
+- `print_readerr()` displays any read errors.
+- `compute_metrics()` calculates of scores for each submission in the history.
+- `get_best()` gets the highest score per team.
+- `print_leaderboard()` displays the leaderboard.
+- `plot_history()` plots a chart of score evolution per team.
+- `plot_activity()` plots a chart of activity per team.
 
 Author
 =======
