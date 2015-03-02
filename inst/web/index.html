@@ -80,7 +80,7 @@ new_challenge()
 <li><code>submissions</code>: directory of the submissions. It will contain one subdirectory per team
 where they can submit their submissions. The subdirectories are shared with
 Dropbox.</li>
-<li><code>history</code>: directory where the contributions history is stored.</li>
+<li><code>history</code>: directory where the submissions history is stored.</li>
 </ul>
 
 <p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Credit Card</a>) dataset.</p>
@@ -114,13 +114,13 @@ administration. With each update, the program automatically performs the followi
 tasks using the functions available in our package:</p>
 
 <ul>
-<li><code>store_new_submissions()</code>: read submitted files and save new files in the history.</li>
-<li><code>print_readerr()</code>: display any read errors.</li>
-<li><code>compute_metrics()</code>: calculation of scores for each submission in the history.</li>
-<li><code>get_best()</code>: save the highest score per team.</li>
-<li><code>print_leaderboard()</code>: ranking table display.</li>
-<li><code>plot_history()</code>: chart of score evolution per team.</li>
-<li><code>plot_activity()</code>: chart of activity per team.</li>
+<li><code>store_new_submissions()</code> reads submitted files and save new files in the history.</li>
+<li><code>print_readerr()</code> displays any read errors.</li>
+<li><code>compute_metrics()</code> calculates of scores for each submission in the history.</li>
+<li><code>get_best()</code> gets the highest score per team.</li>
+<li><code>print_leaderboard()</code> displays the leaderboard.</li>
+<li><code>plot_history()</code> plots a chart of score evolution per team.</li>
+<li><code>plot_activity()</code> plots a chart of activity per team.</li>
 </ul>
 
 <h1>Author</h1>
