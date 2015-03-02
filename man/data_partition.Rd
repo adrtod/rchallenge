@@ -31,19 +31,6 @@ percentiles is set via the \code{groups} argument.
 Also, very small class sizes (<= 3) the
 classes may not show up in both the training and test data
 }
-\examples{
-data(oil)
-data_partition(oilType, 2)
-
-x <- rgamma(50, 3, .5)
-inA <- data_partition(x)
-
-plot(density(x[inA]))
-rug(x[inA])
-
-points(density(x[-inA]), type = "l", col = 4)
-rug(x[-inA], col = 4)
-}
 \author{
 adapted from \code{\link[caret]{createDataPartition}} function by Max Kuhn
 }

@@ -33,7 +33,7 @@
 #' @export
 data_split <- function(data=german, varname="Class",
                        p_test = .2, p_quiz = .5) {
-  ind_test <- data_partition(data[[varname]], p = p_test, list = FALSE)
+  ind_test <- data_partition(data[[varname]], p = p_test)
   
   train <- data[-ind_test, -which(names(data)==varname)]
   train[[varname]] <- data[-ind_test, varname]
@@ -44,7 +44,7 @@ data_split <- function(data=german, varname="Class",
   test <- test[,-which(names(test)==varname)]
   rownames(test) = NULL
   
-  ind_quiz <- data_partition(y_test, p = p_quiz, list = FALSE)
+  ind_quiz <- data_partition(y_test, p = p_quiz)
   
   return(list(train=train, test=test, y_test=y_test, ind_quiz=ind_quiz))
 }
@@ -72,20 +72,6 @@ data_split <- function(data=german, varname="Class",
 #' @author adapted from \code{\link[caret]{createDataPartition}} function by Max Kuhn
 #' @references \url{http://caret.r-forge.r-project.org/splitting.html}
 #' @keywords utilities, internal
-#' @examples
-#' 
-#' data(oil)
-#' data_partition(oilType, 2)
-#' 
-#' x <- rgamma(50, 3, .5)
-#' inA <- data_partition(x)
-#' 
-#' plot(density(x[inA]))
-#' rug(x[inA])
-#' 
-#' points(density(x[-inA]), type = "l", col = 4)
-#' rug(x[-inA], col = 4)
-#' 
 data_partition <- function (y, p = 0.5, groups = min(5, length(y)))
 {
   if(length(y) < 2) stop("y must have at least 2 data points")
@@ -111,7 +97,7 @@ data_partition <- function (y, p = 0.5, groups = min(5, length(y)))
     if (sampleNums[i] > 0) {
       trainData <- sort(sample(dataInd[y = which(y == 
                                                  groupNames[i])], sampleNums[i]))
-      out <- append(out[[j]], trainData)
+      out <- append(out, trainData)
     }
   }
   
