@@ -83,7 +83,7 @@ Dropbox.</li>
 <li><code>history</code>: directory where the contributions history is stored.</li>
 </ul>
 
-<p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Credit Card</a>) dataset </p>
+<p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Credit Card</a>) dataset.</p>
 
 <p>Next steps to complete the installation:</p>
 
@@ -100,12 +100,13 @@ new_team(&quot;team_A&quot;)
 ?publish
 publish(&quot;challenge.rmd&quot;)
 </code></li>
-<li>Automate the updates of the webpage. On UNIX systems, you can setup the following 
-line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:
-<code>
-0 * * * * Rscript -e challenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)
-</code>
-This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</li>
+<li><p>Automate the updates of the webpage. On UNIX systems, you can setup the following 
+line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:</p>
+
+<pre><code>0 * * * * Rscript -e challenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)
+</code></pre>
+
+<p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p></li>
 </ol>
 
 <p>From now on, a fully autonomous challenge system is set up requiring no further 

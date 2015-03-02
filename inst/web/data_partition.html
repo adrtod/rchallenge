@@ -92,35 +92,7 @@ classes may not show up in both the training and test data</p>
       <p><a href = 'http://caret.r-forge.r-project.org/splitting.html'>http://caret.r-forge.r-project.org/splitting.html</a></p>
   
     </div>
-    
-    <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>data(oil)
-</div>
-<strong class='warning'>Warning message:
-data set ‘oil’ not found</strong>
-<div class='input'>data_partition(oilType, 2)
-</div>
-<strong class='error'>Error in data_partition(oilType, 2): objet &#39;oilType&#39; introuvable</strong>
-<div class='input'>
-x &lt;- rgamma(50, 3, .5)
-inA &lt;- data_partition(x)
-</div>
-<strong class='error'>Error in append(out[[j]], trainData): objet &#39;j&#39; introuvable</strong>
-<div class='input'>
-plot(density(x[inA]))
-</div>
-<strong class='error'>Error in density(x[inA]): objet &#39;inA&#39; introuvable</strong>
-<div class='input'>rug(x[inA])
-</div>
-<strong class='error'>Error in as.vector(x): objet &#39;inA&#39; introuvable</strong>
-<div class='input'>
-points(density(x[-inA]), type = &quot;l&quot;, col = 4)
-</div>
-<strong class='error'>Error in density(x[-inA]): objet &#39;inA&#39; introuvable</strong>
-<div class='input'>rug(x[-inA], col = 4)
-</div>
-<strong class='error'>Error in as.vector(x): objet &#39;inA&#39; introuvable</strong></pre>
-  </div>
+      </div>
   <div class="span4">
     <!-- <ul>
       <li>data_partition</li>
