@@ -42,7 +42,7 @@ You will obtain a ready-to-use challenge in the folder `~/Dropbox/mychallenge` c
     Dropbox.
 - `history`: directory where the contributions history is stored.
 
-The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset 
+The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset.
 
 Next steps to complete the installation:
 
