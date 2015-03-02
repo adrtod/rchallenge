@@ -27,6 +27,3 @@ german = cbind(data.frame(lapply(GermanCredit[,1:7], as.numeric)),
 
 require(devtools)
 devtools::use_data(german)
-
-
-
