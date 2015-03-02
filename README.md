@@ -53,11 +53,13 @@ Next steps to complete the installation:
     ?new_team
     new_team("team_A")
     ```
+    
 4. Publish the html page in your folder `~/Dropbox/Public` and share the public link:
     ```r
     ?publish
     publish("challenge.rmd")
     ```
+    
 5. Automate the updates of the webpage. On UNIX systems, you can setup the following 
     line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
     ```
