@@ -2,7 +2,7 @@ challenge
 =========
 [![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)
 
-A simple datascience challenge system using [Rmarkdown](http://rmarkdown.rstudio.com/) 
+A simple datascience challenge system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/). It requires no network configuration, 
 does not depend on external platforms like e.g. Kaggle and can be easily installed 
 on a personal computer.
@@ -35,14 +35,14 @@ new_challenge(template="challenge_fr.rmd")
 
 You will obtain a ready-to-use challenge in the folder `~/Dropbox/mychallenge` containing:
 
-- `challenge.rmd`: template Rmarkdown script for the webpage.
+- `challenge.rmd`: template R Markdown script for the webpage.
 - `data`: directory of the data containing `data_train` and data_test` datasets.
 - `submissions`: directory of the submissions. It will contain one subdirectory per team
     where they can submit their submissions. The subdirectories are shared with
     Dropbox.
 - `history`: directory where the contributions history is stored.
 
-The default challenge provided is a binary classification problem on the [German Cretdit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset 
+The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset 
 
 Next steps to complete the installation:
 
