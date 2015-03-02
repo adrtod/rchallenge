@@ -63,6 +63,7 @@ Next steps to complete the installation:
     ```
     0 * * * * Rscript -e challenge::publish("~/Dropbox/mychallenge/challenge.rmd")
     ```
+    
     This will publish a html webpage in your `Dropbox/Public` folder every hour.
     
 From now on, a fully autonomous challenge system is set up requiring no further 
