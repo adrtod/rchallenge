@@ -2,7 +2,7 @@
 % Please edit documentation in R/new.r
 \name{new_team}
 \alias{new_team}
-\title{Create a new team submissions folder in your challenge}
+\title{Create a new team submissions folder in your challenge.}
 \usage{
 new_team(name, path = ".", submissions_dir = "submissions", quiet = FALSE,
   showWarnings = FALSE)
@@ -19,6 +19,6 @@ new_team(name, path = ".", submissions_dir = "submissions", quiet = FALSE,
 \item{showWarnings}{logical. should the warnings on failure be shown? see \code{\link{dir.create}}}
 }
 \description{
-Create a new team submissions folder in your challenge
+Create a new team submissions folder in your challenge.
 }
 

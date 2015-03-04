@@ -2,7 +2,7 @@
 % Please edit documentation in R/display.r
 \name{glyphicon}
 \alias{glyphicon}
-\title{Path to glyphicon image file}
+\title{Path to glyphicon image file.}
 \usage{
 glyphicon(name, path = system.file("glyphicons", package = "challenge"))
 }
@@ -15,6 +15,6 @@ glyphicon(name, path = system.file("glyphicons", package = "challenge"))
 the path to the file.
 }
 \description{
-Path to glyphicon image file
+Path to glyphicon image file.
 }
 

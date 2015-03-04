@@ -1,4 +1,4 @@
-#' German Credit Data
+#' German Credit Data.
 #' 
 #' Data from Dr. Hans Hofmann of the University of Hamburg.
 #' 
@@ -20,7 +20,7 @@
 "german"
 
 
-#' Split a data.frame into training and test sets 
+#' Split a data.frame into training and test sets.
 #' @param data    data.frame
 #' @param varname string. output variable name
 #' @param p_test  real. proportion of samples in the test set

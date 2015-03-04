@@ -2,7 +2,7 @@
 % Please edit documentation in R/display.r
 \name{countdown}
 \alias{countdown}
-\title{Countdown before deadline}
+\title{Countdown before deadline.}
 \usage{
 countdown(deadline, complete_str = intToUtf8(10004))
 }
@@ -12,6 +12,6 @@ countdown(deadline, complete_str = intToUtf8(10004))
 \item{complete_str}{string. displayed when deadline is passed}
 }
 \description{
-Countdown before deadline
+Countdown before deadline.
 }
 

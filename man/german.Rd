@@ -3,7 +3,7 @@
 \docType{data}
 \name{german}
 \alias{german}
-\title{German Credit Data}
+\title{German Credit Data.}
 \format{A \code{data.frame} with 1000 rows and 21 variables}
 \source{
 UCI Machine Learning Repository

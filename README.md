@@ -1,6 +1,6 @@
 challenge
 =========
-[![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)
+*[View on Github ![](https://github.com/adrtod/challenge/icons/GitHub-Mark-32px.png)](https://github.com/adrtod/challenge/) | [![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)*
 
 A simple datascience challenge system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/). It requires no network configuration, 
@@ -10,7 +10,7 @@ on a personal computer.
 I am currently using it for teaching Machine learning to Master students at the 
 University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
 
-Further documentation is available in the [Reference Manual](http://adrtod.github.io/challenge/inst/web).
+Further documentation is available in the [Reference manual](http://adrtod.github.io/challenge).
 
 Please report bugs, troubles or discussions on the [Issues tracker](https://github.com/adrtod/challenge/issues).
 

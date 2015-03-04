@@ -2,13 +2,13 @@
 % Please edit documentation in R/new.r
 \name{publish}
 \alias{publish}
-\title{Publish your challenge Rmarkdown script to a html page}
+\title{Publish your challenge R Markdown script to a html page.}
 \usage{
 publish(input = "challenge.rmd", output_file = NULL,
   output_dir = file.path("~/Dropbox/Public"))
 }
 \arguments{
-\item{input}{string. name of the Rmarkdown input file}
+\item{input}{string. name of the R Markdown input file}
 
 \item{output_file}{output file. If \code{NULL} then a default based on the name
 of the input file is chosen.}
@@ -17,7 +17,7 @@ of the input file is chosen.}
 so that the rendered page can easily be shared on the web with Dropbox.}
 }
 \description{
-Publish your challenge Rmarkdown script to a html page
+Publish your challenge R Markdown script to a html page.
 }
 \seealso{
 \code{\link[rmarkdown]{render}}

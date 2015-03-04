@@ -2,7 +2,7 @@
 % Please edit documentation in R/display.r
 \name{last_update}
 \alias{last_update}
-\title{Formatted last update date before deadline}
+\title{Formatted last update date before deadline.}
 \usage{
 last_update(deadline, format = "\%d \%b \%Y \%H:\%M")
 }
@@ -12,6 +12,6 @@ last_update(deadline, format = "\%d \%b \%Y \%H:\%M")
 \item{format}{string. see \code{\link{format.POSIXct}}}
 }
 \description{
-Formatted last update date before deadline
+Formatted last update date before deadline.
 }
 

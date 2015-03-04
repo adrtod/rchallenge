@@ -2,7 +2,7 @@
 % Please edit documentation in R/display.r
 \name{print_readerr}
 \alias{print_readerr}
-\title{Print read errors}
+\title{Print read errors.}
 \usage{
 print_readerr(read_err = list())
 }
@@ -13,6 +13,6 @@ print_readerr(read_err = list())
 \code{NULL}
 }
 \description{
-Print read errors
+Print read errors.
 }
 

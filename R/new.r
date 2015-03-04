@@ -1,5 +1,5 @@
 
-#' Install a new challenge
+#' Install a new challenge.
 #' @param path         string. install path of the challenge (should be somewhere in your Dropbox)
 #' @param recursive    logical. should elements of the path other than the last be created? see \code{\link{dir.create}}
 #' @param overwrite    logical. should existing destination files be overwritten? see \code{\link{file.copy}}
@@ -12,7 +12,7 @@
 #' @param baseline     string. name of the team considered as the baseline.
 #' @param add_baseline logical. activate installation of baseline submission files of the template challenge.
 #' @param clear_history logical. activate deletion of the existing history folder.
-#' @param template     string. name of the template Rmarkdown script to be installed.
+#' @param template     string. name of the template R Markdown script to be installed.
 #'   two scripts are available: \code{"challenge.rmd"} (english) and\code{"challenge_fr.rmd"} (french)
 #' @param title        string. title displayed on the webpage.
 #' @param author       string. author displayed on the webpage.
@@ -135,7 +135,7 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
   invisible(normalizePath(path))
 }
 
-#' Create a new team submissions folder in your challenge
+#' Create a new team submissions folder in your challenge.
 #' @param name         string. name of the team subdirectory
 #' @param path         string. root path of the challenge. see \code{\link{new_challenge}}
 #' @param submissions_dir string. subdirectory of the submissions. see \code{\link{new_challenge}}
@@ -155,8 +155,8 @@ new_team <- function(name, path = ".", submissions_dir = "submissions",
   invisible(normalizePath(file.path(path, submissions_dir, name)))
 }
 
-#' Publish your challenge Rmarkdown script to a html page
-#' @param input string. name of the Rmarkdown input file
+#' Publish your challenge R Markdown script to a html page.
+#' @param input string. name of the R Markdown input file
 #' @param output_file output file. If \code{NULL} then a default based on the name 
 #'   of the input file is chosen.
 #' @param output_dir string. output directory. default=\code{"~/Dropbox/Public"} 

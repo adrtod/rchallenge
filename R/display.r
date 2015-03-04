@@ -1,5 +1,5 @@
 
-#' Countdown before deadline
+#' Countdown before deadline.
 #' @param deadline     POSIXct. deadline
 #' @param complete_str string. displayed when deadline is passed
 #' @export
@@ -13,7 +13,7 @@ countdown = function(deadline, complete_str = intToUtf8(10004)) {
     return(complete_str)
 }
 
-#' Formatted last update date before deadline
+#' Formatted last update date before deadline.
 #' @param deadline POSIXct. deadline
 #' @param format   string. see \code{\link{format.POSIXct}}
 #' @export
@@ -24,7 +24,7 @@ last_update <- function(deadline, format = "%d %b %Y %H:%M") {
   return(format(last, format))
 }
 
-#' Print read errors
+#' Print read errors.
 #' @param read_err list of read errors returned by \code{\link{store_new_submissions}}
 #' @export
 #' @return \code{NULL}
@@ -87,7 +87,7 @@ print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
   knitr::kable(leaderboard, ...)
 }
 
-#' Path to glyphicon image file
+#' Path to glyphicon image file.
 #' @param name string. name of the glyphicon.
 #' @param path string. folder of search.
 #' @return the path to the file.
@@ -101,7 +101,7 @@ glyphicon <- function(name, path = system.file('glyphicons', package = 'challeng
   return(file.path(path, file))
 }
 
-#' html code for an image
+#' html code for an image.
 #' @param file string. image file.
 #' @param width string. width of display.
 #' @export

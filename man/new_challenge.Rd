@@ -2,7 +2,7 @@
 % Please edit documentation in R/new.r
 \name{new_challenge}
 \alias{new_challenge}
-\title{Install a new challenge}
+\title{Install a new challenge.}
 \usage{
 new_challenge(path = ".", recursive = FALSE, overwrite = recursive,
   quiet = FALSE, showWarnings = FALSE, template = "challenge.rmd",
@@ -25,7 +25,7 @@ new_challenge(path = ".", recursive = FALSE, overwrite = recursive,
 
 \item{showWarnings}{logical. should the warnings on failure be shown? see \code{\link{dir.create}}}
 
-\item{template}{string. name of the template Rmarkdown script to be installed.
+\item{template}{string. name of the template R Markdown script to be installed.
 two scripts are available: \code{"challenge.rmd"} (english) and\code{"challenge_fr.rmd"} (french)}
 
 \item{data_dir}{string. subdirectory of the data}
@@ -58,6 +58,6 @@ two scripts are available: \code{"challenge.rmd"} (english) and\code{"challenge_
 \code{ind_quiz} such as returned by the \code{\link{data_split}} function.}
 }
 \description{
-Install a new challenge
+Install a new challenge.
 }
 

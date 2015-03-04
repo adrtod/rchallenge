@@ -2,7 +2,7 @@
 % Please edit documentation in R/data.r
 \name{data_split}
 \alias{data_split}
-\title{Split a data.frame into training and test sets}
+\title{Split a data.frame into training and test sets.}
 \usage{
 data_split(data = german, varname = "Class", p_test = 0.2, p_quiz = 0.5)
 }
@@ -23,6 +23,6 @@ list with members
   \item{ind_quiz}{indices of quiz samples in the test set}
 }
 \description{
-Split a data.frame into training and test sets
+Split a data.frame into training and test sets.
 }
 
