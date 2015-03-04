@@ -10,7 +10,7 @@ on a personal computer.
 I am currently using it for teaching Machine learning to Master students at the 
 University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
 
-Further documentation is available in the [Reference Manual](http://adrtod.github.io/challenge/).
+Further documentation is available in the [Reference Manual](http://adrtod.github.io/challenge/inst/web).
 
 Please report bugs, trouble or discussions on the [Issues tracker](https://github.com/adrtod/challenge/issues).
 
