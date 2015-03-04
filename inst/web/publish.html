@@ -40,7 +40,7 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>publish(input&nbsp;=&nbsp;"challenge.rmd", output_file&nbsp;=&nbsp;NULL, output_dir&nbsp;=&nbsp;file.path("~/Dropbox/Public"))</div></pre>
+    <pre><div>publish(input&nbsp;=&nbsp;"challenge.rmd", output_file&nbsp;=&nbsp;NULL, output_dir&nbsp;=&nbsp;file.path("~/Dropbox/Public"), quiet&nbsp;=&nbsp;FALSE)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -52,8 +52,20 @@ of the input file is chosen.</dd>
       <dt>output_dir</dt>
       <dd>string. output directory. default=<code>"~/Dropbox/Public"</code>
 so that the rendered page can easily be shared on the web with Dropbox.</dd>
+      <dt>quiet</dt>
+      <dd>logical. deactivate text output.</dd>
     </dl>
     
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+The compiled document is written into the output file, and the path
+  of the output file is returned.
+</dl></p>
+  
+    </div>
+
     <div class="Description">
       <h2>Description</h2>
 

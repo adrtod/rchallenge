@@ -22,6 +22,7 @@
 #' @param deadline     string. deadline of the challenge.
 #' @param data_list    list with members \code{train}, \code{test}, \code{y_test} and
 #'   \code{ind_quiz} such as returned by the \code{\link{data_split}} function.
+#' @return The path of the created challenge is returned.
 #' @export
 new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive, 
                           quiet = FALSE, showWarnings = FALSE,
@@ -122,14 +123,31 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
   unlink(tmpfile)  
   
   if (!quiet) {
-    cat('New challenge installed in:', normalizePath(path), "\n")
-    cat('Follow the next steps to complete:\n')
-    cat('1. Replace the data files in the data subdirectory\n')
-    cat('2. Edit the template', template, 'as needed\n')
-    cat('3. Create and share directories in', submissions_dir, 'for each team:\n')
-    cat('    challenge::new_team("TEAM_A", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep="")
-    cat('4. Setup a crontab for automatic updates:\n')
-    cat('    0 * * * * Rscript -e challenge::publish("', normalizePath(file.path(path, template)) , '")\n', sep="")
+    cat('New challenge installed in: "', normalizePath(path), '"\n', sep='')
+    cat('Next steps to complete the installation:\n')
+    step <- 0
+    if (install_data) {
+      step <- step + 1
+      cat(step, '. Replace the data files in the "data" subdirectory.\n', sep='')
+    }
+    if (add_baseline) {
+      step <- step + 1
+      cat(step, '. Replace the baseline predictions in "', file.path(submissions_dir, baseline),'".\n', sep='')
+    }
+    step <- step + 1
+    cat(step, '. Customize the template "', template, '" as needed.\n', sep='')
+    step <- step + 1
+    cat(step, '. Create and share subdirectories in "', submissions_dir, '" for each team:\n', sep='')
+    cat('    challenge::new_team("my_team", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
+    step <- step + 1
+    cat(step, '. Publish the html page in your "Dropbox/Public" folder:\n', sep='')
+    cat('    challenge::publish("', file.path(path, template), '")\n', sep='')
+    step <- step + 1
+    template_html <- paste0(sub("([^.]+)\\.[[:alnum:]]+$", "\\1", basename(template)), ".html")
+    cat(step, '. Give the Dropbox public link to "Dropbox/Public/', template_html, '" to the participants.\n', sep='')
+    step <- step + 1
+    cat(step, '. Automate the updates of the webpage. On UNIX systems, you can setup the following line to your crontab using "crontab -e":\n', sep='')
+    cat('    0 * * * * Rscript -e challenge::publish("', normalizePath(file.path(path, template)), '", quiet=TRUE)\n', sep='')
   }
   
   invisible(normalizePath(path))
@@ -141,6 +159,7 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
 #' @param submissions_dir string. subdirectory of the submissions. see \code{\link{new_challenge}}
 #' @param quiet        logical. deactivate text output.
 #' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}
+#' @return The path of the created team is returned.
 #' @export
 new_team <- function(name, path = ".", submissions_dir = "submissions", 
                      quiet = FALSE, showWarnings = FALSE) {
@@ -150,7 +169,7 @@ new_team <- function(name, path = ".", submissions_dir = "submissions",
   if (!quiet) cat("Creating team subdirectory:", file.path(submissions_dir, name), "\n")
   dir.create(file.path(path, submissions_dir, name), recursive = FALSE, showWarnings = showWarnings)
   
-  if (!quiet) cat("Next step: share the folder with the team.\n")
+  if (!quiet) cat("Next step: share the Dropbox folder with the corresponding team.\n")
   
   invisible(normalizePath(file.path(path, submissions_dir, name)))
 }
@@ -161,10 +180,20 @@ new_team <- function(name, path = ".", submissions_dir = "submissions",
 #'   of the input file is chosen.
 #' @param output_dir string. output directory. default=\code{"~/Dropbox/Public"} 
 #'   so that the rendered page can easily be shared on the web with Dropbox.
+#' @param quiet      logical. deactivate text output.
+#' @return The compiled document is written into the output file, and the path 
+#'   of the output file is returned.
 #' @export
 #' @seealso \code{\link[rmarkdown]{render}}
 #' @importFrom rmarkdown render
-publish <- function(input="challenge.rmd", output_file = NULL, output_dir = file.path("~/Dropbox/Public")) {
+publish <- function(input="challenge.rmd", output_file = NULL, output_dir = file.path("~/Dropbox/Public"), quiet = FALSE) {
+  wd <- getwd()
   setwd(dirname(input))
-  rmarkdown::render(basename(input), output_file = output_file, output_dir = output_dir)
+  out <- rmarkdown::render(basename(input), output_file = output_file, output_dir = output_dir, quiet = quiet)
+  setwd(wd)
+  
+  if (!quiet)
+    cat('Next step: give the Dropbox public link to "', file.path(output_dir, basename(out)), '" to the participants.\n', sep='')
+  
+  invisible(out)
 }

@@ -57,6 +57,9 @@ two scripts are available: \code{"challenge.rmd"} (english) and\code{"challenge_
 \item{data_list}{list with members \code{train}, \code{test}, \code{y_test} and
 \code{ind_quiz} such as returned by the \code{\link{data_split}} function.}
 }
+\value{
+The path of the created challenge is returned.
+}
 \description{
 Install a new challenge.
 }

@@ -24,7 +24,7 @@ devtools::install_github("adrtod/challenge")
 
 Getting started
 ===============
-Install a new challenge in `~/Dropbox/mychallenge`
+**Install a new challenge** in `Dropbox/mychallenge`
 ```r
 setwd("~/Dropbox/mychallenge")
 library(challenge)
@@ -37,10 +37,10 @@ or for a french version
 new_challenge(template="challenge_fr.rmd")
 ```
 
-You will obtain a ready-to-use challenge in the folder `~/Dropbox/mychallenge` containing:
+You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` containing:
 
 - `challenge.rmd`: template R Markdown script for the webpage.
-- `data`: directory of the data containing `data_train` and data_test` datasets.
+- `data`: directory of the data containing `data_train` and `data_test` datasets.
 - `submissions`: directory of the submissions. It will contain one subdirectory per team
     where they can submit their submissions. The subdirectories are shared with
     Dropbox.
@@ -48,23 +48,26 @@ You will obtain a ready-to-use challenge in the folder `~/Dropbox/mychallenge` c
 
 The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset.
 
-Next steps to complete the installation:
+**Next steps to complete the installation**:
 
-1. Replace the data files in the data subdirectory
-2. Customize the template `challenge.rmd` as needed
-3. Create and share subdirectories in `submissions` for each team:
+1. Replace the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline`.
+2. Customize the template `challenge.rmd` as needed.
+3. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
     ```r
     ?new_team
-    new_team("team_A")
+    new_team("my_team")
     ```
     
-4. Publish the html page in your folder `~/Dropbox/Public` and share the public link:
+4. Publish the html page in `Dropbox/Public`:
     ```r
     ?publish
     publish("challenge.rmd")
     ```
+    Prior to this, make sure you [enabled your Public Dropbox folder](http://www.dropbox.com/enable_public_folder).
+
+5. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
     
-5. Automate the updates of the webpage. On UNIX systems, you can setup the following 
+6. Automate the updates of the webpage. On UNIX systems, you can setup the following 
     line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
     ```
     0 * * * * Rscript -e challenge::publish("~/Dropbox/mychallenge/challenge.rmd")

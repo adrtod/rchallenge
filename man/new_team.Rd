@@ -18,6 +18,9 @@ new_team(name, path = ".", submissions_dir = "submissions", quiet = FALSE,
 
 \item{showWarnings}{logical. should the warnings on failure be shown? see \code{\link{dir.create}}}
 }
+\value{
+The path of the created team is returned.
+}
 \description{
 Create a new team submissions folder in your challenge.
 }

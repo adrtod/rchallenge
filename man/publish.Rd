@@ -5,7 +5,7 @@
 \title{Publish your challenge R Markdown script to a html page.}
 \usage{
 publish(input = "challenge.rmd", output_file = NULL,
-  output_dir = file.path("~/Dropbox/Public"))
+  output_dir = file.path("~/Dropbox/Public"), quiet = FALSE)
 }
 \arguments{
 \item{input}{string. name of the R Markdown input file}
@@ -15,6 +15,12 @@ of the input file is chosen.}
 
 \item{output_dir}{string. output directory. default=\code{"~/Dropbox/Public"}
 so that the rendered page can easily be shared on the web with Dropbox.}
+
+\item{quiet}{logical. deactivate text output.}
+}
+\value{
+The compiled document is written into the output file, and the path
+  of the output file is returned.
 }
 \description{
 Publish your challenge R Markdown script to a html page.
