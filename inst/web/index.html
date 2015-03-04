@@ -37,26 +37,28 @@
       
       <div class="row">
   <div class="span8">
-    <h1>challenge</h1>
+    <h1>Challenge</h1>
 
 <p><a href="https://github.com/adrtod/challenge/"><img src="https://img.shields.io/badge/View_on-Github-yellow.svg" alt="GitHub sources"/></a>
 <a href="https://github.com/adrtod/challenge/releases/latest"><img src="https://img.shields.io/github/release/adrtod/challenge.svg" alt="GitHub release"/></a>
 <a href="https://travis-ci.org/adrtod/challenge"><img src="https://img.shields.io/travis/adrtod/challenge.svg" alt="Travis-CI Build Status"/></a>
 <a href="http://www.gnu.org/licenses/gpl-2.0.html"><img src="http://img.shields.io/badge/license-GPLv2-blue.svg" alt="GPLv2 License"/></a></p>
 
-<p>A simple datascience challenge system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
-and <a href="https://www.dropbox.com/">Dropbox</a>. It requires no network configuration, 
-does not depend on external platforms like e.g. Kaggle and can be easily installed 
-on a personal computer.</p>
+<p>The R package <strong>challenge</strong> provides a simple datascience competition system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
+and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:</p>
 
-<p>I am currently using it for teaching Machine learning to Master students at the 
-University of Bordeaux (see <a href="http://goo.gl/KRuYn0">this page</a> in french).</p>
+<ul>
+<li>no network configuration required.</li>
+<li>does not depend on external platforms like e.g. Kaggle.</li>
+<li>can be easily installed on a personal computer.</li>
+<li>provides a customizable template in english and french.</li>
+</ul>
 
 <p>Further documentation is available in the <a href="http://adrtod.github.io/challenge">Reference manual</a>.</p>
 
-<p>Please report bugs, troubles or discussions on the <a href="https://github.com/adrtod/challenge/issues">Issues tracker</a>.</p>
+<p>Please report bugs, troubles or discussions on the <a href="https://github.com/adrtod/challenge/issues">Issues tracker</a>. Any contribution to improve the package is welcome.</p>
 
-<h1>Install</h1>
+<h3>Installation</h3>
 
 <p>Install the latest version of the R package from <a href="https://github.com/adrtod/challenge">Github</a></p>
 
@@ -64,9 +66,9 @@ University of Bordeaux (see <a href="http://goo.gl/KRuYn0">this page</a> in fren
 devtools::install_github(&quot;adrtod/challenge&quot;)
 </code></pre>
 
-<h1>Getting started</h1>
+<h3>Getting started</h3>
 
-<p><strong>Install a new challenge</strong> in <code>Dropbox/mychallenge</code></p>
+<p>Install a new challenge in <code>Dropbox/mychallenge</code></p>
 
 <pre><code class="r">setwd(&quot;~/Dropbox/mychallenge&quot;)
 library(challenge)
@@ -92,7 +94,9 @@ Dropbox.</li>
 
 <p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Credit Card</a>) dataset.</p>
 
-<p><strong>Next steps to complete the installation</strong>:</p>
+<h3>Next steps</h3>
+
+<p>To complete the installation:</p>
 
 <ol>
 <li>Replace the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code>.</li>
@@ -133,29 +137,37 @@ tasks using the functions available in our package:</p>
 <li><code>plot_activity()</code> plots a chart of activity per team.</li>
 </ul>
 
-<h1>Author</h1>
+<h3>Examples</h3>
 
-<p>Copyright &copy; 2014-2015 <a href="https://sites.google.com/site/adrientodeschini">Adrien Todeschini</a></p>
+<ul>
+<li><p>My own challenge given to Master students at the University of Bordeaux: see <a href="http://goo.gl/KRuYn0">this page</a> (in french).</p></li>
+<li><p>A classification and variable selection problem given by Robin Genuer (Bordeaux): see <a href="https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html">this page</a> (in french).</p></li>
+</ul>
 
-<p>Contributions from <a href="http://robin.genuer.fr/">Robin Genuer</a></p>
+<p>Please <a href="https://sites.google.com/site/adrientodeschini">contact me</a> to add yours.</p>
+
+<h3>Copyright</h3>
+
+<p>Copyright &copy; 2014-2015 <a href="https://sites.google.com/site/adrientodeschini">Adrien Todeschini</a>.</p>
+
+<p>Contributions from <a href="http://robin.genuer.fr/">Robin Genuer</a>.</p>
 
 <p>Design inspired by <a href="https://datascience.net/">Datascience.net</a>, a french platform
 for datascience challenges.</p>
 
-<p>License: GPL-2</p>
+<p>The <strong>challenge</strong> package is licensed under the GPLv2 (<a href="http://www.gnu.org/licenses/gpl-2.0.html">http://www.gnu.org/licenses/gpl-2.0.html</a>).</p>
 
-<h1>Roadmap</h1>
+<h3>To do list</h3>
 
 <ul>
-<li>[x] English translation</li>
-<li>[x] R package</li>
-<li>[ ] CRAN</li>
-<li>[ ] Interactive webpage using <a href="http://shiny.rstudio.com/">Shiny</a></li>
+<li>[ ] do not take baseline into account in ranking</li>
+<li>[ ] submit to CRAN</li>
+<li>[ ] interactive webpage using <a href="http://shiny.rstudio.com/">Shiny</a></li>
 </ul>
 
-<h1>Release notes</h1>
+<h2>Release notes</h2>
 
-<h2>Version 0.1.1 (04-03-2015)</h2>
+<h3>Version 0.1.1 (04-03-2015)</h3>
 
 <ul>
 <li>exported <code>new_team</code> function</li>
@@ -164,19 +176,13 @@ for datascience challenges.</p>
 <li>improved messages</li>
 </ul>
 
-<h2>Version 0.1 (21-01-2015)</h2>
+<h3>Version 0.1 (21-01-2015)</h3>
 
 <ul>
 <li>initial package release</li>
 <li>easy installation</li>
 <li>roxygen documentation</li>
 <li>english and french templates</li>
-</ul>
-
-<h1>Todo</h1>
-
-<ul>
-<li>[ ] do not take baseline into account in ranking</li>
 </ul>
 
 

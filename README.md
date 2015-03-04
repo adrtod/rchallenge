@@ -5,29 +5,27 @@ challenge
 [![Travis-CI Build Status](https://img.shields.io/travis/adrtod/challenge.svg)](https://travis-ci.org/adrtod/challenge)
 [![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 
-A simple datascience challenge system using [R Markdown](http://rmarkdown.rstudio.com/) 
-and [Dropbox](https://www.dropbox.com/). It requires no network configuration, 
-does not depend on external platforms like e.g. Kaggle and can be easily installed 
-on a personal computer.
+The R package **challenge** provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
+and [Dropbox](https://www.dropbox.com/) with the following features:
 
-I am currently using it for teaching Machine learning to Master students at the 
-University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
+- no network configuration required.
+- does not depend on external platforms like e.g. Kaggle.
+- can be easily installed on a personal computer.
+- provides a customizable template in english and french.
 
 Further documentation is available in the [Reference manual](http://adrtod.github.io/challenge).
 
-Please report bugs, troubles or discussions on the [Issues tracker](https://github.com/adrtod/challenge/issues).
+Please report bugs, troubles or discussions on the [Issues tracker](https://github.com/adrtod/challenge/issues). Any contribution to improve the package is welcome.
 
-Install
-=======
+### Installation
 Install the latest version of the R package from [Github](https://github.com/adrtod/challenge)
 ```r
 # install.packages("devtools")
 devtools::install_github("adrtod/challenge")
 ```
 
-Getting started
-===============
-**Install a new challenge** in `Dropbox/mychallenge`
+### Getting started
+Install a new challenge in `Dropbox/mychallenge`
 ```r
 setwd("~/Dropbox/mychallenge")
 library(challenge)
@@ -51,7 +49,8 @@ You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` con
 
 The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset.
 
-**Next steps to complete the installation**:
+### Next steps
+To complete the installation:
 
 1. Replace the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline`.
 2. Customize the template `challenge.rmd` as needed.
@@ -90,40 +89,37 @@ tasks using the functions available in our package:
 - `plot_history()` plots a chart of score evolution per team.
 - `plot_activity()` plots a chart of activity per team.
 
-Author
-=======
-Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini)
+### Examples
+- My own challenge given to Master students at the University of Bordeaux: see [this page](http://goo.gl/KRuYn0) (in french).
 
-Contributions from [Robin Genuer](http://robin.genuer.fr/)
+- A classification and variable selection problem given by Robin Genuer (Bordeaux): see [this page](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french).
+
+Please [contact me](https://sites.google.com/site/adrientodeschini) to add yours.
+
+### Copyright
+Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini).
+
+Contributions from [Robin Genuer](http://robin.genuer.fr/).
 
 Design inspired by [Datascience.net](https://datascience.net/), a french platform
 for datascience challenges.
 
-License: GPL-2
+The **challenge** package is licensed under the GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html).
 
-Roadmap
-========
-- [x] English translation
-- [x] R package
-- [ ] CRAN
-- [ ] Interactive webpage using [Shiny](http://shiny.rstudio.com/)
+### To do list
+- [ ] do not take baseline into account in ranking
+- [ ] submit to CRAN
+- [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
-Release notes
-=============
-Version 0.1.1 (04-03-2015)
---------------------------
+## Release notes
+### Version 0.1.1 (04-03-2015)
 - exported `new_team` function
 - suppressed dependency to caret package
 - fixed change of directory in `publish`
 - improved messages
 
-Version 0.1 (21-01-2015)
-------------------------
+### Version 0.1 (21-01-2015)
 - initial package release
 - easy installation
 - roxygen documentation
 - english and french templates
-
-Todo
-==========
-- [ ] do not take baseline into account in ranking
