@@ -2,7 +2,7 @@ challenge
 =========
 [![GitHub sources](https://img.shields.io/badge/View_on-Github-yellow.svg)](https://github.com/adrtod/challenge/)
 [![GitHub release](https://img.shields.io/github/release/adrtod/challenge.svg)](https://github.com/adrtod/challenge/releases/latest)
-[![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)
+[![Travis-CI Build Status](https://img.shields.io/travis/adrtod/challenge.svg)](https://travis-ci.org/adrtod/challenge)
 [![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 
 A simple datascience challenge system using [R Markdown](http://rmarkdown.rstudio.com/) 
