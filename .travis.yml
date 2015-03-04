@@ -8,11 +8,6 @@ before_install:
   - ./travis-tool.sh bootstrap
 
 install:
-  - ./travis-tool.sh r_binary_install caTools
-  - ./travis-tool.sh r_binary_install gtools
-  - ./travis-tool.sh r_binary_install car
-  - ./travis-tool.sh r_binary_install foreach
-  - ./travis-tool.sh r_binary_install ggplot2
   - ./travis-tool.sh install_deps
 
 script: ./travis-tool.sh run_tests
