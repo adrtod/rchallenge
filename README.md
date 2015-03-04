@@ -1,6 +1,6 @@
 challenge
 =========
-*[View on Github <img src="http://adrtod.github.io/challenge/icons/GitHub-Mark-32px.png" style="width:16px;height:16px">](https://github.com/adrtod/challenge/) | [![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)*
+*[View on <img src="http://adrtod.github.io/challenge/icons/GitHub-Mark-32px.png" alt="Github" width="16" height="16">](https://github.com/adrtod/challenge/) | [![Travis-CI Build Status](https://travis-ci.org/adrtod/challenge.png?branch=master)](https://travis-ci.org/adrtod/challenge)*
 
 A simple datascience challenge system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/). It requires no network configuration, 
