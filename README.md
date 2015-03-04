@@ -10,9 +10,13 @@ on a personal computer.
 I am currently using it for teaching Machine learning to Master students at the 
 University of Bordeaux (see [this page](http://goo.gl/KRuYn0) in french).
 
+Further documentation is available in the [Reference Manual](http://adrtod.github.io/challenge/).
+
+Please report bugs, trouble or discussions on the [Issues tracker](https://github.com/adrtod/challenge/issues).
+
 Install
 =======
-Install the latest version of the R package from github
+Install the latest version of the R package from [Github](https://github.com/adrtod/challenge)
 ```r
 # install.packages("devtools")
 devtools::install_github("adrtod/challenge")
