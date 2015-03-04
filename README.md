@@ -114,7 +114,7 @@ Version 0.1.1 (04-03-2015)
 --------------------------
 - exported `new_team` function
 - suppressed dependency to caret package
-- fixed change of directory in publish
+- fixed change of directory in `publish`
 - improved messages
 
 Version 0.1 (21-01-2015)
