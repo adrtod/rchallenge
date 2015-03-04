@@ -1,6 +1,6 @@
 Package: challenge
 Title: A simple datascience challenge system.
-Version: 0.1
+Version: 0.1.1
 Authors@R: as.person(c("Adrien Todeschini <adrien.todeschini@gmail.com> [aut, cre]",
     "Robin Genuer <robin.genuer@isped.u-bordeaux2.fr> [ctb]"))
 Description: A simple datascience challenge system using R Markdown and Dropbox.
