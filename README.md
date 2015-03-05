@@ -112,7 +112,7 @@ The **challenge** package is licensed under the GPLv2 (http://www.gnu.org/licens
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
 ## Release notes
-### Version 0.1.1 (04-03-2015)
+### Version 0.2 (05-03-2015)
 - exported `new_team` function
 - suppressed dependency to caret package
 - fixed change of directory in `publish`
