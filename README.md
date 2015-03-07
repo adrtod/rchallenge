@@ -1,6 +1,6 @@
 challenge
 =========
-[![GitHub sources](https://img.shields.io/badge/View_on-Github-yellow.svg)](https://github.com/adrtod/challenge/)
+[![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/challenge/)
 [![GitHub release](https://img.shields.io/github/release/adrtod/challenge.svg)](https://github.com/adrtod/challenge/releases/latest)
 [![Travis-CI Build Status](https://img.shields.io/travis/adrtod/challenge.svg)](https://travis-ci.org/adrtod/challenge)
 [![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
@@ -15,10 +15,10 @@ and [Dropbox](https://www.dropbox.com/) with the following features:
 
 Further documentation is available in the [Reference manual](http://adrtod.github.io/challenge).
 
-Please report bugs, troubles or discussions on the [Issues tracker](https://github.com/adrtod/challenge/issues). Any contribution to improve the package is welcome.
+Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/challenge/issues) tracker. Any contribution to improve the package is welcome.
 
 ### Installation
-Install the latest version of the R package from [Github](https://github.com/adrtod/challenge)
+Install the latest version of the R package from [GitHub](https://github.com/adrtod/challenge)
 ```r
 # install.packages("devtools")
 devtools::install_github("adrtod/challenge")
