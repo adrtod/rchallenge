@@ -5,7 +5,7 @@ challenge
 [![Travis-CI Build Status](https://img.shields.io/travis/adrtod/challenge.svg)](https://travis-ci.org/adrtod/challenge)
 [![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 
-The R package **challenge** provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
+The **challenge** R package provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/) with the following features:
 
 - no network configuration required.
