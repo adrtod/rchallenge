@@ -12,7 +12,7 @@ output:
 Welcome to the challenge webpage!
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(challenge)
+library(rchallenge)
 
 data_dir = "@DATA_DIR@"
 submissions_dir = "@SUBMISSIONS_DIR@"
