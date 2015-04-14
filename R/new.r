@@ -138,16 +138,16 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
     cat(step, '. Customize the template "', template, '" as needed.\n', sep='')
     step <- step + 1
     cat(step, '. Create and share subdirectories in "', submissions_dir, '" for each team:\n', sep='')
-    cat('    challenge::new_team("my_team", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
+    cat('    rchallenge::new_team("my_team", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
     step <- step + 1
     cat(step, '. Publish the html page in your "Dropbox/Public" folder:\n', sep='')
-    cat('    challenge::publish("', file.path(path, template), '")\n', sep='')
+    cat('    rchallenge::publish("', file.path(path, template), '")\n', sep='')
     step <- step + 1
     template_html <- paste0(sub("([^.]+)\\.[[:alnum:]]+$", "\\1", basename(template)), ".html")
     cat(step, '. Give the Dropbox public link to "Dropbox/Public/', template_html, '" to the participants.\n', sep='')
     step <- step + 1
     cat(step, '. Automate the updates of the webpage. On UNIX systems, you can setup the following line to your crontab using "crontab -e":\n', sep='')
-    cat('    0 * * * * Rscript -e "rchallenge::publish(\'', normalizePath(file.path(path, template)), '\', quiet=TRUE)"\n', sep='')
+    cat('    0 * * * * Rscript -e \'rchallenge::publish("', normalizePath(file.path(path, template)), '")\'\n', sep='')
   }
   
   invisible(normalizePath(path))

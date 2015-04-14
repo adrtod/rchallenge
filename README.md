@@ -40,12 +40,13 @@ new_challenge(template="challenge_fr.rmd")
 
 You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` containing:
 
-- `challenge.rmd`: template R Markdown script for the webpage.
-- `data`: directory of the data containing `data_train` and `data_test` datasets.
-- `submissions`: directory of the submissions. It will contain one subdirectory per team
-    where they can submit their submissions. The subdirectories are shared with
-    Dropbox.
-- `history`: directory where the submissions history is stored.
+Name | Description
+------------- | -------------
+`challenge.rmd` | Template R Markdown script for the webpage.
+`data` | Directory of the data containing `data_train` and `data_test` datasets.
+`submissions` | Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
+`history` | Directory where the submissions history is stored.
+
 
 The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset.
 
@@ -76,7 +77,7 @@ To complete the installation:
 4. Automate the updates of the webpage. On UNIX systems, you can setup the following 
     line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
     ```
-    0 * * * * Rscript -e "rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')"
+    0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
     ```
     
     This will publish a html webpage in your `Dropbox/Public` folder every hour.
@@ -85,13 +86,15 @@ From now on, a fully autonomous challenge system is set up requiring no further
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:
 
-- `store_new_submissions()` reads submitted files and save new files in the history.
-- `print_readerr()` displays any read errors.
-- `compute_metrics()` calculates of scores for each submission in the history.
-- `get_best()` gets the highest score per team.
-- `print_leaderboard()` displays the leaderboard.
-- `plot_history()` plots a chart of score evolution per team.
-- `plot_activity()` plots a chart of activity per team.
+Name | Description
+------------- | -------------
+`store_new_submissions()` | Reads submitted files and save new files in the history.
+`print_readerr()` | Displays any read errors.
+`compute_metrics()` | Calculates of scores for each submission in the history.
+`get_best()` | Gets the highest score per team.
+`print_leaderboard()` | Displays the leaderboard.
+`plot_history()` | Plots a chart of score evolution per team.
+`plot_activity()` | Plots a chart of activity per team.
 
 ### Examples
 - My own challenge given to Master students at the University of Bordeaux: see [this page](http://goo.gl/KRuYn0) (in french).

@@ -83,14 +83,29 @@ new_challenge()
 
 <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:</p>
 
-<ul>
-<li><code>challenge.rmd</code>: template R Markdown script for the webpage.</li>
-<li><code>data</code>: directory of the data containing <code>data_train</code> and <code>data_test</code> datasets.</li>
-<li><code>submissions</code>: directory of the submissions. It will contain one subdirectory per team
-where they can submit their submissions. The subdirectories are shared with
-Dropbox.</li>
-<li><code>history</code>: directory where the submissions history is stored.</li>
-</ul>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>challenge.rmd</code></td>
+<td>Template R Markdown script for the webpage.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>Directory of the data containing <code>data_train</code> and <code>data_test</code> datasets.</td>
+</tr>
+<tr>
+<td><code>submissions</code></td>
+<td>Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.</td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>Directory where the submissions history is stored.</td>
+</tr>
+</tbody></table>
 
 <p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Credit Card</a>) dataset.</p>
 
@@ -122,7 +137,7 @@ publish(&quot;challenge.rmd&quot;)
 <li><p>Automate the updates of the webpage. On UNIX systems, you can setup the following 
 line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:</p>
 
-<pre><code>0 * * * * Rscript -e &quot;rchallenge::publish(&#39;~/Dropbox/mychallenge/challenge.rmd&#39;)&quot;
+<pre><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)&#39;
 </code></pre>
 
 <p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p></li>
@@ -132,15 +147,41 @@ line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:</p>
 
-<ul>
-<li><code>store_new_submissions()</code> reads submitted files and save new files in the history.</li>
-<li><code>print_readerr()</code> displays any read errors.</li>
-<li><code>compute_metrics()</code> calculates of scores for each submission in the history.</li>
-<li><code>get_best()</code> gets the highest score per team.</li>
-<li><code>print_leaderboard()</code> displays the leaderboard.</li>
-<li><code>plot_history()</code> plots a chart of score evolution per team.</li>
-<li><code>plot_activity()</code> plots a chart of activity per team.</li>
-</ul>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>store_new_submissions()</code></td>
+<td>Reads submitted files and save new files in the history.</td>
+</tr>
+<tr>
+<td><code>print_readerr()</code></td>
+<td>Displays any read errors.</td>
+</tr>
+<tr>
+<td><code>compute_metrics()</code></td>
+<td>Calculates of scores for each submission in the history.</td>
+</tr>
+<tr>
+<td><code>get_best()</code></td>
+<td>Gets the highest score per team.</td>
+</tr>
+<tr>
+<td><code>print_leaderboard()</code></td>
+<td>Displays the leaderboard.</td>
+</tr>
+<tr>
+<td><code>plot_history()</code></td>
+<td>Plots a chart of score evolution per team.</td>
+</tr>
+<tr>
+<td><code>plot_activity()</code></td>
+<td>Plots a chart of activity per team.</td>
+</tr>
+</tbody></table>
 
 <h3>Examples</h3>
 
