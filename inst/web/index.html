@@ -48,10 +48,10 @@
 and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:</p>
 
 <ul>
-<li>no network configuration required.</li>
-<li>does not depend on external platforms like e.g. Kaggle.</li>
-<li>can be easily installed on a personal computer.</li>
-<li>provides a customizable template in english and french.</li>
+<li>No network configuration required.</li>
+<li>Does not depend on external platforms like e.g. Kaggle.</li>
+<li>Can be easily installed on a personal computer.</li>
+<li>Provides a customizable template in english and french.</li>
 </ul>
 
 <p>Further documentation is available in the <a href="http://adrtod.github.io/rchallenge">Reference manual</a>.</p>
@@ -112,8 +112,8 @@ new_challenge()
 <p>You can easily customize the challenge in two ways:</p>
 
 <ul>
-<li>A priori: by using the options of the <code>new_challenge</code> function.</li>
-<li>A posteriori: by replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.</li>
+<li><em>During the creation of the challenge</em>: by using the options of the <code>new_challenge</code> function.</li>
+<li><em>After the creation of the challenge</em>: by manually replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.</li>
 </ul>
 
 <h3>Next steps</h3>
@@ -124,7 +124,7 @@ new_challenge()
 <li><p>Create and <a href="https://www.dropbox.com/en/help/19">share</a> subdirectories in <code>submissions</code> for each team:</p>
 
 <pre><code class="r">?new_team
-new_team(&quot;my_team&quot;)
+new_team(&quot;team_foo&quot;, &quot;team_bar&quot;)
 </code></pre></li>
 <li><p>Publish the html page in <code>Dropbox/Public</code>:</p>
 
@@ -134,14 +134,23 @@ publish(&quot;challenge.rmd&quot;)
 
 <p>Prior to this, make sure you <a href="http://www.dropbox.com/enable_public_folder">enabled your Public Dropbox folder</a>.</p></li>
 <li><p>Give the <a href="https://www.dropbox.com/en/help/274">public link</a> to your <code>Dropbox/Public/challenge.html</code> file to the participants.</p></li>
-<li><p>Automate the updates of the webpage. On UNIX systems, you can setup the following 
-line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:</p>
+<li><p>Automate the updates of the webpage.</p></li>
+</ol>
+
+<p>For the step 4, on <strong>Unix</strong> systems, you can setup the following 
+line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code> (mind the quotes):</p>
 
 <pre><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)&#39;
 </code></pre>
 
-<p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p></li>
-</ol>
+<p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p>
+
+<p>On <strong>Windows</strong> systems, you can use the <a href="http://windows.microsoft.com/en-us/windows/schedule-task">Task Scheduler</a> to create a new task with a <em>Start a program</em> action with the settings (mind the quotes):</p>
+
+<ul>
+<li><em>Program/script</em>: <code>Rscript.exe</code></li>
+<li><em>options</em>: <code>-e rchallenge::publish(&#39;~/Dropbox/mychallenge/challenge.rmd&#39;)</code></li>
+</ul>
 
 <p>From now on, a fully autonomous challenge system is set up requiring no further 
 administration. With each update, the program automatically performs the following
@@ -214,11 +223,13 @@ for datascience challenges.</p>
 
 <h2>Release notes</h2>
 
-<h3>Version 1.0 (14-04-2015)</h3>
+<h3>Version 1.0 (15-04-2015)</h3>
 
 <ul>
 <li>new name</li>
 <li>changes in readme</li>
+<li><code>new_team</code> can create several teams</li>
+<li>instructions for windows</li>
 </ul>
 
 <h3>Version 0.2 (05-03-2015)</h3>
@@ -251,7 +262,7 @@ for datascience challenges.</p>
         <code><a href="new_challenge.html">new_challenge</a></code><br />Install a new challenge.</li>
             
       <li>
-        <code><a href="new_team.html">new_team</a></code><br />Create a new team submissions folder in your challenge.</li>
+        <code><a href="new_team.html">new_team</a></code><br />Create new teams submission folders in your challenge.</li>
             
       <li>
         <code><a href="german.html">german</a></code><br />German Credit Data.</li>

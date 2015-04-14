@@ -8,10 +8,10 @@ rchallenge
 The **rchallenge** R package provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/) with the following features:
 
-- no network configuration required.
-- does not depend on external platforms like e.g. Kaggle.
-- can be easily installed on a personal computer.
-- provides a customizable template in english and french.
+- No network configuration required.
+- Does not depend on external platforms like e.g. Kaggle.
+- Can be easily installed on a personal computer.
+- Provides a customizable template in english and french.
 
 Further documentation is available in the [Reference manual](http://adrtod.github.io/rchallenge).
 
@@ -52,8 +52,8 @@ The default challenge provided is a binary classification problem on the [German
 
 You can easily customize the challenge in two ways:
 
-- A priori: by using the options of the `new_challenge` function.
-- A posteriori: by replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
+- *During the creation of the challenge*: by using the options of the `new_challenge` function.
+- *After the creation of the challenge*: by manually replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
 
 
 ### Next steps
@@ -62,7 +62,7 @@ To complete the installation:
 1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
     ```r
     ?new_team
-    new_team("my_team")
+    new_team("team_foo", "team_bar")
     ```
     
 2. Publish the html page in `Dropbox/Public`:
@@ -74,13 +74,19 @@ To complete the installation:
 
 3. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
     
-4. Automate the updates of the webpage. On UNIX systems, you can setup the following 
-    line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
-    ```
-    0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
-    ```
-    
-    This will publish a html webpage in your `Dropbox/Public` folder every hour.
+4. Automate the updates of the webpage.
+
+For the step 4, on **Unix** systems, you can setup the following 
+line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e` (mind the quotes):
+```
+0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
+```
+This will publish a html webpage in your `Dropbox/Public` folder every hour.
+
+On **Windows** systems, you can use the [Task Scheduler](http://windows.microsoft.com/en-us/windows/schedule-task) to create a new task with a *Start a program* action with the settings (mind the quotes):
+
+- *Program/script*: `Rscript.exe`
+- *options*: `-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')`
     
 From now on, a fully autonomous challenge system is set up requiring no further 
 administration. With each update, the program automatically performs the following
@@ -120,9 +126,11 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
 ## Release notes
-### Version 1.0 (14-04-2015)
+### Version 1.0 (15-04-2015)
 - new name
 - changes in readme
+- `new_team` can create several teams
+- instructions for windows
 
 ### Version 0.2 (05-03-2015)
 - exported `new_team` function
