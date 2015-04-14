@@ -138,7 +138,7 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
     cat(step, '. Customize the template "', template, '" as needed.\n', sep='')
     step <- step + 1
     cat(step, '. Create and share subdirectories in "', submissions_dir, '" for each team:\n', sep='')
-    cat('    rchallenge::new_team("my_team", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
+    cat('    rchallenge::new_team("team_foo", "team_bar", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
     step <- step + 1
     cat(step, '. Publish the html page in your "Dropbox/Public" folder:\n', sep='')
     cat('    rchallenge::publish("', file.path(path, template), '")\n', sep='')
@@ -146,32 +146,42 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
     template_html <- paste0(sub("([^.]+)\\.[[:alnum:]]+$", "\\1", basename(template)), ".html")
     cat(step, '. Give the Dropbox public link to "Dropbox/Public/', template_html, '" to the participants.\n', sep='')
     step <- step + 1
-    cat(step, '. Automate the updates of the webpage. On UNIX systems, you can setup the following line to your crontab using "crontab -e":\n', sep='')
-    cat('    0 * * * * Rscript -e \'rchallenge::publish("', normalizePath(file.path(path, template)), '")\'\n', sep='')
+    cat(step, '. Automate the updates of the webpage.\n', sep='')
+    if (.Platform$OS.type == "unix") {
+      cat('   On Unix systems, you can setup the following line to your crontab using "crontab -e":\n', sep='')
+      cat('    0 * * * * Rscript -e \'rchallenge::publish("', normalizePath(file.path(path, template)), '")\'\n', sep='')
+    }
+    if (.Platform$OS.type == "windows") {
+      cat('   On Windows systems, you can use the Task Scheduler to create a new task with a "Start a program" action with the settings:')
+      cat('   - Program/script: Rscript.exe\n')
+      cat('   - options: -e rchallenge::publish(\'', normalizePath(file.path(path, template)), '\')\n', sep='')
+    }
   }
   
   invisible(normalizePath(path))
 }
 
-#' Create a new team submissions folder in your challenge.
-#' @param name         string. name of the team subdirectory
-#' @param path         string. root path of the challenge. see \code{\link{new_challenge}}
-#' @param submissions_dir string. subdirectory of the submissions. see \code{\link{new_challenge}}
+#' Create new teams submission folders in your challenge.
+#' @param ...          strings. names of the team subdirectories.
+#' @param path         string. root path of the challenge. see \code{\link{new_challenge}}.
+#' @param submissions_dir string. subdirectory of the submissions. see \code{\link{new_challenge}}.
 #' @param quiet        logical. deactivate text output.
-#' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}
-#' @return The path of the created team is returned.
+#' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}.
+#' @return The paths of the created teams are returned.
 #' @export
-new_team <- function(name, path = ".", submissions_dir = "submissions", 
+new_team <- function(..., path = ".", submissions_dir = "submissions", 
                      quiet = FALSE, showWarnings = FALSE) {
+  names <- c(...)
+  stopifnot(is.character(names))
   if (!file.exists(file.path(path, submissions_dir)))
     stop("could not find submissions directory:", normalizePath(file.path(path, submissions_dir)))
+  for (i in seq_along(names)) {
+    if (!quiet) cat("Creating team subdirectory:", file.path(submissions_dir, names[i]), "\n")
+    dir.create(file.path(path, submissions_dir, names[i]), recursive = FALSE, showWarnings = showWarnings)
+  }
+  if (!quiet) cat("Next step: share the Dropbox folders with the corresponding teams.\n")
   
-  if (!quiet) cat("Creating team subdirectory:", file.path(submissions_dir, name), "\n")
-  dir.create(file.path(path, submissions_dir, name), recursive = FALSE, showWarnings = showWarnings)
-  
-  if (!quiet) cat("Next step: share the Dropbox folder with the corresponding team.\n")
-  
-  invisible(normalizePath(file.path(path, submissions_dir, name)))
+  invisible(normalizePath(file.path(path, submissions_dir, names)))
 }
 
 #' Publish your challenge R Markdown script to a html page.

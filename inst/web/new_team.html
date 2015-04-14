@@ -35,32 +35,32 @@
         
       </header>
       
-      <h1>Create a new team submissions folder in your challenge.</h1>
+      <h1>Create new teams submission folders in your challenge.</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>new_team(name, path&nbsp;=&nbsp;".", submissions_dir&nbsp;=&nbsp;"submissions", quiet&nbsp;=&nbsp;FALSE, showWarnings&nbsp;=&nbsp;FALSE)</div></pre>
+    <pre><div>new_team(..., path&nbsp;=&nbsp;".", submissions_dir&nbsp;=&nbsp;"submissions", quiet&nbsp;=&nbsp;FALSE, showWarnings&nbsp;=&nbsp;FALSE)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
-      <dt>name</dt>
-      <dd>string. name of the team subdirectory</dd>
+      <dt>...</dt>
+      <dd>strings. names of the team subdirectories.</dd>
       <dt>path</dt>
-      <dd>string. root path of the challenge. see <code><a href='new_challenge.html'>new_challenge</a></code></dd>
+      <dd>string. root path of the challenge. see <code><a href='new_challenge.html'>new_challenge</a></code>.</dd>
       <dt>submissions_dir</dt>
-      <dd>string. subdirectory of the submissions. see <code><a href='new_challenge.html'>new_challenge</a></code></dd>
+      <dd>string. subdirectory of the submissions. see <code><a href='new_challenge.html'>new_challenge</a></code>.</dd>
       <dt>quiet</dt>
       <dd>logical. deactivate text output.</dd>
       <dt>showWarnings</dt>
-      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code></dd>
+      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code>.</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
       <p><dl>
-The path of the created team is returned.
+The paths of the created teams are returned.
 </dl></p>
   
     </div>
@@ -68,7 +68,7 @@ The path of the created team is returned.
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Create a new team submissions folder in your challenge.</p>
+      <p>Create new teams submission folders in your challenge.</p>
   
     </div>
       </div>

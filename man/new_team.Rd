@@ -2,26 +2,26 @@
 % Please edit documentation in R/new.r
 \name{new_team}
 \alias{new_team}
-\title{Create a new team submissions folder in your challenge.}
+\title{Create new teams submission folders in your challenge.}
 \usage{
-new_team(name, path = ".", submissions_dir = "submissions", quiet = FALSE,
+new_team(..., path = ".", submissions_dir = "submissions", quiet = FALSE,
   showWarnings = FALSE)
 }
 \arguments{
-\item{name}{string. name of the team subdirectory}
+\item{...}{strings. names of the team subdirectories.}
 
-\item{path}{string. root path of the challenge. see \code{\link{new_challenge}}}
+\item{path}{string. root path of the challenge. see \code{\link{new_challenge}}.}
 
-\item{submissions_dir}{string. subdirectory of the submissions. see \code{\link{new_challenge}}}
+\item{submissions_dir}{string. subdirectory of the submissions. see \code{\link{new_challenge}}.}
 
 \item{quiet}{logical. deactivate text output.}
 
-\item{showWarnings}{logical. should the warnings on failure be shown? see \code{\link{dir.create}}}
+\item{showWarnings}{logical. should the warnings on failure be shown? see \code{\link{dir.create}}.}
 }
 \value{
-The path of the created team is returned.
+The paths of the created teams are returned.
 }
 \description{
-Create a new team submissions folder in your challenge.
+Create new teams submission folders in your challenge.
 }
 
