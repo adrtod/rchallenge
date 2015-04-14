@@ -94,13 +94,18 @@ Dropbox.</li>
 
 <p>The default challenge provided is a binary classification problem on the <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data">German Credit Card</a>) dataset.</p>
 
+<p>You can easily customize the challenge in two ways:</p>
+
+<ul>
+<li>A priori: by using the options of the <code>new_challenge</code> function.</li>
+<li>A posteriori: by replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.</li>
+</ul>
+
 <h3>Next steps</h3>
 
 <p>To complete the installation:</p>
 
 <ol>
-<li>Replace the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code>.</li>
-<li>Customize the template <code>challenge.rmd</code> as needed.</li>
 <li><p>Create and <a href="https://www.dropbox.com/en/help/19">share</a> subdirectories in <code>submissions</code> for each team:</p>
 
 <pre><code class="r">?new_team
@@ -117,7 +122,7 @@ publish(&quot;challenge.rmd&quot;)
 <li><p>Automate the updates of the webpage. On UNIX systems, you can setup the following 
 line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:</p>
 
-<pre><code>0 * * * * Rscript -e challenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)
+<pre><code>0 * * * * Rscript -e &quot;challenge::publish(&#39;~/Dropbox/mychallenge/challenge.rmd&#39;)&quot;
 </code></pre>
 
 <p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p></li>
