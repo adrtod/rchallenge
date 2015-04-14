@@ -257,7 +257,7 @@ print_readerr(read_err)
 ```
 
 ------------
-This challenge was built using the [rchallenge](http://github.com/adrtod/rchallenge) package.
+This challenge was built using the [rchallenge](http://adrtod.github.io/rchallenge/) package.
 
 The icons of this webpage come from [GLYPHICONS.com](http://glyphicons.com/) and are distributed under the
 [CC-BY](http://creativecommons.org/licenses/by/3.0/) licence.
