@@ -72,7 +72,7 @@ To complete the installation:
 6. Automate the updates of the webpage. On UNIX systems, you can setup the following 
     line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
     ```
-    0 * * * * Rscript -e challenge::publish("~/Dropbox/mychallenge/challenge.rmd")
+    0 * * * * Rscript -e "challenge::publish('~/Dropbox/mychallenge/challenge.rmd')""
     ```
     
     This will publish a html webpage in your `Dropbox/Public` folder every hour.
