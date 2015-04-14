@@ -49,27 +49,31 @@ You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` con
 
 The default challenge provided is a binary classification problem on the [German Credit Card](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)) dataset.
 
+You can easily customize the challenge in two ways:
+
+- A priori: by using the options of the `new_challenge` function.
+- A posteriori: by replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
+
+
 ### Next steps
 To complete the installation:
 
-1. Replace the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline`.
-2. Customize the template `challenge.rmd` as needed.
-3. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
+1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
     ```r
     ?new_team
     new_team("my_team")
     ```
     
-4. Publish the html page in `Dropbox/Public`:
+2. Publish the html page in `Dropbox/Public`:
     ```r
     ?publish
     publish("challenge.rmd")
     ```
     Prior to this, make sure you [enabled your Public Dropbox folder](http://www.dropbox.com/enable_public_folder).
 
-5. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
+3. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
     
-6. Automate the updates of the webpage. On UNIX systems, you can setup the following 
+4. Automate the updates of the webpage. On UNIX systems, you can setup the following 
     line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
     ```
     0 * * * * Rscript -e "challenge::publish('~/Dropbox/mychallenge/challenge.rmd')"
