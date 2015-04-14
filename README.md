@@ -105,7 +105,7 @@ Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrien
 
 Contributions from [Robin Genuer](http://robin.genuer.fr/).
 
-Design inspired by [Datascience.net](https://datascience.net/), a french platform
+Design inspired by [Datascience.net](https://www.datascience.net/), a french platform
 for datascience challenges.
 
 The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html).
