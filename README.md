@@ -111,11 +111,16 @@ for datascience challenges.
 The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html).
 
 ### To do list
+- [ ] common leaderboard for several metrics
 - [ ] do not take baseline into account in ranking
 - [ ] submit to CRAN
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
 ## Release notes
+### Version 1.0 (14-04-2015)
+- new name
+- changes in readme
+
 ### Version 0.2 (05-03-2015)
 - exported `new_team` function
 - suppressed dependency to caret package
