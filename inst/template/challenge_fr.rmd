@@ -269,7 +269,7 @@ print_readerr(read_err)
 ```
 
 ------------
-Ce challenge à été mis en place à l'aide du package [challenge](http://github.com/adrtod/challenge).
+Ce challenge à été mis en place à l'aide du package [rchallenge](http://github.com/adrtod/rchallenge).
 
 Les icônes proviennent du site [GLYPHICONS.com](http://glyphicons.com/) et sont distribuées sous la licence
 [CC-BY](http://creativecommons.org/licenses/by/3.0/).

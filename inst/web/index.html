@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. challenge 0.2</title>
+<title>Index. rchallenge 1.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">challenge 0.2</a>
+      <a class="brand" href="#">rchallenge 1.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -37,14 +37,14 @@
       
       <div class="row">
   <div class="span8">
-    <h1>challenge</h1>
+    <h1>rchallenge</h1>
 
-<p><a href="https://github.com/adrtod/challenge/"><img src="https://img.shields.io/badge/View_on-GitHub-yellow.svg" alt="GitHub sources"/></a>
-<a href="https://github.com/adrtod/challenge/releases/latest"><img src="https://img.shields.io/github/release/adrtod/challenge.svg" alt="GitHub release"/></a>
-<a href="https://travis-ci.org/adrtod/challenge"><img src="https://img.shields.io/travis/adrtod/challenge.svg" alt="Travis-CI Build Status"/></a>
+<p><a href="https://github.com/adrtod/rchallenge/"><img src="https://img.shields.io/badge/View_on-GitHub-yellow.svg" alt="GitHub sources"/></a>
+<a href="https://github.com/adrtod/rchallenge/releases/latest"><img src="https://img.shields.io/github/release/adrtod/rchallenge.svg" alt="GitHub release"/></a>
+<a href="https://travis-ci.org/adrtod/rchallenge"><img src="https://img.shields.io/travis/adrtod/rchallenge.svg" alt="Travis-CI Build Status"/></a>
 <a href="http://www.gnu.org/licenses/gpl-2.0.html"><img src="http://img.shields.io/badge/license-GPLv2-blue.svg" alt="GPLv2 License"/></a></p>
 
-<p>The <strong>challenge</strong> R package provides a simple datascience competition system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
+<p>The <strong>rchallenge</strong> R package provides a simple datascience competition system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
 and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:</p>
 
 <ul>
@@ -54,16 +54,16 @@ and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:<
 <li>provides a customizable template in english and french.</li>
 </ul>
 
-<p>Further documentation is available in the <a href="http://adrtod.github.io/challenge">Reference manual</a>.</p>
+<p>Further documentation is available in the <a href="http://adrtod.github.io/rchallenge">Reference manual</a>.</p>
 
-<p>Please report bugs, troubles or discussions on the <a href="https://github.com/adrtod/challenge/issues">Issues</a> tracker. Any contribution to improve the package is welcome.</p>
+<p>Please report bugs, troubles or discussions on the <a href="https://github.com/adrtod/rchallenge/issues">Issues</a> tracker. Any contribution to improve the package is welcome.</p>
 
 <h3>Installation</h3>
 
-<p>Install the latest version of the R package from <a href="https://github.com/adrtod/challenge">GitHub</a></p>
+<p>Install the latest version of the R package from <a href="https://github.com/adrtod/rchallenge">GitHub</a></p>
 
 <pre><code class="r"># install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;adrtod/challenge&quot;)
+devtools::install_github(&quot;adrtod/rchallenge&quot;)
 </code></pre>
 
 <h3>Getting started</h3>
@@ -71,7 +71,7 @@ devtools::install_github(&quot;adrtod/challenge&quot;)
 <p>Install a new challenge in <code>Dropbox/mychallenge</code></p>
 
 <pre><code class="r">setwd(&quot;~/Dropbox/mychallenge&quot;)
-library(challenge)
+library(rchallenge)
 ?new_challenge
 new_challenge()
 </code></pre>
@@ -122,7 +122,7 @@ publish(&quot;challenge.rmd&quot;)
 <li><p>Automate the updates of the webpage. On UNIX systems, you can setup the following 
 line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code>:</p>
 
-<pre><code>0 * * * * Rscript -e &quot;challenge::publish(&#39;~/Dropbox/mychallenge/challenge.rmd&#39;)&quot;
+<pre><code>0 * * * * Rscript -e &quot;rchallenge::publish(&#39;~/Dropbox/mychallenge/challenge.rmd&#39;)&quot;
 </code></pre>
 
 <p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p></li>
@@ -160,7 +160,7 @@ tasks using the functions available in our package:</p>
 <p>Design inspired by <a href="https://datascience.net/">Datascience.net</a>, a french platform
 for datascience challenges.</p>
 
-<p>The <strong>challenge</strong> package is licensed under the GPLv2 (<a href="http://www.gnu.org/licenses/gpl-2.0.html">http://www.gnu.org/licenses/gpl-2.0.html</a>).</p>
+<p>The <strong>rchallenge</strong> package is licensed under the GPLv2 (<a href="http://www.gnu.org/licenses/gpl-2.0.html">http://www.gnu.org/licenses/gpl-2.0.html</a>).</p>
 
 <h3>To do list</h3>
 

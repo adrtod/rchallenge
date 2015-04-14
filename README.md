@@ -1,11 +1,11 @@
-challenge
-=========
-[![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/challenge/)
-[![GitHub release](https://img.shields.io/github/release/adrtod/challenge.svg)](https://github.com/adrtod/challenge/releases/latest)
-[![Travis-CI Build Status](https://img.shields.io/travis/adrtod/challenge.svg)](https://travis-ci.org/adrtod/challenge)
+rchallenge
+==========
+[![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/rchallenge/)
+[![GitHub release](https://img.shields.io/github/release/adrtod/rchallenge.svg)](https://github.com/adrtod/rchallenge/releases/latest)
+[![Travis-CI Build Status](https://img.shields.io/travis/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
 [![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 
-The **challenge** R package provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
+The **rchallenge** R package provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/) with the following features:
 
 - no network configuration required.
@@ -13,22 +13,22 @@ and [Dropbox](https://www.dropbox.com/) with the following features:
 - can be easily installed on a personal computer.
 - provides a customizable template in english and french.
 
-Further documentation is available in the [Reference manual](http://adrtod.github.io/challenge).
+Further documentation is available in the [Reference manual](http://adrtod.github.io/rchallenge).
 
-Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/challenge/issues) tracker. Any contribution to improve the package is welcome.
+Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
 ### Installation
-Install the latest version of the R package from [GitHub](https://github.com/adrtod/challenge)
+Install the latest version of the R package from [GitHub](https://github.com/adrtod/rchallenge)
 ```r
 # install.packages("devtools")
-devtools::install_github("adrtod/challenge")
+devtools::install_github("adrtod/rchallenge")
 ```
 
 ### Getting started
 Install a new challenge in `Dropbox/mychallenge`
 ```r
 setwd("~/Dropbox/mychallenge")
-library(challenge)
+library(rchallenge)
 ?new_challenge
 new_challenge()
 ```
@@ -76,7 +76,7 @@ To complete the installation:
 4. Automate the updates of the webpage. On UNIX systems, you can setup the following 
     line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e`:
     ```
-    0 * * * * Rscript -e "challenge::publish('~/Dropbox/mychallenge/challenge.rmd')"
+    0 * * * * Rscript -e "rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')"
     ```
     
     This will publish a html webpage in your `Dropbox/Public` folder every hour.
@@ -108,7 +108,7 @@ Contributions from [Robin Genuer](http://robin.genuer.fr/).
 Design inspired by [Datascience.net](https://datascience.net/), a french platform
 for datascience challenges.
 
-The **challenge** package is licensed under the GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html).
+The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html).
 
 ### To do list
 - [ ] do not take baseline into account in ranking
