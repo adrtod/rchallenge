@@ -147,7 +147,7 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
     cat(step, '. Give the Dropbox public link to "Dropbox/Public/', template_html, '" to the participants.\n', sep='')
     step <- step + 1
     cat(step, '. Automate the updates of the webpage. On UNIX systems, you can setup the following line to your crontab using "crontab -e":\n', sep='')
-    cat('    0 * * * * Rscript -e "challenge::publish(\'', normalizePath(file.path(path, template)), '\', quiet=TRUE)"\n', sep='')
+    cat('    0 * * * * Rscript -e "rchallenge::publish(\'', normalizePath(file.path(path, template)), '\', quiet=TRUE)"\n', sep='')
   }
   
   invisible(normalizePath(path))
