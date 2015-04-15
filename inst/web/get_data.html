@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>data_split. rchallenge 1.0</title>
+<title>get_data. rchallenge 1.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -35,57 +35,53 @@
         
       </header>
       
-      <h1>Split a data.frame into training and test sets.</h1>
+      <h1>Get dataset value.</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>data_split(data&nbsp;=&nbsp;get_data("german"), varname&nbsp;=&nbsp;"Class", p_test&nbsp;=&nbsp;0.2, p_quiz&nbsp;=&nbsp;0.5)</div></pre>
+    <pre><div>get_data(name&nbsp;=&nbsp;"german", package&nbsp;=&nbsp;"rchallenge", envir&nbsp;=&nbsp;environment(), ...)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
-      <dt>data</dt>
-      <dd>data.frame</dd>
-      <dt>varname</dt>
-      <dd>string. output variable name</dd>
-      <dt>p_test</dt>
-      <dd>real. proportion of samples in the test set</dd>
-      <dt>p_quiz</dt>
-      <dd>real. proportion of samples from the test set in the quiz set</dd>
+      <dt>name</dt>
+      <dd>string. name of the dataset.</dd>
+      <dt>package</dt>
+      <dd>string. name of the package to look in for dataset.</dd>
+      <dt>envir</dt>
+      <dd>the environment where the data should be loaded.</dd>
+      <dt>...</dt>
+      <dd>additional arguments to be passed to <code><a href='http://www.inside-r.org/r-doc/utils/data'>data</a></code>.</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
       <p><dl>
-list with members
-  <dt>train</dt><dd>training set with output variable</dd></p>
-  
-      <p><dt>test</dt><dd>test set without output variable</dd></p>
-  
-      <p><dt>y_test</dt><dd>test set output variable</dd></p>
-  
-      <p><dt>ind_quiz</dt><dd>indices of quiz samples in the test set</dd></p>
-  
-      <p></dl></p>
+The value of the dataset
+</dl></p>
   
     </div>
 
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Split a data.frame into training and test sets.</p>
+      <p>Get dataset value.</p>
   
     </div>
       </div>
   <div class="span4">
     <!-- <ul>
-      <li>data_split</li>
+      <li>get_data</li>
     </ul>
     <ul>
       
     </ul> -->
       
+    <h2>See also</h2>
+    
+<code><a href='http://www.inside-r.org/r-doc/utils/data'>data</a></code>, <code><a href='http://www.inside-r.org/r-doc/base/base-package'>base</a></code>
+
         
   </div>
 </div>

@@ -4,7 +4,8 @@
 \alias{data_split}
 \title{Split a data.frame into training and test sets.}
 \usage{
-data_split(data = german, varname = "Class", p_test = 0.2, p_quiz = 0.5)
+data_split(data = get_data("german"), varname = "Class", p_test = 0.2,
+  p_quiz = 0.5)
 }
 \arguments{
 \item{data}{data.frame}

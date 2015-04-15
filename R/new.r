@@ -40,7 +40,7 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
                           email = "EDIT_EMAIL@DOMAIN.com",
                           date_start = format(Sys.Date(), "%d %b %Y"),
                           deadline = paste(Sys.Date()+90, "23:59:59"),
-                          data_list = data_split(german)) {
+                          data_list = data_split(get_data("german"))) {
   
   dir.create(path, recursive = recursive, showWarnings = showWarnings)
   if (!file.exists(path))

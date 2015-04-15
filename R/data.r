@@ -19,6 +19,19 @@
 #'   \url{https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)}
 "german"
 
+#' Get dataset value.
+#' @param name      string. name of the dataset.
+#' @param package   string. name of the package to look in for dataset.
+#' @param envir     the environment where the data should be loaded.
+#' @param ...       additional arguments to be passed to \code{\link[utils]{data}}.
+#' @return The value of the dataset
+#' @seealso \code{\link[utils]{data}}, \code{\link{base}}
+#' @export
+get_data <- function(name = "german", package = "rchallenge", 
+                     envir = environment(), ...) {
+  data(name, package = "rchallenge", envir = envir, ...)
+  return(get(name, envir = envir))
+}
 
 #' Split a data.frame into training and test sets.
 #' @param data    data.frame
@@ -31,7 +44,7 @@
 #'   \item{y_test}{test set output variable}
 #'   \item{ind_quiz}{indices of quiz samples in the test set}
 #' @export
-data_split <- function(data=german, varname="Class",
+data_split <- function(data=get_data("german"), varname="Class",
                        p_test = .2, p_quiz = .5) {
   ind_test <- data_partition(data[[varname]], p = p_test)
   

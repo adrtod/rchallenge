@@ -122,6 +122,8 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 ### To do list
 - [ ] common leaderboard for several metrics
 - [ ] do not take baseline into account in ranking
+- [ ] examples, tests, vignettes
+- [ ] test windows
 - [ ] submit to CRAN
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 

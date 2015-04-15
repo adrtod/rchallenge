@@ -12,7 +12,7 @@ new_challenge(path = ".", recursive = FALSE, overwrite = recursive,
   title = "Challenge", author = "", date = "",
   email = "EDIT_EMAIL@DOMAIN.com", date_start = format(Sys.Date(),
   "\%d \%b \%Y"), deadline = paste(Sys.Date() + 90, "23:59:59"),
-  data_list = data_split(german))
+  data_list = data_split(get_data("german")))
 }
 \arguments{
 \item{path}{string. install path of the challenge (should be somewhere in your Dropbox)}
