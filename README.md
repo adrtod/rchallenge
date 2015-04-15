@@ -103,7 +103,7 @@ Name | Description
 `plot_activity()` | Plots a chart of activity per team.
 
 ### Examples
-- My own challenge given to Master students at the University of Bordeaux: see [this page](http://goo.gl/KRuYn0) (in french).
+- My own challenge given to Master students at the University of Bordeaux: see [this page](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french).
 
 - A classification and variable selection problem given by Robin Genuer (Bordeaux): see [this page](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french).
 
