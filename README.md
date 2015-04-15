@@ -96,7 +96,7 @@ Name | Description
 ------------- | -------------
 `store_new_submissions()` | Reads submitted files and save new files in the history.
 `print_readerr()` | Displays any read errors.
-`compute_metrics()` | Calculates of scores for each submission in the history.
+`compute_metrics()` | Calculates the scores for each submission in the history.
 `get_best()` | Gets the highest score per team.
 `print_leaderboard()` | Displays the leaderboard.
 `plot_history()` | Plots a chart of score evolution per team.
