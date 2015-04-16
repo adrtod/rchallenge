@@ -19,22 +19,22 @@ Please report bugs, troubles or discussions on the [Issues](https://github.com/a
 
 ### Installation
 Install the latest version of the R package from [GitHub](https://github.com/adrtod/rchallenge)
-```r
+```
 # install.packages("devtools")
 devtools::install_github("adrtod/rchallenge")
 ```
 
 ### Getting started
 Install a new challenge in `Dropbox/mychallenge`
-```r
+<div class="highlight highlight-r"><pre>
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
-?new_challenge
+<a href=http://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
 new_challenge()
-```
+</pre></div>
 
 or for a french version
-```r
+```
 new_challenge(template="challenge_fr.rmd")
 ```
 
@@ -60,16 +60,16 @@ You can easily customize the challenge in two ways:
 To complete the installation:
 
 1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
-    ```r
-    ?new_team
+    <pre>
+    <a href=http://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
     new_team("team_foo", "team_bar")
-    ```
-    
+    </pre>
+
 2. Publish the html page in `Dropbox/Public`:
-    ```r
-    ?publish
+    <pre>
+    <a href=http://adrtod.github.io/rchallenge/publish.html>?publish</a>
     publish("challenge.rmd")
-    ```
+    </pre>
     Prior to this, make sure you [enabled your Public Dropbox folder](http://www.dropbox.com/enable_public_folder).
 
 3. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
