@@ -62,7 +62,7 @@ and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:<
 
 <p>Install the latest version of the R package from <a href="https://github.com/adrtod/rchallenge">GitHub</a></p>
 
-<pre><code class="r"># install.packages(&quot;devtools&quot;)
+<pre><code># install.packages(&quot;devtools&quot;)
 devtools::install_github(&quot;adrtod/rchallenge&quot;)
 </code></pre>
 
@@ -70,15 +70,16 @@ devtools::install_github(&quot;adrtod/rchallenge&quot;)
 
 <p>Install a new challenge in <code>Dropbox/mychallenge</code></p>
 
-<pre><code class="r">setwd(&quot;~/Dropbox/mychallenge&quot;)
+<pre>
+setwd("~/Dropbox/mychallenge")
 library(rchallenge)
-?new_challenge
+<a href=http://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
 new_challenge()
-</code></pre>
+</pre>
 
 <p>or for a french version</p>
 
-<pre><code class="r">new_challenge(template=&quot;challenge_fr.rmd&quot;)
+<pre><code>new_challenge(template=&quot;challenge_fr.rmd&quot;)
 </code></pre>
 
 <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:</p>
@@ -123,14 +124,16 @@ new_challenge()
 <ol>
 <li><p>Create and <a href="https://www.dropbox.com/en/help/19">share</a> subdirectories in <code>submissions</code> for each team:</p>
 
-<pre><code class="r">?new_team
-new_team(&quot;team_foo&quot;, &quot;team_bar&quot;)
-</code></pre></li>
+<pre>
+<a href=http://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
+new_team("team_foo", "team_bar")
+</pre></li>
 <li><p>Publish the html page in <code>Dropbox/Public</code>:</p>
 
-<pre><code class="r">?publish
-publish(&quot;challenge.rmd&quot;)
-</code></pre>
+<pre>
+<a href=http://adrtod.github.io/rchallenge/publish.html>?publish</a>
+publish("challenge.rmd")
+</pre>
 
 <p>Prior to this, make sure you <a href="http://www.dropbox.com/enable_public_folder">enabled your Public Dropbox folder</a>.</p></li>
 <li><p>Give the <a href="https://www.dropbox.com/en/help/274">public link</a> to your <code>Dropbox/Public/challenge.html</code> file to the participants.</p></li>
