@@ -52,7 +52,7 @@ The default challenge provided is a binary classification problem on the [German
 
 You can easily customize the challenge in two ways:
 
-- *During the creation of the challenge*: by using the options of the `new_challenge` function.
+- *During the creation of the challenge*: by using the options of the [`new_challenge`](http://adrtod.github.io/rchallenge/new_challenge.html) function.
 - *After the creation of the challenge*: by manually replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
 
 
@@ -94,13 +94,13 @@ tasks using the functions available in our package:
 
 Name | Description
 ------------- | -------------
-`store_new_submissions()` | Reads submitted files and save new files in the history.
-`print_readerr()` | Displays any read errors.
-`compute_metrics()` | Calculates the scores for each submission in the history.
-`get_best()` | Gets the highest score per team.
-`print_leaderboard()` | Displays the leaderboard.
-`plot_history()` | Plots a chart of score evolution per team.
-`plot_activity()` | Plots a chart of activity per team.
+[`store_new_submissions`](http://adrtod.github.io/rchallenge/store_new_submissions.html) | Reads submitted files and save new files in the history.
+[`print_readerr`](http://adrtod.github.io/rchallenge/print_readerr.html) | Displays any read errors.
+[`compute_metrics`](http://adrtod.github.io/rchallenge/compute_metrics.html) | Calculates the scores for each submission in the history.
+[`get_best`](http://adrtod.github.io/rchallenge/get_best.html) | Gets the highest score per team.
+[`print_leaderboard`](http://adrtod.github.io/rchallenge/print_leaderboard.html) | Displays the leaderboard.
+[`plot_history`](http://adrtod.github.io/rchallenge/plot_history.html) | Plots a chart of score evolution per team.
+[`plot_activity`](http://adrtod.github.io/rchallenge/plot_activity.html) | Plots a chart of activity per team.
 
 ### Examples
 - My own challenge given to Master students at the University of Bordeaux: see [this page](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french).
