@@ -103,9 +103,9 @@ Name | Description
 [`plot_activity`](http://adrtod.github.io/rchallenge/plot_activity.html) | Plots a chart of activity per team.
 
 ### Examples
-- My own challenge given to Master students at the University of Bordeaux: see [this page](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french).
+- [My own challenge](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french) given to Master students at the University of Bordeaux.
 
-- A classification and variable selection problem given by Robin Genuer (Bordeaux): see [this page](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french).
+- [A classification and variable selection problem](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french) given by Robin Genuer (Bordeaux).
 
 Please [contact me](https://sites.google.com/site/adrientodeschini) to add yours.
 
