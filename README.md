@@ -26,12 +26,12 @@ devtools::install_github("adrtod/rchallenge")
 
 ### Getting started
 Install a new challenge in `Dropbox/mychallenge`
-<div class="highlight highlight-r"><pre>
+<pre>
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
 <a href=http://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
 new_challenge()
-</pre></div>
+</pre>
 
 or for a french version
 ```
