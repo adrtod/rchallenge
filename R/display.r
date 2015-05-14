@@ -92,12 +92,12 @@ print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
 #' @param path string. folder of search.
 #' @return the path to the file.
 #' @export
-glyphicon <- function(name, path = system.file('glyphicons', package = 'challenge')) {
+glyphicon <- function(name, path = system.file('glyphicons', package = 'rchallenge')) {
   file <- list.files(path, pattern = paste("glyphicons_[0-9]+_", name, ".png", sep=""))
   if (length(file)==0)
     file <- list.files(path, pattern = paste("glyphicons_social_[0-9]+_", name, ".png", sep=""))
   if (length(file)==0)
-    stop("glyphicon", name, "not found")
+    stop("glyphicon ", name, " not found")
   return(file.path(path, file))
 }
 
