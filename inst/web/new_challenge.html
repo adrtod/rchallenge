@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>new_challenge. rchallenge 1.0</title>
+<title>new_challenge. rchallenge 1.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">rchallenge 1.0</a>
+      <a class="brand" href="#">rchallenge 1.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -40,29 +40,31 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>new_challenge(path&nbsp;=&nbsp;".", recursive&nbsp;=&nbsp;FALSE, overwrite&nbsp;=&nbsp;recursive, quiet&nbsp;=&nbsp;FALSE, showWarnings&nbsp;=&nbsp;FALSE, template&nbsp;=&nbsp;"challenge.rmd", data_dir&nbsp;=&nbsp;"data", submissions_dir&nbsp;=&nbsp;"submissions", hist_dir&nbsp;=&nbsp;"history", install_data&nbsp;=&nbsp;TRUE, baseline&nbsp;=&nbsp;"baseline", add_baseline&nbsp;=&nbsp;install_data, clear_history&nbsp;=&nbsp;overwrite, title&nbsp;=&nbsp;"Challenge", author&nbsp;=&nbsp;"", date&nbsp;=&nbsp;"", email&nbsp;=&nbsp;"EDIT_EMAIL@DOMAIN.com", date_start&nbsp;=&nbsp;format(Sys.Date(), "%d %b %Y"), deadline&nbsp;=&nbsp;paste(Sys.Date() + 90, "23:59:59"), data_list&nbsp;=&nbsp;data_split(get_data("german")))</div></pre>
+    <pre><div>new_challenge(path&nbsp;=&nbsp;".", out_rmdfile&nbsp;=&nbsp;"challenge.rmd", recursive&nbsp;=&nbsp;FALSE, overwrite&nbsp;=&nbsp;recursive, quiet&nbsp;=&nbsp;FALSE, showWarnings&nbsp;=&nbsp;FALSE, template&nbsp;=&nbsp;c("en", "fr"), data_dir&nbsp;=&nbsp;"data", submissions_dir&nbsp;=&nbsp;"submissions", hist_dir&nbsp;=&nbsp;"history", install_data&nbsp;=&nbsp;TRUE, baseline&nbsp;=&nbsp;"baseline", add_baseline&nbsp;=&nbsp;install_data, clear_history&nbsp;=&nbsp;overwrite, title&nbsp;=&nbsp;"Challenge", author&nbsp;=&nbsp;"", date&nbsp;=&nbsp;"", email&nbsp;=&nbsp;"EDIT_EMAIL@DOMAIN.com", date_start&nbsp;=&nbsp;format(Sys.Date(), "%d %b %Y"), deadline&nbsp;=&nbsp;paste(Sys.Date() + 90, "23:59:59"), data_list&nbsp;=&nbsp;data_split(get_data("german")))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>path</dt>
-      <dd>string. install path of the challenge (should be somewhere in your Dropbox)</dd>
+      <dd>string. install path of the challenge (should be somewhere in your Dropbox).</dd>
+      <dt>out_rmdfile</dt>
+      <dd>string. name of the output R Markdown file.</dd>
       <dt>recursive</dt>
-      <dd>logical. should elements of the path other than the last be created? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code></dd>
+      <dd>logical. should elements of the path other than the last be created? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code>.</dd>
       <dt>overwrite</dt>
-      <dd>logical. should existing destination files be overwritten? see <code><a href='http://www.inside-r.org/r-doc/base/files'>file.copy</a></code></dd>
+      <dd>logical. should existing destination files be overwritten? see <code><a href='http://www.inside-r.org/r-doc/base/files'>file.copy</a></code>.</dd>
       <dt>quiet</dt>
       <dd>logical. deactivate text output.</dd>
       <dt>showWarnings</dt>
-      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code></dd>
+      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code>.</dd>
       <dt>template</dt>
       <dd>string. name of the template R Markdown script to be installed.
-two scripts are available: <code>"challenge.rmd"</code> (english) and<code>"challenge_fr.rmd"</code> (french)</dd>
+Two choices are available: <code>"en"</code> (english) and <code>"fr"</code> (french).</dd>
       <dt>data_dir</dt>
-      <dd>string. subdirectory of the data</dd>
+      <dd>string. subdirectory of the data.</dd>
       <dt>submissions_dir</dt>
-      <dd>string. subdirectory of the submissions. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code></dd>
+      <dd>string. subdirectory of the submissions. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code>.</dd>
       <dt>hist_dir</dt>
-      <dd>string. subdirectory of the history. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code></dd>
+      <dd>string. subdirectory of the history. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code>.</dd>
       <dt>install_data</dt>
       <dd>logical. activate installation of the data files of the template challenge.</dd>
       <dt>baseline</dt>
@@ -103,7 +105,48 @@ The path of the created challenge is returned.
       <p>Install a new challenge.</p>
   
     </div>
-      </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>path &lt;- tempdir()
+wd &lt;- setwd(path)
+# english version
+new_challenge()
+</div>
+<div class='output'>New challenge installed in: &quot;/tmp/RtmpMCREyh&quot;
+Next steps to complete the installation:
+1. Replace the data files in the &quot;data&quot; subdirectory.
+2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
+3. Customize the template R Markdown file &quot;challenge.rmd&quot; as needed.
+4. Create and share subdirectories in &quot;submissions&quot; for each team:
+    rchallenge::new_team(&quot;team_foo&quot;, &quot;team_bar&quot;, path=&quot;.&quot;, submissions_dir=&quot;submissions&quot;)
+5. Publish the html page in your &quot;Dropbox/Public&quot; folder:
+    rchallenge::publish(&quot;./challenge.rmd&quot;)
+6. Give the Dropbox public link to &quot;Dropbox/Public/challenge.html&quot; to the participants.
+7. Automate the updates of the webpage.
+   On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
+    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpMCREyh/challenge.rmd&quot;)&#39;
+</div>
+<div class='input'># french version
+new_challenge(template = &quot;fr&quot;)
+</div>
+<div class='output'>New challenge installed in: &quot;/tmp/RtmpMCREyh&quot;
+Next steps to complete the installation:
+1. Replace the data files in the &quot;data&quot; subdirectory.
+2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
+3. Customize the template R Markdown file &quot;challenge.rmd&quot; as needed.
+4. Create and share subdirectories in &quot;submissions&quot; for each team:
+    rchallenge::new_team(&quot;team_foo&quot;, &quot;team_bar&quot;, path=&quot;.&quot;, submissions_dir=&quot;submissions&quot;)
+5. Publish the html page in your &quot;Dropbox/Public&quot; folder:
+    rchallenge::publish(&quot;./challenge.rmd&quot;)
+6. Give the Dropbox public link to &quot;Dropbox/Public/challenge.html&quot; to the participants.
+7. Automate the updates of the webpage.
+   On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
+    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpMCREyh/challenge.rmd&quot;)&#39;
+</div>
+<div class='input'>setwd(wd)
+unlink(path)
+</div></pre>
+  </div>
   <div class="span4">
     <!-- <ul>
       <li>new_challenge</li>

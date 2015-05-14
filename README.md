@@ -35,7 +35,7 @@ new_challenge()
 
 or for a french version
 ```
-new_challenge(template="challenge_fr.rmd")
+new_challenge(template="fr")
 ```
 
 You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` containing:
@@ -128,6 +128,13 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
 ## Release notes
+### Version 1.1 (14-05-2015)
+- added `out_rmdfile` argument to `new_challenge`
+- changed `template` argument to `c("en", "fr")`
+- fixed search of templates
+- fixed `get_data` helper function
+- added examples to doc
+
 ### Version 1.0 (15-04-2015)
 - new name
 - changes in readme

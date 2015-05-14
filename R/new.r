@@ -1,19 +1,20 @@
 
 #' Install a new challenge.
-#' @param path         string. install path of the challenge (should be somewhere in your Dropbox)
-#' @param recursive    logical. should elements of the path other than the last be created? see \code{\link{dir.create}}
-#' @param overwrite    logical. should existing destination files be overwritten? see \code{\link{file.copy}}
+#' @param path         string. install path of the challenge (should be somewhere in your Dropbox).
+#' @param out_rmdfile  string. name of the output R Markdown file.
+#' @param recursive    logical. should elements of the path other than the last be created? see \code{\link{dir.create}}.
+#' @param overwrite    logical. should existing destination files be overwritten? see \code{\link{file.copy}}.
 #' @param quiet        logical. deactivate text output.
-#' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}
-#' @param data_dir     string. subdirectory of the data
-#' @param submissions_dir string. subdirectory of the submissions. see \code{\link{store_new_submissions}}
-#' @param hist_dir     string. subdirectory of the history. see \code{\link{store_new_submissions}}
+#' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}.
+#' @param data_dir     string. subdirectory of the data.
+#' @param submissions_dir string. subdirectory of the submissions. see \code{\link{store_new_submissions}}.
+#' @param hist_dir     string. subdirectory of the history. see \code{\link{store_new_submissions}}.
 #' @param install_data logical. activate installation of the data files of the template challenge.
 #' @param baseline     string. name of the team considered as the baseline.
 #' @param add_baseline logical. activate installation of baseline submission files of the template challenge.
 #' @param clear_history logical. activate deletion of the existing history folder.
 #' @param template     string. name of the template R Markdown script to be installed.
-#'   two scripts are available: \code{"challenge.rmd"} (english) and\code{"challenge_fr.rmd"} (french)
+#'   Two choices are available: \code{"en"} (english) and \code{"fr"} (french).
 #' @param title        string. title displayed on the webpage.
 #' @param author       string. author displayed on the webpage.
 #' @param date         string. date displayed on the webpage.
@@ -24,9 +25,19 @@
 #'   \code{ind_quiz} such as returned by the \code{\link{data_split}} function.
 #' @return The path of the created challenge is returned.
 #' @export
-new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive, 
+#' @examples
+#' path <- tempdir()
+#' wd <- setwd(path)
+#' # english version
+#' new_challenge()
+#' # french version
+#' new_challenge(template = "fr")
+#' setwd(wd)
+#' unlink(path)
+new_challenge <- function(path = ".", out_rmdfile = "challenge.rmd", 
+                          recursive = FALSE, overwrite = recursive, 
                           quiet = FALSE, showWarnings = FALSE,
-                          template = "challenge.rmd",
+                          template = c("en", "fr"),
                           data_dir = "data", 
                           submissions_dir = "submissions",
                           hist_dir = "history", 
@@ -45,6 +56,12 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
   dir.create(path, recursive = recursive, showWarnings = showWarnings)
   if (!file.exists(path))
     stop("could not create directory ", path)
+  
+  stopifnot(is.character(out_rmdfile), length(out_rmdfile)==1, nzchar(out_rmdfile))
+  
+  stopifnot(is.character(template), nzchar(template))
+  template = match.arg(template, c("en", "fr"))
+  # currently "challenge_en.rmd" and "challenge_fr.rmd" are available
   
   dir.create(file.path(path, "data"), recursive = recursive, showWarnings = showWarnings)
   
@@ -105,8 +122,9 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
               data_dir = data_dir, submissions_dir = submissions_dir,
               hist_dir = hist_dir)
   
-  tpl = system.file('template', template, package = 'challenge')
-  if (nchar(tpl)==0)
+  # template files are in "template/challenge_<template>.rmd"
+  tpl = system.file('template', paste0("challenge_", template, ".rmd"), package = 'rchallenge')
+  if (!nzchar(tpl))
     stop("could not find template ", template)
   
   text = readLines(tpl)
@@ -118,9 +136,9 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
   
   writeLines(text, tmpfile)
   
-  file.copy(tmpfile, file.path(path, template), overwrite=overwrite)
+  file.copy(tmpfile, file.path(path, out_rmdfile), overwrite=overwrite)
   
-  unlink(tmpfile)  
+  unlink(tmpfile)
   
   if (!quiet) {
     cat('New challenge installed in: "', normalizePath(path), '"\n', sep='')
@@ -135,26 +153,26 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
       cat(step, '. Replace the baseline predictions in "', file.path(submissions_dir, baseline),'".\n', sep='')
     }
     step <- step + 1
-    cat(step, '. Customize the template "', template, '" as needed.\n', sep='')
+    cat(step, '. Customize the template R Markdown file "', out_rmdfile, '" as needed.\n', sep='')
     step <- step + 1
     cat(step, '. Create and share subdirectories in "', submissions_dir, '" for each team:\n', sep='')
     cat('    rchallenge::new_team("team_foo", "team_bar", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
     step <- step + 1
     cat(step, '. Publish the html page in your "Dropbox/Public" folder:\n', sep='')
-    cat('    rchallenge::publish("', file.path(path, template), '")\n', sep='')
+    cat('    rchallenge::publish("', file.path(path, out_rmdfile), '")\n', sep='')
     step <- step + 1
-    template_html <- paste0(sub("([^.]+)\\.[[:alnum:]]+$", "\\1", basename(template)), ".html")
+    template_html <- paste0(sub("([^.]+)\\.[[:alnum:]]+$", "\\1", basename(out_rmdfile)), ".html")
     cat(step, '. Give the Dropbox public link to "Dropbox/Public/', template_html, '" to the participants.\n', sep='')
     step <- step + 1
     cat(step, '. Automate the updates of the webpage.\n', sep='')
     if (.Platform$OS.type == "unix") {
       cat('   On Unix systems, you can setup the following line to your crontab using "crontab -e":\n', sep='')
-      cat('    0 * * * * Rscript -e \'rchallenge::publish("', normalizePath(file.path(path, template)), '")\'\n', sep='')
+      cat('    0 * * * * Rscript -e \'rchallenge::publish("', normalizePath(file.path(path, out_rmdfile)), '")\'\n', sep='')
     }
     if (.Platform$OS.type == "windows") {
       cat('   On Windows systems, you can use the Task Scheduler to create a new task with a "Start a program" action with the settings:')
       cat('   - Program/script: Rscript.exe\n')
-      cat('   - options: -e rchallenge::publish(\'', normalizePath(file.path(path, template)), '\')\n', sep='')
+      cat('   - options: -e rchallenge::publish(\'', normalizePath(file.path(path, out_rmdfile)), '\')\n', sep='')
     }
   }
   
@@ -169,6 +187,13 @@ new_challenge <- function(path = ".", recursive = FALSE, overwrite = recursive,
 #' @param showWarnings logical. should the warnings on failure be shown? see \code{\link{dir.create}}.
 #' @return The paths of the created teams are returned.
 #' @export
+#' @examples
+#' path <- tempdir()
+#' wd <- setwd(path)
+#' new_challenge()
+#' new_team("team_foo", "team_bar")
+#' setwd(wd)
+#' unlink(path)
 new_team <- function(..., path = ".", submissions_dir = "submissions", 
                      quiet = FALSE, showWarnings = FALSE) {
   names <- c(...)
@@ -196,6 +221,15 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #' @export
 #' @seealso \code{\link[rmarkdown]{render}}
 #' @importFrom rmarkdown render
+#' @examples
+#' path <- tempdir()
+#' wd <- setwd(path)
+#' new_challenge()
+#' outdir = tempdir()
+#' publish(output_dir = outdir)
+#' unlink(outdir)
+#' setwd(wd)
+#' unlink(path)
 publish <- function(input="challenge.rmd", output_file = NULL, output_dir = file.path("~/Dropbox/Public"), quiet = FALSE) {
   wd <- getwd()
   setwd(dirname(input))

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. rchallenge 1.0</title>
+<title>Index. rchallenge 1.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">rchallenge 1.0</a>
+      <a class="brand" href="#">rchallenge 1.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -79,7 +79,7 @@ new_challenge()
 
 <p>or for a french version</p>
 
-<pre><code>new_challenge(template=&quot;challenge_fr.rmd&quot;)
+<pre><code>new_challenge(template=&quot;fr&quot;)
 </code></pre>
 
 <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:</p>
@@ -227,6 +227,16 @@ for datascience challenges.</p>
 </ul>
 
 <h2>Release notes</h2>
+
+<h3>Version 1.1 (14-05-2015)</h3>
+
+<ul>
+<li>added <code>out_rmdfile</code> argument to <code>new_challenge</code></li>
+<li>changed <code>template</code> argument to <code>c(&quot;en&quot;, &quot;fr&quot;)</code></li>
+<li>fixed search of templates</li>
+<li>fixed <code>get_data</code> helper function</li>
+<li>added examples to doc</li>
+</ul>
 
 <h3>Version 1.0 (15-04-2015)</h3>
 

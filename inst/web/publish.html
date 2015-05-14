@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>publish. rchallenge 1.0</title>
+<title>publish. rchallenge 1.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">rchallenge 1.0</a>
+      <a class="brand" href="#">rchallenge 1.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -72,7 +72,55 @@ The compiled document is written into the output file, and the path
       <p>Publish your challenge R Markdown script to a html page.</p>
   
     </div>
-      </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>path &lt;- tempdir()
+wd &lt;- setwd(path)
+new_challenge()
+</div>
+<div class='output'>New challenge installed in: &quot;/tmp/RtmpMCREyh&quot;
+Next steps to complete the installation:
+1. Replace the data files in the &quot;data&quot; subdirectory.
+2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
+3. Customize the template R Markdown file &quot;challenge.rmd&quot; as needed.
+4. Create and share subdirectories in &quot;submissions&quot; for each team:
+    rchallenge::new_team(&quot;team_foo&quot;, &quot;team_bar&quot;, path=&quot;.&quot;, submissions_dir=&quot;submissions&quot;)
+5. Publish the html page in your &quot;Dropbox/Public&quot; folder:
+    rchallenge::publish(&quot;./challenge.rmd&quot;)
+6. Give the Dropbox public link to &quot;Dropbox/Public/challenge.html&quot; to the participants.
+7. Automate the updates of the webpage.
+   On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
+    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpMCREyh/challenge.rmd&quot;)&#39;
+</div>
+<div class='input'>outdir = tempdir()
+publish(output_dir = outdir)
+</div>
+<strong class='message'>
+
+processing file: challenge.rmd</strong>
+<div class='output'>  |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   3%
+  ordinary text without R code
+
+  |                                                                         |....                                                             |   6%
+label: unnamed-chunk-1 (with options) 
+List of 3
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+ $ warning: logi FALSE
+
+  |                                                                         |......                                                           |   9%
+   inline R code fragments
+
+</div>
+<strong class='message'>Quitting from lines 85-123 (challenge.rmd) </strong>
+<strong class='error'>Error in glyphicon(&quot;inbox_out&quot;): glyphiconinbox_outnot found</strong>
+<div class='output'>
+</div>
+<div class='input'>unlink(outdir)
+setwd(wd)
+unlink(path)
+</div></pre>
+  </div>
   <div class="span4">
     <!-- <ul>
       <li>publish</li>

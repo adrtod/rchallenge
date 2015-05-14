@@ -20,16 +20,16 @@
 "german"
 
 #' Get dataset value.
-#' @param name      string. name of the dataset.
-#' @param package   string. name of the package to look in for dataset.
-#' @param envir     the environment where the data should be loaded.
-#' @param ...       additional arguments to be passed to \code{\link[utils]{data}}.
+#' @param name    string. name of the dataset.
+#' @param package string. name of the package to look in for dataset.
+#' @param envir   the environment where the data should be loaded.
+#' @param ...     additional arguments to be passed to \code{\link[utils]{data}}.
 #' @return The value of the dataset
 #' @seealso \code{\link[utils]{data}}, \code{\link{base}}
 #' @export
 get_data <- function(name = "german", package = "rchallenge", 
                      envir = environment(), ...) {
-  data(name, package = "rchallenge", envir = envir, ...)
+  data(list = name, package = package, envir = envir, ...)
   return(get(name, envir = envir))
 }
 
@@ -109,7 +109,7 @@ data_partition <- function (y, p = 0.5, groups = min(5, length(y)))
   for (i in seq(along = sampleNums)) {
     if (sampleNums[i] > 0) {
       trainData <- sort(sample(dataInd[y = which(y == 
-                                                 groupNames[i])], sampleNums[i]))
+                                                   groupNames[i])], sampleNums[i]))
       out <- append(out, trainData)
     }
   }
