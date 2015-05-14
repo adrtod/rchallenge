@@ -68,7 +68,7 @@ To complete the installation:
 2. Publish the html page in `Dropbox/Public`:
     <pre>
     <a href=http://adrtod.github.io/rchallenge/publish.html>?publish</a>
-    publish("challenge.rmd")
+    publish()
     </pre>
     Prior to this, make sure you [enabled your Public Dropbox folder](http://www.dropbox.com/enable_public_folder).
 
