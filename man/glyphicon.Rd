@@ -4,7 +4,7 @@
 \alias{glyphicon}
 \title{Path to glyphicon image file.}
 \usage{
-glyphicon(name, path = system.file("glyphicons", package = "challenge"))
+glyphicon(name, path = system.file("glyphicons", package = "rchallenge"))
 }
 \arguments{
 \item{name}{string. name of the glyphicon.}
