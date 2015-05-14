@@ -35,7 +35,7 @@ new_challenge()
 
 or for a french version
 ```
-new_challenge(template="fr")
+new_challenge(template = "fr")
 ```
 
 You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` containing:
