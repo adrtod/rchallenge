@@ -12,7 +12,6 @@ Depends:
     R (>= 3.1.2)
 Imports:
     rmarkdown,
-    knitr,
-    RColorBrewer
+    knitr
 License: GPL-2
 LazyData: true
