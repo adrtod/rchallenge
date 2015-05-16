@@ -40,7 +40,7 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>publish(input&nbsp;=&nbsp;"challenge.rmd", output_file&nbsp;=&nbsp;NULL, output_dir&nbsp;=&nbsp;file.path("~/Dropbox/Public"), quiet&nbsp;=&nbsp;FALSE)</div></pre>
+    <pre><div>publish(input&nbsp;=&nbsp;"challenge.rmd", output_file&nbsp;=&nbsp;NULL, output_dir&nbsp;=&nbsp;file.path("~/Dropbox/Public"), quiet&nbsp;=&nbsp;FALSE, ...)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -54,6 +54,8 @@ of the input file is chosen.</dd>
 so that the rendered page can easily be shared on the web with Dropbox.</dd>
       <dt>quiet</dt>
       <dd>logical. deactivate text output.</dd>
+      <dt>...</dt>
+      <dd>further arguments to pass to <code><a href='http://www.inside-r.org/packages/cran/rmarkdown/docs/render'>render</a></code>.</dd>
     </dl>
     
     <div class="Value">
@@ -78,7 +80,7 @@ The compiled document is written into the output file, and the path
 wd &lt;- setwd(path)
 new_challenge()
 </div>
-<div class='output'>New challenge installed in: &quot;/tmp/RtmpIj7JpR&quot;
+<div class='output'>New challenge installed in: &quot;/tmp/RtmpXTfT5J&quot;
 Next steps to complete the installation:
 1. Replace the data files in the &quot;data&quot; subdirectory.
 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -90,10 +92,10 @@ Next steps to complete the installation:
 6. Give the Dropbox public link to &quot;Dropbox/Public/challenge.html&quot; to the participants.
 7. Automate the updates of the webpage.
    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpIj7JpR/challenge.rmd&quot;)&#39;
+    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpXTfT5J/challenge.rmd&quot;)&#39;
 </div>
 <div class='input'>outdir = tempdir()
-publish(output_dir = outdir)
+publish(output_dir = outdir, output_options = list(self_contained = FALSE))
 </div>
 <strong class='message'>
 
@@ -251,11 +253,11 @@ List of 1
 </div>
 <strong class='message'>output file: challenge.knit.md
 </strong>
-<div class='output'>/usr/lib/rstudio/bin/pandoc/pandoc challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /tmp/RtmpIj7JpR/challenge.html --smart --email-obfuscation none --self-contained --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpIj7JpR/rmarkdown-str167171e92f73.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango 
+<div class='output'>/usr/lib/rstudio/bin/pandoc/pandoc challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output /tmp/RtmpXTfT5J/challenge.html --smart --email-obfuscation none --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpXTfT5J/rmarkdown-str2d2666bf85b3.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango 
 </div>
 <strong class='message'>
-Output created: /tmp/RtmpIj7JpR/challenge.html</strong>
-<div class='output'>Next step: give the Dropbox public link to &quot;/tmp/RtmpIj7JpR/challenge.html&quot; to the participants.
+Output created: /tmp/RtmpXTfT5J/challenge.html</strong>
+<div class='output'>Next step: give the Dropbox public link to &quot;/tmp/RtmpXTfT5J/challenge.html&quot; to the participants.
 </div>
 <div class='input'>unlink(outdir)
 setwd(wd)

@@ -216,6 +216,7 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #' @param output_dir string. output directory. default=\code{"~/Dropbox/Public"} 
 #'   so that the rendered page can easily be shared on the web with Dropbox.
 #' @param quiet      logical. deactivate text output.
+#' @param ...        further arguments to pass to \code{\link[rmarkdown]{render}}.
 #' @return The compiled document is written into the output file, and the path 
 #'   of the output file is returned.
 #' @export
@@ -226,14 +227,17 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #' wd <- setwd(path)
 #' new_challenge()
 #' outdir = tempdir()
-#' publish(output_dir = outdir)
+#' publish(output_dir = outdir, output_options = list(self_contained = FALSE))
 #' unlink(outdir)
 #' setwd(wd)
 #' unlink(path)
-publish <- function(input="challenge.rmd", output_file = NULL, output_dir = file.path("~/Dropbox/Public"), quiet = FALSE) {
+publish <- function(input="challenge.rmd", output_file = NULL, 
+                    output_dir = file.path("~/Dropbox/Public"), 
+                    quiet = FALSE, ...) {
   wd <- getwd()
   setwd(dirname(input))
-  out <- rmarkdown::render(basename(input), output_file = output_file, output_dir = output_dir, quiet = quiet)
+  out <- rmarkdown::render(input = basename(input), output_file = output_file,
+                           output_dir = output_dir, quiet = quiet, ...)
   setwd(wd)
   
   if (!quiet)

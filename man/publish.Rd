@@ -5,7 +5,7 @@
 \title{Publish your challenge R Markdown script to a html page.}
 \usage{
 publish(input = "challenge.rmd", output_file = NULL,
-  output_dir = file.path("~/Dropbox/Public"), quiet = FALSE)
+  output_dir = file.path("~/Dropbox/Public"), quiet = FALSE, ...)
 }
 \arguments{
 \item{input}{string. name of the R Markdown input file}
@@ -17,6 +17,8 @@ of the input file is chosen.}
 so that the rendered page can easily be shared on the web with Dropbox.}
 
 \item{quiet}{logical. deactivate text output.}
+
+\item{...}{further arguments to pass to \code{\link[rmarkdown]{render}}.}
 }
 \value{
 The compiled document is written into the output file, and the path
@@ -30,7 +32,7 @@ path <- tempdir()
 wd <- setwd(path)
 new_challenge()
 outdir = tempdir()
-publish(output_dir = outdir)
+publish(output_dir = outdir, output_options = list(self_contained = FALSE))
 unlink(outdir)
 setwd(wd)
 unlink(path)
