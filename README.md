@@ -128,7 +128,7 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
 ## Release notes
-### Version 1.1 (14-05-2015)
+### Version 1.1 (16-05-2015)
 - added `out_rmdfile` argument to `new_challenge`
 - changed `template` argument to `c("en", "fr")`
 - fixed bugs
