@@ -52,7 +52,7 @@ Name | Description
 `history` | Directory where the submissions history is stored.
 
 
-The default challenge provided is a binary classification problem on the [German Credit Card]( https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data) ) dataset.
+The default challenge provided is a binary classification problem on the [German Credit Card](http://goo.gl/ndMhNw) dataset.
 
 You can easily customize the challenge in two ways:
 
