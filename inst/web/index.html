@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. rchallenge 1.1</title>
+<title>Index. rchallenge 1.1.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -20,7 +20,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">rchallenge 1.1</a>
+      <a class="brand" href="#">rchallenge 1.1.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -60,7 +60,13 @@ and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:<
 
 <h3>Installation</h3>
 
-<p>Install the latest version of the R package from <a href="https://github.com/adrtod/rchallenge">GitHub</a></p>
+<p>Install the R package from <a href="http://cran.r-project.org/web/packages/rchallenge/">CRAN</a> repositories</p>
+
+<pre><code># install.packages(&quot;devtools&quot;)
+install.packages(&quot;adrtod/rchallenge&quot;)
+</code></pre>
+
+<p>or install the latest development version from <a href="https://github.com/adrtod/rchallenge">GitHub</a></p>
 
 <pre><code># install.packages(&quot;devtools&quot;)
 devtools::install_github(&quot;adrtod/rchallenge&quot;)
@@ -222,7 +228,6 @@ for datascience challenges.</p>
 <li>[ ] do not take baseline into account in ranking</li>
 <li>[ ] examples, tests, vignettes</li>
 <li>[ ] test windows</li>
-<li>[ ] submit to CRAN</li>
 <li>[ ] interactive webpage using <a href="http://shiny.rstudio.com/">Shiny</a></li>
 </ul>
 
@@ -235,6 +240,7 @@ for datascience challenges.</p>
 <li>changed <code>template</code> argument to <code>c(&quot;en&quot;, &quot;fr&quot;)</code></li>
 <li>fixed bugs</li>
 <li>added examples to doc</li>
+<li>available on CRAN</li>
 </ul>
 
 <h3>Version 1.0 (15-04-2015)</h3>

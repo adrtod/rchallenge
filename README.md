@@ -18,7 +18,12 @@ Further documentation is available in the [Reference manual](http://adrtod.githu
 Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
 ### Installation
-Install the latest version of the R package from [GitHub](https://github.com/adrtod/rchallenge)
+Install the R package from [CRAN](http://cran.r-project.org/web/packages/rchallenge/) repositories
+```
+# install.packages("devtools")
+install.packages("adrtod/rchallenge")
+```
+or install the latest development version from [GitHub](https://github.com/adrtod/rchallenge)
 ```
 # install.packages("devtools")
 devtools::install_github("adrtod/rchallenge")
@@ -124,7 +129,6 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 - [ ] do not take baseline into account in ranking
 - [ ] examples, tests, vignettes
 - [ ] test windows
-- [ ] submit to CRAN
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
 ## Release notes
@@ -133,6 +137,7 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 - changed `template` argument to `c("en", "fr")`
 - fixed bugs
 - added examples to doc
+- available on CRAN
 
 ### Version 1.0 (15-04-2015)
 - new name
