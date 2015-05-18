@@ -20,7 +20,6 @@ Please report bugs, troubles or discussions on the [Issues](https://github.com/a
 ### Installation
 Install the R package from [CRAN](http://cran.r-project.org/web/packages/rchallenge/) repositories
 ```
-# install.packages("devtools")
 install.packages("adrtod/rchallenge")
 ```
 or install the latest development version from [GitHub](https://github.com/adrtod/rchallenge)
