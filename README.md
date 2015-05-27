@@ -127,6 +127,8 @@ The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licen
 - [ ] common leaderboard for several metrics
 - [ ] do not take baseline into account in ranking
 - [ ] examples, tests, vignettes
+- [ ] interactive plots with `ggvis`
+- [ ] check arguments
 - [ ] test windows
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
 
