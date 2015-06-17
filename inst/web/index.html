@@ -14,6 +14,18 @@
 <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
   </head>
 
   <body>
@@ -41,7 +53,7 @@
 
 <p><a href="https://github.com/adrtod/rchallenge/"><img src="https://img.shields.io/badge/View_on-GitHub-yellow.svg" alt="GitHub sources"/></a>
 <a href="https://github.com/adrtod/rchallenge/releases/latest"><img src="https://img.shields.io/github/release/adrtod/rchallenge.svg" alt="GitHub release"/></a>
-<a href="https://travis-ci.org/adrtod/rchallenge"><img src="https://img.shields.io/travis/adrtod/rchallenge.svg" alt="Travis-CI Build Status"/></a>
+<a href="https://travis-ci.org/adrtod/rchallenge"><img src="https://travis-ci.org/adrtod/rchallenge.svg" alt="Build Status"/></a>
 <a href="http://www.gnu.org/licenses/gpl-2.0.html"><img src="http://img.shields.io/badge/license-GPLv2-blue.svg" alt="GPLv2 License"/></a></p>
 
 <p>The <strong>rchallenge</strong> R package provides a simple datascience competition system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
@@ -226,6 +238,8 @@ for datascience challenges.</p>
 <li>[ ] common leaderboard for several metrics</li>
 <li>[ ] do not take baseline into account in ranking</li>
 <li>[ ] examples, tests, vignettes</li>
+<li>[ ] interactive plots with <code>ggvis</code></li>
+<li>[ ] check arguments</li>
 <li>[ ] test windows</li>
 <li>[ ] interactive webpage using <a href="http://shiny.rstudio.com/">Shiny</a></li>
 </ul>
@@ -362,10 +376,10 @@ for datascience challenges.</p>
         
     <h2>Dependencies</h2>
     <ul>
-      <li><strong>Depends</strong>: </li>
+      
       <li><strong>Imports</strong>: rmarkdown, knitr</li>
-      <li><strong>Suggests</strong>: </li>
-      <li><strong>Extends</strong>: </li>
+      
+      
     </ul>
     <h2>Authors</h2>
     <ul>
