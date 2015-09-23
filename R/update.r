@@ -55,7 +55,7 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
       
       # skip if is after deadline
       if (date>deadline)
-        read_err[[team]][[files_submissions[j]]] <- "submitted after the deadline"
+        read_err[[team]][[files_submissions[j]]]$message <- "submitted after the deadline"
       
       # skip if existing in history
       if (any(basename(files_hist) == file))
