@@ -91,10 +91,9 @@ store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "h
 #'   contains one subdirectory per team.
 #' @param metrics  named list of functions. Each function in the list computes
 #'   a performance criterion and is defined as: \code{function(y_pred, y_test)}
-#' @param y_test    character or numeric vector. the test set output.
-#' @param ind_quiz logical vector with the same length as \code{y_test}. \code{ind_quiz[i]=TRUE}
-#'   if \code{y_test[i]} in the quiz subset.
-#' @param read_fun  function that reads a submission file and returns a vector of predictions.
+#' @param y_test   character or numeric vector. the test set output.
+#' @param ind_quiz indices of \code{y_test} in the quiz subset.
+#' @param read_fun function that reads a submission file and returns a vector of predictions.
 #'   
 #' @export
 #' @return \code{compute_metrics} returns a named list with one named member per team.
