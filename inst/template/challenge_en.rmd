@@ -12,23 +12,29 @@ output:
 Welcome to the challenge webpage!
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Load the rcallenge package
 library(rchallenge)
 
-data_dir = "@DATA_DIR@"
-submissions_dir = "@SUBMISSIONS_DIR@"
-hist_dir = "@HIST_DIR@"
-email = "@EMAIL@"
-date_start = "@DATE_START@"
-deadline = as.POSIXct("@DEADLINE@")
-baseline = "@BASELINE@"
+# General settings
+data_dir = "@DATA_DIR@" # directory of the data
+submissions_dir = "@SUBMISSIONS_DIR@" # directory of the submissions
+hist_dir = "@HIST_DIR@" # directory where the submissions history is stored
+email = "@EMAIL@" # email adress of the challenge administrator
+date_start = "@DATE_START@" # starting date of the challenge
+deadline = as.POSIXct("@DEADLINE@") # deadline of the challenge
+baseline = "@BASELINE@" # name of the team considered as the baseline
 
+# Load the data
 load(file.path(data_dir, "data_train.rda"))
 load(file.path(data_dir, "data_test.rda"))
 load(file.path(data_dir, "y_test.rda"))
 load(file.path(data_dir, "ind_quiz.rda"))
 
-test_or_quiz <- ifelse(Sys.time()<deadline, "quiz", "test")
+# Toggle test or quiz dataset for performance evaluation
+test_or_quiz <- ifelse(Sys.time()<deadline, "quiz", "test") # comment to disable quiz
+# test_or_quiz <- "test" # uncomment to disable quiz
 
+# Define custom functions that compute performance criterions
 error_rate <- function(y_pred, y_test) {
   FP = (y_pred == "Good") & (y_test == "Bad")
   FN = (y_pred == "Bad") & (y_test == "Good")
@@ -43,6 +49,8 @@ average_cost <- function(y_pred, y_test) {
 
 metrics = list(error = error_rate, cost = average_cost)
 
+# Define custom function that reads a submission file and throws errors or 
+# warnings if it is not valid.
 read_pred <- function(file, n = length(y_test)) {
   y_pred <- scan(file, what = "character")
   y_pred <- factor(y_pred, levels = c("Bad", "Good"))
@@ -53,18 +61,22 @@ read_pred <- function(file, n = length(y_test)) {
   return(y_pred)
 }
 
+# Store new submission files.
 read_err = store_new_submissions(submissions_dir, hist_dir, deadline = deadline, 
                                  valid_fun = read_pred)
 
+# Compute metrics of the submissions in the history.
 history = compute_metrics(hist_dir, metrics, y_test, ind_quiz, 
                           read_fun = read_pred)
 
+# Load the current best submissions results
 if (file.exists(file.path(hist_dir, "best.rda")))
   load(file.path(hist_dir, "best.rda"))
 
 n_team = 0
 n_submissions = 0
 
+# Update the current best submissions results
 if (length(history)>0) {
   best_new = get_best(history, metrics=names(metrics), test_name=test_or_quiz)
  
