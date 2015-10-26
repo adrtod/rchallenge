@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>rchallenge. rchallenge 1.1.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">rchallenge 1.1.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>rchallenge: A Simple Datascience Challenge System</h1>
+
+<div class="row">
+  <div class="span8">
+        
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>A simple datascience challenge system using R Markdown and Dropbox.
+It requires no network configuration, does not depend on external platforms
+like e.g. Kaggle and can be easily installed on a personal computer.</p>
+  
+    </div>
+
+    <div class="Getting started">
+      <h2>Getting started</h2>
+
+      <p></p>
+  
+      <p>Install a new challenge in <code>Dropbox/mychallenge</code>:</p>
+  
+      <p><code>setwd("~/Dropbox/mychallenge")</code></p>
+  
+      <p><code>library(rchallenge)</code></p>
+  
+      <p><code><a href='new_challenge.html'>new_challenge</a>()</code></p>
+  
+      <p>or for a french version:</p>
+  
+      <p><code><a href='new_challenge.html'>new_challenge</a>(template = "fr")</code></p>
+  
+      <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:
+<ul>
+<li> <code>challenge.rmd</code>: Template R Markdown script for the webpage.
+ </li>
+<li> <code>data</code>: Directory of the data containing <code>data_train</code> and <code>data_test</code> datasets.
+ </li>
+<li> <code>submissions</code>: Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
+ </li>
+<li> <code>history</code>: Directory where the submissions history is stored.
+</li>
+</ul></p>
+  
+      <p>The default challenge provided is a binary classification problem on the <a href = 'http://goo.gl/ndMhNw'>German Credit Card</a> dataset.</p>
+  
+      <p>You can easily customize the challenge in two ways:</p>
+  
+      <p><ul>
+<li> <em>During the creation of the challenge</em>: by using the options of the <code><a href='new_challenge.html'>new_challenge</a></code> function.
+ </li>
+<li> <em>After the creation of the challenge</em>: by manually replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.
+</li>
+</ul></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Next steps">
+      <h2>Next steps</h2>
+
+      <p></p>
+  
+      <p>To complete the installation:
+<ol>
+<li> Create and <a href = 'https://www.dropbox.com/en/help/19'>share</a> subdirectories in <code>submissions</code> for each team:</p>
+  
+      <p><code><a href='new_team.html'>new_team</a>("team_foo", "team_bar")</code></p>
+  
+      <p></li>
+<li> Publish the html page in <code>Dropbox/Public</code>:
+   <code><a href='publish.html'>publish</a>()</code>
+   Prior to this, make sure you <a href = 'http://www.dropbox.com/enable_public_folder'>enabled your Public Dropbox folder</a>.</p>
+  
+      <p></li>
+<li> Give the <a href = 'https://www.dropbox.com/en/help/274'>public link</a> to your <code>Dropbox/Public/challenge.html</code> file to the participants.</p>
+  
+      <p></li>
+<li> Automate the updates of the webpage.
+</li>
+</ol></p>
+  
+      <p>For the step 4, on <strong>Unix</strong> systems, you can setup the following
+line to your <a href = 'http://en.wikipedia.org/wiki/Cron'>crontab</a> using <code>crontab -e</code> (mind the quotes):</p>
+  
+      <p><code>0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'</code></p>
+  
+      <p>This will publish a html webpage in your <code>Dropbox/Public</code> folder every hour.</p>
+  
+      <p>On <strong>Windows</strong> systems, you can use the <a href = 'http://windows.microsoft.com/en-us/windows/schedule-task'>Task Scheduler</a> to create a new task with a <em>Start a program</em> action with the settings (mind the quotes):</p>
+  
+      <p><ul>
+<li> <em>Program/script</em>: <code>Rscript.exe</code>
+ </li>
+<li> <em>options</em>: <code>-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')</code>
+</li>
+</ul></p>
+  
+      <p>From now on, a fully autonomous challenge system is set up requiring no further
+administration. With each update, the program automatically performs the following
+tasks using the functions available in our package:</p>
+  
+      <p><ul>
+<li> <code><a href='store_new_submissions.html'>store_new_submissions</a></code>: Reads submitted files and save new files in the history.
+ </li>
+<li> <code><a href='print_readerr.html'>print_readerr</a></code>: Displays any read errors.
+ </li>
+<li> <code><a href='compute_metrics.html'>compute_metrics</a></code>: Calculates the scores for each submission in the history.
+ </li>
+<li> <code><a href='get_best.html'>get_best</a></code>: Gets the highest score per team.
+ </li>
+<li> <code><a href='print_leaderboard.html'>print_leaderboard</a></code>: Displays the leaderboard.
+ </li>
+<li> <code><a href='plot_history.html'>plot_history</a></code>: Plots a chart of score evolution per team.
+ </li>
+<li> <code><a href='plot_activity.html'>plot_activity</a></code>: Plots a chart of activity per team.
+</li>
+</ul></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Examples">
+      <h2>Examples</h2>
+
+      <p></p>
+  
+      <p><ul>
+<li> <a href = 'https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html'>My own challenge</a> (in french) given to Master students at the University of Bordeaux.
+ </li>
+<li> <a href = 'https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html'>A classification and variable selection problem</a> (in french) given by Robin Genuer (Bordeaux).
+</li>
+</ul></p>
+  
+      <p>Please <a href = 'https://sites.google.com/site/adrientodeschini'>contact me</a> to add yours.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>rchallenge</li><li>rchallenge-package</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46355251-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+      </footer>
+    </div>
+  </body>
+</html>

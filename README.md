@@ -29,7 +29,7 @@ devtools::install_github("adrtod/rchallenge")
 ```
 
 ### Getting started
-Install a new challenge in `Dropbox/mychallenge`
+Install a new challenge in `Dropbox/mychallenge`:
 <pre>
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
@@ -37,7 +37,7 @@ library(rchallenge)
 new_challenge()
 </pre>
 
-or for a french version
+or for a french version:
 ```
 new_challenge(template = "fr")
 ```
