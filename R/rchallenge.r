@@ -1,9 +1,3 @@
-#' rchallenge: A Simple Datascience Challenge System
-#'
-#' A simple datascience challenge system using R Markdown and Dropbox.
-#' It requires no network configuration, does not depend on external platforms 
-#' like e.g. Kaggle and can be easily installed on a personal computer.
-#' 
 #' @section Getting started:
 #' Install a new challenge in \code{Dropbox/mychallenge}:
 #' 
@@ -84,7 +78,4 @@
 #' }
 #' 
 #' Please \href{https://sites.google.com/site/adrientodeschini}{contact me} to add yours.
-#'
-#' @docType package
-#' @name rchallenge
-NULL
+"_PACKAGE"
