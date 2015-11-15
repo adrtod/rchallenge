@@ -16,6 +16,9 @@
 #' @param bty,fg,col.axis,col.lab graphical parameters. see \code{\link[graphics]{par}}.
 #' @param text.col the color used for the legend text. see \code{\link[graphics]{legend}}.
 #' 
+#' @importFrom graphics plot axis.POSIXct axTicks abline lines points legend
+#' @importFrom grDevices palette adjustcolor
+#' @importFrom stats dnorm density
 #' @export
 #' @return \code{NULL}
 plot_history <- function(history, metric, test_name="quiz", baseline="baseline", 
@@ -93,6 +96,9 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
 #' 
 #' @return \code{NULL}
 #' 
+#' @importFrom graphics plot axis.POSIXct polygon legend
+#' @importFrom grDevices palette adjustcolor
+#' @importFrom stats dnorm density
 #' @export
 #' @seealso \code{\link[stats]{density}}
 plot_activity <- function(history, baseline="baseline", col=1:length(history), 

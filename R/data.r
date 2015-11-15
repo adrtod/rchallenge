@@ -26,6 +26,7 @@
 #' @param ...     additional arguments to be passed to \code{\link[utils]{data}}.
 #' @return The value of the dataset
 #' @seealso \code{\link[utils]{data}}, \code{\link{base}}
+#' @importFrom utils data
 #' @export
 get_data <- function(name = "german", package = "rchallenge", 
                      envir = environment(), ...) {
@@ -84,6 +85,7 @@ data_split <- function(data=get_data("german"), varname="Class",
 #' @return A vector of row position integers corresponding to the training data
 #' @author adapted from \code{\link[caret]{createDataPartition}} function by Max Kuhn
 #' @references \url{http://caret.r-forge.r-project.org/splitting.html}
+#' @importFrom stats quantile
 #' @keywords utilities, internal
 data_partition <- function (y, p = 0.5, groups = min(5, length(y)))
 {
