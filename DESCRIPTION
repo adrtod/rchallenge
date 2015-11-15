@@ -4,7 +4,7 @@ Version: 1.1.1
 Authors@R: c(person("Adrien", "Todeschini", email = "adrien.todeschini@gmail.com",role=c("aut", "cre")),
     person("Robin", "Genuer", email = "robin.genuer@isped.u-bordeaux2.fr",role=c("ctb")))
 Description: A simple datascience challenge system using R Markdown and Dropbox.
-    It requires no network configuration, does not depend on external platforms 
+    It requires no network configuration, does not depend on external platforms
     like e.g. Kaggle and can be easily installed on a personal computer.
 URL: http://adrtod.github.io/rchallenge
 BugReports: https://github.com/adrtod/rchallenge/issues
@@ -16,3 +16,4 @@ Imports:
 SystemRequirements: pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc
 License: GPL-2
 LazyData: true
+RoxygenNote: 5.0.1
