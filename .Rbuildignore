@@ -6,3 +6,4 @@
 ^cran-comments\.md$
 ^inst/staticdocs$
 ^inst/web$
+^revdep$
