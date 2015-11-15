@@ -1,7 +1,7 @@
 rchallenge
 ==========
 [![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/rchallenge/)
-[![GitHub release](https://img.shields.io/github/release/adrtod/rchallenge.svg)](https://github.com/adrtod/rchallenge/releases/latest)
+<!--[![GitHub release](https://img.shields.io/github/release/adrtod/rchallenge.svg)](https://github.com/adrtod/rchallenge/releases/latest)-->
 [![Build Status](https://travis-ci.org/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
 [![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 
