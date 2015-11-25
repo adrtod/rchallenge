@@ -3,7 +3,9 @@ This is a resubmission. In this version I have:
 
 * changed datascience to "data science" in the description and title
 
-* provided URLs for Dropbox and Kaggle in agle brackets in the description
+* provided URLs for Dropbox and Kaggle in angle brackets in the description
+
+* added some documentation
 
 ## Test environments
 * ubuntu 14.04 64-bit, R 3.2.2
@@ -21,7 +23,7 @@ Possibly mis-spelled words in DESCRIPTION:
   Dropbox (6:74)
   Kaggle (8:15)
   
-  These words are correct.
+  These words are brands.
 
 ## Existing problems
 
