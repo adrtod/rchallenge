@@ -1,3 +1,10 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* changed datascience to "data science" in the description and title
+
+* provided URLs for Dropbox and Kaggle in agle brackets in the description
+
 ## Test environments
 * ubuntu 14.04 64-bit, R 3.2.2
 * win-builder (release)
@@ -11,10 +18,8 @@ There was one NOTE:
 Maintainer: ‘Adrien Todeschini <adrien.todeschini@gmail.com>’
 
 Possibly mis-spelled words in DESCRIPTION:
-  Datascience (2:17)
-  Dropbox (6:73)
+  Dropbox (6:74)
   Kaggle (8:15)
-  datascience (6:23)
   
   These words are correct.
 
@@ -23,9 +28,9 @@ Possibly mis-spelled words in DESCRIPTION:
 <https://cran.rstudio.com/web/checks/check_results_rchallenge.html>
 
 * I have added the importFrom instructions to NAMESPACE
+
 * I am unable to solve dependency problem on pandoc for these platforms:
   r-patched-solaris-sparc, r-patched-solaris-x86, r-release-osx-x86_64-mavericks
 
 ## Downstream dependencies
 There are currently no downstream dependencies for this package.
-
