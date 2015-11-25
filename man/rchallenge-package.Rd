@@ -6,10 +6,27 @@
 \alias{rchallenge-package}
 \title{A Simple Data Science Challenge System}
 \description{
-A simple data science challenge system using R Markdown and \href{https://www.dropbox.com/}{Dropbox}.
+A simple data science challenge system using R Markdown and Dropbox <https://www.dropbox.com/>.
 It requires no network configuration, does not depend on external platforms
-like e.g. \href{https://www.kaggle.com/}{Kaggle} and can be easily installed on a personal computer.
+like e.g. Kaggle <https://www.kaggle.com/> and can be easily installed on a personal computer.
 }
+\section{Installation}{
+
+Install the R package from \href{https://cran.r-project.org/package=rchallenge}{CRAN} repositories
+
+\code{install.packages("rchallenge")}
+
+or install the latest development version from \href{https://github.com/adrtod/rchallenge}{GitHub}
+
+\code{# install.packages("devtools")}
+
+\code{devtools::install_github("adrtod/rchallenge")}
+
+A recent version of \href{http://johnmacfarlane.net/pandoc/}{pandoc} (>= 1.12.3) is also required. 
+See the \href{https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md}{pandoc installation instructions} 
+for details on installing pandoc for your platform.
+}
+
 \section{Getting started}{
 
 Install a new challenge in \code{Dropbox/mychallenge}:
@@ -55,21 +72,7 @@ To complete the installation:
 
  \item Give the \href{https://www.dropbox.com/en/help/274}{public link} to your \code{Dropbox/Public/challenge.html} file to the participants.
  
- \item Automate the updates of the webpage.
-}
-
-For the step 4, on \strong{Unix} systems, you can setup the following 
-line to your \href{https://en.wikipedia.org/wiki/Cron}{crontab} using \code{crontab -e} (mind the quotes):
-
-\code{0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'}
-
-This will publish a html webpage in your \code{Dropbox/Public} folder every hour.
-
-On \strong{Windows} systems, you can use the \href{http://windows.microsoft.com/en-us/windows/schedule-task}{Task Scheduler} to create a new task with a \emph{Start a program} action with the settings (mind the quotes):
-  
-\itemize{ 
- \item \emph{Program/script}: \code{Rscript.exe}
- \item \emph{options}: \code{-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')}
+ \item Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 }
 
 From now on, a fully autonomous challenge system is set up requiring no further 
@@ -84,6 +87,37 @@ tasks using the functions available in our package:
  \item \code{\link{print_leaderboard}}: Displays the leaderboard.
  \item \code{\link{plot_history}}: Plots a chart of score evolution per team.
  \item \code{\link{plot_activity}}: Plots a chart of activity per team.
+}
+}
+
+\section{Automating the updates on \strong{Unix/OSX}}{
+
+
+For the step 4, you can setup the following line to your \href{https://en.wikipedia.org/wiki/Cron}{crontab} 
+using \code{crontab -e} (mind the quotes):
+
+\code{0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'}
+
+This will publish a html webpage in your \code{Dropbox/Public} folder every hour.
+
+You might have to add the path to Rscript and pandoc at the beginning of your crontab:
+ 
+\code{PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin}
+
+Depending on your system or pandoc version you might also have to explicitly add the encoding option to the command:
+
+\code{0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd", encoding = "utf8")'}
+}
+
+\section{Automating the updates on \strong{Windows}}{
+
+
+You can use the \href{http://windows.microsoft.com/en-us/windows/schedule-task}{Task Scheduler} 
+to create a new task with a \emph{Start a program} action with the settings (mind the quotes):
+  
+\itemize{ 
+ \item \emph{Program/script}: \code{Rscript.exe}
+ \item \emph{options}: \code{-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')}
 }
 }
 

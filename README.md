@@ -16,7 +16,7 @@ Further documentation is available in the [Reference manual](https://adrtod.gith
 
 Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
-### Installation
+## Installation
 Install the R package from [CRAN](https://cran.r-project.org/package=rchallenge) repositories
 ```
 install.packages("rchallenge")
@@ -27,7 +27,9 @@ or install the latest development version from [GitHub](https://github.com/adrto
 devtools::install_github("adrtod/rchallenge")
 ```
 
-### Getting started
+A recent version of [pandoc](http://johnmacfarlane.net/pandoc/) (>= 1.12.3) is also required. See the [pandoc installation instructions](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md) for details on installing pandoc for your platform.
+
+## Getting started
 Install a new challenge in `Dropbox/mychallenge`:
 <pre>
 setwd("~/Dropbox/mychallenge")
@@ -58,8 +60,7 @@ You can easily customize the challenge in two ways:
 - *During the creation of the challenge*: by using the options of the [`new_challenge`](https://adrtod.github.io/rchallenge/new_challenge.html) function.
 - *After the creation of the challenge*: by manually replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
 
-
-### Next steps
+## Next steps
 To complete the installation:
 
 1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
@@ -77,20 +78,8 @@ To complete the installation:
 
 3. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
     
-4. Automate the updates of the webpage.
+4. Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 
-For the step 4, on **Unix** systems, you can setup the following 
-line to your [crontab](https://en.wikipedia.org/wiki/Cron) using `crontab -e` (mind the quotes):
-```
-0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
-```
-This will publish a html webpage in your `Dropbox/Public` folder every hour.
-
-On **Windows** systems, you can use the [Task Scheduler](http://windows.microsoft.com/en-us/windows/schedule-task) to create a new task with a *Start a program* action with the settings (mind the quotes):
-
-- *Program/script*: `Rscript.exe`
-- *options*: `-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')`
-    
 From now on, a fully autonomous challenge system is set up requiring no further 
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:
@@ -105,14 +94,41 @@ Name | Description
 [`plot_history`](https://adrtod.github.io/rchallenge/plot_history.html) | Plots a chart of score evolution per team.
 [`plot_activity`](https://adrtod.github.io/rchallenge/plot_activity.html) | Plots a chart of activity per team.
 
-### Examples
+## Automating the updates
+
+### Unix/OSX
+
+You can setup the following line to your [crontab](https://en.wikipedia.org/wiki/Cron) using `crontab -e` (mind the quotes):
+```
+0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
+```
+This will publish a html webpage in your `Dropbox/Public` folder every hour.
+
+You might have to add the path to Rscript and pandoc at the beginning of your crontab:
+```
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+```
+
+Depending on your system or pandoc version you might also have to explicitly add the encoding option to the command:
+```
+0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd", encoding = "utf8")'
+```
+
+### Windows
+
+You can use the [Task Scheduler](http://windows.microsoft.com/en-us/windows/schedule-task) to create a new task with a *Start a program* action with the settings (mind the quotes):
+
+- *Program/script*: `Rscript.exe`
+- *options*: `-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')`
+
+## Examples
 - [My own challenge](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french) given to Master students at the University of Bordeaux.
 
 - [A classification and variable selection problem](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french) given by Robin Genuer (Bordeaux).
 
 Please [contact me](https://sites.google.com/site/adrientodeschini/) to add yours.
 
-### Copyright
+## Copyright
 Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini/).
 
 Contributions from [Robin Genuer](http://robin.genuer.fr/).
@@ -122,7 +138,7 @@ for data science challenges.
 
 The **rchallenge** package is licensed under the GPLv2 (https://www.gnu.org/licenses/gpl-2.0.html).
 
-### To do list
+## To do list
 - [ ] common leaderboard for several metrics
 - [ ] do not take baseline into account in ranking
 - [ ] examples, tests, vignettes
