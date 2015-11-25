@@ -1,23 +1,23 @@
 rchallenge
 ==========
-[![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/rchallenge/)
+[![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/rchallenge)
 [![Build Status](https://travis-ci.org/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
-[![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![GPLv2 License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
-The **rchallenge** R package provides a simple datascience competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
+The **rchallenge** R package provides a simple data science competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/) with the following features:
 
 - No network configuration required.
-- Does not depend on external platforms like e.g. Kaggle.
+- Does not depend on external platforms like e.g. [Kaggle](https://www.kaggle.com/).
 - Can be easily installed on a personal computer.
 - Provides a customizable template in english and french.
 
-Further documentation is available in the [Reference manual](http://adrtod.github.io/rchallenge).
+Further documentation is available in the [Reference manual](https://adrtod.github.io/rchallenge).
 
 Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
 ### Installation
-Install the R package from [CRAN](http://cran.r-project.org/web/packages/rchallenge/) repositories
+Install the R package from [CRAN](https://cran.r-project.org/package=rchallenge) repositories
 ```
 install.packages("rchallenge")
 ```
@@ -32,7 +32,7 @@ Install a new challenge in `Dropbox/mychallenge`:
 <pre>
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
-<a href=http://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
+<a href=https://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
 new_challenge()
 </pre>
 
@@ -51,11 +51,11 @@ Name | Description
 `history` | Directory where the submissions history is stored.
 
 
-The default challenge provided is a binary classification problem on the [German Credit Card](http://goo.gl/ndMhNw) dataset.
+The default challenge provided is a binary classification problem on the [German Credit Card](https://goo.gl/ndMhNw) dataset.
 
 You can easily customize the challenge in two ways:
 
-- *During the creation of the challenge*: by using the options of the [`new_challenge`](http://adrtod.github.io/rchallenge/new_challenge.html) function.
+- *During the creation of the challenge*: by using the options of the [`new_challenge`](https://adrtod.github.io/rchallenge/new_challenge.html) function.
 - *After the creation of the challenge*: by manually replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
 
 
@@ -64,23 +64,23 @@ To complete the installation:
 
 1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
     <pre>
-    <a href=http://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
+    <a href=https://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
     new_team("team_foo", "team_bar")
     </pre>
 
 2. Publish the html page in `Dropbox/Public`:
     <pre>
-    <a href=http://adrtod.github.io/rchallenge/publish.html>?publish</a>
+    <a href=https://adrtod.github.io/rchallenge/publish.html>?publish</a>
     publish()
     </pre>
-    Prior to this, make sure you [enabled your Public Dropbox folder](http://www.dropbox.com/enable_public_folder).
+    Prior to this, make sure you [enabled your Public Dropbox folder](https://www.dropbox.com/enable_public_folder).
 
 3. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
     
 4. Automate the updates of the webpage.
 
 For the step 4, on **Unix** systems, you can setup the following 
-line to your [crontab](http://en.wikipedia.org/wiki/Cron) using `crontab -e` (mind the quotes):
+line to your [crontab](https://en.wikipedia.org/wiki/Cron) using `crontab -e` (mind the quotes):
 ```
 0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
 ```
@@ -97,30 +97,30 @@ tasks using the functions available in our package:
 
 Name | Description
 ------------- | -------------
-[`store_new_submissions`](http://adrtod.github.io/rchallenge/store_new_submissions.html) | Reads submitted files and save new files in the history.
-[`print_readerr`](http://adrtod.github.io/rchallenge/print_readerr.html) | Displays any read errors.
-[`compute_metrics`](http://adrtod.github.io/rchallenge/compute_metrics.html) | Calculates the scores for each submission in the history.
-[`get_best`](http://adrtod.github.io/rchallenge/get_best.html) | Gets the highest score per team.
-[`print_leaderboard`](http://adrtod.github.io/rchallenge/print_leaderboard.html) | Displays the leaderboard.
-[`plot_history`](http://adrtod.github.io/rchallenge/plot_history.html) | Plots a chart of score evolution per team.
-[`plot_activity`](http://adrtod.github.io/rchallenge/plot_activity.html) | Plots a chart of activity per team.
+[`store_new_submissions`](https://adrtod.github.io/rchallenge/store_new_submissions.html) | Reads submitted files and save new files in the history.
+[`print_readerr`](https://adrtod.github.io/rchallenge/print_readerr.html) | Displays any read errors.
+[`compute_metrics`](https://adrtod.github.io/rchallenge/compute_metrics.html) | Calculates the scores for each submission in the history.
+[`get_best`](https://adrtod.github.io/rchallenge/get_best.html) | Gets the highest score per team.
+[`print_leaderboard`](https://adrtod.github.io/rchallenge/print_leaderboard.html) | Displays the leaderboard.
+[`plot_history`](https://adrtod.github.io/rchallenge/plot_history.html) | Plots a chart of score evolution per team.
+[`plot_activity`](https://adrtod.github.io/rchallenge/plot_activity.html) | Plots a chart of activity per team.
 
 ### Examples
 - [My own challenge](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french) given to Master students at the University of Bordeaux.
 
 - [A classification and variable selection problem](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french) given by Robin Genuer (Bordeaux).
 
-Please [contact me](https://sites.google.com/site/adrientodeschini) to add yours.
+Please [contact me](https://sites.google.com/site/adrientodeschini/) to add yours.
 
 ### Copyright
-Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini).
+Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini/).
 
 Contributions from [Robin Genuer](http://robin.genuer.fr/).
 
 Design inspired by [Datascience.net](https://www.datascience.net/), a french platform
-for datascience challenges.
+for data science challenges.
 
-The **rchallenge** package is licensed under the GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html).
+The **rchallenge** package is licensed under the GPLv2 (https://www.gnu.org/licenses/gpl-2.0.html).
 
 ### To do list
 - [ ] common leaderboard for several metrics

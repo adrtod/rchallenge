@@ -18,7 +18,7 @@
 #'  \item \code{submissions}: Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
 #'  \item \code{history}: Directory where the submissions history is stored.
 #' }
-#' The default challenge provided is a binary classification problem on the \href{http://goo.gl/ndMhNw}{German Credit Card} dataset.
+#' The default challenge provided is a binary classification problem on the \href{https://goo.gl/ndMhNw}{German Credit Card} dataset.
 #' 
 #' You can easily customize the challenge in two ways:
 #'   
@@ -36,7 +36,7 @@
 #' 
 #'  \item Publish the html page in \code{Dropbox/Public}:
 #'    \code{\link{publish}()}
-#'    Prior to this, make sure you \href{http://www.dropbox.com/enable_public_folder}{enabled your Public Dropbox folder}.
+#'    Prior to this, make sure you \href{https://www.dropbox.com/enable_public_folder}{enabled your Public Dropbox folder}.
 #' 
 #'  \item Give the \href{https://www.dropbox.com/en/help/274}{public link} to your \code{Dropbox/Public/challenge.html} file to the participants.
 #'  
@@ -44,7 +44,7 @@
 #' }
 #' 
 #' For the step 4, on \strong{Unix} systems, you can setup the following 
-#' line to your \href{http://en.wikipedia.org/wiki/Cron}{crontab} using \code{crontab -e} (mind the quotes):
+#' line to your \href{https://en.wikipedia.org/wiki/Cron}{crontab} using \code{crontab -e} (mind the quotes):
 #' 
 #' \code{0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'}
 #' 
@@ -77,5 +77,5 @@
 #'  \item \href{https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html}{A classification and variable selection problem} (in french) given by Robin Genuer (Bordeaux).
 #' }
 #' 
-#' Please \href{https://sites.google.com/site/adrientodeschini}{contact me} to add yours.
+#' Please \href{https://sites.google.com/site/adrientodeschini/}{contact me} to add yours.
 "_PACKAGE"

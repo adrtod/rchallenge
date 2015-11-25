@@ -51,27 +51,27 @@
   <div class="span8">
     <h1>rchallenge</h1>
 
-<p><a href="https://github.com/adrtod/rchallenge/"><img src="https://img.shields.io/badge/View_on-GitHub-yellow.svg" alt="GitHub sources"/></a>
+<p><a href="https://github.com/adrtod/rchallenge"><img src="https://img.shields.io/badge/View_on-GitHub-yellow.svg" alt="GitHub sources"/></a>
 <a href="https://travis-ci.org/adrtod/rchallenge"><img src="https://travis-ci.org/adrtod/rchallenge.svg" alt="Build Status"/></a>
-<a href="http://www.gnu.org/licenses/gpl-2.0.html"><img src="http://img.shields.io/badge/license-GPLv2-blue.svg" alt="GPLv2 License"/></a></p>
+<a href="https://www.gnu.org/licenses/gpl-2.0.html"><img src="https://img.shields.io/badge/license-GPLv2-blue.svg" alt="GPLv2 License"/></a></p>
 
-<p>The <strong>rchallenge</strong> R package provides a simple datascience competition system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
+<p>The <strong>rchallenge</strong> R package provides a simple data science competition system using <a href="http://rmarkdown.rstudio.com/">R Markdown</a> 
 and <a href="https://www.dropbox.com/">Dropbox</a> with the following features:</p>
 
 <ul>
 <li>No network configuration required.</li>
-<li>Does not depend on external platforms like e.g. Kaggle.</li>
+<li>Does not depend on external platforms like e.g. <a href="https://www.kaggle.com/">Kaggle</a>.</li>
 <li>Can be easily installed on a personal computer.</li>
 <li>Provides a customizable template in english and french.</li>
 </ul>
 
-<p>Further documentation is available in the <a href="http://adrtod.github.io/rchallenge">Reference manual</a>.</p>
+<p>Further documentation is available in the <a href="https://adrtod.github.io/rchallenge">Reference manual</a>.</p>
 
 <p>Please report bugs, troubles or discussions on the <a href="https://github.com/adrtod/rchallenge/issues">Issues</a> tracker. Any contribution to improve the package is welcome.</p>
 
 <h3>Installation</h3>
 
-<p>Install the R package from <a href="http://cran.r-project.org/web/packages/rchallenge/">CRAN</a> repositories</p>
+<p>Install the R package from <a href="https://cran.r-project.org/package=rchallenge">CRAN</a> repositories</p>
 
 <pre><code>install.packages(&quot;rchallenge&quot;)
 </code></pre>
@@ -89,7 +89,7 @@ devtools::install_github(&quot;adrtod/rchallenge&quot;)
 <pre>
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
-<a href=http://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
+<a href=https://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
 new_challenge()
 </pre>
 
@@ -124,12 +124,12 @@ new_challenge()
 </tr>
 </tbody></table>
 
-<p>The default challenge provided is a binary classification problem on the <a href="http://goo.gl/ndMhNw">German Credit Card</a> dataset.</p>
+<p>The default challenge provided is a binary classification problem on the <a href="https://goo.gl/ndMhNw">German Credit Card</a> dataset.</p>
 
 <p>You can easily customize the challenge in two ways:</p>
 
 <ul>
-<li><em>During the creation of the challenge</em>: by using the options of the <a href="http://adrtod.github.io/rchallenge/new_challenge.html"><code>new_challenge</code></a> function.</li>
+<li><em>During the creation of the challenge</em>: by using the options of the <a href="https://adrtod.github.io/rchallenge/new_challenge.html"><code>new_challenge</code></a> function.</li>
 <li><em>After the creation of the challenge</em>: by manually replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.</li>
 </ul>
 
@@ -141,23 +141,23 @@ new_challenge()
 <li><p>Create and <a href="https://www.dropbox.com/en/help/19">share</a> subdirectories in <code>submissions</code> for each team:</p>
 
 <pre>
-<a href=http://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
+<a href=https://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
 new_team("team_foo", "team_bar")
 </pre></li>
 <li><p>Publish the html page in <code>Dropbox/Public</code>:</p>
 
 <pre>
-<a href=http://adrtod.github.io/rchallenge/publish.html>?publish</a>
+<a href=https://adrtod.github.io/rchallenge/publish.html>?publish</a>
 publish()
 </pre>
 
-<p>Prior to this, make sure you <a href="http://www.dropbox.com/enable_public_folder">enabled your Public Dropbox folder</a>.</p></li>
+<p>Prior to this, make sure you <a href="https://www.dropbox.com/enable_public_folder">enabled your Public Dropbox folder</a>.</p></li>
 <li><p>Give the <a href="https://www.dropbox.com/en/help/274">public link</a> to your <code>Dropbox/Public/challenge.html</code> file to the participants.</p></li>
 <li><p>Automate the updates of the webpage.</p></li>
 </ol>
 
 <p>For the step 4, on <strong>Unix</strong> systems, you can setup the following 
-line to your <a href="http://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code> (mind the quotes):</p>
+line to your <a href="https://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code> (mind the quotes):</p>
 
 <pre><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)&#39;
 </code></pre>
@@ -182,31 +182,31 @@ tasks using the functions available in our package:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/store_new_submissions.html"><code>store_new_submissions</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/store_new_submissions.html"><code>store_new_submissions</code></a></td>
 <td>Reads submitted files and save new files in the history.</td>
 </tr>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/print_readerr.html"><code>print_readerr</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/print_readerr.html"><code>print_readerr</code></a></td>
 <td>Displays any read errors.</td>
 </tr>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/compute_metrics.html"><code>compute_metrics</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/compute_metrics.html"><code>compute_metrics</code></a></td>
 <td>Calculates the scores for each submission in the history.</td>
 </tr>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/get_best.html"><code>get_best</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/get_best.html"><code>get_best</code></a></td>
 <td>Gets the highest score per team.</td>
 </tr>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/print_leaderboard.html"><code>print_leaderboard</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/print_leaderboard.html"><code>print_leaderboard</code></a></td>
 <td>Displays the leaderboard.</td>
 </tr>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/plot_history.html"><code>plot_history</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/plot_history.html"><code>plot_history</code></a></td>
 <td>Plots a chart of score evolution per team.</td>
 </tr>
 <tr>
-<td><a href="http://adrtod.github.io/rchallenge/plot_activity.html"><code>plot_activity</code></a></td>
+<td><a href="https://adrtod.github.io/rchallenge/plot_activity.html"><code>plot_activity</code></a></td>
 <td>Plots a chart of activity per team.</td>
 </tr>
 </tbody></table>
@@ -218,18 +218,18 @@ tasks using the functions available in our package:</p>
 <li><p><a href="https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html">A classification and variable selection problem</a> (in french) given by Robin Genuer (Bordeaux).</p></li>
 </ul>
 
-<p>Please <a href="https://sites.google.com/site/adrientodeschini">contact me</a> to add yours.</p>
+<p>Please <a href="https://sites.google.com/site/adrientodeschini/">contact me</a> to add yours.</p>
 
 <h3>Copyright</h3>
 
-<p>Copyright &copy; 2014-2015 <a href="https://sites.google.com/site/adrientodeschini">Adrien Todeschini</a>.</p>
+<p>Copyright &copy; 2014-2015 <a href="https://sites.google.com/site/adrientodeschini/">Adrien Todeschini</a>.</p>
 
 <p>Contributions from <a href="http://robin.genuer.fr/">Robin Genuer</a>.</p>
 
 <p>Design inspired by <a href="https://www.datascience.net/">Datascience.net</a>, a french platform
-for datascience challenges.</p>
+for data science challenges.</p>
 
-<p>The <strong>rchallenge</strong> package is licensed under the GPLv2 (<a href="http://www.gnu.org/licenses/gpl-2.0.html">http://www.gnu.org/licenses/gpl-2.0.html</a>).</p>
+<p>The <strong>rchallenge</strong> package is licensed under the GPLv2 (<a href="https://www.gnu.org/licenses/gpl-2.0.html">https://www.gnu.org/licenses/gpl-2.0.html</a>).</p>
 
 <h3>To do list</h3>
 
@@ -329,7 +329,7 @@ for datascience challenges.</p>
         <code><a href="get_data.html">get_data</a></code><br />Get dataset value.</li>
             
       <li>
-        <code><a href="rchallenge-package.html">rchallenge-package</a></code>(rchallenge)<br />A Simple Datascience Challenge System</li>
+        <code><a href="rchallenge-package.html">rchallenge-package</a></code>(rchallenge)<br />A Simple Data Science Challenge System</li>
     
     </ul>
   </div>

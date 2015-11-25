@@ -1,4 +1,4 @@
-# rchallenge 1.1.1 (16-11-2015)
+# rchallenge 1.1.1 (25-11-2015)
 - fixed bug for "submitted after the deadline"
 - added some comments in template rmd files
 - added overall package documentation
