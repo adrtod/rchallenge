@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">rchallenge 1.1.1</a>
+      <a class="brand" href="index.html">rchallenge 1.1.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -41,6 +41,7 @@
     </div>
   </div>
 </div>
+
 
     <div class="container">
       <header>
@@ -52,7 +53,7 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>compute_metrics(hist_dir&nbsp;=&nbsp;"history", metrics, y_test, ind_quiz, read_fun)</div></pre>
+    <pre><span class="functioncall"><a href='compute_metrics.html'>compute_metrics</a></span><span class="keyword">(</span><span class="argument">hist_dir</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"history"</span><span class="keyword">,</span> <span class="symbol">metrics</span><span class="keyword">,</span> <span class="symbol">y_test</span><span class="keyword">,</span> <span class="symbol">ind_quiz</span><span class="keyword">,</span> <span class="symbol">read_fun</span><span class="keyword">)</span></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -78,49 +79,53 @@ a performance criterion and is defined as: <code>function(y_pred, y_test)</code>
   Each member is a <code>data.frame</code> where the rows are the submission files sorted by date
   and the columns are:
   <dt>date</dt><dd>the date of the submission</dd></p>
-  
+
       <p><dt>file</dt><dd>the file name of the submission</dd></p>
-  
-      <p><dt><metric name>.quiz</dt><dd>the score obtained on the quiz subset</dd></p>
-  
-      <p><dt><metric name>.test</dt><dd>the score obtained on the test set</dd></p>
-  
+
+      <p><dt>&lt;metric name&gt;.quiz</dt><dd>the score obtained on the quiz subset</dd></p>
+
+      <p><dt>&lt;metric name&gt;.test</dt><dd>the score obtained on the test set</dd></p>
+
       <p></dl></p>
-  
+
     </div>
 
     <div class="Description">
       <h2>Description</h2>
 
       <p>Compute metrics of the submissions in the history.</p>
-  
+
     </div>
       </div>
-  <div class="span4">
+  <div class="span4 sidebar">
     <!-- <ul>
       <li>compute_metrics</li>
     </ul>
     <ul>
       
     </ul> -->
-      
-        
+
+
+
+
   </div>
 </div>
       
       <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
-<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
-<script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-46355251-2");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45407741-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
       </footer>
     </div>

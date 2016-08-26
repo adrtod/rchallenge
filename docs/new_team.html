@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">rchallenge 1.1.1</a>
+      <a class="brand" href="index.html">rchallenge 1.1.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -41,6 +41,7 @@
     </div>
   </div>
 </div>
+
 
     <div class="container">
       <header>
@@ -52,7 +53,8 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>new_team(..., path&nbsp;=&nbsp;".", submissions_dir&nbsp;=&nbsp;"submissions", quiet&nbsp;=&nbsp;FALSE, showWarnings&nbsp;=&nbsp;FALSE)</div></pre>
+    <pre><span class="functioncall"><a href='new_team.html'>new_team</a></span><span class="keyword">(</span><span class="symbol">...</span><span class="keyword">,</span> <span class="argument">path</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"."</span><span class="keyword">,</span> <span class="argument">submissions_dir</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"submissions"</span><span class="keyword">,</span> <span class="argument">quiet</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span>
+  <span class="argument">showWarnings</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -65,7 +67,7 @@
       <dt>quiet</dt>
       <dd>logical. deactivate text output.</dd>
       <dt>showWarnings</dt>
-      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.inside-r.org/r-doc/base/files2'>dir.create</a></code>.</dd>
+      <dd>logical. should the warnings on failure be shown? see <code><a href='http://www.rdocumentation.org/packages/base/topics/files2'>dir.create</a></code>.</dd>
     </dl>
     
     <div class="Value">
@@ -74,22 +76,21 @@
       <p><dl>
 The paths of the created teams are returned.
 </dl></p>
-  
+
     </div>
 
     <div class="Description">
       <h2>Description</h2>
 
       <p>Create new teams submission folders in your challenge.</p>
-  
+
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>path &lt;- tempdir()
-wd &lt;- setwd(path)
-new_challenge()
-</div>
-<div class='output'>New challenge installed in: &quot;/tmp/RtmpIRRxbR&quot;
+    <pre class="examples"><div class='input'><span class="symbol">path</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span><span class="keyword">(</span><span class="keyword">)</span>
+<span class="symbol">wd</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/getwd'>setwd</a></span><span class="keyword">(</span><span class="symbol">path</span><span class="keyword">)</span>
+<span class="functioncall"><a href='new_challenge.html'>new_challenge</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
+<div class='output'>New challenge installed in: &quot;/tmp/RtmpEAPURO&quot;
 Next steps to complete the installation:
 1. Replace the data files in the &quot;data&quot; subdirectory.
 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -101,43 +102,45 @@ Next steps to complete the installation:
 6. Give the Dropbox public link to &quot;Dropbox/Public/challenge.html&quot; to the participants.
 7. Automate the updates of the webpage.
    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpIRRxbR/challenge.rmd&quot;)&#39;
+    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpEAPURO/challenge.rmd&quot;)&#39;
 </div>
-<div class='input'>new_team(&quot;team_foo&quot;, &quot;team_bar&quot;)
-</div>
+<div class='input'><span class="functioncall"><a href='new_team.html'>new_team</a></span><span class="keyword">(</span><span class="string">"team_foo"</span><span class="keyword">,</span> <span class="string">"team_bar"</span><span class="keyword">)</span></div>
 <div class='output'>Creating team subdirectory: submissions/team_foo 
 Creating team subdirectory: submissions/team_bar 
 Next step: share the Dropbox folders with the corresponding teams.
 </div>
-<div class='input'>setwd(wd)
-unlink(path)
-</div></pre>
+<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/getwd'>setwd</a></span><span class="keyword">(</span><span class="symbol">wd</span><span class="keyword">)</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span><span class="keyword">(</span><span class="symbol">path</span><span class="keyword">)</span></div></pre>
   </div>
-  <div class="span4">
+  <div class="span4 sidebar">
     <!-- <ul>
       <li>new_team</li>
     </ul>
     <ul>
       
     </ul> -->
-      
-        
+
+
+
+
   </div>
 </div>
       
       <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
-<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
-<script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-46355251-2");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45407741-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
       </footer>
     </div>
