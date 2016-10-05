@@ -1,0 +1,45 @@
+title: rchallenge
+
+template:
+  bootswatch: simplex
+  ganalytics: "UA-45407741-5"
+
+reference:
+  - title: "Setup"
+    contents:
+    - new_challenge
+    - new_team
+    - german
+    - data_split
+    - publish
+  - title: "Update"
+    contents:
+    - store_new_submissions
+    - compute_metrics
+    - get_best
+    - update_rank_diff
+  - title: "Display"
+    contents:
+    - countdown
+    - last_update
+    - print_readerr
+    - print_leaderboard
+    - glyphicon
+    - html_img
+  - title: "Plots"
+    contents:
+    - plot_history
+    - plot_activity
+
+navbar:
+  title: pkgdown
+  left:
+    - text: Home
+      href: index.html
+    - text: Reference
+      href: reference/index.html
+    - text: News
+      href: news/index.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/adrtod/rchallenge

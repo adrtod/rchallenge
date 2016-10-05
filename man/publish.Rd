@@ -2,10 +2,10 @@
 % Please edit documentation in R/new.r
 \name{publish}
 \alias{publish}
-\title{Publish your challenge R Markdown script to a html page.}
+\title{Render your challenge R Markdown script to a HTML page.}
 \usage{
 publish(input = "challenge.rmd", output_file = NULL,
-  output_dir = file.path("~/Dropbox/Public"), quiet = FALSE, ...)
+  output_dir = dirname(input), quiet = FALSE, ...)
 }
 \arguments{
 \item{input}{string. name of the R Markdown input file}
@@ -13,8 +13,8 @@ publish(input = "challenge.rmd", output_file = NULL,
 \item{output_file}{output file. If \code{NULL} then a default based on the name 
 of the input file is chosen.}
 
-\item{output_dir}{string. output directory. default=\code{"~/Dropbox/Public"} 
-so that the rendered page can easily be shared on the web with Dropbox.}
+\item{output_dir}{string. output directory. Defaults to the directory of the input file.
+make sure that the output HTML file will be published online.}
 
 \item{quiet}{logical. deactivate text output.}
 
@@ -25,7 +25,14 @@ The compiled document is written into the output file, and the path
   of the output file is returned.
 }
 \description{
-Publish your challenge R Markdown script to a html page.
+Render your challenge R Markdown script to a HTML page.
+}
+\note{
+The rendering of HTML content provided by Dropbox will be discontinued 
+from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro 
+and Business users. See \url{https://www.dropbox.com/help/16}. Alternatively, 
+\href{https://pages.github.com/}{GitHub Pages} provide an easy HTML web publishing 
+solution via a simple GitHub repository.
 }
 \examples{
 path <- tempdir()

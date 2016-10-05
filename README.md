@@ -1,6 +1,5 @@
 rchallenge
 ==========
-[![GitHub sources](https://img.shields.io/badge/View_on-GitHub-yellow.svg)](https://github.com/adrtod/rchallenge)
 [![Build Status](https://travis-ci.org/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -12,7 +11,7 @@ and [Dropbox](https://www.dropbox.com/) with the following features:
 - Can be easily installed on a personal computer.
 - Provides a customizable template in english and french.
 
-Further documentation is available in the [Reference manual](https://adrtod.github.io/rchallenge).
+Further documentation is available in the [Reference manual](https://adrtod.github.io/rchallenge/reference/).
 
 Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
@@ -31,12 +30,12 @@ A recent version of [pandoc](http://johnmacfarlane.net/pandoc/) (>= 1.12.3) is a
 
 ## Getting started
 Install a new challenge in `Dropbox/mychallenge`:
-<pre>
+```R
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
-<a href=https://adrtod.github.io/rchallenge/new_challenge.html>?new_challenge</a>
+?new_challenge
 new_challenge()
-</pre>
+```
 
 or for a french version:
 ```
@@ -57,26 +56,27 @@ The default challenge provided is a binary classification problem on the [German
 
 You can easily customize the challenge in two ways:
 
-- *During the creation of the challenge*: by using the options of the [`new_challenge`](https://adrtod.github.io/rchallenge/new_challenge.html) function.
+- *During the creation of the challenge*: by using the options of the [`new_challenge`](https://adrtod.github.io/rchallenge/reference/new_challenge.html) function.
 - *After the creation of the challenge*: by manually replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
 
 ## Next steps
 To complete the installation:
 
 1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
-    <pre>
-    <a href=https://adrtod.github.io/rchallenge/new_team.html>?new_team</a>
+    ```R
+    ?new_team
     new_team("team_foo", "team_bar")
-    </pre>
+    ```
 
-2. Publish the html page in `Dropbox/Public`:
-    <pre>
-    <a href=https://adrtod.github.io/rchallenge/publish.html>?publish</a>
+2. Render the html page:
+    ```R
+    ?publish
     publish()
-    </pre>
-    Prior to this, make sure you [enabled your Public Dropbox folder](https://www.dropbox.com/enable_public_folder).
+    ```
+    Use the `output_dir` argument to change the output directory.
+    Make sure the output HTML file is rendered, e.g. using [GitHub Pages](https://pages.github.com/).
 
-3. Give the [public link](https://www.dropbox.com/en/help/274) to your `Dropbox/Public/challenge.html` file to the participants.
+3. Give the URL to your `challenge.html` file to the participants.
     
 4. Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 
@@ -86,13 +86,13 @@ tasks using the functions available in our package:
 
 Name | Description
 ------------- | -------------
-[`store_new_submissions`](https://adrtod.github.io/rchallenge/store_new_submissions.html) | Reads submitted files and save new files in the history.
-[`print_readerr`](https://adrtod.github.io/rchallenge/print_readerr.html) | Displays any read errors.
-[`compute_metrics`](https://adrtod.github.io/rchallenge/compute_metrics.html) | Calculates the scores for each submission in the history.
-[`get_best`](https://adrtod.github.io/rchallenge/get_best.html) | Gets the highest score per team.
-[`print_leaderboard`](https://adrtod.github.io/rchallenge/print_leaderboard.html) | Displays the leaderboard.
-[`plot_history`](https://adrtod.github.io/rchallenge/plot_history.html) | Plots a chart of score evolution per team.
-[`plot_activity`](https://adrtod.github.io/rchallenge/plot_activity.html) | Plots a chart of activity per team.
+[`store_new_submissions`](https://adrtod.github.io/rchallenge/reference/store_new_submissions.html) | Reads submitted files and save new files in the history.
+[`print_readerr`](https://adrtod.github.io/rchallenge/reference/print_readerr.html) | Displays any read errors.
+[`compute_metrics`](https://adrtod.github.io/rchallenge/reference/compute_metrics.html) | Calculates the scores for each submission in the history.
+[`get_best`](https://adrtod.github.io/rchallenge/reference/get_best.html) | Gets the highest score per team.
+[`print_leaderboard`](https://adrtod.github.io/rchallenge/reference/print_leaderboard.html) | Displays the leaderboard.
+[`plot_history`](https://adrtod.github.io/rchallenge/reference/plot_history.html) | Plots a chart of score evolution per team.
+[`plot_activity`](https://adrtod.github.io/rchallenge/reference/plot_activity.html) | Plots a chart of activity per team.
 
 ## Automating the updates
 
@@ -102,7 +102,8 @@ You can setup the following line to your [crontab](https://en.wikipedia.org/wiki
 ```
 0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'
 ```
-This will publish a html webpage in your `Dropbox/Public` folder every hour.
+This will render a HTML webpage every hour.
+Use the `output_dir` argument to change the output directory.
 
 You might have to add the path to Rscript and pandoc at the beginning of your crontab:
 ```
@@ -121,15 +122,19 @@ You can use the [Task Scheduler](http://windows.microsoft.com/en-us/windows/sche
 - *Program/script*: `Rscript.exe`
 - *options*: `-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')`
 
+## Issues
+
+- The rendering of HTML content provided by Dropbox will be discontinued from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. See <https://www.dropbox.com/help/16>. Alternatively, [GitHub Pages](https://pages.github.com/) provide an easy HTML publishing solution via a simple GitHub repository.
+
 ## Examples
-- [My own challenge](https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html) (in french) given to Master students at the University of Bordeaux.
+- [My own challenge](http://adrien.tspace.fr/challenge_mimse2014.html) (in french) given to Master students at the University of Bordeaux.
 
 - [A classification and variable selection problem](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french) given by Robin Genuer (Bordeaux).
 
-Please [contact me](https://sites.google.com/site/adrientodeschini/) to add yours.
+Please [contact me](https://adrtod.github.io/) to add yours.
 
 ## Copyright
-Copyright (C) 2014-2015 [Adrien Todeschini](https://sites.google.com/site/adrientodeschini/).
+Copyright (C) 2014-2015 [Adrien Todeschini](https://adrtod.github.io/).
 
 Contributions from [Robin Genuer](http://robin.genuer.fr/).
 

@@ -158,11 +158,11 @@ new_challenge <- function(path = ".", out_rmdfile = "challenge.rmd",
     cat(step, '. Create and share subdirectories in "', submissions_dir, '" for each team:\n', sep='')
     cat('    rchallenge::new_team("team_foo", "team_bar", path="', path, '", submissions_dir="', submissions_dir, '")\n', sep='')
     step <- step + 1
-    cat(step, '. Publish the html page in your "Dropbox/Public" folder:\n', sep='')
+    cat(step, '. Render the HTML page:\n', sep='')
     cat('    rchallenge::publish("', file.path(path, out_rmdfile), '")\n', sep='')
     step <- step + 1
     template_html <- paste0(sub("([^.]+)\\.[[:alnum:]]+$", "\\1", basename(out_rmdfile)), ".html")
-    cat(step, '. Give the Dropbox public link to "Dropbox/Public/', template_html, '" to the participants.\n', sep='')
+    cat(step, '. Give the URL to "', template_html, '" to the participants.\n', sep='')
     step <- step + 1
     cat(step, '. Automate the updates of the webpage.\n', sep='')
     if (.Platform$OS.type == "unix") {
@@ -209,16 +209,21 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
   invisible(normalizePath(file.path(path, submissions_dir, names)))
 }
 
-#' Publish your challenge R Markdown script to a html page.
+#' Render your challenge R Markdown script to a HTML page.
 #' @param input string. name of the R Markdown input file
 #' @param output_file output file. If \code{NULL} then a default based on the name 
 #'   of the input file is chosen.
-#' @param output_dir string. output directory. default=\code{"~/Dropbox/Public"} 
-#'   so that the rendered page can easily be shared on the web with Dropbox.
+#' @param output_dir string. output directory. Defaults to the directory of the input file.
+#'   make sure that the output HTML file will be published online.
 #' @param quiet      logical. deactivate text output.
 #' @param ...        further arguments to pass to \code{\link[rmarkdown]{render}}.
 #' @return The compiled document is written into the output file, and the path 
 #'   of the output file is returned.
+#' @note The rendering of HTML content provided by Dropbox will be discontinued 
+#' from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro 
+#' and Business users. See \url{https://www.dropbox.com/help/16}. Alternatively, 
+#' \href{https://pages.github.com/}{GitHub Pages} provide an easy HTML web publishing 
+#' solution via a simple GitHub repository.
 #' @export
 #' @seealso \code{\link[rmarkdown]{render}}
 #' @importFrom rmarkdown render
@@ -232,7 +237,7 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #' setwd(wd)
 #' unlink(path)
 publish <- function(input="challenge.rmd", output_file = NULL, 
-                    output_dir = file.path("~/Dropbox/Public"), 
+                    output_dir = dirname(input), 
                     quiet = FALSE, ...) {
   wd <- getwd()
   setwd(dirname(input))
@@ -241,7 +246,7 @@ publish <- function(input="challenge.rmd", output_file = NULL,
   setwd(wd)
   
   if (!quiet)
-    cat('Next step: give the Dropbox public link to "', file.path(output_dir, basename(out)), '" to the participants.\n', sep='')
+    cat('Next step: give the URL to "', file.path(output_dir, basename(out)), '" to the participants.\n', sep='')
   
   invisible(out)
 }

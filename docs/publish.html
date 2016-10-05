@@ -1,314 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-<title>publish. rchallenge 1.1.1</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="">
-
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="css/highlight.css" rel="stylesheet">
-<link href="css/staticdocs.css" rel="stylesheet">
-
-<!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-  </head>
-
-  <body>
-    <div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="index.html">rchallenge 1.1.1</a>
-      <div class="nav">
-        <ul class="nav">
-          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <div class="container">
-      <header>
-        
-      </header>
-      
-      <h1>Publish your challenge R Markdown script to a html page.</h1>
-
-<div class="row">
-  <div class="span8">
-    <h2>Usage</h2>
-    <pre><span class="functioncall"><a href='publish.html'>publish</a></span><span class="keyword">(</span><span class="argument">input</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"challenge.rmd"</span><span class="keyword">,</span> <span class="argument">output_file</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
-  <span class="argument">output_dir</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span><span class="keyword">(</span><span class="string">"~/Dropbox/Public"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">quiet</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
-    
-    <h2>Arguments</h2>
-    <dl>
-      <dt>input</dt>
-      <dd>string. name of the R Markdown input file</dd>
-      <dt>output_file</dt>
-      <dd>output file. If <code>NULL</code> then a default based on the name 
-of the input file is chosen.</dd>
-      <dt>output_dir</dt>
-      <dd>string. output directory. default=<code>&quot;~/Dropbox/Public&quot;</code> 
-so that the rendered page can easily be shared on the web with Dropbox.</dd>
-      <dt>quiet</dt>
-      <dd>logical. deactivate text output.</dd>
-      <dt>...</dt>
-      <dd>further arguments to pass to <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code>.</dd>
-    </dl>
-    
-    <div class="Value">
-      <h2>Value</h2>
-
-      <p><dl>
-The compiled document is written into the output file, and the path 
-  of the output file is returned.
-</dl></p>
-
-    </div>
-
-    <div class="Description">
-      <h2>Description</h2>
-
-      <p>Publish your challenge R Markdown script to a html page.</p>
-
-    </div>
-    
-    <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'><span class="symbol">path</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span><span class="keyword">(</span><span class="keyword">)</span>
-<span class="symbol">wd</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/getwd'>setwd</a></span><span class="keyword">(</span><span class="symbol">path</span><span class="keyword">)</span>
-<span class="functioncall"><a href='new_challenge.html'>new_challenge</a></span><span class="keyword">(</span><span class="keyword">)</span></div>
-<div class='output'>New challenge installed in: &quot;/tmp/RtmpEAPURO&quot;
-Next steps to complete the installation:
-1. Replace the data files in the &quot;data&quot; subdirectory.
-2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
-3. Customize the template R Markdown file &quot;challenge.rmd&quot; as needed.
-4. Create and share subdirectories in &quot;submissions&quot; for each team:
-    rchallenge::new_team(&quot;team_foo&quot;, &quot;team_bar&quot;, path=&quot;.&quot;, submissions_dir=&quot;submissions&quot;)
-5. Publish the html page in your &quot;Dropbox/Public&quot; folder:
-    rchallenge::publish(&quot;./challenge.rmd&quot;)
-6. Give the Dropbox public link to &quot;Dropbox/Public/challenge.html&quot; to the participants.
-7. Automate the updates of the webpage.
-   On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-    0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpEAPURO/challenge.rmd&quot;)&#39;
-</div>
-<div class='input'><span class="symbol">outdir</span> <span class="assignement">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span><span class="keyword">(</span><span class="keyword">)</span>
-<span class="functioncall"><a href='publish.html'>publish</a></span><span class="keyword">(</span><span class="argument">output_dir</span> <span class="argument">=</span> <span class="symbol">outdir</span><span class="keyword">,</span> <span class="argument">output_options</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/list'>list</a></span><span class="keyword">(</span><span class="argument">self_contained</span> <span class="argument">=</span> <span class="number">FALSE</span><span class="keyword">)</span><span class="keyword">)</span></div>
-<strong class='message'>
-
-processing file: challenge.rmd</strong>
-<div class='output'>  |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   3%
-  ordinary text without R code
-
-  |                                                                         |....                                                             |   6%
-label: unnamed-chunk-1 (with options) 
-List of 3
- $ echo   : logi FALSE
- $ message: logi FALSE
- $ warning: logi FALSE
-
-  |                                                                         |......                                                           |   9%
-   inline R code fragments
-
-  |                                                                         |.......                                                          |  11%
-label: unnamed-chunk-2 (with options) 
-List of 1
- $ eval: logi FALSE
-
-  |                                                                         |.........                                                        |  14%
-  ordinary text without R code
-
-  |                                                                         |...........                                                      |  17%
-label: unnamed-chunk-3
-  |                                                                         |.............                                                    |  20%
-   inline R code fragments
-
-  |                                                                         |...............                                                  |  23%
-label: unnamed-chunk-4
-  |                                                                         |.................                                                |  26%
-  ordinary text without R code
-
-  |                                                                         |...................                                              |  29%
-label: unnamed-chunk-5 (with options) 
-List of 1
- $ eval: logi FALSE
-
-  |                                                                         |....................                                             |  31%
-  ordinary text without R code
-
-  |                                                                         |......................                                           |  34%
-label: unnamed-chunk-6
-  |                                                                         |........................                                         |  37%
-  ordinary text without R code
-
-  |                                                                         |..........................                                       |  40%
-label: unnamed-chunk-7
-  |                                                                         |............................                                     |  43%
-  ordinary text without R code
-
-  |                                                                         |..............................                                   |  46%
-label: unnamed-chunk-8 (with options) 
-List of 3
- $ echo    : logi FALSE
- $ collapse: logi TRUE
- $ comment : logi NA
-
-  |                                                                         |................................                                 |  49%
-  ordinary text without R code
-
-  |                                                                         |.................................                                |  51%
-label: unnamed-chunk-9 (with options) 
-List of 3
- $ echo    : logi FALSE
- $ collapse: logi TRUE
- $ comment : logi NA
-
-  |                                                                         |...................................                              |  54%
-  ordinary text without R code
-
-  |                                                                         |.....................................                            |  57%
-label: unnamed-chunk-10 (with options) 
-List of 1
- $ eval: logi FALSE
-
-  |                                                                         |.......................................                          |  60%
-   inline R code fragments
-
-  |                                                                         |.........................................                        |  63%
-label: unnamed-chunk-11 (with options) 
-List of 3
- $ echo    : logi FALSE
- $ collapse: logi TRUE
- $ comment : logi NA
-
-  |                                                                         |...........................................                      |  66%
-   inline R code fragments
-
-  |                                                                         |.............................................                    |  69%
-label: unnamed-chunk-12 (with options) 
-List of 2
- $ echo   : logi FALSE
- $ results: chr &quot;asis&quot;
-
-  |                                                                         |..............................................                   |  71%
-   inline R code fragments
-
-  |                                                                         |................................................                 |  74%
-label: unnamed-chunk-13 (with options) 
-List of 2
- $ echo   : logi FALSE
- $ results: chr &quot;asis&quot;
-
-  |                                                                         |..................................................               |  77%
-   inline R code fragments
-
-  |                                                                         |....................................................             |  80%
-label: unnamed-chunk-14 (with options) 
-List of 4
- $ echo      : logi FALSE
- $ fig.cap   : chr &quot;Submissions history - Error rate&quot;
- $ fig.height: num 5
- $ fig.width : num 9
-
-</div>
-<div class='output'>  |                                                                         |......................................................           |  83%
-   inline R code fragments
-
-  |                                                                         |........................................................         |  86%
-label: unnamed-chunk-15 (with options) 
-List of 4
- $ echo      : logi FALSE
- $ fig.cap   : chr &quot;Submissions history - Average cost&quot;
- $ fig.height: num 5
- $ fig.width : num 9
-
-</div>
-<div class='output'>  |                                                                         |..........................................................       |  89%
-   inline R code fragments
-
-  |                                                                         |...........................................................      |  91%
-label: unnamed-chunk-16 (with options) 
-List of 4
- $ echo      : logi FALSE
- $ fig.cap   : chr &quot;Submissions history - Activity&quot;
- $ fig.height: num 5
- $ fig.width : num 9
-
-</div>
-<div class='output'>  |                                                                         |.............................................................    |  94%
-   inline R code fragments
-
-  |                                                                         |...............................................................  |  97%
-label: unnamed-chunk-17 (with options) 
-List of 1
- $ echo: logi FALSE
-
-  |                                                                         |.................................................................| 100%
-  ordinary text without R code
-
-
-</div>
-<strong class='message'>output file: challenge.knit.md
-</strong>
-<div class='output'>/usr/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpEAPURO/challenge.html --smart --email-obfuscation none --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpEAPURO/rmarkdown-str5c971f78e278.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango --variable navigationjs=challenge_files/navigation-1.1 
-</div>
-<strong class='message'>
-Output created: challenge.html</strong>
-<div class='output'>Next step: give the Dropbox public link to &quot;/tmp/RtmpEAPURO/challenge.html&quot; to the participants.
-</div>
-<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span><span class="keyword">(</span><span class="symbol">outdir</span><span class="keyword">)</span>
-<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/getwd'>setwd</a></span><span class="keyword">(</span><span class="symbol">wd</span><span class="keyword">)</span>
-<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span><span class="keyword">(</span><span class="symbol">path</span><span class="keyword">)</span></div></pre>
-  </div>
-  <div class="span4 sidebar">
-    <!-- <ul>
-      <li>publish</li>
-    </ul>
-    <ul>
-      
-    </ul> -->
-
-    <h2>See also</h2>
-      <p><code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code></p>
-
-    
-
-
-  </div>
-</div>
-      
-      <footer>
-      <p class="pull-right"><a href="#">Back to top</a></p>
-
-<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45407741-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-      </footer>
-    </div>
-  </body>
-</html>

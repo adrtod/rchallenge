@@ -7,3 +7,5 @@
 ^inst/staticdocs$
 ^inst/web$
 ^revdep$
+^docs$
+_pkgdown.yml

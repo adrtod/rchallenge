@@ -10,6 +10,12 @@ A simple data science challenge system using R Markdown and Dropbox <https://www
 It requires no network configuration, does not depend on external platforms
 like e.g. Kaggle <https://www.kaggle.com/> and can be easily installed on a personal computer.
 }
+\note{
+The rendering of HTML content provided by Dropbox will be discontinued from the 
+3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. 
+See \url{https://www.dropbox.com/help/16}. Alternatively, \href{https://pages.github.com/}{GitHub Pages}
+provide an easy HTML publishing solution via a simple GitHub repository.
+}
 \section{Installation}{
 
 Install the R package from \href{https://cran.r-project.org/package=rchallenge}{CRAN} repositories
@@ -66,11 +72,12 @@ To complete the installation:
  
    \code{\link{new_team}("team_foo", "team_bar")}
 
- \item Publish the html page in \code{Dropbox/Public}:
+ \item Render the html page:
    \code{\link{publish}()}
-   Prior to this, make sure you \href{https://www.dropbox.com/enable_public_folder}{enabled your Public Dropbox folder}.
+   Use the \code{output_dir} argument to change the output directory.
+   Make sure the output HTML file is rendered, e.g. using \href{https://pages.github.com/}{GitHub Pages}.
 
- \item Give the \href{https://www.dropbox.com/en/help/274}{public link} to your \code{Dropbox/Public/challenge.html} file to the participants.
+ \item Give the URL to your \code{challenge.html} file to the participants.
  
  \item Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 }
@@ -98,7 +105,8 @@ using \code{crontab -e} (mind the quotes):
 
 \code{0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'}
 
-This will publish a html webpage in your \code{Dropbox/Public} folder every hour.
+This will render a HTML webpage every hour.
+Use the \code{output_dir} argument to change the output directory.
 
 You might have to add the path to Rscript and pandoc at the beginning of your crontab:
  
@@ -124,10 +132,10 @@ to create a new task with a \emph{Start a program} action with the settings (min
 \section{Examples}{
 
 \itemize{ 
- \item \href{https://dl.dropboxusercontent.com/u/25867212/challenge_mimse2014.html}{My own challenge} (in french) given to Master students at the University of Bordeaux.
+ \item \href{https://adrtod.github.io/challenge_mimse2014.html}{My own challenge} (in french) given to Master students at the University of Bordeaux.
  \item \href{https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html}{A classification and variable selection problem} (in french) given by Robin Genuer (Bordeaux).
 }
 
-Please \href{https://sites.google.com/site/adrientodeschini/}{contact me} to add yours.
+Please \href{https://adrtod.github.io}{contact me} to add yours.
 }
 
