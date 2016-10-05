@@ -1,7 +1,7 @@
 
 ## Test environments
 * ubuntu 16.04 64-bit, R 3.3.1
-* win-builder (release)
+* win-builder (devel)
 
 ## R CMD check results
 There were no ERRORs or WARNINGs.
