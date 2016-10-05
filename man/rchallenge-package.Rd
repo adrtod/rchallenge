@@ -120,7 +120,7 @@ Depending on your system or pandoc version you might also have to explicitly add
 \section{Automating the updates on \strong{Windows}}{
 
 
-You can use the \href{http://windows.microsoft.com/en-us/windows/schedule-task}{Task Scheduler} 
+You can use the \href{https://technet.microsoft.com/en-us/library/cc748993(v=ws.11).aspx}{Task Scheduler} 
 to create a new task with a \emph{Start a program} action with the settings (mind the quotes):
   
 \itemize{ 

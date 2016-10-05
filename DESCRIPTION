@@ -1,6 +1,6 @@
 Package: rchallenge
 Title: A Simple Data Science Challenge System
-Version: 1.2
+Version: 1.2.0
 Authors@R: c(person("Adrien", "Todeschini", email = "adrien.todeschini@gmail.com",role=c("aut", "cre")),
     person("Robin", "Genuer", email = "robin.genuer@isped.u-bordeaux2.fr",role=c("ctb")))
 Description: A simple data science challenge system using R Markdown and Dropbox <https://www.dropbox.com/>.
