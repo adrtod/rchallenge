@@ -1,5 +1,5 @@
 # rchallenge 1.2.0 (05-10-2016)
-- `publish` function `output_dir` defaults to the `input` directory instead of `"~/Dropbox/Public"`. Dropbox rendering of HTML content is discontinued.
+- `output_dir` argument of `publish` function now defaults to the `input` directory instead of `"~/Dropbox/Public"` because Dropbox rendering of HTML content is discontinued.
 
 # rchallenge 1.1.1 (25-11-2015)
 - fixed bug for "submitted after the deadline"
