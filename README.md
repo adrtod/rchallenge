@@ -117,7 +117,7 @@ Depending on your system or pandoc version you might also have to explicitly add
 
 ### Windows
 
-You can use the [Task Scheduler](http://windows.microsoft.com/en-us/windows/schedule-task) to create a new task with a *Start a program* action with the settings (mind the quotes):
+You can use the [Task Scheduler](https://technet.microsoft.com/en-us/library/cc748993(v=ws.11).aspx) to create a new task with a *Start a program* action with the settings (mind the quotes):
 
 - *Program/script*: `Rscript.exe`
 - *options*: `-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')`
