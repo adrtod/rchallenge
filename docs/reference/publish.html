@@ -12,9 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
-
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -99,7 +97,7 @@
     <p>Render your challenge R Markdown script to a HTML page.</p>
     
 
-    <pre><span class='fu'>publish</span>(<span class='kw'>input</span> <span class='kw'>=</span> <span class='st'>"challenge.rmd"</span>, <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre><span class='fu'>publish</span>(<span class='kw'>input</span> <span class='kw'>=</span> <span class='st'>"challenge.rmd"</span>, <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='st'>"index.html"</span>,
   <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'>dirname</span>(<span class='no'>input</span>), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2>Arguments</h2>
@@ -107,7 +105,7 @@
       <dt>input</dt>
       <dd>string. name of the R Markdown input file</dd>
       <dt>output_file</dt>
-      <dd>output file. If <code>NULL</code> then a default based on the name 
+      <dd>string. output file. If <code>NULL</code> then a default based on the name 
 of the input file is chosen.</dd>
       <dt>output_dir</dt>
       <dd>string. output directory. Defaults to the directory of the input file.
@@ -144,7 +142,7 @@ solution via a simple GitHub repository.</p>
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
 <span class='no'>wd</span> <span class='kw'>&lt;-</span> <span class='fu'>setwd</span>(<span class='no'>path</span>)
-<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpX5g9KO&quot;
+<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpBTQmoi&quot;
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the &quot;data&quot; subdirectory.
 #&gt; 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -156,7 +154,7 @@ solution via a simple GitHub repository.</p>
 #&gt; 6. Give the URL to &quot;challenge.html&quot; to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpX5g9KO/challenge.rmd&quot;)&#39;
+#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpBTQmoi/challenge.rmd&quot;)&#39;
 #&gt; </div><div class='input'><span class='no'>outdir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>()
 <span class='fu'>publish</span>(<span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>outdir</span>, <span class='kw'>output_options</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>self_contained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output'><strong class='text-info'>
 
@@ -308,9 +306,9 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt; 
 #&gt; 
 #&gt; </div><div class='output'><strong class='text-info'>output file: challenge.knit.md
-</strong></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpX5g9KO/challenge.html --smart --email-obfuscation none --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpX5g9KO/rmarkdown-str76216d1b8e31.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango --variable navigationjs=challenge_files/navigation-1.1 
+</strong></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpBTQmoi/index.html --smart --email-obfuscation none --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpBTQmoi/rmarkdown-str44fe214ebe47.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango --variable navigationjs=index_files/navigation-1.1 
 #&gt; </div><div class='output'><strong class='text-info'>
-Output created: challenge.html</strong></div><div class='output co'>#&gt; Next step: give the URL to &quot;/tmp/RtmpX5g9KO/challenge.html&quot; to the participants.
+Output created: index.html</strong></div><div class='output co'>#&gt; Next step: give the URL to &quot;/tmp/RtmpBTQmoi/index.html&quot; to the participants.
 #&gt; </div><div class='input'><span class='fu'>unlink</span>(<span class='no'>outdir</span>)
 <span class='fu'>setwd</span>(<span class='no'>wd</span>)
 <span class='fu'>unlink</span>(<span class='no'>path</span>)</div></pre>

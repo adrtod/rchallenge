@@ -72,12 +72,12 @@ To complete the installation:
  
    \code{\link{new_team}("team_foo", "team_bar")}
 
- \item Render the html page:
+ \item Render the HTML page:
    \code{\link{publish}()}
    Use the \code{output_dir} argument to change the output directory.
    Make sure the output HTML file is rendered, e.g. using \href{https://pages.github.com/}{GitHub Pages}.
 
- \item Give the URL to your \code{challenge.html} file to the participants.
+ \item Give the URL to your HTML file to the participants.
  
  \item Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 }
@@ -108,6 +108,10 @@ using \code{crontab -e} (mind the quotes):
 This will render a HTML webpage every hour.
 Use the \code{output_dir} argument to change the output directory.
 
+If your challenge is hosted on a Github repository you can automate the push:
+
+\code{0 * * * * cd ~/Dropbox/mychallenge && Rscript -e 'rchallenge::publish()' && git commit -m "update html" index.html && git push}
+
 You might have to add the path to Rscript and pandoc at the beginning of your crontab:
  
 \code{PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin}
@@ -132,7 +136,7 @@ to create a new task with a \emph{Start a program} action with the settings (min
 \section{Examples}{
 
 \itemize{ 
- \item \href{https://adrtod.github.io/challenge_mimse2014.html}{My own challenge} (in french) given to Master students at the University of Bordeaux.
+ \item \href{https://adrtod.github.io/challenge-mimse2014/}{My own challenge} (in french) given to Master students at the University of Bordeaux.
  \item \href{https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html}{A classification and variable selection problem} (in french) given by Robin Genuer (Bordeaux).
 }
 

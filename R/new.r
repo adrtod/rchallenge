@@ -211,7 +211,7 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 
 #' Render your challenge R Markdown script to a HTML page.
 #' @param input string. name of the R Markdown input file
-#' @param output_file output file. If \code{NULL} then a default based on the name 
+#' @param output_file string. output file. If \code{NULL} then a default based on the name 
 #'   of the input file is chosen.
 #' @param output_dir string. output directory. Defaults to the directory of the input file.
 #'   make sure that the output HTML file will be published online.
@@ -236,7 +236,7 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #' unlink(outdir)
 #' setwd(wd)
 #' unlink(path)
-publish <- function(input="challenge.rmd", output_file = NULL, 
+publish <- function(input="challenge.rmd", output_file = "index.html", 
                     output_dir = dirname(input), 
                     quiet = FALSE, ...) {
   wd <- getwd()

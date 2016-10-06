@@ -68,7 +68,7 @@ To complete the installation:
     new_team("team_foo", "team_bar")
     ```
 
-2. Render the html page:
+2. Render the HTML page:
     ```R
     ?publish
     publish()
@@ -76,7 +76,7 @@ To complete the installation:
     Use the `output_dir` argument to change the output directory.
     Make sure the output HTML file is rendered, e.g. using [GitHub Pages](https://pages.github.com/).
 
-3. Give the URL to your `challenge.html` file to the participants.
+3. Give the URL to your HTML file to the participants.
     
 4. Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 
@@ -105,6 +105,11 @@ You can setup the following line to your [crontab](https://en.wikipedia.org/wiki
 This will render a HTML webpage every hour.
 Use the `output_dir` argument to change the output directory.
 
+If your challenge is hosted on a Github repository you can automate the push:
+```
+0 * * * * cd ~/Dropbox/mychallenge && Rscript -e 'rchallenge::publish()' && git commit -m "update html" index.html && git push
+```
+
 You might have to add the path to Rscript and pandoc at the beginning of your crontab:
 ```
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -114,6 +119,7 @@ Depending on your system or pandoc version you might also have to explicitly add
 ```
 0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd", encoding = "utf8")'
 ```
+
 
 ### Windows
 

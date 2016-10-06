@@ -12,9 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
-
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -165,12 +163,12 @@ for details on installing pandoc for your platform.</p>
 <li> Create and <a href = 'share'>https://www.dropbox.com/en/help/19</a> subdirectories in <code>submissions</code> for each team:</p>
       <p><code>new_team(&quot;team_foo&quot;, &quot;team_bar&quot;)</code></p>
       <p></li>
-<li> Render the html page:
+<li> Render the HTML page:
    <code>publish()</code>
    Use the <code>output_dir</code> argument to change the output directory.
    Make sure the output HTML file is rendered, e.g. using <a href = 'GitHub Pages'>https://pages.github.com/</a>.</p>
       <p></li>
-<li> Give the URL to your <code>challenge.html</code> file to the participants.</p>
+<li> Give the URL to your HTML file to the participants.</p>
       <p></li>
 <li> Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 </li>
@@ -205,6 +203,8 @@ using <code>crontab -e</code> (mind the quotes):</p>
       <p><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)&#39;</code></p>
       <p>This will render a HTML webpage every hour.
 Use the <code>output_dir</code> argument to change the output directory.</p>
+      <p>If your challenge is hosted on a Github repository you can automate the push:</p>
+      <p><code>0 * * * * cd ~/Dropbox/mychallenge &amp;&amp; Rscript -e &#39;rchallenge::publish()&#39; &amp;&amp; git commit -m &quot;update html&quot; index.html &amp;&amp; git push</code></p>
       <p>You might have to add the path to Rscript and pandoc at the beginning of your crontab:</p>
       <p><code>PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</code></p>
       <p>Depending on your system or pandoc version you might also have to explicitly add the encoding option to the command:</p>
@@ -230,7 +230,7 @@ to create a new task with a <em>Start a program</em> action with the settings (m
 
       <p></p>
       <p><ul>
-<li> <a href = 'My own challenge'>https://adrtod.github.io/challenge_mimse2014.html</a> (in french) given to Master students at the University of Bordeaux.
+<li> <a href = 'My own challenge'>https://adrtod.github.io/challenge-mimse2014/</a> (in french) given to Master students at the University of Bordeaux.
  </li>
 <li> <a href = 'A classification and variable selection problem'>https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html</a> (in french) given by Robin Genuer (Bordeaux).
 </li>

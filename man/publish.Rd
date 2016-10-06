@@ -4,13 +4,13 @@
 \alias{publish}
 \title{Render your challenge R Markdown script to a HTML page.}
 \usage{
-publish(input = "challenge.rmd", output_file = NULL,
+publish(input = "challenge.rmd", output_file = "index.html",
   output_dir = dirname(input), quiet = FALSE, ...)
 }
 \arguments{
 \item{input}{string. name of the R Markdown input file}
 
-\item{output_file}{output file. If \code{NULL} then a default based on the name 
+\item{output_file}{string. output file. If \code{NULL} then a default based on the name 
 of the input file is chosen.}
 
 \item{output_dir}{string. output directory. Defaults to the directory of the input file.

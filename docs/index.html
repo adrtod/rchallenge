@@ -12,9 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
-
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -164,12 +162,12 @@ devtools::install_github("adrtod/rchallenge")</code></pre>
 <span class="kw"><a href="reference/new_team.html">new_team</a></span>(<span class="st">"team_foo"</span>, <span class="st">"team_bar"</span>)</code></pre></div>
 </li>
 <li>
-<p>Render the html page:</p>
+<p>Render the HTML page:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?publish
 <span class="kw"><a href="reference/publish.html">publish</a></span>()</code></pre></div>
 <p>Use the <code>output_dir</code> argument to change the output directory. Make sure the output HTML file is rendered, e.g.&nbsp;using <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 </li>
-<li><p>Give the URL to your <code>challenge.html</code> file to the participants.</p></li>
+<li><p>Give the URL to your HTML file to the participants.</p></li>
 <li><p>Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.</p></li>
 </ol>
 <p>From now on, a fully autonomous challenge system is set up requiring no further administration. With each update, the program automatically performs the following tasks using the functions available in our package:</p>
@@ -218,6 +216,8 @@ devtools::install_github("adrtod/rchallenge")</code></pre>
 <p>You can setup the following line to your <a href="https://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code> (mind the quotes):</p>
 <pre><code>0 * * * * Rscript -e 'rchallenge::publish("~/Dropbox/mychallenge/challenge.rmd")'</code></pre>
 <p>This will render a HTML webpage every hour. Use the <code>output_dir</code> argument to change the output directory.</p>
+<p>If your challenge is hosted on a Github repository you can automate the push:</p>
+<pre><code>0 * * * * cd ~/Dropbox/mychallenge &amp;&amp; Rscript -e 'rchallenge::publish()' &amp;&amp; git commit -m "update html" index.html &amp;&amp; git push</code></pre>
 <p>You might have to add the path to Rscript and pandoc at the beginning of your crontab:</p>
 <pre><code>PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</code></pre>
 <p>Depending on your system or pandoc version you might also have to explicitly add the encoding option to the command:</p>
@@ -238,7 +238,7 @@ devtools::install_github("adrtod/rchallenge")</code></pre>
 </ul>
 <h2 id="examples">Examples</h2>
 <ul>
-<li><p><a href="http://adrien.tspace.fr/challenge_mimse2014.html">My own challenge</a> (in french) given to Master students at the University of Bordeaux.</p></li>
+<li><p><a href="https://adrtod.github.io/challenge-mimse2014/">My own challenge</a> (in french) given to Master students at the University of Bordeaux.</p></li>
 <li><p><a href="https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html">A classification and variable selection problem</a> (in french) given by Robin Genuer (Bordeaux).</p></li>
 </ul>
 <p>Please <a href="https://adrtod.github.io/">contact me</a> to add yours.</p>
@@ -257,6 +257,7 @@ devtools::install_github("adrtod/rchallenge")</code></pre>
 <li>[ ] check arguments</li>
 <li>[ ] interactive webpage using <a href="http://shiny.rstudio.com/">Shiny</a>
 </li>
+<li>[ ] use fontawsome instead of glyphicons</li>
 </ul>
 
   </div>
