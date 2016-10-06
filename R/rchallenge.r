@@ -116,7 +116,7 @@ release_questions <- function() {
 #' 
 #' @section Examples:
 #' \itemize{ 
-#'  \item \href{https://adrtod.github.io/challenge_mimse2014.html}{My own challenge} (in french) given to Master students at the University of Bordeaux.
+#'  \item \href{https://adrtod.github.io/challenge-mimse2014/}{My own challenge} (in french) given to Master students at the University of Bordeaux.
 #'  \item \href{https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html}{A classification and variable selection problem} (in french) given by Robin Genuer (Bordeaux).
 #' }
 #' 

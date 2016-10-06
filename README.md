@@ -127,7 +127,7 @@ You can use the [Task Scheduler](https://technet.microsoft.com/en-us/library/cc7
 - The rendering of HTML content provided by Dropbox will be discontinued from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. See <https://www.dropbox.com/help/16>. Alternatively, [GitHub Pages](https://pages.github.com/) provide an easy HTML publishing solution via a simple GitHub repository.
 
 ## Examples
-- [My own challenge](http://adrien.tspace.fr/challenge_mimse2014.html) (in french) given to Master students at the University of Bordeaux.
+- [My own challenge](https://adrtod.github.io/challenge-mimse2014/) (in french) given to Master students at the University of Bordeaux.
 
 - [A classification and variable selection problem](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french) given by Robin Genuer (Bordeaux).
 
