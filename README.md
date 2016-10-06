@@ -150,3 +150,4 @@ The **rchallenge** package is licensed under the GPLv2 (https://www.gnu.org/lice
 - [ ] interactive plots with `ggvis`
 - [ ] check arguments
 - [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
+- [ ] use fontawsome instead of glyphicons

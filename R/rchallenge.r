@@ -1,3 +1,11 @@
+
+release_questions <- function() {
+  c(
+    "Have you updated the docs? devtools::document()",
+    "Have you updated the website? pkgdown::build_site()"
+  )
+}
+
 #' @section Installation:
 #' Install the R package from \href{https://cran.r-project.org/package=rchallenge}{CRAN} repositories
 #' 
