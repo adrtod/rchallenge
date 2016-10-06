@@ -131,8 +131,8 @@ On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble 
 # Description des données
 | Nom | Fichier | Description | Liens |
 | ---- | ---- | ----------- | ----- |
-| Apprentissage | `data_train.rda` | `data.frame` avec ```r nrow(data_train)``` lignes/clients et ```r ncol(data_train)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_train.rda?dl=1) |
-| Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_test.rda?dl=1) |
+| Apprentissage | `data_train.rda` | `data.frame` avec ```r nrow(data_train)``` lignes/clients et ```r ncol(data_train)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_train.rda) |
+| Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_test.rda) |
 
 Ces fichiers sont à importer dans R avec :
 ```{r, eval=FALSE}

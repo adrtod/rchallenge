@@ -128,8 +128,8 @@ To this aim, we dispose of a supervised training set: a set of customers whose a
 # Data
 | Name | File | Description | Links |
 | ---- | ---- | ----------- | ----- |
-| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_train.rda?dl=1) |
-| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [![](`r glyphicon("download_alt")`)](https://www.dropbox.com/***EDIT_LINK***/data_test.rda?dl=1) |
+| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_train.rda) |
+| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_test.rda) |
 
 Load the files in R with:
 
