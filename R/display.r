@@ -89,13 +89,14 @@ print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
   knitr::kable(df, ...)
 }
 
-#' HTML code for a \href{http://fontawesome.io/}{Font Awesome} icon.
+#' HTML code for a Font Awesome icon.
 #' 
 #' @note Requires the Font Awesome HTML code:
 #'   \code{<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">}
 #' @param name string. name of the icon.
 #' @return string containing the HTML code.
 #' @export
+#' @seealso \url{http://fontawesome.io/}
 fa <- function(name) {
   return(paste0('<i class="fa fa-', name, '"></i>'))
 }
