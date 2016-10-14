@@ -6,13 +6,11 @@ output:
   html_document:
     highlight: tango
     theme: spacelab
-    toc: yes
 ---
-
-Welcome to the challenge webpage!
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Load the rcallenge package
+# Load the rchallenge package
 library(rchallenge)
 
 # General settings
@@ -94,7 +92,9 @@ if (length(history)>0) {
 }
 ```
 
-| ![](`r glyphicon("inbox_out")`) \ **`r n_submissions`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
+Welcome to the challenge webpage!
+
+| <i class="fa fa-cloud-upload fa-2x"></i> \ **`r n_submissions`** | <i class="fa fa-users fa-2x"></i> \ **`r n_team`** | <i class="fa fa-calendar fa-2x"></i> \ **`r countdown(deadline)`** |
 |:-------------:|:-------------:|:-------------:|
 | submissions | teams | `r ifelse(Sys.time()<deadline, "active", "completed")` |
 
@@ -103,6 +103,23 @@ Last update: ```r last_update(deadline)```
 # News
 `r date_start`:
   ~ The challenge is open!
+
+```{r, echo = FALSE , results='asis'}
+colnames = c('<i class="fa fa-trophy"></i> Rank',
+             '<i class="fa fa-users"></i> Team',
+             '<i class="fa fa-cloud-upload"></i> Submissions',
+             '<i class="fa fa-calendar"></i> Date',
+             '<i class="fa fa-bullseye"></i> Score')
+if (exists("best", mode = "list"))
+  print_leaderboard(best, "error", test_name=test_or_quiz, 
+                    caption="Error rate", col.names=colnames)
+```
+
+```{r, echo = FALSE , results='asis'}
+if (exists("best", mode = "list"))
+  print_leaderboard(best, "cost", test_name=test_or_quiz, 
+                    caption="Average cost", col.names=colnames)
+```
 
 # Objective
 **Binary classification**: predict the creditworthiness or default risk of a set of customers for the purpose of credit allowance.
@@ -113,7 +130,7 @@ To this aim, we dispose of a supervised training set: a set of customers whose a
 1. Send an email to <`r email`> with the following information:
 
     - the name of the team and of the participants
-    - at least one email address of a Dropbox account [![](`r glyphicon("dropbox")`)](https://www.dropbox.com/)
+    - at least one email address of a Dropbox account [<i class="fa fa-dropbox fa-2x"></i>](https://www.dropbox.com/)
 
 2. You will receive an invitation to a shared Dropbox folder named after your team.
 
@@ -128,8 +145,8 @@ To this aim, we dispose of a supervised training set: a set of customers whose a
 # Data
 | Name | File | Description | Links |
 | ---- | ---- | ----------- | ----- |
-| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_train.rda) |
-| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_test.rda) |
+| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_train.rda) |
+| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_test.rda) |
 
 Load the files in R with:
 
@@ -221,25 +238,8 @@ Only the highest score by team among all submissions is retained.
 
 The team ```r baseline``` corresponds to the score of the best classifier among `predict_all_good` or `predict_all_bad`, in lieu of reference to improve.
 
-### Error rate
-Last update: ```r last_update(deadline)```
-```{r, echo = FALSE , results='asis'}
-if (exists("best", mode = "list"))
-  print_leaderboard(best, "error", test_name=test_or_quiz)
-```
-
-### Average cost
-Last update: ```r last_update(deadline)```
-```{r, echo = FALSE , results='asis'}
-if (exists("best", mode = "list"))
-  print_leaderboard(best, "cost", test_name=test_or_quiz)
-```
-
 # Submissions history
-
-### Error rate
-Last update: ```r last_update(deadline)```
-```{r, echo=FALSE, fig.cap="Submissions history - Error rate", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.cap="Error rate", fig.height=5, fig.width=9}
 # color palette
 Dark2 <- colorRampPalette(c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", 
                             "#A6761D", "#666666"))
@@ -249,28 +249,20 @@ par(mar = c(5,4,4,7) + 0.1)
 plot_history(history, "error", test_name=test_or_quiz, baseline=baseline)
 ```
 
-### Average cost
-Last update: ```r last_update(deadline)```
-```{r, echo=FALSE, fig.cap="Submissions history - Average cost", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.cap="Average cost", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_history(history, "cost", test_name=test_or_quiz, baseline=baseline)
 ```
 
-### Activity
-Last update: ```r last_update(deadline)```
-```{r, echo=FALSE, fig.cap="Submissions history - Activity", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.cap="Activity", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_activity(history, baseline=baseline)
 ```
 
 # Read errors
-Last update: ```r last_update(deadline)```
 ```{r, echo=FALSE}
 print_readerr(read_err)
 ```
 
 ------------
-This challenge was built using the [rchallenge](http://adrtod.github.io/rchallenge/) package.
-
-The icons of this webpage come from [GLYPHICONS.com](http://glyphicons.com/) and are distributed under the
-[CC-BY](http://creativecommons.org/licenses/by/3.0/) licence.
+Powered by [rchallenge](http://adrtod.github.io/rchallenge/).

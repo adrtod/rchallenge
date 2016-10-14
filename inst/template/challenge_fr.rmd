@@ -6,13 +6,11 @@ output:
   html_document:
     highlight: tango
     theme: spacelab
-    toc: yes
 ---
-
-Bienvenue sur la page du challenge !
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Load the rcallenge package
+# Load the rchallenge package
 library(rchallenge)
 
 # General settings
@@ -94,7 +92,9 @@ if (length(history)>0) {
 }
 ```
 
-| ![](`r glyphicon("inbox_out")`) \ **`r n_submissions`** | ![](`r glyphicon("group")`) \ **`r n_team`** | ![](`r glyphicon("calendar")`) \ **`r countdown(deadline)`** |
+Bienvenue sur la page du challenge !
+
+| <i class="fa fa-cloud-upload fa-2x"></i> \ **`r n_submissions`** | <i class="fa fa-users fa-2x"></i> \ **`r n_team`** | <i class="fa fa-calendar fa-2x"></i> \ **`r countdown(deadline)`** |
 |:-------------:|:-------------:|:-------------:|
 | soumissions | équipes | `r ifelse(Sys.time()<deadline, "en cours", "terminé")` |
 
@@ -105,18 +105,33 @@ Dernière mise à jour : ```r last_update(deadline)```
 `r date_start`:
   ~ Le challenge est ouvert !
 
-# Objectif
+```{r, echo = FALSE , results='asis'}
+colnames = c('<i class="fa fa-trophy"></i> Classement',
+             '<i class="fa fa-users"></i> Equipe',
+             '<i class="fa fa-cloud-upload"></i> Soumissions',
+             '<i class="fa fa-calendar"></i> Date',
+             '<i class="fa fa-bullseye"></i> Score')
+if (exists("best", mode = "list"))
+  print_leaderboard(best, "error", test_name=test_or_quiz, 
+                    caption="Taux d'erreur", col.names=colnames)
+```
 
+```{r, echo = FALSE , results='asis'}
+if (exists("best", mode = "list"))
+  print_leaderboard(best, "cost", test_name=test_or_quiz, 
+                    caption = "Coût moyen", col.names=colnames)
+```
+
+# Objectif
 **Classification binaire** : prédire la solvabilité ou le risque de non-remboursement d'un ensemble de clients dans le but de l'octroi de crédit bancaire.
 
 On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble de clients dont la réponse est connue. Le but est d'obtenir le meilleur score de prédiction sur un jeu de données test dont la réponse est cachée.
 
 # Déroulement du challenge
-
 1. Envoyer un email à <`r email`> contenant les informations suivantes :
 
     - nom de l'équipe et des participants
-    - au moins une adresse email associée à un compte Dropbox [![](`r glyphicon("dropbox")`)](https://www.dropbox.com/)
+    - au moins une adresse email associée à un compte Dropbox [<i class="fa fa-dropbox fa-2x"></i>](https://www.dropbox.com/)
 
 2. Vous recevrez une invitation à partager un dossier Dropbox portant le nom de votre équipe.
 
@@ -131,8 +146,8 @@ On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble 
 # Description des données
 | Nom | Fichier | Description | Liens |
 | ---- | ---- | ----------- | ----- |
-| Apprentissage | `data_train.rda` | `data.frame` avec ```r nrow(data_train)``` lignes/clients et ```r ncol(data_train)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_train.rda) |
-| Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [![](`r glyphicon("download_alt")`)](***EDIT_LINK*** data/data_test.rda) |
+| Apprentissage | `data_train.rda` | `data.frame` avec ```r nrow(data_train)``` lignes/clients et ```r ncol(data_train)``` colonnes/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_train.rda) |
+| Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_test.rda) |
 
 Ces fichiers sont à importer dans R avec :
 ```{r, eval=FALSE}
@@ -230,25 +245,8 @@ Seul le meilleur score par équipe parmi toutes les soumissions est retenu.
 
 L'équipe ```r baseline``` correspond au score du meilleur classifieur parmi `predict_all_bad` ou `predict_all_good` qui tient lieu de référence à améliorer.
 
-### Taux d'erreur
-Dernière mise à jour : ```r last_update(deadline)```
-```{r, echo = FALSE , results='asis'}
-if (exists("best", mode = "list"))
-  print_leaderboard(best, "error", test_name=test_or_quiz)
-```
-
-### Coût moyen
-Dernière mise à jour : ```r last_update(deadline)```
-```{r, echo = FALSE , results='asis'}
-if (exists("best", mode = "list"))
-  print_leaderboard(best, "cost", test_name=test_or_quiz)
-```
-
 # Historique des soumissions
-
-### Taux d'erreur
-Dernière mise à jour : ```r last_update(deadline)```
-```{r, echo=FALSE, fig.cap="Historique des soumissions - Taux d'erreur", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.cap="Taux d'erreur", fig.height=5, fig.width=9}
 # color palette# color palette
 Dark2 <- colorRampPalette(c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", 
                             "#A6761D", "#666666"))
@@ -258,28 +256,23 @@ par(mar = c(5,4,4,7) + 0.1)
 plot_history(history, "error", test_name=test_or_quiz)
 ```
 
-### Coût moyen
-Dernière mise à jour : ```r last_update(deadline)```
-```{r, echo=FALSE, fig.cap="Historique des soumissions - Coût moyen", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.cap="Coût moyen", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_history(history, "cost", test_name=test_or_quiz)
 ```
 
-### Activité
-Dernière mise à jour : ```r last_update(deadline)```
-```{r, echo=FALSE, fig.cap="Historique des soumissions - Activité", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.cap="Activité", fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_activity(history)
 ```
 
 # Erreurs de lecture
-Dernière mise à jour : ```r last_update(deadline)```
 ```{r, echo=FALSE}
-print_readerr(read_err)
+colnames = c('<i class="fa fa-users"></i> Team',
+             '<i class="fa fa-file"></i> File',
+             '<i class="fa fa-comment"></i> Message')
+print_readerr(read_err, col.names = colnames)
 ```
 
 ------------
-Ce challenge à été mis en place à l'aide du package [rchallenge](http://adrtod.github.io/rchallenge/).
-
-Les icônes proviennent du site [GLYPHICONS.com](http://glyphicons.com/) et sont distribuées sous la licence
-[CC-BY](http://creativecommons.org/licenses/by/3.0/).
+Développé avec [rchallenge](http://adrtod.github.io/rchallenge/).

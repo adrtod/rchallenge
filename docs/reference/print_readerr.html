@@ -88,27 +88,30 @@
       </header>
 
       <div class="page-header">
-  <h1>Print read errors.</h1>
+  <h1>Format read errors in Markdown.</h1>
 </div>
 
 <div class="row">
   <div class="col-md-9">
     
-    <p>Print read errors.</p>
+    <p>Format read errors in Markdown.</p>
     
 
-    <pre><span class='fu'>print_readerr</span>(<span class='kw'>read_err</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
+    <pre><span class='fu'>print_readerr</span>(<span class='kw'>read_err</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
     
     <h2>Arguments</h2>
     <dl class="dl-horizontal">
       <dt>read_err</dt>
       <dd>list of read errors returned by <code>store_new_submissions</code></dd>
+      <dt>...</dt>
+      <dd>further parameters to pass to <code><a href='http://www.rdocumentation.org/packages/kable/topics/knitr'>kable</a></code></dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
-      <p><code>NULL</code></p>
+      <p><code>print_readerr</code> returns a character vector of the table source code
+  to be used in a Markdown document.</p>
     </div>
       </div>
   <div class="col-md-3">

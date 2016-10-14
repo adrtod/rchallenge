@@ -142,7 +142,7 @@ solution via a simple GitHub repository.</p>
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
 <span class='no'>wd</span> <span class='kw'>&lt;-</span> <span class='fu'>setwd</span>(<span class='no'>path</span>)
-<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpBTQmoi&quot;
+<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/Rtmp1q4tKQ&quot;
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the &quot;data&quot; subdirectory.
 #&gt; 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -154,7 +154,7 @@ solution via a simple GitHub repository.</p>
 #&gt; 6. Give the URL to &quot;challenge.html&quot; to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpBTQmoi/challenge.rmd&quot;)&#39;
+#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/Rtmp1q4tKQ/challenge.rmd&quot;)&#39;
 #&gt; </div><div class='input'><span class='no'>outdir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>()
 <span class='fu'>publish</span>(<span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>outdir</span>, <span class='kw'>output_options</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>self_contained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output'><strong class='text-info'>
 
@@ -173,29 +173,34 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt; 
 #&gt;   |                                                                         |.......                                                          |  11%
 #&gt; label: unnamed-chunk-2 (with options) 
-#&gt; List of 1
-#&gt;  $ eval: logi FALSE
+#&gt; List of 2
+#&gt;  $ echo   : logi FALSE
+#&gt;  $ results: chr &quot;asis&quot;
 #&gt; 
 #&gt;   |                                                                         |.........                                                        |  14%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |...........                                                      |  17%
-#&gt; label: unnamed-chunk-3
+#&gt; label: unnamed-chunk-3 (with options) 
+#&gt; List of 2
+#&gt;  $ echo   : logi FALSE
+#&gt;  $ results: chr &quot;asis&quot;
+#&gt; 
 #&gt;   |                                                                         |.............                                                    |  20%
 #&gt;    inline R code fragments
 #&gt; 
 #&gt;   |                                                                         |...............                                                  |  23%
-#&gt; label: unnamed-chunk-4
+#&gt; label: unnamed-chunk-4 (with options) 
+#&gt; List of 1
+#&gt;  $ eval: logi FALSE
+#&gt; 
 #&gt;   |                                                                         |.................                                                |  26%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |...................                                              |  29%
-#&gt; label: unnamed-chunk-5 (with options) 
-#&gt; List of 1
-#&gt;  $ eval: logi FALSE
-#&gt; 
+#&gt; label: unnamed-chunk-5
 #&gt;   |                                                                         |....................                                             |  31%
-#&gt;   ordinary text without R code
+#&gt;    inline R code fragments
 #&gt; 
 #&gt;   |                                                                         |......................                                           |  34%
 #&gt; label: unnamed-chunk-6
@@ -203,37 +208,32 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |..........................                                       |  40%
-#&gt; label: unnamed-chunk-7
+#&gt; label: unnamed-chunk-7 (with options) 
+#&gt; List of 1
+#&gt;  $ eval: logi FALSE
+#&gt; 
 #&gt;   |                                                                         |............................                                     |  43%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |..............................                                   |  46%
-#&gt; label: unnamed-chunk-8 (with options) 
-#&gt; List of 3
-#&gt;  $ echo    : logi FALSE
-#&gt;  $ collapse: logi TRUE
-#&gt;  $ comment : logi NA
-#&gt; 
+#&gt; label: unnamed-chunk-8
 #&gt;   |                                                                         |................................                                 |  49%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |.................................                                |  51%
-#&gt; label: unnamed-chunk-9 (with options) 
-#&gt; List of 3
-#&gt;  $ echo    : logi FALSE
-#&gt;  $ collapse: logi TRUE
-#&gt;  $ comment : logi NA
-#&gt; 
+#&gt; label: unnamed-chunk-9
 #&gt;   |                                                                         |...................................                              |  54%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |.....................................                            |  57%
 #&gt; label: unnamed-chunk-10 (with options) 
-#&gt; List of 1
-#&gt;  $ eval: logi FALSE
+#&gt; List of 3
+#&gt;  $ echo    : logi FALSE
+#&gt;  $ collapse: logi TRUE
+#&gt;  $ comment : logi NA
 #&gt; 
 #&gt;   |                                                                         |.......................................                          |  60%
-#&gt;    inline R code fragments
+#&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |.........................................                        |  63%
 #&gt; label: unnamed-chunk-11 (with options) 
@@ -243,22 +243,22 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt;  $ comment : logi NA
 #&gt; 
 #&gt;   |                                                                         |...........................................                      |  66%
-#&gt;    inline R code fragments
+#&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |.............................................                    |  69%
 #&gt; label: unnamed-chunk-12 (with options) 
-#&gt; List of 2
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ results: chr &quot;asis&quot;
+#&gt; List of 1
+#&gt;  $ eval: logi FALSE
 #&gt; 
 #&gt;   |                                                                         |..............................................                   |  71%
 #&gt;    inline R code fragments
 #&gt; 
 #&gt;   |                                                                         |................................................                 |  74%
 #&gt; label: unnamed-chunk-13 (with options) 
-#&gt; List of 2
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ results: chr &quot;asis&quot;
+#&gt; List of 3
+#&gt;  $ echo    : logi FALSE
+#&gt;  $ collapse: logi TRUE
+#&gt;  $ comment : logi NA
 #&gt; 
 #&gt;   |                                                                         |..................................................               |  77%
 #&gt;    inline R code fragments
@@ -267,34 +267,34 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt; label: unnamed-chunk-14 (with options) 
 #&gt; List of 4
 #&gt;  $ echo      : logi FALSE
-#&gt;  $ fig.cap   : chr &quot;Submissions history - Error rate&quot;
+#&gt;  $ fig.cap   : chr &quot;Error rate&quot;
 #&gt;  $ fig.height: num 5
 #&gt;  $ fig.width : num 9
 #&gt; 
 #&gt; </div><div class='output co'>#&gt;   |                                                                         |......................................................           |  83%
-#&gt;    inline R code fragments
+#&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |........................................................         |  86%
 #&gt; label: unnamed-chunk-15 (with options) 
 #&gt; List of 4
 #&gt;  $ echo      : logi FALSE
-#&gt;  $ fig.cap   : chr &quot;Submissions history - Average cost&quot;
+#&gt;  $ fig.cap   : chr &quot;Average cost&quot;
 #&gt;  $ fig.height: num 5
 #&gt;  $ fig.width : num 9
 #&gt; 
 #&gt; </div><div class='output co'>#&gt;   |                                                                         |..........................................................       |  89%
-#&gt;    inline R code fragments
+#&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |...........................................................      |  91%
 #&gt; label: unnamed-chunk-16 (with options) 
 #&gt; List of 4
 #&gt;  $ echo      : logi FALSE
-#&gt;  $ fig.cap   : chr &quot;Submissions history - Activity&quot;
+#&gt;  $ fig.cap   : chr &quot;Activity&quot;
 #&gt;  $ fig.height: num 5
 #&gt;  $ fig.width : num 9
 #&gt; 
 #&gt; </div><div class='output co'>#&gt;   |                                                                         |.............................................................    |  94%
-#&gt;    inline R code fragments
+#&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |...............................................................  |  97%
 #&gt; label: unnamed-chunk-17 (with options) 
@@ -306,9 +306,9 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt; 
 #&gt; 
 #&gt; </div><div class='output'><strong class='text-info'>output file: challenge.knit.md
-</strong></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpBTQmoi/index.html --smart --email-obfuscation none --standalone --section-divs --table-of-contents --toc-depth 3 --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpBTQmoi/rmarkdown-str44fe214ebe47.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango --variable navigationjs=index_files/navigation-1.1 
+</strong></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/Rtmp1q4tKQ/index.html --smart --email-obfuscation none --standalone --section-divs --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/Rtmp1q4tKQ/rmarkdown-str2c861891f0d4.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango --variable navigationjs=index_files/navigation-1.1 
 #&gt; </div><div class='output'><strong class='text-info'>
-Output created: index.html</strong></div><div class='output co'>#&gt; Next step: give the URL to &quot;/tmp/RtmpBTQmoi/index.html&quot; to the participants.
+Output created: index.html</strong></div><div class='output co'>#&gt; Next step: give the URL to &quot;/tmp/Rtmp1q4tKQ/index.html&quot; to the participants.
 #&gt; </div><div class='input'><span class='fu'>unlink</span>(<span class='no'>outdir</span>)
 <span class='fu'>setwd</span>(<span class='no'>wd</span>)
 <span class='fu'>unlink</span>(<span class='no'>path</span>)</div></pre>

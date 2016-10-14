@@ -2,7 +2,7 @@
 % Please edit documentation in R/display.r
 \name{html_img}
 \alias{html_img}
-\title{html code for an image.}
+\title{HTML code for an image.}
 \usage{
 html_img(file, width = "10px")
 }
@@ -12,6 +12,6 @@ html_img(file, width = "10px")
 \item{width}{string. width of display.}
 }
 \description{
-html code for an image.
+HTML code for an image.
 }
 

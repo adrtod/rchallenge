@@ -2,17 +2,20 @@
 % Please edit documentation in R/display.r
 \name{print_readerr}
 \alias{print_readerr}
-\title{Print read errors.}
+\title{Format read errors in Markdown.}
 \usage{
-print_readerr(read_err = list())
+print_readerr(read_err = list(), ...)
 }
 \arguments{
 \item{read_err}{list of read errors returned by \code{\link{store_new_submissions}}}
+
+\item{...}{further parameters to pass to \code{\link[knitr]{kable}}}
 }
 \value{
-\code{NULL}
+\code{print_readerr} returns a character vector of the table source code
+  to be used in a Markdown document.
 }
 \description{
-Print read errors.
+Format read errors in Markdown.
 }
 

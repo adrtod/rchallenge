@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>new_team. rchallenge</title>
+<title>fa. rchallenge</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -88,60 +88,36 @@
       </header>
 
       <div class="page-header">
-  <h1>Create new teams submission folders in your challenge.</h1>
+  <h1>HTML code for a </h1>
 </div>
 
 <div class="row">
   <div class="col-md-9">
     
-    <p>Create new teams submission folders in your challenge.</p>
+    <p>HTML code for a <a href = 'Font Awesome'>http://fontawesome.io/</a> icon.</p>
     
 
-    <pre><span class='fu'>new_team</span>(<span class='no'>...</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>submissions_dir</span> <span class='kw'>=</span> <span class='st'>"submissions"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>showWarnings</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre><span class='fu'>fa</span>(<span class='no'>name</span>)</pre>
     
     <h2>Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>...</dt>
-      <dd>strings. names of the team subdirectories.</dd>
-      <dt>path</dt>
-      <dd>string. root path of the challenge. see <code>new_challenge</code>.</dd>
-      <dt>submissions_dir</dt>
-      <dd>string. subdirectory of the submissions. see <code>new_challenge</code>.</dd>
-      <dt>quiet</dt>
-      <dd>logical. deactivate text output.</dd>
-      <dt>showWarnings</dt>
-      <dd>logical. should the warnings on failure be shown? see <code>dir.create</code>.</dd>
+      <dt>name</dt>
+      <dd>string. name of the icon.</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
-      <p>The paths of the created teams are returned.</p>
+      <p>string containing the HTML code.</p>
     </div>
-    
-    <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
-<span class='no'>wd</span> <span class='kw'>&lt;-</span> <span class='fu'>setwd</span>(<span class='no'>path</span>)
-<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/Rtmp1q4tKQ&quot;
-#&gt; Next steps to complete the installation:
-#&gt; 1. Replace the data files in the &quot;data&quot; subdirectory.
-#&gt; 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
-#&gt; 3. Customize the template R Markdown file &quot;challenge.rmd&quot; as needed.
-#&gt; 4. Create and share subdirectories in &quot;submissions&quot; for each team:
-#&gt;     rchallenge::new_team(&quot;team_foo&quot;, &quot;team_bar&quot;, path=&quot;.&quot;, submissions_dir=&quot;submissions&quot;)
-#&gt; 5. Render the HTML page:
-#&gt;     rchallenge::publish(&quot;./challenge.rmd&quot;)
-#&gt; 6. Give the URL to &quot;challenge.html&quot; to the participants.
-#&gt; 7. Automate the updates of the webpage.
-#&gt;    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/Rtmp1q4tKQ/challenge.rmd&quot;)&#39;
-#&gt; </div><div class='input'><span class='fu'>new_team</span>(<span class='st'>"team_foo"</span>, <span class='st'>"team_bar"</span>)</div><div class='output co'>#&gt; Creating team subdirectory: submissions/team_foo 
-#&gt; Creating team subdirectory: submissions/team_bar 
-#&gt; Next step: share the Dropbox folders with the corresponding teams.
-#&gt; </div><div class='input'><span class='fu'>setwd</span>(<span class='no'>wd</span>)
-<span class='fu'>unlink</span>(<span class='no'>path</span>)</div></pre>
-  </div>
+
+    <div class="Note">
+      <h2>Note</h2>
+
+      <p>Requires the Font Awesome HTML code:
+  <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;&gt;</code></p>
+    </div>
+      </div>
   <div class="col-md-3">
   </div>
 </div>

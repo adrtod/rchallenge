@@ -3,6 +3,7 @@
 export(compute_metrics)
 export(countdown)
 export(data_split)
+export(fa)
 export(get_best)
 export(get_data)
 export(glyphicon)

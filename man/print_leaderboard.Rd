@@ -14,7 +14,7 @@ by \code{\link{get_best}}.}
 
 \item{test_name}{string. name of the test set used: \code{"quiz"} or \code{"test"}}
 
-\item{...}{further parameters to pass to \code{\link[knitr]{kable}}er}
+\item{...}{further parameters to pass to \code{\link[knitr]{kable}}}
 }
 \value{
 \code{print_leaderboard} returns a character vector of the table source code

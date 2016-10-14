@@ -24,21 +24,23 @@ last_update <- function(deadline, format = "%d %b %Y %H:%M") {
   return(format(last, format))
 }
 
-#' Print read errors.
+#' Format read errors in Markdown.
 #' @param read_err list of read errors returned by \code{\link{store_new_submissions}}
+#' @param ... further parameters to pass to \code{\link[knitr]{kable}}
 #' @export
-#' @return \code{NULL}
-print_readerr <- function(read_err = list()) {
-  if (length(read_err)==0)
-    cat("No read error.\n")
+#' @return \code{print_readerr} returns a character vector of the table source code
+#'   to be used in a Markdown document.
+print_readerr <- function(read_err = list(), ...) {
+  df = data.frame(Team=character(0), File=character(0), Message=character(0))
   for (i in seq(along=read_err)) {
-    cat("Team", names(read_err)[i], ":\n")
     for (j in seq(along=read_err[[i]])) {
-      cat("   ", paste(basename(names(read_err[[i]])[j]), ": "))
-      cat(read_err[[i]][[j]]$message, "\n")
+      df = rbind(df, data.frame(Team=names(read_err)[i],
+                                File = paste0("`", basename(names(read_err[[i]])[j]),"`"),
+                                Message = paste0("`", read_err[[i]][[j]]$message, "`"),
+                                stringsAsFactors = FALSE))
     }
   }
-  invisible(NULL)
+  knitr::kable(df, ...)
 }
 
 #' String displayed for the rank.
@@ -50,14 +52,14 @@ print_readerr <- function(read_err = list()) {
 #' @param symb  named list of characters. symbols used for the progress in ranking:
 #'   no change (\code{const}), ascent (\code{up}) and descent (\code{down})
 #' @keywords internal
-str_rank <- function(r, r_d, symb = list(const = html_img(glyphicon("right_arrow"), "10px"),
-                                         up = html_img(glyphicon("up_arrow"), "10px"),
-                                         down = html_img(glyphicon("down_arrow"), "10px"))) {
+str_rank <- function(r, r_d, symb = list(const = fa("arrow-right"),
+                                         up = fa("arrow-up"),
+                                         down = fa("arrow-down"))) {
   paste0(r, '. ', ifelse(r_d==0,
-                         symb["const"], 
+                         symb$const, 
                          ifelse(r_d<0,
-                                paste(rep(symb["up"], -r_d), collapse=""), 
-                                paste(rep(symb["down"], r_d), collapse=""))))
+                                paste(rep(symb$up, -r_d), collapse=""), 
+                                paste(rep(symb$down, r_d), collapse=""))))
 }
 
 
@@ -67,7 +69,7 @@ str_rank <- function(r, r_d, symb = list(const = html_img(glyphicon("right_arrow
 #'   by \code{\link{get_best}}.
 #' @param metric  string. name of the metric considered
 #' @param test_name string. name of the test set used: \code{"quiz"} or \code{"test"}
-#' @param ... further parameters to pass to \code{\link[knitr]{kable}}er
+#' @param ... further parameters to pass to \code{\link[knitr]{kable}}
 #' 
 #' @return \code{print_leaderboard} returns a character vector of the table source code
 #'   to be used in a Markdown document.
@@ -79,12 +81,23 @@ str_rank <- function(r, r_d, symb = list(const = html_img(glyphicon("right_arrow
 #' @importFrom knitr kable
 print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
   metric_column = paste(metric, test_name, sep=".")
-  leaderboard = data.frame(Rank = mapply(FUN = str_rank, best[[metric]]$rank, best[[metric]]$rank_diff),
-                           Team = best[[metric]]$team,
-                           Submissions = paste(best[[metric]]$n_submissions),
-                           Date = format(best[[metric]]$date, format="%d/%m/%y %H:%M"),
-                           Score = format(best[[metric]][[metric_column]], digits=3))
-  knitr::kable(leaderboard, ...)
+  df = data.frame(Rank = mapply(FUN = str_rank, best[[metric]]$rank, best[[metric]]$rank_diff),
+                  Team = best[[metric]]$team,
+                  Submissions = paste(best[[metric]]$n_submissions),
+                  Date = format(best[[metric]]$date, format="%d/%m/%y %H:%M"),
+                  Score = format(best[[metric]][[metric_column]], digits=3))
+  knitr::kable(df, ...)
+}
+
+#' HTML code for a \href{http://fontawesome.io/}{Font Awesome} icon.
+#' 
+#' @note Requires the Font Awesome HTML code:
+#'   \code{<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">}
+#' @param name string. name of the icon.
+#' @return string containing the HTML code.
+#' @export
+fa <- function(name) {
+  return(paste0('<i class="fa fa-', name, '"></i>'))
 }
 
 #' Path to glyphicon image file.
@@ -93,6 +106,7 @@ print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
 #' @return the path to the file.
 #' @export
 glyphicon <- function(name, path = system.file('glyphicons', package = 'rchallenge')) {
+  .Deprecated("fa")
   file <- list.files(path, pattern = paste("glyphicons_[0-9]+_", name, ".png", sep=""))
   if (length(file)==0)
     file <- list.files(path, pattern = paste("glyphicons_social_[0-9]+_", name, ".png", sep=""))
@@ -101,10 +115,11 @@ glyphicon <- function(name, path = system.file('glyphicons', package = 'rchallen
   return(file.path(path, file))
 }
 
-#' html code for an image.
+#' HTML code for an image.
 #' @param file string. image file.
 #' @param width string. width of display.
 #' @export
 html_img <- function(file, width = "10px") {
+  .Deprecated()
   paste('<img src="', file, '" style="width: ', width, ';"/>', sep="")
 }

@@ -1,5 +1,7 @@
 # rchallenge 1.2.0.9000
 - `output_dir` argument of `publish` function now defaults to `"index.html"`. Useful for hosting the challenge on a GitHub repo with Github pages.
+- glyphicon is deprecated. use fontawsome instead of glyphicon.
+- print_readerr displays a table.
 
 # rchallenge 1.2.0 (05-10-2016)
 - `output_dir` argument of `publish` function now defaults to the `input` directory instead of `"~/Dropbox/Public"` because Dropbox rendering of HTML content is discontinued.
