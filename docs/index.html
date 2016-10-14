@@ -117,34 +117,16 @@ devtools::install_github("adrtod/rchallenge")</code></pre>
 <p>or for a french version:</p>
 <pre><code><a href="reference/new_challenge.html">new_challenge(template = "fr")</a></code></pre>
 <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:</p>
-<table style="width:39%;">
-<colgroup>
-<col width="19%">
-<col width="19%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">Name</th>
-<th align="left">Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left"><code>challenge.rmd</code></td>
-<td align="left">Template R Markdown script for the webpage.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>data</code></td>
-<td align="left">Directory of the data containing <code>data_train</code> and <code>data_test</code> datasets.</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>submissions</code></td>
-<td align="left">Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>history</code></td>
-<td align="left">Directory where the submissions history is stored.</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>
+<code>challenge.rmd</code>: template R Markdown script for the webpage.</li>
+<li>
+<code>data</code>: directory of the data containing <code>data_train</code> and <code>data_test</code> datasets.</li>
+<li>
+<code>submissions</code>: directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.</li>
+<li>
+<code>history</code>: directory where the submissions history is stored.</li>
+</ul>
 <p>The default challenge provided is a binary classification problem on the <a href="https://goo.gl/ndMhNw">German Credit Card</a> dataset.</p>
 <p>You can easily customize the challenge in two ways:</p>
 <ul>
@@ -171,46 +153,22 @@ devtools::install_github("adrtod/rchallenge")</code></pre>
 <li><p>Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.</p></li>
 </ol>
 <p>From now on, a fully autonomous challenge system is set up requiring no further administration. With each update, the program automatically performs the following tasks using the functions available in our package:</p>
-<table style="width:39%;">
-<colgroup>
-<col width="19%">
-<col width="19%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">Name</th>
-<th align="left">Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/store_new_submissions.html"><code>store_new_submissions</code></a></td>
-<td align="left">Reads submitted files and save new files in the history.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/print_readerr.html"><code>print_readerr</code></a></td>
-<td align="left">Displays any read errors.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/compute_metrics.html"><code>compute_metrics</code></a></td>
-<td align="left">Calculates the scores for each submission in the history.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/get_best.html"><code>get_best</code></a></td>
-<td align="left">Gets the highest score per team.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/print_leaderboard.html"><code>print_leaderboard</code></a></td>
-<td align="left">Displays the leaderboard.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/plot_history.html"><code>plot_history</code></a></td>
-<td align="left">Plots a chart of score evolution per team.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://adrtod.github.io/rchallenge/reference/plot_activity.html"><code>plot_activity</code></a></td>
-<td align="left">Plots a chart of activity per team.</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/store_new_submissions.html"><code>store_new_submissions</code></a> reads submitted files and save new files in the history.</li>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/print_readerr.html"><code>print_readerr</code></a> displays any read errors.</li>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/compute_metrics.html"><code>compute_metrics</code></a> calculates the scores for each submission in the history.</li>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/get_best.html"><code>get_best</code></a> gets the highest score per team.</li>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/print_leaderboard.html"><code>print_leaderboard</code></a> displays the leaderboard.</li>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/plot_history.html"><code>plot_history</code></a> plots a chart of score evolution per team.</li>
+<li>
+<a href="https://adrtod.github.io/rchallenge/reference/plot_activity.html"><code>plot_activity</code></a> plots a chart of activity per team.</li>
+</ul>
 <h2 id="automating-the-updates">Automating the updates</h2>
 <h3 id="unixosx">Unix/OSX</h3>
 <p>You can setup the following line to your <a href="https://en.wikipedia.org/wiki/Cron">crontab</a> using <code>crontab -e</code> (mind the quotes):</p>

@@ -44,12 +44,10 @@ new_challenge(template = "fr")
 
 You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` containing:
 
-Name | Description
-------------- | -------------
-`challenge.rmd` | Template R Markdown script for the webpage.
-`data` | Directory of the data containing `data_train` and `data_test` datasets.
-`submissions` | Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
-`history` | Directory where the submissions history is stored.
+- `challenge.rmd`: template R Markdown script for the webpage.
+- `data`: directory of the data containing `data_train` and `data_test` datasets.
+- `submissions`: directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
+- `history`: directory where the submissions history is stored.
 
 
 The default challenge provided is a binary classification problem on the [German Credit Card](https://goo.gl/ndMhNw) dataset.
@@ -84,15 +82,13 @@ From now on, a fully autonomous challenge system is set up requiring no further
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:
 
-Name | Description
-------------- | -------------
-[`store_new_submissions`](https://adrtod.github.io/rchallenge/reference/store_new_submissions.html) | Reads submitted files and save new files in the history.
-[`print_readerr`](https://adrtod.github.io/rchallenge/reference/print_readerr.html) | Displays any read errors.
-[`compute_metrics`](https://adrtod.github.io/rchallenge/reference/compute_metrics.html) | Calculates the scores for each submission in the history.
-[`get_best`](https://adrtod.github.io/rchallenge/reference/get_best.html) | Gets the highest score per team.
-[`print_leaderboard`](https://adrtod.github.io/rchallenge/reference/print_leaderboard.html) | Displays the leaderboard.
-[`plot_history`](https://adrtod.github.io/rchallenge/reference/plot_history.html) | Plots a chart of score evolution per team.
-[`plot_activity`](https://adrtod.github.io/rchallenge/reference/plot_activity.html) | Plots a chart of activity per team.
+- [`store_new_submissions`](https://adrtod.github.io/rchallenge/reference/store_new_submissions.html) reads submitted files and save new files in the history.
+- [`print_readerr`](https://adrtod.github.io/rchallenge/reference/print_readerr.html) displays any read errors.
+- [`compute_metrics`](https://adrtod.github.io/rchallenge/reference/compute_metrics.html) calculates the scores for each submission in the history.
+- [`get_best`](https://adrtod.github.io/rchallenge/reference/get_best.html) gets the highest score per team.
+- [`print_leaderboard`](https://adrtod.github.io/rchallenge/reference/print_leaderboard.html) displays the leaderboard.
+- [`plot_history`](https://adrtod.github.io/rchallenge/reference/plot_history.html) plots a chart of score evolution per team.
+- [`plot_activity`](https://adrtod.github.io/rchallenge/reference/plot_activity.html) plots a chart of activity per team.
 
 ## Automating the updates
 
