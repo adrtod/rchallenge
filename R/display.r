@@ -67,8 +67,9 @@ str_rank <- function(r, r_d, symb = list(const = fa("arrow-right"),
 #' 
 #' @param best    list of the best submissions per team and per metric as returned
 #'   by \code{\link{get_best}}.
-#' @param metric  string. name of the metric considered
+#' @param metrics  character vector. names of the metrics to be displayed
 #' @param test_name string. name of the test set used: \code{"quiz"} or \code{"test"}
+#' @param digits integer. how many significant digits are to be used for metrics.
 #' @param ... further parameters to pass to \code{\link[knitr]{kable}}
 #' 
 #' @return \code{print_leaderboard} returns a character vector of the table source code
@@ -79,13 +80,13 @@ str_rank <- function(r, r_d, symb = list(const = fa("arrow-right"),
 #' @export
 #' @seealso \code{\link[knitr]{kable}}
 #' @importFrom knitr kable
-print_leaderboard <- function(best, metric, test_name = "quiz", ...) {
-  metric_column = paste(metric, test_name, sep=".")
-  df = data.frame(Rank = mapply(FUN = str_rank, best[[metric]]$rank, best[[metric]]$rank_diff),
-                  Team = best[[metric]]$team,
-                  Submissions = paste(best[[metric]]$n_submissions),
-                  Date = format(best[[metric]]$date, format="%d/%m/%y %H:%M"),
-                  Score = format(best[[metric]][[metric_column]], digits=3))
+print_leaderboard <- function(best, metrics=names(metrics), test_name = "quiz", digits = 3, ...) {
+  metric_cols = paste(metrics, test_name, sep=".")
+  df = data.frame(Rank = mapply(FUN = str_rank, best$rank, best$rank_diff),
+                  Team = best$team,
+                  Submissions = paste(best$n_submissions),
+                  Date = format(best$date, format="%d/%m/%y %H:%M"),
+                  lapply(best[metric_cols], format, digits = digits))
   knitr::kable(df, ...)
 }
 

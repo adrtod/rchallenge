@@ -6,7 +6,7 @@
 \usage{
 plot_activity(history, baseline = "baseline", col = 1:length(history),
   alpha.f = 0.7, bw = 3600 * 24, by = 4, xlab = "Date",
-  ylab = "Submissions density", bty = "l", fg = "darkslategray",
+  ylab = "Submissions intensity", bty = "l", fg = "darkslategray",
   col.axis = fg, col.lab = fg, text.col = fg, ...)
 }
 \arguments{

@@ -2,9 +2,10 @@
 % Please edit documentation in R/update.r
 \name{get_best}
 \alias{get_best}
-\title{Get the best submissions per team and per metric.}
+\title{Get the best submissions per team.}
 \usage{
-get_best(history, metrics = names(metrics), test_name = "quiz")
+get_best(history, metrics = names(metrics), test_name = "quiz",
+  decreasing = FALSE)
 }
 \arguments{
 \item{history}{list of the submissions history per team as returned by \code{\link{compute_metrics}}}
@@ -12,11 +13,16 @@ get_best(history, metrics = names(metrics), test_name = "quiz")
 \item{metrics}{character vector. names of the metrics}
 
 \item{test_name}{string. name of the test set used: \code{"quiz"} or \code{"test"}}
+
+\item{decreasing}{logical. Should the sort order be increasing or decreasing? Must be of length 1 or with 
+the same length as \code{metrics}.}
 }
 \value{
-\code{get_best} returns a named list with one member per metric. Each
-  memebr is a \code{data.frame} where the rows are teams in decreasing order of performance
-  and the columns are:
+\code{get_best} returns a \code{data.frame} where the rows are teams in sorted order of performance.
+  The best submission per team is retained. The sort is based on possibly several metrics in the order 
+  given by the \code{metrics} argument. 
+  In case of ties on the first metric, the second metric is used to break the ties, and so on. Lastly, 
+  the date is used in case of ties. The columns are:
   \item{team}{name of the team}
   \item{n_submissions}{total number of submissions}
   \item{date}{the date of the best submission}
@@ -27,6 +33,6 @@ get_best(history, metrics = names(metrics), test_name = "quiz")
   \item{rank_diff}{the rank difference is set to 0 temporarily.}
 }
 \description{
-Get the best submissions per team and per metric.
+Get the best submissions per team.
 }
 

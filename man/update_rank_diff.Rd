@@ -7,14 +7,14 @@
 update_rank_diff(best_new, best_old)
 }
 \arguments{
-\item{best_new}{list of the best submissions per team and per metric as returned
+\item{best_new}{\code{data.frame} of the best submissions per team as returned
 by \code{\link{get_best}}.}
 
-\item{best_old}{old list of the best submissions per team and per metric.}
+\item{best_old}{old \code{data.frame} of the best submissions per team and per metric.}
 }
 \value{
-\code{update_rank_diff} returns the input list \code{best_new} with an
-  updated column \code{rank_diff} for each metric.
+\code{update_rank_diff} returns the input \code{data.frame} \code{best_new} with an
+  updated column \code{rank_diff}
 }
 \description{
 Update the rank differences of the teams.

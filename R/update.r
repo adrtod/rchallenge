@@ -156,16 +156,20 @@ compute_metrics <- function(hist_dir = "history", metrics, y_test, ind_quiz, rea
   return(history)
 }
 
-#' Get the best submissions per team and per metric.
+#' Get the best submissions per team.
 #' 
 #' @param history   list of the submissions history per team as returned by \code{\link{compute_metrics}}
 #' @param metrics   character vector. names of the metrics
 #' @param test_name string. name of the test set used: \code{"quiz"} or \code{"test"}
+#' @param decreasing logical. Should the sort order be increasing or decreasing? Must be of length 1 or with 
+#'   the same length as \code{metrics}.
 #' 
 #' @export
-#' @return \code{get_best} returns a named list with one member per metric. Each
-#'   memebr is a \code{data.frame} where the rows are teams in decreasing order of performance
-#'   and the columns are:
+#' @return \code{get_best} returns a \code{data.frame} where the rows are teams in sorted order of performance.
+#'   The best submission per team is retained. The sort is based on possibly several metrics in the order 
+#'   given by the \code{metrics} argument. 
+#'   In case of ties on the first metric, the second metric is used to break the ties, and so on. Lastly, 
+#'   the date is used in case of ties. The columns are:
 #'   \item{team}{name of the team}
 #'   \item{n_submissions}{total number of submissions}
 #'   \item{date}{the date of the best submission}
@@ -174,34 +178,29 @@ compute_metrics <- function(hist_dir = "history", metrics, y_test, ind_quiz, rea
 #'   \item{<metric name>.test}{the score obtained on the test set}
 #'   \item{rank}{the rank of the team}
 #'   \item{rank_diff}{the rank difference is set to 0 temporarily.}
-get_best <- function(history, metrics=names(metrics), test_name = "quiz") {
-  best = list()
-  for (j in seq(along=metrics)) {
-    metric = metrics[j]
-    metric_column = paste(metric, test_name, sep='.')
-    for (i in seq(along=history)) {
-      team = names(history)[i]
-      n_submissions = nrow(history[[i]])
-      
-      stopifnot(metric_column %in% names(history[[team]]))
-      
-      ind_best = which.min(history[[team]][[metric_column]])
-      
-      if (metric %in% names(best)) {
-        n = nrow(best[[metric]])
-        best[[metric]][n+1,] = data.frame(team=team, n_submissions=n_submissions, history[[team]][ind_best,], stringsAsFactors = FALSE)
-      } else {
-        best[[metric]] = data.frame(team=team, n_submissions=n_submissions, history[[team]][ind_best,], stringsAsFactors = FALSE)
-      }
-    }
-    # sort teams by date so that in case of ties in the metric score, the earliest submission is first
-    ind = order(best[[metric]]$date)
-    best[[metric]] = best[[metric]][ind,]
-    # sort teams by increasing metric score
-    ind = order(best[[metric]][,metric_column])
-    best[[metric]] = best[[metric]][ind,]
-    best[[metric]]$rank = rank(best[[metric]][,metric_column], ties.method = "min")
-    best[[metric]]$rank_diff = rep(0, nrow(best[[metric]]))
+get_best <- function(history, metrics=names(metrics), test_name = "quiz", decreasing = FALSE) {
+  stopifnot(is.logical(decreasing), length(decreasing) == 1 || length(decreasing) == length(metrics))
+  if (length(decreasing) == 1)
+    decreasing = rep(decreasing, length(metrics))
+  
+  cols = paste(metrics, test_name, sep='.')
+  signs = sign(-decreasing+.5)
+  best = data.frame()
+  
+  for (i in seq(along=history)) {
+    team = names(history)[i]
+    n_submissions = nrow(history[[i]])
+    
+    ind = do.call(order, c(mapply("*", signs, history[[team]][cols], SIMPLIFY = FALSE), history[[team]]["date"]))
+    best = rbind(best, data.frame(rank=1, rank_diff=0, team=team, n_submissions=n_submissions, history[[team]][ind[1],], stringsAsFactors = FALSE))
+  }
+  
+  if (nrow(best)>1) {
+    ind = do.call(order, c(mapply("*", signs, best[cols], SIMPLIFY = FALSE), best["date"]))
+    best = best[ind,]
+    
+    diffs = rbind(1, sapply(best[c(cols, "date")], diff)) != 0
+    best$rank = cumsum(apply(diffs, FUN = any, MARGIN = 1))
   }
   
   return(best)
@@ -209,35 +208,30 @@ get_best <- function(history, metrics=names(metrics), test_name = "quiz") {
 
 #' Update the rank differences of the teams.
 #' 
-#' @param best_new  list of the best submissions per team and per metric as returned
+#' @param best_new  \code{data.frame} of the best submissions per team as returned
 #'   by \code{\link{get_best}}.
-#' @param best_old  old list of the best submissions per team and per metric.
+#' @param best_old  old \code{data.frame} of the best submissions per team and per metric.
 #' 
 #' @export
-#' @return \code{update_rank_diff} returns the input list \code{best_new} with an
-#'   updated column \code{rank_diff} for each metric.
+#' @return \code{update_rank_diff} returns the input \code{data.frame} \code{best_new} with an
+#'   updated column \code{rank_diff} 
 update_rank_diff <- function(best_new, best_old) {
-  for (i in seq(along=best_new)) {
-    metric = names(best_new)[i]
-    if (metric %in% names(best_old)) {
-      # new ranks
-      rank_new = best_new[[i]]$rank
-      
-      # get old ranks with teams in the same order as new
-      default_rank_old = length(rank_new)+1 # for teams not present in old
-      rank_old = rep(default_rank_old, length(rank_new)) # same length as new
-      ind_old = match(best_old[[metric]]$team, best_new[[i]]$team)
-      rank_old[ind_old] = best_old[[metric]]$rank
-      
-      best_new[[i]]$rank_diff = rank_new-rank_old
-      
-      # keep old values if no change
-      if (all(best_new[[i]]$rank_diff==0)) {
-        rank_diff_old = rep(0, length(rank_new))
-        rank_diff_old[ind_old] = best_old[[metric]]$rank_diff
-        best_new[[i]]$rank_diff = rank_diff_old
-      }
-    }
+  # new ranks
+  rank_new = best_new$rank
+  
+  # get old ranks with teams in the same order as new
+  default_rank_old = length(rank_new)+1 # for teams not present in old
+  rank_old = rep(default_rank_old, length(rank_new)) # same length as new
+  ind_old = match(best_old$team, best_new$team)
+  rank_old[ind_old] = best_old$rank
+  
+  best_new$rank_diff = rank_new-rank_old
+  
+  # keep old values if no change
+  if (all(best_new$rank_diff==0)) {
+    rank_diff_old = rep(0, length(rank_new))
+    rank_diff_old[ind_old] = best_old$rank_diff
+    best_new$rank_diff = rank_diff_old
   }
   return(best_new)
 }

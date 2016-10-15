@@ -97,17 +97,20 @@
     <p>Format the leaderboard in Markdown.</p>
     
 
-    <pre><span class='fu'>print_leaderboard</span>(<span class='no'>best</span>, <span class='no'>metric</span>, <span class='kw'>test_name</span> <span class='kw'>=</span> <span class='st'>"quiz"</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>print_leaderboard</span>(<span class='no'>best</span>, <span class='kw'>metrics</span> <span class='kw'>=</span> <span class='fu'>names</span>(<span class='no'>metrics</span>), <span class='kw'>test_name</span> <span class='kw'>=</span> <span class='st'>"quiz"</span>,
+  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='no'>...</span>)</pre>
     
     <h2>Arguments</h2>
     <dl class="dl-horizontal">
       <dt>best</dt>
       <dd>list of the best submissions per team and per metric as returned
 by <code>get_best</code>.</dd>
-      <dt>metric</dt>
-      <dd>string. name of the metric considered</dd>
+      <dt>metrics</dt>
+      <dd>character vector. names of the metrics to be displayed</dd>
       <dt>test_name</dt>
       <dd>string. name of the test set used: <code>&quot;quiz&quot;</code> or <code>&quot;test&quot;</code></dd>
+      <dt>digits</dt>
+      <dd>integer. how many significant digits are to be used for metrics.</dd>
       <dt>...</dt>
       <dd>further parameters to pass to <code><a href='http://www.rdocumentation.org/packages/kable/topics/knitr'>kable</a></code></dd>
     </dl>

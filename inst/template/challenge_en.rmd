@@ -42,7 +42,7 @@ error_rate <- function(y_pred, y_test) {
 average_cost <- function(y_pred, y_test) {
   FP = (y_pred == "Good") & (y_test == "Bad")
   FN = (y_pred == "Bad") & (y_test == "Good")
-  return(sum(5*FP+1*FN)/length(y_test))
+  return(sum(5*FP+FN)/length(y_test))
 }
 
 metrics = list(error = error_rate, cost = average_cost)
@@ -68,20 +68,28 @@ history = compute_metrics(hist_dir, metrics, y_test, ind_quiz,
                           read_fun = read_pred)
 
 # Load the current best submissions results
-if (file.exists(file.path(hist_dir, "best.rda")))
+if (file.exists(file.path(hist_dir, "best.rda"))) {
   load(file.path(hist_dir, "best.rda"))
+} else
+  best = list()
 
 n_team = 0
 n_submissions = 0
 
 # Update the current best submissions results
 if (length(history)>0) {
-  best_new = get_best(history, metrics=names(metrics), test_name=test_or_quiz)
- 
-  if (exists("best", mode = "list"))
-    best_new = update_rank_diff(best_new, best)
+  # compute one leaderboard per metric
+  # in both cases, the other metric is used to break ties
+  best_error = get_best(history, metrics=c("error", "cost"), test_name=test_or_quiz)
+  best_cost = get_best(history, metrics=c("cost", "error"), test_name=test_or_quiz)
   
-  best = best_new
+  if ("error" %in% names(best))
+    best_error = update_rank_diff(best_error, best$error)
+  if ("cost" %in% names(best))
+    best_cost = update_rank_diff(best_cost, best$cost)
+  
+  best$error = best_error
+  best$cost = best_cost
   
   # save best
   save(best, file = file.path(hist_dir, "best.rda"))
@@ -104,21 +112,25 @@ Last update: ```r last_update(deadline)```
 `r date_start`:
   ~ The challenge is open!
 
-```{r, echo = FALSE , results='asis'}
+```{r, echo = FALSE, results='asis'}
 colnames = c('<i class="fa fa-trophy"></i> Rank',
              '<i class="fa fa-users"></i> Team',
              '<i class="fa fa-cloud-upload"></i> Submissions',
              '<i class="fa fa-calendar"></i> Date',
-             '<i class="fa fa-bullseye"></i> Score')
-if (exists("best", mode = "list"))
-  print_leaderboard(best, "error", test_name=test_or_quiz, 
-                    caption="Error rate", col.names=colnames)
+             '<i class="fa fa-bullseye"></i> Error rate',
+             '<i class="fa fa-bullseye"></i> Average cost')
+
+if ("error" %in% names(best))
+  print_leaderboard(best[["error"]], c("error", "cost"), test_name=test_or_quiz,
+                    col.names=colnames, caption="Best error rate")
 ```
 
-```{r, echo = FALSE , results='asis'}
-if (exists("best", mode = "list"))
-  print_leaderboard(best, "cost", test_name=test_or_quiz, 
-                    caption="Average cost", col.names=colnames)
+```{r, echo = FALSE, results='asis'}
+colnames[5:6] = colnames[6:5]
+
+if ("cost" %in% names(best))
+  print_leaderboard(best[["cost"]], c("cost", "error"), test_name=test_or_quiz, 
+                    col.names=colnames, caption="Best average cost")
 ```
 
 # Objective
@@ -239,28 +251,31 @@ Only the highest score by team among all submissions is retained.
 The team ```r baseline``` corresponds to the score of the best classifier among `predict_all_good` or `predict_all_bad`, in lieu of reference to improve.
 
 # Submissions history
-```{r, echo=FALSE, fig.cap="Error rate", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.height=5, fig.width=9}
 # color palette
 Dark2 <- colorRampPalette(c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", 
                             "#A6761D", "#666666"))
 palette(Dark2(max(length(history)-1, 3)))
 
 par(mar = c(5,4,4,7) + 0.1)
-plot_history(history, "error", test_name=test_or_quiz, baseline=baseline)
+plot_history(history, "error", test_name=test_or_quiz, baseline=baseline, ylab = "Error rate")
 ```
 
-```{r, echo=FALSE, fig.cap="Average cost", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
-plot_history(history, "cost", test_name=test_or_quiz, baseline=baseline)
+plot_history(history, "cost", test_name=test_or_quiz, baseline=baseline, ylab = "Average cost")
 ```
 
-```{r, echo=FALSE, fig.cap="Activity", fig.height=5, fig.width=9}
+```{r, echo=FALSE, fig.height=5, fig.width=9}
 par(mar = c(5,4,4,7) + 0.1)
 plot_activity(history, baseline=baseline)
 ```
 
 # Read errors
 ```{r, echo=FALSE}
+colnames = c('<i class="fa fa-users"></i> Team',
+             '<i class="fa fa-file"></i> File',
+             '<i class="fa fa-comment"></i> Message')
 print_readerr(read_err)
 ```
 

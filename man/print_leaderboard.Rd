@@ -4,15 +4,18 @@
 \alias{print_leaderboard}
 \title{Format the leaderboard in Markdown.}
 \usage{
-print_leaderboard(best, metric, test_name = "quiz", ...)
+print_leaderboard(best, metrics = names(metrics), test_name = "quiz",
+  digits = 3, ...)
 }
 \arguments{
 \item{best}{list of the best submissions per team and per metric as returned
 by \code{\link{get_best}}.}
 
-\item{metric}{string. name of the metric considered}
+\item{metrics}{character vector. names of the metrics to be displayed}
 
 \item{test_name}{string. name of the test set used: \code{"quiz"} or \code{"test"}}
+
+\item{digits}{integer. how many significant digits are to be used for metrics.}
 
 \item{...}{further parameters to pass to \code{\link[knitr]{kable}}}
 }

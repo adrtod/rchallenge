@@ -93,8 +93,14 @@
 <h1>rchallenge 1.2.0.9000</h1>
 <ul><li>
 <code>output_dir</code> argument of <code>publish</code> function now defaults to <code>"index.html"</code>. Useful for hosting the challenge on a GitHub repo with Github pages.</li>
-<li>glyphicon is deprecated. use fontawsome instead of glyphicon.</li>
-<li>print_readerr displays a table.</li>
+<li>
+<code>glyphicon</code> is deprecated. use fontawsome instead of glyphicon.</li>
+<li>
+<code>print_readerr</code> displays a table.</li>
+<li>
+<code>get_best</code> returns a single data.frame instead of a list with one data.frame per metric. the ranking can be based on several metrics in a specific order to break ties.</li>
+<li>
+<code>update_rank_diff</code> and <code>print_leaderboard</code> take a single data.frame as input</li>
 </ul></div>
     <div id="rchallenge-1.2.0-05-10-2016" class="section level1">
 <h1>rchallenge 1.2.0 (05-10-2016)</h1>

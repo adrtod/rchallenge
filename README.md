@@ -146,7 +146,6 @@ for data science challenges.
 The **rchallenge** package is licensed under the GPLv2 (https://www.gnu.org/licenses/gpl-2.0.html).
 
 ## To do list
-- [ ] common leaderboard for several metrics
 - [ ] do not take baseline into account in ranking
 - [ ] examples, tests, vignettes
 - [ ] interactive plots with `ggvis`

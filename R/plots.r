@@ -103,7 +103,7 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
 #' @seealso \code{\link[stats]{density}}
 plot_activity <- function(history, baseline="baseline", col=1:length(history), 
                           alpha.f = .7, bw = 3600*24, by = 4,
-                          xlab="Date", ylab = "Submissions density", bty='l',
+                          xlab="Date", ylab = "Submissions intensity", bty='l',
                           fg="darkslategray", col.axis=fg, col.lab=fg, 
                           text.col = fg, ...) {
   # baseline index
