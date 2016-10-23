@@ -2,3 +2,5 @@ language: r
 sudo: false
 cache: packages
 r: devel
+pandoc_version: 1.16
+r_binary_packages: caret
