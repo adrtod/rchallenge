@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>new_challenge. rchallenge</title>
+<title>Install a new challenge. — new_challenge • rchallenge</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -106,7 +106,7 @@
   <span class='kw'>date</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>email</span> <span class='kw'>=</span> <span class='st'>"EDIT_EMAIL@DOMAIN.com"</span>,
   <span class='kw'>date_start</span> <span class='kw'>=</span> <span class='fu'>format</span>(<span class='fu'>Sys.Date</span>(), <span class='st'>"%d %b %Y"</span>),
   <span class='kw'>deadline</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='fu'>Sys.Date</span>() + <span class='fl'>90</span>, <span class='st'>"23:59:59"</span>),
-  <span class='kw'>data_list</span> <span class='kw'>=</span> <span class='fu'>data_split</span>(<span class='fu'>get_data</span>(<span class='st'>"german"</span>)))</pre>
+  <span class='kw'>data_list</span> <span class='kw'>=</span> <span class='fu'><a href='data_split.html'>data_split</a></span>(<span class='fu'><a href='get_data.html'>get_data</a></span>(<span class='st'>"german"</span>)))</pre>
     
     <h2>Arguments</h2>
     <dl class="dl-horizontal">
@@ -128,9 +128,9 @@ Two choices are available: <code>&quot;en&quot;</code> (english) and <code>&quot
       <dt>data_dir</dt>
       <dd>string. subdirectory of the data.</dd>
       <dt>submissions_dir</dt>
-      <dd>string. subdirectory of the submissions. see <code>store_new_submissions</code>.</dd>
+      <dd>string. subdirectory of the submissions. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code>.</dd>
       <dt>hist_dir</dt>
-      <dd>string. subdirectory of the history. see <code>store_new_submissions</code>.</dd>
+      <dd>string. subdirectory of the history. see <code><a href='store_new_submissions.html'>store_new_submissions</a></code>.</dd>
       <dt>install_data</dt>
       <dd>logical. activate installation of the data files of the template challenge.</dd>
       <dt>baseline</dt>
@@ -153,7 +153,7 @@ Two choices are available: <code>&quot;en&quot;</code> (english) and <code>&quot
       <dd>string. deadline of the challenge.</dd>
       <dt>data_list</dt>
       <dd>list with members <code>train</code>, <code>test</code>, <code>y_test</code> and
-<code>ind_quiz</code> such as returned by the <code>data_split</code> function.</dd>
+<code>ind_quiz</code> such as returned by the <code><a href='data_split.html'>data_split</a></code> function.</dd>
     </dl>
     
     <div class="Value">
@@ -166,7 +166,7 @@ Two choices are available: <code>&quot;en&quot;</code> (english) and <code>&quot
     <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
 <span class='no'>wd</span> <span class='kw'>&lt;-</span> <span class='fu'>setwd</span>(<span class='no'>path</span>)
 <span class='co'># english version</span>
-<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/Rtmpkm4Xtq&quot;
+<span class='fu'>new_challenge</span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpTOWXOQ&quot;
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the &quot;data&quot; subdirectory.
 #&gt; 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -178,9 +178,9 @@ Two choices are available: <code>&quot;en&quot;</code> (english) and <code>&quot
 #&gt; 6. Give the URL to &quot;challenge.html&quot; to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/Rtmpkm4Xtq/challenge.rmd&quot;)&#39;
+#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpTOWXOQ/challenge.rmd&quot;)&#39;
 #&gt; </div><div class='input'><span class='co'># french version</span>
-<span class='fu'>new_challenge</span>(<span class='kw'>template</span> <span class='kw'>=</span> <span class='st'>"fr"</span>)</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/Rtmpkm4Xtq&quot;
+<span class='fu'>new_challenge</span>(<span class='kw'>template</span> <span class='kw'>=</span> <span class='st'>"fr"</span>)</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpTOWXOQ&quot;
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the &quot;data&quot; subdirectory.
 #&gt; 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -192,7 +192,7 @@ Two choices are available: <code>&quot;en&quot;</code> (english) and <code>&quot
 #&gt; 6. Give the URL to &quot;challenge.html&quot; to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/Rtmpkm4Xtq/challenge.rmd&quot;)&#39;
+#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpTOWXOQ/challenge.rmd&quot;)&#39;
 #&gt; </div><div class='input'><span class='fu'>setwd</span>(<span class='no'>wd</span>)
 <span class='fu'>unlink</span>(<span class='no'>path</span>)</div></pre>
   </div>

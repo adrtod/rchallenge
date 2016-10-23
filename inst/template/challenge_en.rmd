@@ -102,7 +102,7 @@ if (length(history)>0) {
 
 Welcome to the challenge webpage!
 
-| <i class="fa fa-cloud-upload fa-2x"></i> \ **`r n_submissions`** | <i class="fa fa-users fa-2x"></i> \ **`r n_team`** | <i class="fa fa-calendar fa-2x"></i> \ **`r countdown(deadline)`** |
+| `r icon("fa-cloud-upload fa-2x")` \ **`r n_submissions`** | `r icon("fa-users fa-2x")` \ **`r n_team`** | `r icon("fa-calendar fa-2x")` \ **`r countdown(deadline)`** |
 |:-------------:|:-------------:|:-------------:|
 | submissions | teams | `r ifelse(Sys.time()<deadline, "active", "completed")` |
 
@@ -113,12 +113,8 @@ Last update: ```r last_update(deadline)```
   ~ The challenge is open!
 
 ```{r, echo = FALSE, results='asis'}
-colnames = c('<i class="fa fa-trophy"></i> Rank',
-             '<i class="fa fa-users"></i> Team',
-             '<i class="fa fa-cloud-upload"></i> Submissions',
-             '<i class="fa fa-calendar"></i> Date',
-             '<i class="fa fa-bullseye"></i> Error rate',
-             '<i class="fa fa-bullseye"></i> Average cost')
+colnames = c(paste(icon(c("fa-trophy", "fa-users", "fa-cloud-upload", "fa-calendar", "fa-bullseye", "fa-bullseye")),
+                   c("Rank", "Team", "Submissions", "Date", "Error rate", "Average cost")))
 
 if ("error" %in% names(best))
   print_leaderboard(best[["error"]], c("error", "cost"), test_name=test_or_quiz,
@@ -142,7 +138,7 @@ To this aim, we dispose of a supervised training set: a set of customers whose a
 1. Send an email to <`r email`> with the following information:
 
     - the name of the team and of the participants
-    - at least one email address of a Dropbox account [<i class="fa fa-dropbox fa-2x"></i>](https://www.dropbox.com/)
+    - at least one email address of a Dropbox account [`r icon("fa-dropbox fa-lg")`](https://www.dropbox.com/)
 
 2. You will receive an invitation to a shared Dropbox folder named after your team.
 
@@ -157,8 +153,8 @@ To this aim, we dispose of a supervised training set: a set of customers whose a
 # Data
 | Name | File | Description | Links |
 | ---- | ---- | ----------- | ----- |
-| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_train.rda) |
-| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_test.rda) |
+| Training set | `data_train.rda` | `data.frame` with ```r nrow(data_train)``` rows/customers and ```r ncol(data_train)``` columns/variables | [`r icon("fa-download fa-lg")`](***EDIT_LINK*** data/data_train.rda) |
+| Test set | `data_test.rda` | `data.frame` with ```r nrow(data_test)``` rows/customers and ```r ncol(data_test)``` columns/variables | [`r icon("fa-download fa-lg")`](***EDIT_LINK*** data/data_test.rda) |
 
 Load the files in R with:
 
@@ -273,9 +269,8 @@ plot_activity(history, baseline=baseline)
 
 # Read errors
 ```{r, echo=FALSE}
-colnames = c('<i class="fa fa-users"></i> Team',
-             '<i class="fa fa-file"></i> File',
-             '<i class="fa fa-comment"></i> Message')
+colnames = c(paste(icon(c("fa-users", "fa-file", "fa-comment")),
+                   c("Team", "File", "Message")))
 print_readerr(read_err)
 ```
 

@@ -1,6 +1,6 @@
 # rchallenge 1.2.0.9000
 - `output_dir` argument of `publish` function now defaults to `"index.html"`. Useful for hosting the challenge on a GitHub repo with Github pages.
-- `glyphicon` is deprecated. use fontawsome instead of glyphicon.
+- `glyphicon` is defunct. use `icon` instead of glyphicon.
 - `print_readerr` displays a table.
 - `get_best` returns a single data.frame instead of a list with one data.frame per metric. the ranking can be based on several metrics in a specific order to break ties.
 - `update_rank_diff` and `print_leaderboard` take a single data.frame as input

@@ -102,7 +102,7 @@ if (length(history)>0) {
 
 Bienvenue sur la page du challenge !
 
-| <i class="fa fa-cloud-upload fa-2x"></i> \ **`r n_submissions`** | <i class="fa fa-users fa-2x"></i> \ **`r n_team`** | <i class="fa fa-calendar fa-2x"></i> \ **`r countdown(deadline)`** |
+| `r icon("fa-cloud-upload fa-2x")` \ **`r n_submissions`** | `r icon("fa-users fa-2x")` \ **`r n_team`** | `r icon("fa-calendar fa-2x")` \ **`r countdown(deadline)`** |
 |:-------------:|:-------------:|:-------------:|
 | soumissions | équipes | `r ifelse(Sys.time()<deadline, "en cours", "terminé")` |
 
@@ -114,12 +114,8 @@ Dernière mise à jour : ```r last_update(deadline)```
   ~ Le challenge est ouvert !
 
 ```{r, echo = FALSE, results='asis'}
-colnames = c('<i class="fa fa-trophy"></i> Classement',
-             '<i class="fa fa-users"></i> Equipe',
-             '<i class="fa fa-cloud-upload"></i> Soumissions',
-             '<i class="fa fa-calendar"></i> Date',
-             '<i class="fa fa-bullseye"></i> Taux d\'erreur',
-             '<i class="fa fa-bullseye"></i> Coût moyen')
+colnames = c(paste(icon(c("fa-trophy", "fa-users", "fa-cloud-upload", "fa-calendar", "fa-bullseye", "fa-bullseye")),
+                   c("Classement", "Equipe", "Soumissions", "Date", "Taux d\'erreur", "Coût moyen")))
 
 if ("error" %in% names(best))
   print_leaderboard(best[["error"]], c("error", "cost"), test_name=test_or_quiz,
@@ -143,7 +139,7 @@ On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble 
 1. Envoyer un email à <`r email`> contenant les informations suivantes :
 
     - nom de l'équipe et des participants
-    - au moins une adresse email associée à un compte Dropbox [<i class="fa fa-dropbox fa-2x"></i>](https://www.dropbox.com/)
+    - au moins une adresse email associée à un compte Dropbox [`r icon("fa-dropbox fa-lg")`](https://www.dropbox.com/)
 
 2. Vous recevrez une invitation à partager un dossier Dropbox portant le nom de votre équipe.
 
@@ -158,8 +154,8 @@ On dispose pour cela d'un jeu de données d'apprentissage supervisé : ensemble 
 # Description des données
 | Nom | Fichier | Description | Liens |
 | ---- | ---- | ----------- | ----- |
-| Apprentissage | `data_train.rda` | `data.frame` avec ```r nrow(data_train)``` lignes/clients et ```r ncol(data_train)``` colonnes/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_train.rda) |
-| Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [<i class="fa fa-download fa-2x"></i>](***EDIT_LINK*** data/data_test.rda) |
+| Apprentissage | `data_train.rda` | `data.frame` avec ```r nrow(data_train)``` lignes/clients et ```r ncol(data_train)``` colonnes/variables | [`r icon("fa-download fa-lg")`](***EDIT_LINK*** data/data_train.rda) |
+| Test | `data_test.rda` | `data.frame` avec ```r nrow(data_test)``` lignes/clients et ```r ncol(data_test)``` colonnes/variables | [`r icon("fa-download fa-lg")`](***EDIT_LINK*** data/data_test.rda) |
 
 Ces fichiers sont à importer dans R avec :
 ```{r, eval=FALSE}
@@ -280,9 +276,8 @@ plot_activity(history, baseline=baseline, ylab = "Taux de soumissions")
 
 # Erreurs de lecture
 ```{r, echo=FALSE}
-colnames = c('<i class="fa fa-users"></i> Team',
-             '<i class="fa fa-file"></i> File',
-             '<i class="fa fa-comment"></i> Message')
+colnames = c(paste(icon(c("fa-users", "fa-file", "fa-comment")),
+                   c("Equipe", "Fichier", "Message")))
 print_readerr(read_err, col.names = colnames)
 ```
 

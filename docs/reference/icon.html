@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>fa. rchallenge</title>
+<title>HTML code for icons.
+ — icon • rchallenge</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -88,21 +89,25 @@
       </header>
 
       <div class="page-header">
-  <h1>HTML code for a Font Awesome icon.</h1>
+  <h1>HTML code for icons.
+</h1>
 </div>
 
 <div class="row">
   <div class="col-md-9">
     
-    <p>HTML code for a Font Awesome icon.</p>
+    <p>HTML code for icons.
+Currently only supports Font Awesome
+icons.</p>
     
 
-    <pre><span class='fu'>fa</span>(<span class='no'>name</span>)</pre>
+    <pre><span class='fu'>icon</span>(<span class='no'>name</span>)</pre>
     
     <h2>Arguments</h2>
     <dl class="dl-horizontal">
       <dt>name</dt>
-      <dd>string. name of the icon.</dd>
+      <dd>string. name of the icon. You can see a full list of options at
+<a href = 'http://fontawesome.io/icons/'>http://fontawesome.io/icons/</a>.</dd>
     </dl>
     
     <div class="Value">
@@ -117,13 +122,37 @@
       <p>Requires the Font Awesome HTML code:
   <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;&gt;</code></p>
     </div>
-
-    <div class="See also">
-      <h2>See also</h2>
-
-      <p><a href = 'http://fontawesome.io/'>http://fontawesome.io/</a></p>
-    </div>
-      </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>rmd</span> <span class='kw'>&lt;-</span> <span class='st'>'
+```{r}
+library(rchallenge)
+```
+&lt;link rel="stylesheet" 
+ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"&gt;
+`r icon("fa-user")`
+`r icon("fa-user fa-lg")`
+`r icon("fa-user fa-2x")`
+`r icon("fa-user fa-3x")`
+`r icon("fa-user fa-3x fa-border")`
+'</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>tempfile</span>()
+<span class='fu'>cat</span>(<span class='no'>rmd</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='no'>file</span>)
+<span class='fu'>writeLines</span>(<span class='fu'>readLines</span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; 
+#&gt; ```{r}
+#&gt; library(rchallenge)
+#&gt; ```
+#&gt; &lt;link rel=&quot;stylesheet&quot; 
+#&gt;  href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;&gt;
+#&gt; `r icon(&quot;fa-user&quot;)`
+#&gt; `r icon(&quot;fa-user fa-lg&quot;)`
+#&gt; `r icon(&quot;fa-user fa-2x&quot;)`
+#&gt; `r icon(&quot;fa-user fa-3x&quot;)`
+#&gt; `r icon(&quot;fa-user fa-3x fa-border&quot;)`
+#&gt; </div><div class='input'><span class='kw'>rmarkdown</span><span class='kw'>::</span><span class='fu'>render</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS file3d464607b47a.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output file3d464607b47a.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:bootstrap&#39; --include-in-header /tmp/RtmpTOWXOQ/rmarkdown-str3d46b392b46.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=/home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/highlight --variable navigationjs=/home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/navigation-1.1 
+#&gt; </div><div class='output'><strong class='text-info'>
+Output created: file3d464607b47a.html</strong></div></pre>
+  </div>
   <div class="col-md-3">
   </div>
 </div>

@@ -52,9 +52,9 @@ print_readerr <- function(read_err = list(), ...) {
 #' @param symb  named list of characters. symbols used for the progress in ranking:
 #'   no change (\code{const}), ascent (\code{up}) and descent (\code{down})
 #' @keywords internal
-str_rank <- function(r, r_d, symb = list(const = fa("arrow-right"),
-                                         up = fa("arrow-up"),
-                                         down = fa("arrow-down"))) {
+str_rank <- function(r, r_d, symb = list(const = icon("fa-arrow-right"),
+                                         up = icon("fa-arrow-up"),
+                                         down = icon("fa-arrow-down"))) {
   paste0(r, '. ', ifelse(r_d==0,
                          symb$const, 
                          ifelse(r_d<0,
@@ -90,31 +90,35 @@ print_leaderboard <- function(best, metrics=names(metrics), test_name = "quiz", 
   knitr::kable(df, ...)
 }
 
-#' HTML code for a Font Awesome icon.
+#' HTML code for icons.
+#' Currently only supports Font Awesome
+#' icons. 
 #' 
 #' @note Requires the Font Awesome HTML code:
 #'   \code{<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">}
-#' @param name string. name of the icon.
+#' @param name string. name of the icon. You can see a full list of options at
+#'   \url{http://fontawesome.io/icons/}.
 #' @return string containing the HTML code.
 #' @export
-#' @seealso \url{http://fontawesome.io/}
-fa <- function(name) {
-  return(paste0('<i class="fa fa-', name, '"></i>'))
-}
-
-#' Path to glyphicon image file.
-#' @param name string. name of the glyphicon.
-#' @param path string. folder of search.
-#' @return the path to the file.
-#' @export
-glyphicon <- function(name, path = system.file('glyphicons', package = 'rchallenge')) {
-  .Deprecated("fa")
-  file <- list.files(path, pattern = paste("glyphicons_[0-9]+_", name, ".png", sep=""))
-  if (length(file)==0)
-    file <- list.files(path, pattern = paste("glyphicons_social_[0-9]+_", name, ".png", sep=""))
-  if (length(file)==0)
-    stop("glyphicon ", name, " not found")
-  return(file.path(path, file))
+#' @examples 
+#' rmd <- '
+#' ```{r}
+#' library(rchallenge)
+#' ```
+#' <link rel="stylesheet" 
+#'  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+#' `r icon("fa-user")`
+#' `r icon("fa-user fa-lg")`
+#' `r icon("fa-user fa-2x")`
+#' `r icon("fa-user fa-3x")`
+#' `r icon("fa-user fa-3x fa-border")`
+#' '
+#' file <- tempfile()
+#' cat(rmd, file=file)
+#' writeLines(readLines(file))
+#' rmarkdown::render(file)
+icon <- function(name) {
+  return(paste0('<i class="fa ', name, '"></i>'))
 }
 
 #' HTML code for an image.

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>rchallenge-package. rchallenge</title>
+<title>A Simple Data Science Challenge System — rchallenge-package • rchallenge</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -130,9 +130,9 @@ for details on installing pandoc for your platform.</p>
       <p>Install a new challenge in <code>Dropbox/mychallenge</code>:</p>
       <p><code>setwd(&quot;~/Dropbox/mychallenge&quot;)</code></p>
       <p><code>library(rchallenge)</code></p>
-      <p><code>new_challenge()</code></p>
+      <p><code><a href='new_challenge.html'>new_challenge</a>()</code></p>
       <p>or for a french version:</p>
-      <p><code>new_challenge(template = &quot;fr&quot;)</code></p>
+      <p><code><a href='new_challenge.html'>new_challenge</a>(template = &quot;fr&quot;)</code></p>
       <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:
 <ul>
 <li> <code>challenge.rmd</code>: Template R Markdown script for the webpage.
@@ -147,7 +147,7 @@ for details on installing pandoc for your platform.</p>
       <p>The default challenge provided is a binary classification problem on the <a href = 'German Credit Card'>https://goo.gl/ndMhNw</a> dataset.</p>
       <p>You can easily customize the challenge in two ways:</p>
       <p><ul>
-<li> <em>During the creation of the challenge</em>: by using the options of the <code>new_challenge</code> function.
+<li> <em>During the creation of the challenge</em>: by using the options of the <code><a href='new_challenge.html'>new_challenge</a></code> function.
  </li>
 <li> <em>After the creation of the challenge</em>: by manually replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.
 </li>
@@ -161,10 +161,10 @@ for details on installing pandoc for your platform.</p>
       <p>To complete the installation:
 <ol>
 <li> Create and <a href = 'share'>https://www.dropbox.com/en/help/19</a> subdirectories in <code>submissions</code> for each team:</p>
-      <p><code>new_team(&quot;team_foo&quot;, &quot;team_bar&quot;)</code></p>
+      <p><code><a href='new_team.html'>new_team</a>(&quot;team_foo&quot;, &quot;team_bar&quot;)</code></p>
       <p></li>
 <li> Render the HTML page:
-   <code>publish()</code>
+   <code><a href='publish.html'>publish</a>()</code>
    Use the <code>output_dir</code> argument to change the output directory.
    Make sure the output HTML file is rendered, e.g. using <a href = 'GitHub Pages'>https://pages.github.com/</a>.</p>
       <p></li>
@@ -177,19 +177,19 @@ for details on installing pandoc for your platform.</p>
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:</p>
       <p><ul>
-<li> <code>store_new_submissions</code>: Reads submitted files and save new files in the history.
+<li> <code><a href='store_new_submissions.html'>store_new_submissions</a></code>: Reads submitted files and save new files in the history.
  </li>
-<li> <code>print_readerr</code>: Displays any read errors.
+<li> <code><a href='print_readerr.html'>print_readerr</a></code>: Displays any read errors.
  </li>
-<li> <code>compute_metrics</code>: Calculates the scores for each submission in the history.
+<li> <code><a href='compute_metrics.html'>compute_metrics</a></code>: Calculates the scores for each submission in the history.
  </li>
-<li> <code>get_best</code>: Gets the highest score per team.
+<li> <code><a href='get_best.html'>get_best</a></code>: Gets the highest score per team.
  </li>
-<li> <code>print_leaderboard</code>: Displays the leaderboard.
+<li> <code><a href='print_leaderboard.html'>print_leaderboard</a></code>: Displays the leaderboard.
  </li>
-<li> <code>plot_history</code>: Plots a chart of score evolution per team.
+<li> <code><a href='plot_history.html'>plot_history</a></code>: Plots a chart of score evolution per team.
  </li>
-<li> <code>plot_activity</code>: Plots a chart of activity per team.
+<li> <code><a href='plot_activity.html'>plot_activity</a></code>: Plots a chart of activity per team.
 </li>
 </ul></p>
     </div>

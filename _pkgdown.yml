@@ -24,7 +24,7 @@ reference:
     - last_update
     - print_readerr
     - print_leaderboard
-    - fa
+    - icon
   - title: "Plots"
     contents:
     - plot_history

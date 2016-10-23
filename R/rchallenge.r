@@ -126,3 +126,16 @@ release_questions <- function() {
 #' 
 #' Please \href{https://adrtod.github.io}{contact me} to add yours.
 "_PACKAGE"
+
+
+#' Defunct functions in package \sQuote{rchallenge}
+#' 
+#' These functions are defunct and no longer available.
+#' @name rchallenge-defunct
+#' @aliases glyphicon 
+#' @export 
+#' @param ... parameters 
+#' @details Defunct functions are: \code{glyphicon}
+glyphicon <- function(...) {
+  .Defunct("icon", "rchallenge")
+}

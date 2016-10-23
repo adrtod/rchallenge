@@ -4,8 +4,8 @@
 \alias{str_rank}
 \title{String displayed for the rank.}
 \usage{
-str_rank(r, r_d, symb = list(const = fa("arrow-right"), up = fa("arrow-up"),
-  down = fa("arrow-down")))
+str_rank(r, r_d, symb = list(const = icon("fa-arrow-right"), up =
+  icon("fa-arrow-up"), down = icon("fa-arrow-down")))
 }
 \arguments{
 \item{r}{integer. rank}
