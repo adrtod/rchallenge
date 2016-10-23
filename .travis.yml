@@ -3,4 +3,3 @@ sudo: false
 cache: packages
 r: devel
 pandoc_version: 1.17
-r_binary_packages: caret
