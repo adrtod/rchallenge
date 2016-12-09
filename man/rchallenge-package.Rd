@@ -15,6 +15,8 @@ The rendering of HTML content provided by Dropbox will be discontinued from the
 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. 
 See \url{https://www.dropbox.com/help/16}. Alternatively, \href{https://pages.github.com/}{GitHub Pages}
 provide an easy HTML publishing solution via a simple GitHub repository.
+
+version 1.16 of pandoc fails to fetch font awesome css, see \url{https://github.com/jgm/pandoc/issues/2737}.
 }
 \section{Installation}{
 

@@ -118,6 +118,8 @@ release_questions <- function() {
 #' See \url{https://www.dropbox.com/help/16}. Alternatively, \href{https://pages.github.com/}{GitHub Pages}
 #' provide an easy HTML publishing solution via a simple GitHub repository.
 #' 
+#' @note version 1.16 of pandoc fails to fetch font awesome css, see \url{https://github.com/jgm/pandoc/issues/2737}.
+#' 
 #' @section Examples:
 #' \itemize{ 
 #'  \item \href{https://adrtod.github.io/challenge-mimse2014/}{My own challenge} (in french) given to Master students at the University of Bordeaux.

@@ -1,6 +1,7 @@
 rchallenge
 ==========
 [![Build Status](https://travis-ci.org/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rchallenge)](https://cran.r-project.org/package=rchallenge)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
 The **rchallenge** R package provides a simple data science competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
@@ -127,6 +128,7 @@ You can use the [Task Scheduler](https://technet.microsoft.com/en-us/library/cc7
 ## Issues
 
 - The rendering of HTML content provided by Dropbox will be discontinued from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. See <https://www.dropbox.com/help/16>. Alternatively, [GitHub Pages](https://pages.github.com/) provide an easy HTML publishing solution via a simple GitHub repository.
+- version 1.16 of pandoc fails to fetch font awesome css, see <https://github.com/jgm/pandoc/issues/2737>.
 
 ## Examples
 - [My own challenge](https://adrtod.github.io/challenge-mimse2014/) (in french) given to Master students at the University of Bordeaux.
