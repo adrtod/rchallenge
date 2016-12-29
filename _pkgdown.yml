@@ -1,37 +1,35 @@
-title: rchallenge
-
-template:
-  bootswatch: simplex
-  ganalytics: "UA-45407741-5"
+templates:
+  params:
+    bootswatch: simplex
+    ganalytics: "UA-45407741-5"
 
 reference:
-  - title: "Setup"
+  - title: Setup
     contents:
     - new_challenge
     - new_team
     - german
     - data_split
     - publish
-  - title: "Update"
+  - title: Update
     contents:
     - store_new_submissions
     - compute_metrics
     - get_best
     - update_rank_diff
-  - title: "Display"
+  - title: Display
     contents:
     - countdown
     - last_update
     - print_readerr
     - print_leaderboard
     - icon
-  - title: "Plots"
+  - title: Plots
     contents:
     - plot_history
     - plot_activity
 
 navbar:
-  title: pkgdown
   left:
     - text: Home
       href: index.html

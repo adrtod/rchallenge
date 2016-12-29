@@ -83,7 +83,7 @@ data_split <- function(data=get_data("german"), varname="Class",
 #' @param groups for numeric \code{y}, the number of breaks in the quantiles
 #' (see below)
 #' @return A vector of row position integers corresponding to the training data
-#' @author adapted from \code{\link[caret]{createDataPartition}} function by Max Kuhn
+#' @author adapted from \code{createDataPartition} function by Max Kuhn
 #' @references \url{http://caret.r-forge.r-project.org/splitting.html}
 #' @importFrom stats quantile
 #' @keywords utilities, internal

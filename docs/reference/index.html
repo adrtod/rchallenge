@@ -10,7 +10,6 @@
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -48,10 +48,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-index">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -73,6 +72,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/adrtod/rchallenge">
@@ -84,81 +84,135 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Function reference <small>version&nbsp;1.3.0.9000</small></h1>
-</div>
-
-<div class="row">
+      <div class="row">
   <div class="col-md-9">
-    <div class="section ">
-      <h2>Setup</h2>
+    <div class="page-header">
+      <h1>Function reference</h1>
+      <h4>version&nbsp;1.3.0.9000</h4>
+    </div>
+
+    <div class="contents">
+      <h2 id="section-setup" class="hasAnchor"><a href="#section-setup" class="anchor"></a>Setup</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="data_split.html">data_split</a></dt>
-        <dd>Split a data.frame into training and test sets.</dd>
-        <dt><a href="german.html">german</a></dt>
-        <dd>German Credit Data.</dd>
-        <dt><a href="new_challenge.html">new_challenge</a></dt>
-        <dd>Install a new challenge.</dd>
-        <dt><a href="new_team.html">new_team</a></dt>
-        <dd>Create new teams submission folders in your challenge.</dd>
-        <dt><a href="publish.html">publish</a></dt>
-        <dd>Render your challenge R Markdown script to a HTML page.</dd>
-      </dl>
-    </div>
-    <div class="section ">
-      <h2>Update</h2>
+      
+      <p><a href="data_split.html">Split a data.frame into training and test sets.</a></p>
+      <ul>
+        <li><code><a href="data_split.html">data_split</a></code></li>
+      </ul>
+      
+      <p><a href="german.html">German Credit Data.</a></p>
+      <ul>
+        <li><code><a href="german.html">german</a></code></li>
+      </ul>
+      
+      <p><a href="new_challenge.html">Install a new challenge.</a></p>
+      <ul>
+        <li><code><a href="new_challenge.html">new_challenge</a></code></li>
+      </ul>
+      
+      <p><a href="new_team.html">Create new teams submission folders in your challenge.</a></p>
+      <ul>
+        <li><code><a href="new_team.html">new_team</a></code></li>
+      </ul>
+      
+      <p><a href="publish.html">Render your challenge R Markdown script to a HTML page.</a></p>
+      <ul>
+        <li><code><a href="publish.html">publish</a></code></li>
+      </ul>
+          <h2 id="section-update" class="hasAnchor"><a href="#section-update" class="anchor"></a>Update</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="compute_metrics.html">compute_metrics</a></dt>
-        <dd>Compute metrics of the submissions in the history.</dd>
-        <dt><a href="get_best.html">get_best</a></dt>
-        <dd>Get the best submissions per team.</dd>
-        <dt><a href="store_new_submissions.html">store_new_submissions</a></dt>
-        <dd>Store new submission files.</dd>
-        <dt><a href="update_rank_diff.html">update_rank_diff</a></dt>
-        <dd>Update the rank differences of the teams.</dd>
-      </dl>
-    </div>
-    <div class="section ">
-      <h2>Display</h2>
+      
+      <p><a href="compute_metrics.html">Compute metrics of the submissions in the history.</a></p>
+      <ul>
+        <li><code><a href="compute_metrics.html">compute_metrics</a></code></li>
+      </ul>
+      
+      <p><a href="get_best.html">Get the best submissions per team.</a></p>
+      <ul>
+        <li><code><a href="get_best.html">get_best</a></code></li>
+      </ul>
+      
+      <p><a href="store_new_submissions.html">Store new submission files.</a></p>
+      <ul>
+        <li><code><a href="store_new_submissions.html">store_new_submissions</a></code></li>
+      </ul>
+      
+      <p><a href="update_rank_diff.html">Update the rank differences of the teams.</a></p>
+      <ul>
+        <li><code><a href="update_rank_diff.html">update_rank_diff</a></code></li>
+      </ul>
+          <h2 id="section-display" class="hasAnchor"><a href="#section-display" class="anchor"></a>Display</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="countdown.html">countdown</a></dt>
-        <dd>Countdown before deadline.</dd>
-        <dt><a href="icon.html">icon</a></dt>
-        <dd>HTML code for icons.
-</dd>
-        <dt><a href="last_update.html">last_update</a></dt>
-        <dd>Formatted last update date before deadline.</dd>
-        <dt><a href="print_leaderboard.html">print_leaderboard</a></dt>
-        <dd>Format the leaderboard in Markdown.</dd>
-        <dt><a href="print_readerr.html">print_readerr</a></dt>
-        <dd>Format read errors in Markdown.</dd>
-      </dl>
-    </div>
-    <div class="section ">
-      <h2>Plots</h2>
+      
+      <p><a href="countdown.html">Countdown before deadline.</a></p>
+      <ul>
+        <li><code><a href="countdown.html">countdown</a></code></li>
+      </ul>
+      
+      <p><a href="icon.html">HTML code for icons.
+</a></p>
+      <ul>
+        <li><code><a href="icon.html">icon</a></code></li>
+      </ul>
+      
+      <p><a href="last_update.html">Formatted last update date before deadline.</a></p>
+      <ul>
+        <li><code><a href="last_update.html">last_update</a></code></li>
+      </ul>
+      
+      <p><a href="print_leaderboard.html">Format the leaderboard in Markdown.</a></p>
+      <ul>
+        <li><code><a href="print_leaderboard.html">print_leaderboard</a></code></li>
+      </ul>
+      
+      <p><a href="print_readerr.html">Format read errors in Markdown.</a></p>
+      <ul>
+        <li><code><a href="print_readerr.html">print_readerr</a></code></li>
+      </ul>
+          <h2 id="section-plots" class="hasAnchor"><a href="#section-plots" class="anchor"></a>Plots</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="plot_activity.html">plot_activity</a></dt>
-        <dd>Plot the density of submissions over time.</dd>
-        <dt><a href="plot_history.html">plot_history</a></dt>
-        <dd>Plot the history of the scores of each team over time.</dd>
-      </dl>
+      
+      <p><a href="plot_activity.html">Plot the density of submissions over time.</a></p>
+      <ul>
+        <li><code><a href="plot_activity.html">plot_activity</a></code></li>
+      </ul>
+      
+      <p><a href="plot_history.html">Plot the history of the scores of each team over time.</a></p>
+      <ul>
+        <li><code><a href="plot_history.html">plot_history</a></code></li>
+      </ul>
+    
     </div>
+  </div>
+
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#section-setup">Setup</a></li>
+      <li><a href="#section-update">Update</a></li>
+      <li><a href="#section-display">Display</a></li>
+      <li><a href="#section-plots">Plots</a></li>
+    </ul>
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Adrien Todeschini.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

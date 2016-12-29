@@ -10,7 +10,6 @@
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -48,10 +48,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -73,6 +72,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/adrtod/rchallenge">
@@ -84,15 +84,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Render your challenge R Markdown script to a HTML page.</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Render your challenge R Markdown script to a HTML page.</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>Render your challenge R Markdown script to a HTML page.</p>
     
@@ -100,7 +101,7 @@
     <pre><span class='fu'>publish</span>(<span class='kw'>input</span> <span class='kw'>=</span> <span class='st'>"challenge.rmd"</span>, <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='st'>"index.html"</span>,
   <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'>dirname</span>(<span class='no'>input</span>), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>input</dt>
       <dd>string. name of the R Markdown input file</dd>
@@ -113,36 +114,31 @@ make sure that the output HTML file will be published online.</dd>
       <dt>quiet</dt>
       <dd>logical. deactivate text output.</dd>
       <dt>...</dt>
-      <dd>further arguments to pass to <code><a href='http://www.rdocumentation.org/packages/render/topics/rmarkdown'>render</a></code>.</dd>
+      <dd>further arguments to pass to <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code>.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p>The compiled document is written into the output file, and the path 
+    <p>The compiled document is written into the output file, and the path 
   of the output file is returned.</p>
-    </div>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <div class="Note">
-      <h2>Note</h2>
-
-      <p>The rendering of HTML content provided by Dropbox will be discontinued 
+    <p>The rendering of HTML content provided by Dropbox will be discontinued 
 from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro 
 and Business users. See <a href = 'https://www.dropbox.com/help/16'>https://www.dropbox.com/help/16</a>. Alternatively, 
 <a href = 'GitHub Pages'>https://pages.github.com/</a> provide an easy HTML web publishing 
 solution via a simple GitHub repository.</p>
-    </div>
-
-    <div class="See also">
-      <h2>See also</h2>
-
-      <p><code><a href='http://www.rdocumentation.org/packages/render/topics/rmarkdown'>render</a></code></p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code></p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
 <span class='no'>wd</span> <span class='kw'>&lt;-</span> <span class='fu'>setwd</span>(<span class='no'>path</span>)
-<span class='fu'><a href='new_challenge.html'>new_challenge</a></span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpavbiRX&quot;
+<span class='fu'><a href='new_challenge.html'>new_challenge</a></span>()</div><div class='output co'>#&gt; New challenge installed in: &quot;/tmp/RtmpGs7dbF&quot;
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the &quot;data&quot; subdirectory.
 #&gt; 2. Replace the baseline predictions in &quot;submissions/baseline&quot;.
@@ -154,11 +150,10 @@ solution via a simple GitHub repository.</p>
 #&gt; 6. Give the URL to &quot;challenge.html&quot; to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using &quot;crontab -e&quot;:
-#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpavbiRX/challenge.rmd&quot;)&#39;
-#&gt; </div><div class='input'><span class='no'>outdir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>()
-<span class='fu'>publish</span>(<span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>outdir</span>, <span class='kw'>output_options</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>self_contained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output'><strong class='text-info'>
-
-processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   3%
+#&gt;     0 * * * * Rscript -e &#39;rchallenge::publish(&quot;/tmp/RtmpGs7dbF/challenge.rmd&quot;)&#39;</div><div class='input'><span class='no'>outdir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>()
+<span class='fu'>publish</span>(<span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>outdir</span>, <span class='kw'>output_options</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>self_contained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>processing file: challenge.rmd</span></div><div class='output co'>#&gt;   |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   3%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                         |....                                                             |   6%
@@ -269,7 +264,6 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt;  $ echo      : logi FALSE
 #&gt;  $ fig.height: num 5
 #&gt;  $ fig.width : num 9
-#&gt; 
 #&gt; </div><div class='output co'>#&gt;   |                                                                         |......................................................           |  83%
 #&gt;   ordinary text without R code
 #&gt; 
@@ -279,7 +273,6 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt;  $ echo      : logi FALSE
 #&gt;  $ fig.height: num 5
 #&gt;  $ fig.width : num 9
-#&gt; 
 #&gt; </div><div class='output co'>#&gt;   |                                                                         |..........................................................       |  89%
 #&gt;   ordinary text without R code
 #&gt; 
@@ -289,7 +282,6 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt;  $ echo      : logi FALSE
 #&gt;  $ fig.height: num 5
 #&gt;  $ fig.width : num 9
-#&gt; 
 #&gt; </div><div class='output co'>#&gt;   |                                                                         |.............................................................    |  94%
 #&gt;   ordinary text without R code
 #&gt; 
@@ -301,21 +293,37 @@ processing file: challenge.rmd</strong></div><div class='output co'>#&gt;   |  
 #&gt;   |                                                                         |.................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; 
-#&gt; </div><div class='output'><strong class='text-info'>output file: challenge.knit.md
-</strong></div><div class='output co'>#&gt; /usr/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpavbiRX/index.html --smart --email-obfuscation none --standalone --section-divs --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpavbiRX/rmarkdown-str574e6b2b7e26.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --highlight-style tango --variable navigationjs=index_files/navigation-1.1 
-#&gt; </div><div class='output'><strong class='text-info'>
-Output created: index.html</strong></div><div class='output co'>#&gt; Next step: give the URL to &quot;/tmp/RtmpavbiRX/index.html&quot; to the participants.
-#&gt; </div><div class='input'><span class='fu'>unlink</span>(<span class='no'>outdir</span>)
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: challenge.knit.md</span></div><div class='output co'>#&gt; /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS challenge.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /tmp/RtmpGs7dbF/index.html --smart --email-obfuscation none --standalone --section-divs --template /home/adrien-alea/R/x86_64-pc-linux-gnu-library/3.3/rmarkdown/rmd/h/default.html --highlight-style tango --variable &#39;theme:spacelab&#39; --include-in-header /tmp/RtmpGs7dbF/rmarkdown-str799479a124dd.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: index.html</span></div><div class='output co'>#&gt; Next step: give the URL to &quot;/tmp/RtmpGs7dbF/index.html&quot; to the participants.</div><div class='input'><span class='fu'>unlink</span>(<span class='no'>outdir</span>)
 <span class='fu'>setwd</span>(<span class='no'>wd</span>)
 <span class='fu'>unlink</span>(<span class='no'>path</span>)</div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Adrien Todeschini.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

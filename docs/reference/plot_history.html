@@ -10,7 +10,6 @@
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -48,10 +48,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -73,6 +72,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/adrtod/rchallenge">
@@ -84,15 +84,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Plot the history of the scores of each team over time.</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Plot the history of the scores of each team over time.</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>The best score of each team has a bold symbol.</p>
     
@@ -102,7 +103,7 @@
   <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Date"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Score"</span>, <span class='kw'>bty</span> <span class='kw'>=</span> <span class='st'>"l"</span>, <span class='kw'>fg</span> <span class='kw'>=</span> <span class='st'>"darkslategray"</span>,
   <span class='kw'>col.axis</span> <span class='kw'>=</span> <span class='no'>fg</span>, <span class='kw'>col.lab</span> <span class='kw'>=</span> <span class='no'>fg</span>, <span class='kw'>text.col</span> <span class='kw'>=</span> <span class='no'>fg</span>, <span class='no'>...</span>)</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>history</dt>
       <dd>list of the submissions history per team as returned by <code><a href='compute_metrics.html'>compute_metrics</a></code></dd>
@@ -120,27 +121,41 @@ will be plotted as a constant and will not appear in the legend.</dd>
       <dt>by</dt>
       <dd>real. interval width of grid lines</dd>
       <dt>xlab, ylab</dt>
-      <dd>axis labels. see <code><a href='http://www.rdocumentation.org/packages/title/topics/graphics'>title</a></code>.</dd>
+      <dd>axis labels. see <code><a href='http://www.rdocumentation.org/packages/graphics/topics/title'>title</a></code>.</dd>
       <dt>bty, fg, col.axis, col.lab</dt>
-      <dd>graphical parameters. see <code><a href='http://www.rdocumentation.org/packages/par/topics/graphics'>par</a></code>.</dd>
+      <dd>graphical parameters. see <code><a href='http://www.rdocumentation.org/packages/graphics/topics/par'>par</a></code>.</dd>
       <dt>text.col</dt>
-      <dd>the color used for the legend text. see <code><a href='http://www.rdocumentation.org/packages/legend/topics/graphics'>legend</a></code>.</dd>
+      <dd>the color used for the legend text. see <code><a href='http://www.rdocumentation.org/packages/graphics/topics/legend'>legend</a></code>.</dd>
       <dt>...</dt>
-      <dd>further parameters passed to <code><a href='http://www.rdocumentation.org/packages/plot/topics/graphics'>plot</a></code> function.</dd>
+      <dd>further parameters passed to <code><a href='http://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></code> function.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p><code>NULL</code></p>
-    </div>
-      </div>
-  <div class="col-md-3">
+    <p><code>NULL</code></p>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Adrien Todeschini.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

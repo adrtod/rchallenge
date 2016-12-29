@@ -10,7 +10,6 @@
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -48,10 +48,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -73,6 +72,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/adrtod/rchallenge">
@@ -84,15 +84,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>A Simple Data Science Challenge System</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>A Simple Data Science Challenge System</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>A simple data science challenge system using R Markdown and Dropbox &lt;https://www.dropbox.com/&gt;.
 It requires no network configuration, does not depend on external platforms
@@ -100,41 +101,36 @@ like e.g. Kaggle &lt;https://www.kaggle.com/&gt; and can be easily installed on 
     
 
         
-    <div class="Note">
-      <h2>Note</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-      <p>The rendering of HTML content provided by Dropbox will be discontinued from the 
+    <p>The rendering of HTML content provided by Dropbox will be discontinued from the 
 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. 
 See <a href = 'https://www.dropbox.com/help/16'>https://www.dropbox.com/help/16</a>. Alternatively, <a href = 'GitHub Pages'>https://pages.github.com/</a>
 provide an easy HTML publishing solution via a simple GitHub repository.</p>
-      <p>version 1.16 of pandoc fails to fetch font awesome css, see <a href = 'https://github.com/jgm/pandoc/issues/2737'>https://github.com/jgm/pandoc/issues/2737</a>.</p>
-    </div>
+    <p>version 1.16 of pandoc fails to fetch font awesome css, see <a href = 'https://github.com/jgm/pandoc/issues/2737'>https://github.com/jgm/pandoc/issues/2737</a>.</p>
+    
+    <h2 class="hasAnchor" id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
 
-    <div class="Installation">
-      <h2>Installation</h2>
-
-      <p></p>
-      <p>Install the R package from <a href = 'CRAN'>https://cran.r-project.org/package=rchallenge</a> repositories</p>
-      <p><code>install.packages(&quot;rchallenge&quot;)</code></p>
-      <p>or install the latest development version from <a href = 'GitHub'>https://github.com/adrtod/rchallenge</a></p>
-      <p><code># install.packages(&quot;devtools&quot;)</code></p>
-      <p><code>devtools::install_github(&quot;adrtod/rchallenge&quot;)</code></p>
-      <p>A recent version of <a href = 'pandoc'>http://johnmacfarlane.net/pandoc/</a> (&gt;= 1.12.3) is also required. 
+    <p></p>
+    <p>Install the R package from <a href = 'CRAN'>https://cran.r-project.org/package=rchallenge</a> repositories</p>
+    <p><code>install.packages(&quot;rchallenge&quot;)</code></p>
+    <p>or install the latest development version from <a href = 'GitHub'>https://github.com/adrtod/rchallenge</a></p>
+    <p><code># install.packages(&quot;devtools&quot;)</code></p>
+    <p><code>devtools::install_github(&quot;adrtod/rchallenge&quot;)</code></p>
+    <p>A recent version of <a href = 'pandoc'>http://johnmacfarlane.net/pandoc/</a> (&gt;= 1.12.3) is also required. 
 See the <a href = 'pandoc installation instructions'>https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md</a> 
 for details on installing pandoc for your platform.</p>
-    </div>
+    
+    <h2 class="hasAnchor" id="getting-started"><a class="anchor" href="#getting-started"></a>Getting started</h2>
 
-    <div class="Getting started">
-      <h2>Getting started</h2>
-
-      <p></p>
-      <p>Install a new challenge in <code>Dropbox/mychallenge</code>:</p>
-      <p><code>setwd(&quot;~/Dropbox/mychallenge&quot;)</code></p>
-      <p><code>library(rchallenge)</code></p>
-      <p><code><a href='new_challenge.html'>new_challenge</a>()</code></p>
-      <p>or for a french version:</p>
-      <p><code><a href='new_challenge.html'>new_challenge</a>(template = &quot;fr&quot;)</code></p>
-      <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:
+    <p></p>
+    <p>Install a new challenge in <code>Dropbox/mychallenge</code>:</p>
+    <p><code>setwd(&quot;~/Dropbox/mychallenge&quot;)</code></p>
+    <p><code>library(rchallenge)</code></p>
+    <p><code><a href='new_challenge.html'>new_challenge</a>()</code></p>
+    <p>or for a french version:</p>
+    <p><code><a href='new_challenge.html'>new_challenge</a>(template = &quot;fr&quot;)</code></p>
+    <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:
 <ul>
 <li> <code>challenge.rmd</code>: Template R Markdown script for the webpage.
  </li>
@@ -145,39 +141,37 @@ for details on installing pandoc for your platform.</p>
 <li> <code>history</code>: Directory where the submissions history is stored.
 </li>
 </ul></p>
-      <p>The default challenge provided is a binary classification problem on the <a href = 'German Credit Card'>https://goo.gl/ndMhNw</a> dataset.</p>
-      <p>You can easily customize the challenge in two ways:</p>
-      <p><ul>
+    <p>The default challenge provided is a binary classification problem on the <a href = 'German Credit Card'>https://goo.gl/ndMhNw</a> dataset.</p>
+    <p>You can easily customize the challenge in two ways:</p>
+    <p><ul>
 <li> <em>During the creation of the challenge</em>: by using the options of the <code><a href='new_challenge.html'>new_challenge</a></code> function.
  </li>
 <li> <em>After the creation of the challenge</em>: by manually replacing the data files in the <code>data</code> subdirectory and the baseline predictions in <code>submissions/baseline</code> and by customizing the template <code>challenge.rmd</code> as needed.
 </li>
 </ul></p>
-    </div>
+    
+    <h2 class="hasAnchor" id="next-steps"><a class="anchor" href="#next-steps"></a>Next steps</h2>
 
-    <div class="Next steps">
-      <h2>Next steps</h2>
-
-      <p></p>
-      <p>To complete the installation:
+    <p></p>
+    <p>To complete the installation:
 <ol>
 <li> Create and <a href = 'share'>https://www.dropbox.com/en/help/19</a> subdirectories in <code>submissions</code> for each team:</p>
-      <p><code><a href='new_team.html'>new_team</a>(&quot;team_foo&quot;, &quot;team_bar&quot;)</code></p>
-      <p></li>
+    <p><code><a href='new_team.html'>new_team</a>(&quot;team_foo&quot;, &quot;team_bar&quot;)</code></p>
+    <p></li>
 <li> Render the HTML page:
    <code><a href='publish.html'>publish</a>()</code>
    Use the <code>output_dir</code> argument to change the output directory.
    Make sure the output HTML file is rendered, e.g. using <a href = 'GitHub Pages'>https://pages.github.com/</a>.</p>
-      <p></li>
+    <p></li>
 <li> Give the URL to your HTML file to the participants.</p>
-      <p></li>
+    <p></li>
 <li> Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.
 </li>
 </ol></p>
-      <p>From now on, a fully autonomous challenge system is set up requiring no further 
+    <p>From now on, a fully autonomous challenge system is set up requiring no further 
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:</p>
-      <p><ul>
+    <p><ul>
 <li> <code><a href='store_new_submissions.html'>store_new_submissions</a></code>: Reads submitted files and save new files in the history.
  </li>
 <li> <code><a href='print_readerr.html'>print_readerr</a></code>: Displays any read errors.
@@ -193,58 +187,78 @@ tasks using the functions available in our package:</p>
 <li> <code><a href='plot_activity.html'>plot_activity</a></code>: Plots a chart of activity per team.
 </li>
 </ul></p>
-    </div>
+    
+    <h2 class="hasAnchor" id="automating-the-updates-on-strong-unix-osx-strong-"><a class="anchor" href="#automating-the-updates-on-strong-unix-osx-strong-"></a>Automating the updates on &lt;strong&gt;Unix/OSX&lt;/strong&gt;</h2>
 
-    <div class="Automating the updates on &lt;strong&gt;Unix/OSX&lt;/strong&gt;">
-      <h2>Automating the updates on &lt;strong&gt;Unix/OSX&lt;/strong&gt;</h2>
-
-      <p></p>
-      <p>For the step 4, you can setup the following line to your <a href = 'crontab'>https://en.wikipedia.org/wiki/Cron</a> 
+    <p></p>
+    <p>For the step 4, you can setup the following line to your <a href = 'crontab'>https://en.wikipedia.org/wiki/Cron</a> 
 using <code>crontab -e</code> (mind the quotes):</p>
-      <p><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)&#39;</code></p>
-      <p>This will render a HTML webpage every hour.
+    <p><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;)&#39;</code></p>
+    <p>This will render a HTML webpage every hour.
 Use the <code>output_dir</code> argument to change the output directory.</p>
-      <p>If your challenge is hosted on a Github repository you can automate the push:</p>
-      <p><code>0 * * * * cd ~/Dropbox/mychallenge &amp;&amp; Rscript -e &#39;rchallenge::publish()&#39; &amp;&amp; git commit -m &quot;update html&quot; index.html &amp;&amp; git push</code></p>
-      <p>You might have to add the path to Rscript and pandoc at the beginning of your crontab:</p>
-      <p><code>PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</code></p>
-      <p>Depending on your system or pandoc version you might also have to explicitly add the encoding option to the command:</p>
-      <p><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;, encoding = &quot;utf8&quot;)&#39;</code></p>
-    </div>
+    <p>If your challenge is hosted on a Github repository you can automate the push:</p>
+    <p><code>0 * * * * cd ~/Dropbox/mychallenge &amp;&amp; Rscript -e &#39;rchallenge::publish()&#39; &amp;&amp; git commit -m &quot;update html&quot; index.html &amp;&amp; git push</code></p>
+    <p>You might have to add the path to Rscript and pandoc at the beginning of your crontab:</p>
+    <p><code>PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</code></p>
+    <p>Depending on your system or pandoc version you might also have to explicitly add the encoding option to the command:</p>
+    <p><code>0 * * * * Rscript -e &#39;rchallenge::publish(&quot;~/Dropbox/mychallenge/challenge.rmd&quot;, encoding = &quot;utf8&quot;)&#39;</code></p>
+    
+    <h2 class="hasAnchor" id="automating-the-updates-on-strong-windows-strong-"><a class="anchor" href="#automating-the-updates-on-strong-windows-strong-"></a>Automating the updates on &lt;strong&gt;Windows&lt;/strong&gt;</h2>
 
-    <div class="Automating the updates on &lt;strong&gt;Windows&lt;/strong&gt;">
-      <h2>Automating the updates on &lt;strong&gt;Windows&lt;/strong&gt;</h2>
-
-      <p></p>
-      <p>You can use the <a href = 'Task Scheduler'>https://technet.microsoft.com/en-us/library/cc748993(v=ws.11).aspx</a> 
+    <p></p>
+    <p>You can use the <a href = 'Task Scheduler'>https://technet.microsoft.com/en-us/library/cc748993(v=ws.11).aspx</a> 
 to create a new task with a <em>Start a program</em> action with the settings (mind the quotes):</p>
-      <p><ul>
+    <p><ul>
 <li> <em>Program/script</em>: <code>Rscript.exe</code>
  </li>
 <li> <em>options</em>: <code>-e rchallenge::publish(&#39;~/Dropbox/mychallenge/challenge.rmd&#39;)</code>
 </li>
 </ul></p>
-    </div>
+    
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
 
-    <div class="Examples">
-      <h2>Examples</h2>
-
-      <p></p>
-      <p><ul>
+    <p></p>
+    <p><ul>
 <li> <a href = 'My own challenge'>https://adrtod.github.io/challenge-mimse2014/</a> (in french) given to Master students at the University of Bordeaux.
  </li>
 <li> <a href = 'A classification and variable selection problem'>https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html</a> (in french) given by Robin Genuer (Bordeaux).
 </li>
 </ul></p>
-      <p>Please <a href = 'contact me'>https://adrtod.github.io</a> to add yours.</p>
-    </div>
-      </div>
-  <div class="col-md-3">
+    <p>Please <a href = 'contact me'>https://adrtod.github.io</a> to add yours.</p>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#installation">Installation</a></li>
+
+      <li><a href="#getting-started">Getting started</a></li>
+
+      <li><a href="#next-steps">Next steps</a></li>
+
+      <li><a href="#automating-the-updates-on-strong-unix-osx-strong-">Automating the updates on &lt;strong&gt;Unix/OSX&lt;/strong&gt;</a></li>
+
+      <li><a href="#automating-the-updates-on-strong-windows-strong-">Automating the updates on &lt;strong&gt;Windows&lt;/strong&gt;</a></li>
+
+      <li><a href="#examples">Examples</a></li>
+          </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Adrien Todeschini.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 
