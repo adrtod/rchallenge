@@ -32,7 +32,7 @@ Also, very small class sizes (<= 3) the
 classes may not show up in both the training and test data
 }
 \author{
-adapted from \href{https://www.rdocumentation.org/packages/caret/versions/6.0-73/topics/createDataPartition}{\code{createDataPartition}} function by Max Kuhn
+adapted from \code{createDataPartition} function by Max Kuhn
 }
 \references{
 \url{http://caret.r-forge.r-project.org/splitting.html}

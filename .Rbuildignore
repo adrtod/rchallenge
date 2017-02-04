@@ -3,8 +3,6 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^cran-comments\.md$
-^inst/staticdocs$
-^inst/web$
 ^revdep$
 ^docs$
 _pkgdown.yml

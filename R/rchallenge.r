@@ -122,8 +122,8 @@ release_questions <- function() {
 #' 
 #' @section Examples:
 #' \itemize{ 
-#'  \item \href{https://adrtod.github.io/challenge-mimse2014/}{My own challenge} (in french) given to Master students at the University of Bordeaux.
-#'  \item \href{https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html}{A classification and variable selection problem} (in french) given by Robin Genuer (Bordeaux).
+#'  \item \href{https://adrtod.github.io/challenge-mimse2014/}{Credit approval} (in french) by Adrien Todeschini (Bordeaux).
+#'  \item \href{https://chavent.github.io/challenge-mmas/}{Spam filter} (in french) by Marie Chavent (Bordeaux).
 #' }
 #' 
 #' Please \href{https://adrtod.github.io}{contact me} to add yours.

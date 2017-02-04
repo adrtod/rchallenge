@@ -131,9 +131,9 @@ You can use the [Task Scheduler](https://technet.microsoft.com/en-us/library/cc7
 - version 1.16 of pandoc fails to fetch font awesome css, see <https://github.com/jgm/pandoc/issues/2737>.
 
 ## Examples
-- [My own challenge](https://adrtod.github.io/challenge-mimse2014/) (in french) given to Master students at the University of Bordeaux.
+- [Credit approval](https://adrtod.github.io/challenge-mimse2014/) (in french) by Adrien Todeschini (Bordeaux).
 
-- [A classification and variable selection problem](https://dl.dropboxusercontent.com/u/50849929/challenge_fr.html) (in french) given by Robin Genuer (Bordeaux).
+- [Spam filter](https://chavent.github.io/challenge-mmas/) (in french) by Marie Chavent (Bordeaux).
 
 Please [contact me](https://adrtod.github.io/) to add yours.
 
