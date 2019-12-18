@@ -4,8 +4,13 @@
 \alias{print_leaderboard}
 \title{Format the leaderboard in Markdown.}
 \usage{
-print_leaderboard(best, metrics = names(metrics), test_name = "quiz",
-  digits = 3, ...)
+print_leaderboard(
+  best,
+  metrics = names(metrics),
+  test_name = "quiz",
+  digits = 3,
+  ...
+)
 }
 \arguments{
 \item{best}{list of the best submissions per team and per metric as returned
@@ -32,4 +37,3 @@ Chunk option \code{results='asis'} has to be used
 \seealso{
 \code{\link[knitr]{kable}}
 }
-

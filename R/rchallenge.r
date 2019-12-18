@@ -1,4 +1,3 @@
-
 release_questions <- function() {
   c(
     "Have you updated the docs? devtools::document()",
@@ -17,8 +16,8 @@ release_questions <- function() {
 #' 
 #' \code{devtools::install_github("adrtod/rchallenge")}
 #' 
-#' A recent version of \href{http://johnmacfarlane.net/pandoc/}{pandoc} (>= 1.12.3) is also required. 
-#' See the \href{https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md}{pandoc installation instructions} 
+#' A recent version of \href{https://pandoc.org/}{pandoc} (>= 1.12.3) is also required. 
+#' See the \href{https://rmarkdown.rstudio.com/docs/articles/pandoc.html}{pandoc installation instructions} 
 #' for details on installing pandoc for your platform.
 #' 
 #' @section Getting started:
@@ -41,10 +40,10 @@ release_questions <- function() {
 #'  \item \code{submissions}: Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
 #'  \item \code{history}: Directory where the submissions history is stored.
 #' }
-#' The default challenge provided is a binary classification problem on the \href{https://goo.gl/ndMhNw}{German Credit Card} dataset.
+#' The default challenge provided is a binary classification problem on the \href{https://goo.gl/ndMhNw}{German Credit} data set.
 #' 
 #' You can easily customize the challenge in two ways:
-#'   
+#'
 #' \itemize{ 
 #'  \item \emph{During the creation of the challenge}: by using the options of the \code{\link{new_challenge}} function.
 #'  \item \emph{After the creation of the challenge}: by manually replacing the data files in the \code{data} subdirectory and the baseline predictions in \code{submissions/baseline} and by customizing the template \code{challenge.rmd} as needed.

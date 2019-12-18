@@ -31,12 +31,11 @@ percentiles is set via the \code{groups} argument.
 Also, very small class sizes (<= 3) the
 classes may not show up in both the training and test data
 }
-\author{
-adapted from \code{createDataPartition} function by Max Kuhn
-}
 \references{
 \url{http://caret.r-forge.r-project.org/splitting.html}
 }
+\author{
+adapted from \code{createDataPartition} function by Max Kuhn
+}
 \keyword{internal}
-\keyword{utilities,}
-
+\keyword{utilities}

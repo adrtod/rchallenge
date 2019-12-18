@@ -31,4 +31,3 @@ a performance criterion and is defined as: \code{function(y_pred, y_test)}}
 \description{
 Compute metrics of the submissions in the history.
 }
-

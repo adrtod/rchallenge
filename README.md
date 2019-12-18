@@ -27,7 +27,7 @@ or install the latest development version from [GitHub](https://github.com/adrto
 devtools::install_github("adrtod/rchallenge")
 ```
 
-A recent version of [pandoc](http://johnmacfarlane.net/pandoc/) (>= 1.12.3) is also required. See the [pandoc installation instructions](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md) for details on installing pandoc for your platform.
+A recent version of [pandoc](https://pandoc.org/) (>= 1.12.3) is also required. See the [pandoc installation instructions](https://rmarkdown.rstudio.com/docs/articles/pandoc.html) for details on installing pandoc for your platform.
 
 ## Getting started
 Install a new challenge in `Dropbox/mychallenge`:
@@ -51,7 +51,7 @@ You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` con
 - `history`: directory where the submissions history is stored.
 
 
-The default challenge provided is a binary classification problem on the [German Credit Card](https://goo.gl/ndMhNw) dataset.
+The default challenge provided is a binary classification problem on the [German Credit](https://goo.gl/ndMhNw) data set.
 
 You can easily customize the challenge in two ways:
 
@@ -141,9 +141,6 @@ Please [contact me](https://adrtod.github.io/) to add yours.
 Copyright (C) 2014-2015 [Adrien Todeschini](https://adrtod.github.io/).
 
 Contributions from [Robin Genuer](http://robin.genuer.fr/).
-
-Design inspired by [Datascience.net](https://www.datascience.net/), a french platform
-for data science challenges.
 
 The **rchallenge** package is licensed under the GPLv2 (https://www.gnu.org/licenses/gpl-2.0.html).
 

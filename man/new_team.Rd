@@ -4,8 +4,13 @@
 \alias{new_team}
 \title{Create new teams submission folders in your challenge.}
 \usage{
-new_team(..., path = ".", submissions_dir = "submissions", quiet = FALSE,
-  showWarnings = FALSE)
+new_team(
+  ...,
+  path = ".",
+  submissions_dir = "submissions",
+  quiet = FALSE,
+  showWarnings = FALSE
+)
 }
 \arguments{
 \item{...}{strings. names of the team subdirectories.}
@@ -32,4 +37,3 @@ new_team("team_foo", "team_bar")
 setwd(wd)
 unlink(path)
 }
-

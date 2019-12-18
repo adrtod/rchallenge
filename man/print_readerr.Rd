@@ -18,4 +18,3 @@ print_readerr(read_err = list(), ...)
 \description{
 Format read errors in Markdown.
 }
-

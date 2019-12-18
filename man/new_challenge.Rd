@@ -4,16 +4,29 @@
 \alias{new_challenge}
 \title{Install a new challenge.}
 \usage{
-new_challenge(path = ".", out_rmdfile = "challenge.rmd",
-  recursive = FALSE, overwrite = recursive, quiet = FALSE,
-  showWarnings = FALSE, template = c("en", "fr"), data_dir = "data",
-  submissions_dir = "submissions", hist_dir = "history",
-  install_data = TRUE, baseline = "baseline", add_baseline = install_data,
-  clear_history = overwrite, title = "Challenge", author = "",
-  date = "", email = "EDIT_EMAIL@DOMAIN.com",
+new_challenge(
+  path = ".",
+  out_rmdfile = "challenge.rmd",
+  recursive = FALSE,
+  overwrite = recursive,
+  quiet = FALSE,
+  showWarnings = FALSE,
+  template = c("en", "fr"),
+  data_dir = "data",
+  submissions_dir = "submissions",
+  hist_dir = "history",
+  install_data = TRUE,
+  baseline = "baseline",
+  add_baseline = install_data,
+  clear_history = overwrite,
+  title = "Challenge",
+  author = "",
+  date = "",
+  email = "EDIT_EMAIL@DOMAIN.com",
   date_start = format(Sys.Date(), "\%d \%b \%Y"),
   deadline = paste(Sys.Date() + 90, "23:59:59"),
-  data_list = data_split(get_data("german")))
+  data_list = data_split(get_data("german"))
+)
 }
 \arguments{
 \item{path}{string. install path of the challenge (should be somewhere in your Dropbox).}
@@ -76,4 +89,3 @@ new_challenge(template = "fr")
 setwd(wd)
 unlink(path)
 }
-

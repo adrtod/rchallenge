@@ -4,8 +4,13 @@
 \alias{store_new_submissions}
 \title{Store new submission files.}
 \usage{
-store_new_submissions(submissions_dir = "submissions", hist_dir = "history",
-  deadline, pattern = ".*\\\\.csv$", valid_fun)
+store_new_submissions(
+  submissions_dir = "submissions",
+  hist_dir = "history",
+  deadline,
+  pattern = ".*\\\\.csv$",
+  valid_fun
+)
 }
 \arguments{
 \item{submissions_dir}{string. directory of the submissions. contains one subdirectory per team}
@@ -35,4 +40,3 @@ in \code{hist_dir}.
 The files must match \code{pattern} regular expression and must not
 throw errors or warnings when given to the \code{valid_fun} function.
 }
-

@@ -4,8 +4,7 @@
 \alias{get_data}
 \title{Get dataset value.}
 \usage{
-get_data(name = "german", package = "rchallenge", envir = environment(),
-  ...)
+get_data(name = "german", package = "rchallenge", envir = environment(), ...)
 }
 \arguments{
 \item{name}{string. name of the dataset.}
@@ -25,4 +24,3 @@ Get dataset value.
 \seealso{
 \code{\link[utils]{data}}, \code{\link{base}}
 }
-

@@ -14,4 +14,3 @@ last_update(deadline, format = "\%d \%b \%Y \%H:\%M")
 \description{
 Formatted last update date before deadline.
 }
-

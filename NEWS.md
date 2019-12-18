@@ -1,4 +1,6 @@
-# rchallenge 1.3.0.9000
+# rchallenge 1.3.1 (18-12-2019)
+- removed `pandoc` from `SystemRequirements`, because implied by dependence on `rmarkdown` and `knitr` packages.
+- corrected `german` data set after Grömping, U. (2019).
 
 # rchallenge 1.3.0 (23-10-2016)
 - `output_dir` argument of `publish` function now defaults to `"index.html"`. Useful for hosting the challenge on a GitHub repo with Github pages.

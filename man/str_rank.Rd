@@ -4,8 +4,12 @@
 \alias{str_rank}
 \title{String displayed for the rank.}
 \usage{
-str_rank(r, r_d, symb = list(const = icon("fa-arrow-right"), up =
-  icon("fa-arrow-up"), down = icon("fa-arrow-down")))
+str_rank(
+  r,
+  r_d,
+  symb = list(const = icon("fa-arrow-right"), up = icon("fa-arrow-up"), down =
+    icon("fa-arrow-down"))
+)
 }
 \arguments{
 \item{r}{integer. rank}
@@ -19,4 +23,3 @@ no change (\code{const}), ascent (\code{up}) and descent (\code{down})}
 Concatenates the rank number with symbols indicating the progress since the last change.
 }
 \keyword{internal}
-

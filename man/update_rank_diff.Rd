@@ -19,4 +19,3 @@ by \code{\link{get_best}}.}
 \description{
 Update the rank differences of the teams.
 }
-

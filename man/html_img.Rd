@@ -14,4 +14,3 @@ html_img(file, width = "10px")
 \description{
 HTML code for an image.
 }
-

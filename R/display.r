@@ -91,6 +91,7 @@ print_leaderboard <- function(best, metrics=names(metrics), test_name = "quiz", 
 }
 
 #' HTML code for icons.
+#' 
 #' Currently only supports Font Awesome
 #' icons. 
 #' 

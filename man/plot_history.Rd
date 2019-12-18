@@ -4,10 +4,23 @@
 \alias{plot_history}
 \title{Plot the history of the scores of each team over time.}
 \usage{
-plot_history(history, metric, test_name = "quiz", baseline = "baseline",
-  col = 1:length(history), pch = rep(21:25, 100), by = 0.05,
-  xlab = "Date", ylab = "Score", bty = "l", fg = "darkslategray",
-  col.axis = fg, col.lab = fg, text.col = fg, ...)
+plot_history(
+  history,
+  metric,
+  test_name = "quiz",
+  baseline = "baseline",
+  col = 1:length(history),
+  pch = rep(21:25, 100),
+  by = 0.05,
+  xlab = "Date",
+  ylab = "Score",
+  bty = "l",
+  fg = "darkslategray",
+  col.axis = fg,
+  col.lab = fg,
+  text.col = fg,
+  ...
+)
 }
 \arguments{
 \item{history}{list of the submissions history per team as returned by \code{\link{compute_metrics}}}
@@ -39,4 +52,3 @@ will be plotted as a constant and will not appear in the legend.}
 \description{
 The best score of each team has a bold symbol.
 }
-

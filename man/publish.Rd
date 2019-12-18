@@ -4,8 +4,13 @@
 \alias{publish}
 \title{Render your challenge R Markdown script to a HTML page.}
 \usage{
-publish(input = "challenge.rmd", output_file = "index.html",
-  output_dir = dirname(input), quiet = FALSE, ...)
+publish(
+  input = "challenge.rmd",
+  output_file = "index.html",
+  output_dir = dirname(input),
+  quiet = FALSE,
+  ...
+)
 }
 \arguments{
 \item{input}{string. name of the R Markdown input file}
@@ -47,4 +52,3 @@ unlink(path)
 \seealso{
 \code{\link[rmarkdown]{render}}
 }
-

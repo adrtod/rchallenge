@@ -11,15 +11,22 @@
 #' Number of people being liable to provide maintenance for, telephone, and foreign 
 #' worker status.
 #' 
-#' This is a transformed version of the \code{\link[caret]{GermanCredit}} data set
-#' with factors instead of dummy variables
-#'
+#' This is a transformed version of the German Credit data set with factors 
+#' instead of dummy variables, and corrected as proposed by Grömping, U. (2019).
+#' 
+#' @keywords data datasets
+#' @usage data(german)
 #' @format A \code{data.frame} with 1000 rows and 21 variables
 #' @source UCI Machine Learning Repository 
 #'   \url{https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)}
+#'   \url{http://www1.beuth-hochschule.de/FB_II/reports/Report-2019-004.pdf}
+#' @references Grömping, U. (2019). South German Credit Data: Correcting a 
+#'   Widely Used Data Set. Report 4/2019, Reports in Mathematics, Physics and 
+#'   Chemistry, Department II, Beuth University of Applied Sciences Berlin.
 "german"
 
 #' Get dataset value.
+#' 
 #' @param name    string. name of the dataset.
 #' @param package string. name of the package to look in for dataset.
 #' @param envir   the environment where the data should be loaded.
@@ -35,6 +42,7 @@ get_data <- function(name = "german", package = "rchallenge",
 }
 
 #' Split a data.frame into training and test sets.
+#' 
 #' @param data    data.frame
 #' @param varname string. output variable name
 #' @param p_test  real. proportion of samples in the test set
@@ -45,7 +53,7 @@ get_data <- function(name = "german", package = "rchallenge",
 #'   \item{y_test}{test set output variable}
 #'   \item{ind_quiz}{indices of quiz samples in the test set}
 #' @export
-data_split <- function(data=get_data("german"), varname="Class",
+data_split <- function(data=get_data("german"), varname="credit_risk",
                        p_test = .2, p_quiz = .5) {
   ind_test <- data_partition(data[[varname]], p = p_test)
   
@@ -86,8 +94,8 @@ data_split <- function(data=get_data("german"), varname="Class",
 #' @author adapted from \code{createDataPartition} function by Max Kuhn
 #' @references \url{http://caret.r-forge.r-project.org/splitting.html}
 #' @importFrom stats quantile
-#' @keywords utilities, internal
-data_partition <- function (y, p = 0.5, groups = min(5, length(y)))
+#' @keywords utilities internal
+data_partition <- function(y, p = 0.5, groups = min(5, length(y)))
 {
   if(length(y) < 2) stop("y must have at least 2 data points")
   

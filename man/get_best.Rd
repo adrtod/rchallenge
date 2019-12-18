@@ -4,8 +4,12 @@
 \alias{get_best}
 \title{Get the best submissions per team.}
 \usage{
-get_best(history, metrics = names(metrics), test_name = "quiz",
-  decreasing = FALSE)
+get_best(
+  history,
+  metrics = names(metrics),
+  test_name = "quiz",
+  decreasing = FALSE
+)
 }
 \arguments{
 \item{history}{list of the submissions history per team as returned by \code{\link{compute_metrics}}}
@@ -35,4 +39,3 @@ the same length as \code{metrics}.}
 \description{
 Get the best submissions per team.
 }
-

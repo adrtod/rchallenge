@@ -2,9 +2,7 @@
 % Please edit documentation in R/display.r
 \name{icon}
 \alias{icon}
-\title{HTML code for icons.
-Currently only supports Font Awesome
-icons.}
+\title{HTML code for icons.}
 \usage{
 icon(name)
 }
@@ -16,7 +14,6 @@ icon(name)
 string containing the HTML code.
 }
 \description{
-HTML code for icons.
 Currently only supports Font Awesome
 icons.
 }
@@ -42,4 +39,3 @@ cat(rmd, file=file)
 writeLines(readLines(file))
 rmarkdown::render(file)
 }
-

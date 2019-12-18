@@ -4,11 +4,11 @@
 \name{rchallenge-package}
 \alias{rchallenge}
 \alias{rchallenge-package}
-\title{A Simple Data Science Challenge System}
+\title{rchallenge: A Simple Data Science Challenge System}
 \description{
 A simple data science challenge system using R Markdown and Dropbox <https://www.dropbox.com/>.
-It requires no network configuration, does not depend on external platforms
-like e.g. Kaggle <https://www.kaggle.com/> and can be easily installed on a personal computer.
+    It requires no network configuration, does not depend on external platforms
+    like e.g. Kaggle <https://www.kaggle.com/> and can be easily installed on a personal computer.
 }
 \note{
 The rendering of HTML content provided by Dropbox will be discontinued from the 
@@ -30,8 +30,8 @@ or install the latest development version from \href{https://github.com/adrtod/r
 
 \code{devtools::install_github("adrtod/rchallenge")}
 
-A recent version of \href{http://johnmacfarlane.net/pandoc/}{pandoc} (>= 1.12.3) is also required. 
-See the \href{https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md}{pandoc installation instructions} 
+A recent version of \href{https://pandoc.org/}{pandoc} (>= 1.12.3) is also required. 
+See the \href{https://rmarkdown.rstudio.com/docs/articles/pandoc.html}{pandoc installation instructions} 
 for details on installing pandoc for your platform.
 }
 
@@ -56,10 +56,10 @@ You will obtain a ready-to-use challenge in the folder \code{Dropbox/mychallenge
  \item \code{submissions}: Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
  \item \code{history}: Directory where the submissions history is stored.
 }
-The default challenge provided is a binary classification problem on the \href{https://goo.gl/ndMhNw}{German Credit Card} dataset.
+The default challenge provided is a binary classification problem on the \href{https://goo.gl/ndMhNw}{German Credit} data set.
 
 You can easily customize the challenge in two ways:
-  
+
 \itemize{ 
  \item \emph{During the creation of the challenge}: by using the options of the \code{\link{new_challenge}} function.
  \item \emph{After the creation of the challenge}: by manually replacing the data files in the \code{data} subdirectory and the baseline predictions in \code{submissions/baseline} and by customizing the template \code{challenge.rmd} as needed.
@@ -145,3 +145,20 @@ to create a new task with a \emph{Start a program} action with the settings (min
 Please \href{https://adrtod.github.io}{contact me} to add yours.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://adrtod.github.io/rchallenge}
+  \item Report bugs at \url{https://github.com/adrtod/rchallenge/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Adrien Todeschini \email{adrien.todeschini@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Robin Genuer \email{robin.genuer@isped.u-bordeaux2.fr} [contributor]
+}
+
+}

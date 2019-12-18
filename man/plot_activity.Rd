@@ -4,10 +4,22 @@
 \alias{plot_activity}
 \title{Plot the density of submissions over time.}
 \usage{
-plot_activity(history, baseline = "baseline", col = 1:length(history),
-  alpha.f = 0.7, bw = 3600 * 24, by = 4, xlab = "Date",
-  ylab = "Submissions intensity", bty = "l", fg = "darkslategray",
-  col.axis = fg, col.lab = fg, text.col = fg, ...)
+plot_activity(
+  history,
+  baseline = "baseline",
+  col = 1:length(history),
+  alpha.f = 0.7,
+  bw = 3600 * 24,
+  by = 4,
+  xlab = "Date",
+  ylab = "Submissions intensity",
+  bty = "l",
+  fg = "darkslategray",
+  col.axis = fg,
+  col.lab = fg,
+  text.col = fg,
+  ...
+)
 }
 \arguments{
 \item{history}{list of the submissions history per team as returned by \code{\link{compute_metrics}}}
@@ -39,4 +51,3 @@ Plot the density of submissions over time.
 \seealso{
 \code{\link[stats]{density}}
 }
-

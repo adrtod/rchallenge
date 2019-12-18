@@ -14,4 +14,3 @@ countdown(deadline, complete_str = intToUtf8(10004))
 \description{
 Countdown before deadline.
 }
-
