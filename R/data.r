@@ -12,7 +12,7 @@
 #' worker status.
 #' 
 #' This is a transformed version of the German Credit data set with factors 
-#' instead of dummy variables, and corrected as proposed by Grömping, U. (2019).
+#' instead of dummy variables, and corrected as proposed by Groemping, U. (2019).
 #' 
 #' @keywords data datasets
 #' @usage data(german)
@@ -20,7 +20,7 @@
 #' @source UCI Machine Learning Repository 
 #'   \url{https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)}
 #'   \url{http://www1.beuth-hochschule.de/FB_II/reports/Report-2019-004.pdf}
-#' @references Grömping, U. (2019). South German Credit Data: Correcting a 
+#' @references Groemping, U. (2019). South German Credit Data: Correcting a 
 #'   Widely Used Data Set. Report 4/2019, Reports in Mathematics, Physics and 
 #'   Chemistry, Department II, Beuth University of Applied Sciences Berlin.
 "german"

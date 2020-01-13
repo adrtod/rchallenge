@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rchallenge</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2</span>
       </span>
     </div>
 
@@ -167,7 +167,7 @@ solution via a simple GitHub repository.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
 <span class='no'>wd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span>(<span class='no'>path</span>)
-<span class='fu'><a href='new_challenge.html'>new_challenge</a></span>()</div><div class='output co'>#&gt; New challenge installed in: "/tmp/Rtmpv3kkMj"
+<span class='fu'><a href='new_challenge.html'>new_challenge</a></span>()</div><div class='output co'>#&gt; New challenge installed in: "/tmp/RtmpIWHXCV"
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the "data" subdirectory.
 #&gt; 2. Replace the baseline predictions in "submissions/baseline".
@@ -179,7 +179,7 @@ solution via a simple GitHub repository.</p>
 #&gt; 6. Give the URL to "challenge.html" to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using "crontab -e":
-#&gt;     0 * * * * Rscript -e 'rchallenge::publish("/tmp/Rtmpv3kkMj/challenge.rmd")'</div><div class='input'><span class='no'>outdir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
+#&gt;     0 * * * * Rscript -e 'rchallenge::publish("/tmp/RtmpIWHXCV/challenge.rmd")'</div><div class='input'><span class='no'>outdir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
 <span class='fu'>publish</span>(<span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>outdir</span>, <span class='kw'>output_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>self_contained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>processing file: challenge.rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   3%
@@ -322,8 +322,8 @@ solution via a simple GitHub repository.</p>
 #&gt;   |                                                                              |......................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: challenge.knit.md</span></div><div class='output co'>#&gt; /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS challenge.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash+smart --output /tmp/Rtmpv3kkMj/index.html --email-obfuscation none --standalone --section-divs --template /home/adrien/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/h/default.html --highlight-style tango --variable 'theme:spacelab' --include-in-header /tmp/Rtmpv3kkMj/rmarkdown-stra16172e0b60.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --lua-filter /home/adrien/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/adrien/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: index.html</span></div><div class='output co'>#&gt; Next step: give the URL to "/tmp/Rtmpv3kkMj/index.html" to the participants.</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>outdir</span>)
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: challenge.knit.md</span></div><div class='output co'>#&gt; /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS challenge.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /tmp/RtmpIWHXCV/index.html --smart --email-obfuscation none --standalone --section-divs --template /home/adrien/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/h/default.html --highlight-style tango --variable 'theme:spacelab' --include-in-header /tmp/RtmpIWHXCV/rmarkdown-str311873955232.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: index.html</span></div><div class='output co'>#&gt; Next step: give the URL to "/tmp/RtmpIWHXCV/index.html" to the participants.</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>outdir</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span>(<span class='no'>wd</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>path</span>)</div></pre>
   </div>

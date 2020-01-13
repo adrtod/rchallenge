@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rchallenge</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2</span>
       </span>
     </div>
 
@@ -87,18 +87,18 @@
 <p>Install the R package from <a href="https://cran.r-project.org/package=rchallenge">CRAN</a> repositories</p>
 <pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("rchallenge")</a></code></pre>
 <p>or install the latest development version from <a href="https://github.com/adrtod/rchallenge">GitHub</a></p>
-<pre><code><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html"># install.packages("devtools")
-devtools::install_github("adrtod/rchallenge")</a></code></pre>
+<pre><code># install.packages("devtools")
+devtools::install_github("adrtod/rchallenge")</code></pre>
 <p>A recent version of <a href="https://pandoc.org/">pandoc</a> (&gt;= 1.12.3) is also required. See the <a href="https://rmarkdown.rstudio.com/docs/articles/pandoc.html">pandoc installation instructions</a> for details on installing pandoc for your platform.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>Install a new challenge in <code>Dropbox/mychallenge</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="st">"~/Dropbox/mychallenge"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rchallenge)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">?new_challenge</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/new_challenge.html">new_challenge</a></span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="st">"~/Dropbox/mychallenge"</span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rchallenge)
+?new_challenge
+<span class="kw"><a href="reference/new_challenge.html">new_challenge</a></span>()</code></pre></div>
 <p>or for a french version:</p>
 <pre><code><a href="reference/new_challenge.html">new_challenge(template = "fr")</a></code></pre>
 <p>You will obtain a ready-to-use challenge in the folder <code>Dropbox/mychallenge</code> containing:</p>
@@ -126,8 +126,17 @@ devtools::install_github("adrtod/rchallenge")</a></code></pre>
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <p>To complete the installation:</p>
 <ol>
-<li><p>Create and <a href="https://www.dropbox.com/en/help/19">share</a> subdirectories in <code>submissions</code> for each team: <code>R  ?new_team  new_team("team_foo", "team_bar")</code></p></li>
-<li><p>Render the HTML page: <code>R  ?publish  publish()</code> Use the <code>output_dir</code> argument to change the output directory. Make sure the output HTML file is rendered, e.g. using <a href="https://pages.github.com/">GitHub Pages</a>.</p></li>
+<li>
+<p>Create and <a href="https://www.dropbox.com/en/help/19">share</a> subdirectories in <code>submissions</code> for each team:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?new_team
+<span class="kw"><a href="reference/new_team.html">new_team</a></span>(<span class="st">"team_foo"</span>, <span class="st">"team_bar"</span>)</code></pre></div>
+</li>
+<li>
+<p>Render the HTML page:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?publish
+<span class="kw"><a href="reference/publish.html">publish</a></span>()</code></pre></div>
+<p>Use the <code>output_dir</code> argument to change the output directory. Make sure the output HTML file is rendered, e.g. using <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+</li>
 <li><p>Give the URL to your HTML file to the participants.</p></li>
 <li><p>Refresh the webpage by repeating step 2 on a regular basis. See below for automating this step.</p></li>
 </ol>
@@ -248,6 +257,7 @@ devtools::install_github("adrtod/rchallenge")</a></code></pre>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/adrtod/rchallenge"><img src="https://travis-ci.org/adrtod/rchallenge.svg" alt="Build Status"></a></li>
 <li><a href="https://cran.r-project.org/package=rchallenge"><img src="http://www.r-pkg.org/badges/version/rchallenge" alt="CRAN_Status_Badge"></a></li>
+<li><a href="http://www.r-pkg.org/pkg/rchallenge"><img src="http://cranlogs.r-pkg.org/badges/rchallenge" alt="CRAN RStudio mirror downloads"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-2.0.html"><img src="https://img.shields.io/badge/license-GPLv2-blue.svg" alt="GPLv2 License"></a></li>
 </ul>
 </div>

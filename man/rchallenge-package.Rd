@@ -6,9 +6,9 @@
 \alias{rchallenge-package}
 \title{rchallenge: A Simple Data Science Challenge System}
 \description{
-A simple data science challenge system using R Markdown and Dropbox <https://www.dropbox.com/>.
+A simple data science challenge system using R Markdown and 'Dropbox' <https://www.dropbox.com/>.
     It requires no network configuration, does not depend on external platforms
-    like e.g. Kaggle <https://www.kaggle.com/> and can be easily installed on a personal computer.
+    like e.g. 'Kaggle' <https://www.kaggle.com/> and can be easily installed on a personal computer.
 }
 \note{
 The rendering of HTML content provided by Dropbox will be discontinued from the 

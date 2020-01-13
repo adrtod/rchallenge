@@ -1,4 +1,4 @@
-#' @references Grömping, U. (2019). South German Credit Data: Correcting a 
+#' @references Groemping, U. (2019). South German Credit Data: Correcting a 
 #'   Widely Used Data Set. Report 4/2019, Reports in Mathematics, Physics and 
 #'   Chemistry, Department II, Beuth University of Applied Sciences Berlin.
 #' @source [http://www1.beuth-hochschule.de/FB_II/reports/Report-2019-004.pdf]

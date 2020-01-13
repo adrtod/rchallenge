@@ -11,8 +11,9 @@ There were no ERRORs or WARNINGs.
 
 There was one NOTE:
 
-Possibly mis-spelled words in DESCRIPTION:
-  Dropbox (6:74)
-  Kaggle (8:15)
-  
-  These words are brands.
+Files ‘README.md’ or ‘NEWS.md’ cannot be checked without ‘pandoc’ being installed.
+
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Added test for pandoc requirement.
