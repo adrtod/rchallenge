@@ -2,6 +2,7 @@ rchallenge
 ==========
 [![Build Status](https://travis-ci.org/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rchallenge)](https://cran.r-project.org/package=rchallenge)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/rchallenge)](http://www.r-pkg.org/pkg/rchallenge)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
 The **rchallenge** R package provides a simple data science competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
