@@ -1,5 +1,5 @@
-# rchallenge 1.3.1 (18-12-2019)
-- removed `pandoc` from `SystemRequirements`, because implied by dependence on `rmarkdown` and `knitr` packages.
+# rchallenge 1.3.1 (13-01-2019)
+- added test for `pandoc` requirement.
 - corrected `german` data set after Grömping, U. (2019).
 
 # rchallenge 1.3.0 (23-10-2016)
