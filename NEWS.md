@@ -1,5 +1,5 @@
 # rchallenge 1.3.2 (13-01-2019)
-- Re-added `pandoc` from `SystemRequirements` and a added test for `pandoc` availablity.
+- Re-added `pandoc` to `SystemRequirements` and added a test for `pandoc` availablity.
 
 # rchallenge 1.3.1 (18-12-2019)
 - removed `pandoc` from `SystemRequirements`, because implied by dependence on `rmarkdown` and `knitr` packages.
