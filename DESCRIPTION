@@ -6,7 +6,7 @@ Authors@R: c(person("Adrien", "Todeschini", email = "adrien.todeschini@gmail.com
 Description: A simple data science challenge system using R Markdown and 'Dropbox' <https://www.dropbox.com/>.
     It requires no network configuration, does not depend on external platforms
     like e.g. 'Kaggle' <https://www.kaggle.com/> and can be easily installed on a personal computer.
-URL: http://adrien.tspace.fr/rchallenge, https://adrtod.github.io/rchallenge, https://github.com/adrtod/rchallenge
+URL: https://adrtod.github.io/rchallenge, https://github.com/adrtod/rchallenge
 BugReports: https://github.com/adrtod/rchallenge/issues
 Depends:
     R (>= 3.2.0)

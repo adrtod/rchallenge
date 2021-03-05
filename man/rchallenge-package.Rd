@@ -148,7 +148,6 @@ Please \href{https://adrtod.github.io}{contact me} to add yours.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://adrien.tspace.fr/rchallenge}
   \item \url{https://adrtod.github.io/rchallenge}
   \item \url{https://github.com/adrtod/rchallenge}
   \item Report bugs at \url{https://github.com/adrtod/rchallenge/issues}
