@@ -1,7 +1,15 @@
-templates:
+url: http://adrien.tspace.fr/rchallenge/
+
+authors:
+  Adrien Todeschini:
+    href: https://adrtod.github.io
+  Robin Genuer:
+    href: http://robin.genuer.fr/
+    
+template:
   params:
     bootswatch: simplex
-    ganalytics: "UA-45407741-5"
+    ganalytics: UA-45407741-5
 
 reference:
   - title: Setup
@@ -28,15 +36,3 @@ reference:
     contents:
     - plot_history
     - plot_activity
-
-navbar:
-  left:
-    - text: Home
-      href: index.html
-    - text: Reference
-      href: reference/index.html
-    - text: News
-      href: news/index.html
-  right:
-    - icon: fa-github fa-lg
-      href: https://github.com/adrtod/rchallenge

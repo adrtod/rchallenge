@@ -8,18 +8,17 @@ icon(name)
 }
 \arguments{
 \item{name}{string. name of the icon. You can see a full list of options at
-\url{http://fontawesome.io/icons/}.}
+\url{https://fontawesome.com/icons/}.}
 }
 \value{
 string containing the HTML code.
 }
 \description{
-Currently only supports Font Awesome
-icons.
+Currently only supports Font Awesome icons.
 }
 \note{
 Requires the Font Awesome HTML code:
-  \code{<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">}
+  \code{<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">}
 }
 \examples{
 rmd <- '
@@ -27,7 +26,7 @@ rmd <- '
 library(rchallenge)
 ```
 <link rel="stylesheet" 
- href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+ href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 `r icon("fa-user")`
 `r icon("fa-user fa-lg")`
 `r icon("fa-user fa-2x")`
@@ -37,5 +36,7 @@ library(rchallenge)
 file <- tempfile()
 cat(rmd, file=file)
 writeLines(readLines(file))
-rmarkdown::render(file)
+if (rmarkdown::pandoc_available('1.12.3')) {
+  rmarkdown::render(file)
+}
 }

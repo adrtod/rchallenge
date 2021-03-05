@@ -7,7 +7,7 @@ output:
     highlight: tango
     theme: spacelab
 ---
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Load the rchallenge package
@@ -17,7 +17,7 @@ library(rchallenge)
 data_dir = "@DATA_DIR@" # directory of the data
 submissions_dir = "@SUBMISSIONS_DIR@" # directory of the submissions
 hist_dir = "@HIST_DIR@" # directory where the submissions history is stored
-email = "@EMAIL@" # email adress of the challenge administrator
+email = "@EMAIL@" # email address of the challenge administrator
 date_start = "@DATE_START@" # starting date of the challenge
 deadline = as.POSIXct("@DEADLINE@") # deadline of the challenge
 baseline = "@BASELINE@" # name of the team considered as the baseline

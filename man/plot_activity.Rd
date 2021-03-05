@@ -32,7 +32,7 @@ plot_activity(
 
 \item{bw}{real. the smoothing bandwidth to be used by \code{\link[stats]{density}} in seconds.}
 
-\item{by}{real. height of the interval between two teams in nb of submissions.}
+\item{by}{real. height of the interval between two teams in number of submissions.}
 
 \item{xlab, ylab}{axis labels. see \code{\link[graphics]{title}}.}
 

@@ -1,9 +1,11 @@
 rchallenge
-==========
-[![Build Status](https://travis-ci.org/adrtod/rchallenge.svg)](https://travis-ci.org/adrtod/rchallenge)
+==========  
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/adrtod/rchallenge/workflows/R-CMD-check/badge.svg)](https://github.com/adrtod/rchallenge/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rchallenge)](https://cran.r-project.org/package=rchallenge)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/rchallenge)](http://www.r-pkg.org/pkg/rchallenge)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/rchallenge)](https://www.r-pkg.org/pkg/rchallenge)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
+<!-- badges: end -->
 
 The **rchallenge** R package provides a simple data science competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/) with the following features:
@@ -13,34 +15,33 @@ and [Dropbox](https://www.dropbox.com/) with the following features:
 - Can be easily installed on a personal computer.
 - Provides a customizable template in english and french.
 
-Further documentation is available in the [Reference manual](https://adrtod.github.io/rchallenge/reference/).
+Further documentation is available in the [Reference manual](reference/).
 
 Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
 ## Installation
 Install the R package from [CRAN](https://cran.r-project.org/package=rchallenge) repositories
-```
+``` r
 install.packages("rchallenge")
 ```
 or install the latest development version from [GitHub](https://github.com/adrtod/rchallenge)
-```
+``` r
 # install.packages("devtools")
 devtools::install_github("adrtod/rchallenge")
 ```
 
-A recent version of [pandoc](https://pandoc.org/) (>= 1.12.3) is also required. See the [pandoc installation instructions](https://rmarkdown.rstudio.com/docs/articles/pandoc.html) for details on installing pandoc for your platform.
+A recent version of [pandoc](https://pandoc.org/) (>= 1.12.3) is also required. See the [pandoc installation instructions](https://pandoc.org/installing.html) for details on installing pandoc for your platform.
 
 ## Getting started
 Install a new challenge in `Dropbox/mychallenge`:
-```R
+``` r
 setwd("~/Dropbox/mychallenge")
 library(rchallenge)
-?new_challenge
 new_challenge()
 ```
 
 or for a french version:
-```
+``` r
 new_challenge(template = "fr")
 ```
 
@@ -52,25 +53,25 @@ You will obtain a ready-to-use challenge in the folder `Dropbox/mychallenge` con
 - `history`: directory where the submissions history is stored.
 
 
-The default challenge provided is a binary classification problem on the [German Credit](https://goo.gl/ndMhNw) data set.
+The default challenge provided is a binary classification problem on the [South German Credit](https://archive.ics.uci.edu/ml/datasets/South+German+Credit) data set.
 
 You can easily customize the challenge in two ways:
 
-- *During the creation of the challenge*: by using the options of the [`new_challenge`](https://adrtod.github.io/rchallenge/reference/new_challenge.html) function.
+- *During the creation of the challenge*: by using the options of the `new_challenge()` function.
 - *After the creation of the challenge*: by manually replacing the data files in the `data` subdirectory and the baseline predictions in `submissions/baseline` and by customizing the template `challenge.rmd` as needed.
 
 ## Next steps
 To complete the installation:
 
-1. Create and [share](https://www.dropbox.com/en/help/19) subdirectories in `submissions` for each team:
-    ```R
-    ?new_team
+1. Create and [share](https://help.dropbox.com/fr-fr/files-folders/share/share-with-others) subdirectories in `submissions` for each team:
+
+    ``` r
     new_team("team_foo", "team_bar")
     ```
 
 2. Render the HTML page:
-    ```R
-    ?publish
+
+    ``` r
     publish()
     ```
     Use the `output_dir` argument to change the output directory.
@@ -84,13 +85,13 @@ From now on, a fully autonomous challenge system is set up requiring no further
 administration. With each update, the program automatically performs the following
 tasks using the functions available in our package:
 
-- [`store_new_submissions`](https://adrtod.github.io/rchallenge/reference/store_new_submissions.html) reads submitted files and save new files in the history.
-- [`print_readerr`](https://adrtod.github.io/rchallenge/reference/print_readerr.html) displays any read errors.
-- [`compute_metrics`](https://adrtod.github.io/rchallenge/reference/compute_metrics.html) calculates the scores for each submission in the history.
-- [`get_best`](https://adrtod.github.io/rchallenge/reference/get_best.html) gets the highest score per team.
-- [`print_leaderboard`](https://adrtod.github.io/rchallenge/reference/print_leaderboard.html) displays the leaderboard.
-- [`plot_history`](https://adrtod.github.io/rchallenge/reference/plot_history.html) plots a chart of score evolution per team.
-- [`plot_activity`](https://adrtod.github.io/rchallenge/reference/plot_activity.html) plots a chart of activity per team.
+- `store_new_submissions()` reads submitted files and save new files in the history.
+- `print_readerr()` displays any read errors.
+- `compute_metrics()` calculates the scores for each submission in the history.
+- `get_best()` gets the highest score per team.
+- `print_leaderboard()` displays the leaderboard.
+- `plot_history()` plots a chart of score evolution per team.
+- `plot_activity()` plots a chart of activity per team.
 
 ## Automating the updates
 
@@ -121,14 +122,14 @@ Depending on your system or pandoc version you might also have to explicitly add
 
 ### Windows
 
-You can use the [Task Scheduler](https://technet.microsoft.com/en-us/library/cc748993(v=ws.11).aspx) to create a new task with a *Start a program* action with the settings (mind the quotes):
+You can use the [Task Scheduler](https://www.windowscentral.com/how-create-automated-task-using-task-scheduler-windows-10) to create a new task with a *Start a program* action with the settings (mind the quotes):
 
 - *Program/script*: `Rscript.exe`
 - *options*: `-e rchallenge::publish('~/Dropbox/mychallenge/challenge.rmd')`
 
 ## Issues
 
-- The rendering of HTML content provided by Dropbox will be discontinued from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. See <https://www.dropbox.com/help/16>. Alternatively, [GitHub Pages](https://pages.github.com/) provide an easy HTML publishing solution via a simple GitHub repository.
+- The rendering of HTML content provided by Dropbox will be discontinued from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. See <https://help.dropbox.com/fr-fr/files-folders/share/public-folder>. Alternatively, [GitHub Pages](https://pages.github.com/) provide an easy HTML publishing solution via a simple GitHub repository.
 - version 1.16 of pandoc fails to fetch font awesome css, see <https://github.com/jgm/pandoc/issues/2737>.
 
 ## Examples
@@ -150,4 +151,4 @@ The **rchallenge** package is licensed under the GPLv2 (https://www.gnu.org/lice
 - [ ] examples, tests, vignettes
 - [ ] interactive plots with `ggvis`
 - [ ] check arguments
-- [ ] interactive webpage using [Shiny](http://shiny.rstudio.com/)
+- [ ] interactive webpage using [Shiny](https://shiny.rstudio.com/)

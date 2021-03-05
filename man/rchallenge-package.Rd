@@ -13,7 +13,7 @@ A simple data science challenge system using R Markdown and 'Dropbox' <https://w
 \note{
 The rendering of HTML content provided by Dropbox will be discontinued from the 
 3rd October 2016 for Basic users and the 1st September 2017 for Pro and Business users. 
-See \url{https://www.dropbox.com/help/16}. Alternatively, \href{https://pages.github.com/}{GitHub Pages}
+See \url{https://help.dropbox.com/files-folders/share/public-folder}. Alternatively, \href{https://pages.github.com/}{GitHub Pages}
 provide an easy HTML publishing solution via a simple GitHub repository.
 
 version 1.16 of pandoc fails to fetch font awesome css, see \url{https://github.com/jgm/pandoc/issues/2737}.
@@ -31,7 +31,7 @@ or install the latest development version from \href{https://github.com/adrtod/r
 \code{devtools::install_github("adrtod/rchallenge")}
 
 A recent version of \href{https://pandoc.org/}{pandoc} (>= 1.12.3) is also required. 
-See the \href{https://rmarkdown.rstudio.com/docs/articles/pandoc.html}{pandoc installation instructions} 
+See the \href{https://pandoc.org/installing.html}{pandoc installation instructions} 
 for details on installing pandoc for your platform.
 }
 
@@ -56,7 +56,7 @@ You will obtain a ready-to-use challenge in the folder \code{Dropbox/mychallenge
  \item \code{submissions}: Directory of the submissions. It will contain one subdirectory per team where they can submit their submissions. The subdirectories are shared with Dropbox.
  \item \code{history}: Directory where the submissions history is stored.
 }
-The default challenge provided is a binary classification problem on the \href{https://goo.gl/ndMhNw}{German Credit} data set.
+The default challenge provided is a binary classification problem on the \href{https://archive.ics.uci.edu/ml/datasets/South+German+Credit}{South German Credit} data set.
 
 You can easily customize the challenge in two ways:
 
@@ -70,7 +70,7 @@ You can easily customize the challenge in two ways:
 
 To complete the installation:
 \enumerate{
- \item Create and \href{https://www.dropbox.com/en/help/19}{share} subdirectories in \code{submissions} for each team:
+ \item Create and \href{https://help.dropbox.com/fr-fr/files-folders/share/share-with-others}{share} subdirectories in \code{submissions} for each team:
  
    \code{\link{new_team}("team_foo", "team_bar")}
 
@@ -126,7 +126,7 @@ Depending on your system or pandoc version you might also have to explicitly add
 \section{Automating the updates on \strong{Windows}}{
 
 
-You can use the \href{https://technet.microsoft.com/en-us/library/cc748993(v=ws.11).aspx}{Task Scheduler} 
+You can use the \href{https://www.windowscentral.com/how-create-automated-task-using-task-scheduler-windows-10}{Task Scheduler} 
 to create a new task with a \emph{Start a program} action with the settings (mind the quotes):
   
 \itemize{ 
@@ -148,7 +148,9 @@ Please \href{https://adrtod.github.io}{contact me} to add yours.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{http://adrien.tspace.fr/rchallenge}
   \item \url{https://adrtod.github.io/rchallenge}
+  \item \url{https://github.com/adrtod/rchallenge}
   \item Report bugs at \url{https://github.com/adrtod/rchallenge/issues}
 }
 

@@ -1,12 +1,15 @@
+# rchallenge 1.3.3 (04-03-2021)
+- Use South German Credit data from [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/South+German+Credit)
+
 # rchallenge 1.3.2 (13-01-2019)
-- Re-added `pandoc` to `SystemRequirements` and added a test for `pandoc` availablity.
+- Re-added `pandoc` to `SystemRequirements` and added a test for `pandoc` availability.
 
 # rchallenge 1.3.1 (18-12-2019)
 - removed `pandoc` from `SystemRequirements`, because implied by dependence on `rmarkdown` and `knitr` packages.
 - corrected `german` data set after Groemping, U. (2019).
 
 # rchallenge 1.3.0 (23-10-2016)
-- `output_dir` argument of `publish` function now defaults to `"index.html"`. Useful for hosting the challenge on a GitHub repo with Github pages.
+- `output_dir` argument of `publish` function now defaults to `"index.html"`. Useful for hosting the challenge on a GitHub repository with Github pages.
 - `glyphicon` is defunct. use `icon` instead of glyphicon.
 - `print_readerr` displays a table.
 - `get_best` returns a single data.frame instead of a list with one data.frame per metric. the ranking can be based on several metrics in a specific order to break ties.
@@ -29,7 +32,7 @@
 
 # rchallenge 1.0 (15-04-2015)
 - new name
-- changes in readme
+- changes in `README.md`
 - `new_team` can create several teams
 - instructions for windows
 

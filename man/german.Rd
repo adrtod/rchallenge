@@ -4,10 +4,12 @@
 \name{german}
 \alias{german}
 \title{German Credit Data.}
-\format{A \code{data.frame} with 1000 rows and 21 variables}
+\format{
+A \code{data.frame} with 1000 rows and 21 variables
+}
 \source{
 UCI Machine Learning Repository 
-  \url{https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)}
+  \url{https://archive.ics.uci.edu/ml/datasets/South+German+Credit}
   \url{http://www1.beuth-hochschule.de/FB_II/reports/Report-2019-004.pdf}
 }
 \usage{
@@ -26,7 +28,7 @@ other installment plans, housing, number of existing credits, job information,
 Number of people being liable to provide maintenance for, telephone, and foreign 
 worker status.
 
-This is a transformed version of the German Credit data set with factors 
+This is a transformed version of the Statlog German Credit data set with factors 
 instead of dummy variables, and corrected as proposed by Groemping, U. (2019).
 }
 \references{

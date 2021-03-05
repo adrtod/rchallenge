@@ -11,14 +11,14 @@
 #' Number of people being liable to provide maintenance for, telephone, and foreign 
 #' worker status.
 #' 
-#' This is a transformed version of the German Credit data set with factors 
+#' This is a transformed version of the Statlog German Credit data set with factors 
 #' instead of dummy variables, and corrected as proposed by Groemping, U. (2019).
 #' 
 #' @keywords data datasets
 #' @usage data(german)
 #' @format A \code{data.frame} with 1000 rows and 21 variables
 #' @source UCI Machine Learning Repository 
-#'   \url{https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)}
+#'   \url{https://archive.ics.uci.edu/ml/datasets/South+German+Credit}
 #'   \url{http://www1.beuth-hochschule.de/FB_II/reports/Report-2019-004.pdf}
 #' @references Groemping, U. (2019). South German Credit Data: Correcting a 
 #'   Widely Used Data Set. Report 4/2019, Reports in Mathematics, Physics and 
@@ -72,7 +72,7 @@ data_split <- function(data=get_data("german"), varname="credit_risk",
 }
 
 
-#' Data partitionning function adapted from the caret package.
+#' Data partitioning function adapted from the caret package.
 #' 
 #' \code{data_partition} creates a test/training partition.
 #' 

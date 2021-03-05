@@ -1,12 +1,12 @@
 Package: rchallenge
 Title: A Simple Data Science Challenge System
-Version: 1.3.2
+Version: 1.3.3
 Authors@R: c(person("Adrien", "Todeschini", email = "adrien.todeschini@gmail.com", role=c("aut", "cre")),
     person("Robin", "Genuer", email = "robin.genuer@isped.u-bordeaux2.fr", role=c("ctb")))
 Description: A simple data science challenge system using R Markdown and 'Dropbox' <https://www.dropbox.com/>.
     It requires no network configuration, does not depend on external platforms
     like e.g. 'Kaggle' <https://www.kaggle.com/> and can be easily installed on a personal computer.
-URL: https://adrtod.github.io/rchallenge
+URL: http://adrien.tspace.fr/rchallenge, https://adrtod.github.io/rchallenge, https://github.com/adrtod/rchallenge
 BugReports: https://github.com/adrtod/rchallenge/issues
 Depends:
     R (>= 3.2.0)
@@ -16,7 +16,7 @@ Imports:
 SystemRequirements: pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc
 License: GPL-2
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Encoding: UTF-8
 Suggests: 
     testthat (>= 2.1.0)

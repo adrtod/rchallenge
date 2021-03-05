@@ -88,7 +88,7 @@ plot_history <- function(history, metric, test_name="quiz", baseline="baseline",
 #' @param col       colors of the teams.
 #' @param alpha.f   factor modifying the opacity alpha of colors; typically in [0,1].
 #' @param bw        real. the smoothing bandwidth to be used by \code{\link[stats]{density}} in seconds.
-#' @param by        real. height of the interval between two teams in nb of submissions.
+#' @param by        real. height of the interval between two teams in number of submissions.
 #' @param xlab,ylab axis labels. see \code{\link[graphics]{title}}.
 #' @param ...       further parameters passed to \code{\link[graphics]{plot}} function.
 #' @param bty,fg,col.axis,col.lab graphical parameters. see \code{\link[graphics]{par}}.

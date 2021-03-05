@@ -19,7 +19,7 @@
 #'   it is not valid.
 #'   
 #' @export
-#' @return \code{store_new_submissions} returns a named list of errors or warnings catched during the process.
+#' @return \code{store_new_submissions} returns a named list of errors or warnings caught during the process.
 #'   Members named after the team names are lists with members named after the file
 #'   that throws an error which contain the error object.
 store_new_submissions <- function(submissions_dir = "submissions", hist_dir = "history", 

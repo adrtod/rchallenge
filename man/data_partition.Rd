@@ -2,7 +2,7 @@
 % Please edit documentation in R/data.r
 \name{data_partition}
 \alias{data_partition}
-\title{Data partitionning function adapted from the caret package.}
+\title{Data partitioning function adapted from the caret package.}
 \usage{
 data_partition(y, p = 0.5, groups = min(5, length(y)))
 }

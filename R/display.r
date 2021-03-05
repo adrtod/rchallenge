@@ -92,13 +92,12 @@ print_leaderboard <- function(best, metrics=names(metrics), test_name = "quiz", 
 
 #' HTML code for icons.
 #' 
-#' Currently only supports Font Awesome
-#' icons. 
+#' Currently only supports Font Awesome icons. 
 #' 
 #' @note Requires the Font Awesome HTML code:
-#'   \code{<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">}
+#'   \code{<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">}
 #' @param name string. name of the icon. You can see a full list of options at
-#'   \url{http://fontawesome.io/icons/}.
+#'   \url{https://fontawesome.com/icons/}.
 #' @return string containing the HTML code.
 #' @export
 #' @examples 
@@ -107,7 +106,7 @@ print_leaderboard <- function(best, metrics=names(metrics), test_name = "quiz", 
 #' library(rchallenge)
 #' ```
 #' <link rel="stylesheet" 
-#'  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+#'  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 #' `r icon("fa-user")`
 #' `r icon("fa-user fa-lg")`
 #' `r icon("fa-user fa-2x")`
@@ -117,7 +116,9 @@ print_leaderboard <- function(best, metrics=names(metrics), test_name = "quiz", 
 #' file <- tempfile()
 #' cat(rmd, file=file)
 #' writeLines(readLines(file))
-#' rmarkdown::render(file)
+#' if (rmarkdown::pandoc_available('1.12.3')) {
+#'   rmarkdown::render(file)
+#' }
 icon <- function(name) {
   return(paste0('<i class="fa ', name, '"></i>'))
 }

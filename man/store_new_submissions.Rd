@@ -26,7 +26,7 @@ the deadline are skipped.}
 it is not valid.}
 }
 \value{
-\code{store_new_submissions} returns a named list of errors or warnings catched during the process.
+\code{store_new_submissions} returns a named list of errors or warnings caught during the process.
   Members named after the team names are lists with members named after the file
   that throws an error which contain the error object.
 }
