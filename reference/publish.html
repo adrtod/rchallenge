@@ -173,7 +173,7 @@ make sure that the output HTML file will be published online.</p></td>
 
     <p>The rendering of HTML content provided by Dropbox will be discontinued 
 from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro 
-and Business users. See <a href='https://www.dropbox.com/help/16'>https://www.dropbox.com/help/16</a>. Alternatively, 
+and Business users. See <a href='https://help.dropbox.com/fr-fr/files-folders/share/public-folder'>https://help.dropbox.com/fr-fr/files-folders/share/public-folder</a>. Alternatively, 
 <a href='https://pages.github.com/'>GitHub Pages</a> provide an easy HTML web publishing 
 solution via a simple GitHub repository.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -184,7 +184,7 @@ solution via a simple GitHub repository.</p>
     <pre class="examples"><div class='input'><span class='va'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>
 <span class='fu'><a href='new_challenge.html'>new_challenge</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; New challenge installed in: "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpIffrY7"
+</div><div class='output co'>#&gt; New challenge installed in: "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNzfREN"
 #&gt; Next steps to complete the installation:
 #&gt; 1. Replace the data files in the "data" subdirectory.
 #&gt; 2. Replace the baseline predictions in "submissions/baseline".
@@ -196,7 +196,7 @@ solution via a simple GitHub repository.</p>
 #&gt; 6. Give the URL to "challenge.html" to the participants.
 #&gt; 7. Automate the updates of the webpage.
 #&gt;    On Unix systems, you can setup the following line to your crontab using "crontab -e":
-#&gt;     0 * * * * Rscript -e 'rchallenge::publish("/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpIffrY7/challenge.rmd")'</div><div class='input'><span class='va'>outdir</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>
+#&gt;     0 * * * * Rscript -e 'rchallenge::publish("/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNzfREN/challenge.rmd")'</div><div class='input'><span class='va'>outdir</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'>publish</span><span class='op'>(</span>output_dir <span class='op'>=</span> <span class='va'>outdir</span>, output_options <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>self_contained <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
@@ -340,8 +340,8 @@ solution via a simple GitHub repository.</p>
 #&gt;   |                                                                              |......................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: challenge.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpIffrY7/index.html --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --variable bs3=TRUE --standalone --section-divs --template /Users/runner/work/_temp/Library/rmarkdown/rmd/h/default.html --highlight-style tango --variable theme=spacelab --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpIffrY7/rmarkdown-str86f30d667e9.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: index.html</span></div><div class='output co'>#&gt; Next step: give the URL to "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpIffrY7/index.html" to the participants.</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>outdir</span><span class='op'>)</span>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: challenge.knit.md</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS challenge.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNzfREN/index.html --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --variable bs3=TRUE --standalone --section-divs --template /Users/runner/work/_temp/Library/rmarkdown/rmd/h/default.html --highlight-style tango --variable theme=spacelab --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpNzfREN/rmarkdown-strc2e35e661e.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: index.html</span></div><div class='output co'>#&gt; Next step: give the URL to "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpNzfREN/index.html" to the participants.</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>outdir</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>
 </div></pre>
