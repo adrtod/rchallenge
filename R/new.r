@@ -221,7 +221,7 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #'   of the output file is returned.
 #' @note The rendering of HTML content provided by Dropbox will be discontinued 
 #' from the 3rd October 2016 for Basic users and the 1st September 2017 for Pro 
-#' and Business users. See \url{https://www.dropbox.com/help/16}. Alternatively, 
+#' and Business users. See \url{https://help.dropbox.com/fr-fr/files-folders/share/public-folder}. Alternatively, 
 #' \href{https://pages.github.com/}{GitHub Pages} provide an easy HTML web publishing 
 #' solution via a simple GitHub repository.
 #' @export
