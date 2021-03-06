@@ -2,12 +2,12 @@ rchallenge
 ==========  
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/adrtod/rchallenge/workflows/R-CMD-check/badge.svg)](https://github.com/adrtod/rchallenge/actions)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rchallenge)](https://cran.r-project.org/package=rchallenge)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/rchallenge)](https://www.r-pkg.org/pkg/rchallenge)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rchallenge)](https://cran.r-project.org/package=rchallenge)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/rchallenge)](https://www.r-pkg.org/pkg/rchallenge)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 <!-- badges: end -->
 
-The **rchallenge** R package provides a simple data science competition system using [R Markdown](http://rmarkdown.rstudio.com/) 
+The **rchallenge** R package provides a simple data science competition system using [R Markdown](https://rmarkdown.rstudio.com/) 
 and [Dropbox](https://www.dropbox.com/) with the following features:
 
 - No network configuration required.
@@ -15,7 +15,7 @@ and [Dropbox](https://www.dropbox.com/) with the following features:
 - Can be easily installed on a personal computer.
 - Provides a customizable template in english and french.
 
-Further documentation is available in the [Reference manual](reference/).
+Further documentation is available in the [Reference manual](https://adrien.tspace.fr/rchallenge/reference/index.html).
 
 Please report bugs, troubles or discussions on the [Issues](https://github.com/adrtod/rchallenge/issues) tracker. Any contribution to improve the package is welcome.
 
@@ -133,14 +133,14 @@ You can use the [Task Scheduler](https://www.windowscentral.com/how-create-autom
 - version 1.16 of pandoc fails to fetch font awesome css, see <https://github.com/jgm/pandoc/issues/2737>.
 
 ## Examples
-- [Credit approval](https://adrtod.github.io/challenge-mimse2014/) (in french) by Adrien Todeschini (Bordeaux).
+- [Credit approval](https://adrien.tspace.fr/challenge-mimse2014/) (in french) by Adrien Todeschini (Bordeaux).
 
 - [Spam filter](https://chavent.github.io/challenge-mmas/) (in french) by Marie Chavent (Bordeaux).
 
-Please [contact me](https://adrtod.github.io/) to add yours.
+Please [contact me](https://adrien.tspace.fr/) to add yours.
 
 ## Copyright
-Copyright (C) 2014-2015 [Adrien Todeschini](https://adrtod.github.io/).
+Copyright (C) 2014-2015 [Adrien Todeschini](https://adrien.tspace.fr/).
 
 Contributions from [Robin Genuer](http://robin.genuer.fr/).
 

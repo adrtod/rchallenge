@@ -275,4 +275,4 @@ print_readerr(read_err)
 ```
 
 ------------
-Powered by [rchallenge](http://adrtod.github.io/rchallenge/).
+Powered by [rchallenge](https://adrtod.github.io/rchallenge/).

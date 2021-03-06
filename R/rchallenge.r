@@ -121,11 +121,11 @@ release_questions <- function() {
 #' 
 #' @section Examples:
 #' \itemize{ 
-#'  \item \href{https://adrtod.github.io/challenge-mimse2014/}{Credit approval} (in french) by Adrien Todeschini (Bordeaux).
+#'  \item \href{https://adrien.tspace.fr/challenge-mimse2014/}{Credit approval} (in french) by Adrien Todeschini (Bordeaux).
 #'  \item \href{https://chavent.github.io/challenge-mmas/}{Spam filter} (in french) by Marie Chavent (Bordeaux).
 #' }
 #' 
-#' Please \href{https://adrtod.github.io}{contact me} to add yours.
+#' Please \href{https://adrien.tspace.fr/}{contact me} to add yours.
 "_PACKAGE"
 
 

@@ -138,17 +138,18 @@ to create a new task with a \emph{Start a program} action with the settings (min
 \section{Examples}{
 
 \itemize{ 
- \item \href{https://adrtod.github.io/challenge-mimse2014/}{Credit approval} (in french) by Adrien Todeschini (Bordeaux).
+ \item \href{https://adrien.tspace.fr/challenge-mimse2014/}{Credit approval} (in french) by Adrien Todeschini (Bordeaux).
  \item \href{https://chavent.github.io/challenge-mmas/}{Spam filter} (in french) by Marie Chavent (Bordeaux).
 }
 
-Please \href{https://adrtod.github.io}{contact me} to add yours.
+Please \href{https://adrien.tspace.fr/}{contact me} to add yours.
 }
 
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://adrtod.github.io/rchallenge}
+  \item \url{https://adrien.tspace.fr/rchallenge/}
+  \item \url{https://adrtod.github.io/rchallenge/}
   \item \url{https://github.com/adrtod/rchallenge}
   \item Report bugs at \url{https://github.com/adrtod/rchallenge/issues}
 }
