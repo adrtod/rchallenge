@@ -232,7 +232,9 @@ new_team <- function(..., path = ".", submissions_dir = "submissions",
 #' wd <- setwd(path)
 #' new_challenge()
 #' outdir = tempdir()
-#' publish(output_dir = outdir, output_options = list(self_contained = FALSE))
+#' if (rmarkdown::pandoc_available('1.12.3')) {
+#'   publish(output_dir = outdir, output_options = list(self_contained = FALSE))
+#' }
 #' unlink(outdir)
 #' setwd(wd)
 #' unlink(path)

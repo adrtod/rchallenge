@@ -1,3 +1,7 @@
+# rchallenge 1.3.4 (08-03-2021)
+- Skip test for pandoc availability on CRAN.
+- Added condition on publish() example.
+
 # rchallenge 1.3.3 (05-03-2021)
 - Use South German Credit data from [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/South+German+Credit)
 

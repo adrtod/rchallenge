@@ -21,11 +21,3 @@ We checked 0 reverse dependencies, comparing R CMD check results across CRAN and
  * We saw 0 new problems
  * We failed to check 0 packages
 
-## Resubmission
-
-This is a resubmission. In this version I have:
-
-* changed http --> https, added trailing slashes, or followed moved content as 
-  appropriate.
-
-* linked to files in the package or used fully specified URLs.
